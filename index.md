@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<script src="./main.js"></script>
 	<link rel="stylesheet" href="./index.css">
-	<link rel="stylesheet" href="https://raw.githubusercontent.com/ccampbell/rainbow/master/themes/css/obsidian.css">
+	<link rel="stylesheet" href="./fonts/syntax.css">
 	<script src="./javascript/rainbow.min.js"></script>
 
 </head>
@@ -521,8 +521,3 @@ asdfabw ef
 		opacity: 1;
 	}
 </style>
-<script>
-    if (window.location.href === "/"){
-        window.location.href = "./index.html"
-    }
-</script>
