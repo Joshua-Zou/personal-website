@@ -495,7 +495,7 @@ asdfabw ef
 		text-align: left;
 		border-radius: 6px;
 		padding: 5px 5px;
-		position: absolute;
+		position: absolute !important;
 		z-index: 1;
 		bottom: 125%;
 		left: 50%;
