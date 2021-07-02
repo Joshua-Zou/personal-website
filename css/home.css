@@ -1,3 +1,22 @@
+:root {
+    /*
+    --dark-background-color: #46a587;
+    --background-color: #2f6e5a;
+    --text-color: #3B2C35;
+    --alt-text-color: #2A1f2D;
+    --medium-color: #5B6C5D;
+    */
+    --dark-background-color: #282828;
+    --background-color: #0C0032;
+    --text-color: whitesmoke;
+    --block-background-color: #35003D;
+    --alt-text-color: grey;
+    --medium-color: #5B6C5D;
+    --pop-color: #3500D3;
+    --red-color: #950740;
+    --dark-block-background-color: #190061;
+}
+
 #background-canvas {
     position: absolute !important;
     z-index: -10;
