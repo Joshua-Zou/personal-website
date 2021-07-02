@@ -40,6 +40,7 @@ body {
     --medium-color: #5B6C5D;
     --pop-color: #3500D3;
     --red-color: #950740;
+    --dark-block-background-color: #190061;
 }
 
 .flash {
@@ -204,8 +205,8 @@ header .mobile .right-navbar {
   }
   header .flash,
   header .flash * {
-    -webkit-animation: cray 6s infinite steps(50);
-            animation: cray 6s infinite steps(50);
+    -webkit-animation: cray 15s infinite steps(50);
+            animation: cray 15s infinite steps(50);
     display: inline-block;
   }
   @-webkit-keyframes cray {
