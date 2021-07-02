@@ -48,7 +48,7 @@ body {
 }
 
 .social .container {
-    background-color: var(--dark-block-background-color);
+    background-color: #190061;
     position: relative;
     z-index: -1;
     padding-bottom: 50px;
