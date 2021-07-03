@@ -18,7 +18,7 @@
 }
 
 #background-canvas {
-    position: absolute !important;
+    position: fixed !important;
     z-index: -10;
     height: 100vh;
     width: 100vw;
@@ -36,6 +36,8 @@
 
 body {
     max-width: 100vw;
+    position: relative;
+    z-index: -10;
 }
 
 .center-text {
@@ -403,6 +405,9 @@ pre .support,
 
 #introduction {
     color: whitesmoke;
+    overflow: hidden;
+    position: relative;
+    z-index: -1;
 }
 
 
@@ -505,14 +510,14 @@ pre .support,
     opacity: 1;
 }
 
-.intro .line-left {
+.line-left {
     position: absolute;
     left: -10000px;
     z-index: -1;
     margin: 0;
     padding-left: 10000px;
     padding-right: 10000px;
-    top: 30%;
+    top: 300px;
 }
 
 @media (max-width: 500px) {
