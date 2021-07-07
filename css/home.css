@@ -405,12 +405,16 @@ pre .support,
 
 #introduction {
     color: whitesmoke;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: visible;
+    width: 100vw;
     position: relative;
     z-index: -1;
 }
 
-
+#languages {
+    color: whitesmoke;
+}
 .flashing-cursor {
     border-bottom: solid 3px rgba(177, 224, 243, 1);
     margin-top: 10px;
@@ -524,7 +528,9 @@ pre .support,
     .intro .line-left {
         display: none;
     }
-
+    .line-left {
+        display: none;
+    }
     #introduction {
         padding: 10px;
         margin-top: 100px;
@@ -561,7 +567,7 @@ pre .support,
         padding: 50px;
         /*display: flex !important;*/
         justify-content: center;
-        margin-left: 16%;
+        padding-left: calc(16% + 50px);
     }
 
     .extra-large-font {
@@ -571,9 +577,20 @@ pre .support,
     .intro {
         height: 250px;
         padding-top: 20px;
-        /**/
     }
-
+    .long-float {
+        animation-delay: 0.75s !important;
+        animation-name: floating !important; 
+        animation-duration: 9s !important; 
+        animation-iteration-count: infinite !important; 
+        animation-timing-function: ease-in-out !important; 
+    }
+    .short-float {
+        animation-name: floating !important; 
+        animation-duration: 8s !important; 
+        animation-iteration-count: infinite !important; 
+        animation-timing-function: ease-in-out !important; 
+    }
     .social .container {
         top: 20px;
         left: -20px;

@@ -184,11 +184,27 @@ header .mobile .right-navbar {
 }
 
 @media (min-width: 500px) {
+  .scroll-from-left {
+    opacity: 0;
+    position: relative;
+  }
+  .left-scroll-element {
+    opacity: 1;
+    animation: animation-left 0.9s;
+    animation-timing-function: ease;
+  }
     header .pancake-thingy {
         display: none;
     }
     .side-by-side {
         float: left;
+    }
+    .scroll-from-right {
+      opacity: 0;
+    }
+    .right-scroll-element {
+      opacity: 1;
+      animation: animation-right 0.9s;
     }
 }
 
@@ -801,3 +817,20 @@ header .mobile .right-navbar {
       text-transform: none;
     }
   }
+  @keyframes floating { 
+    0% { transform: translate(0,  0px); } 
+    50%  { transform: translate(0, 15px); } 
+    100%   { transform: translate(0, -0px); }     
+} 
+
+@keyframes animation-left {
+  0% {transform: translate(-100%, 0px);}
+  60% {transform: translate(50px, 0px); opacity: 1;}
+  100% {transform: translate(0px, 0px); }
+}
+
+@keyframes animation-right {
+  0% {transform: translate(100%, 0px);}
+  60% {transform: translate(-50px, 0px); opacity: 1;}
+  100% {transform: translate(0px, 0px); }
+}

@@ -70,10 +70,10 @@
 		</div>
 	</header>
 	<hr class="line-left">
+	<hr class="line-up line-left">
 	<section id="introduction" style="display: block;">
-		<div class="intro side-by-side">
+		<div class="intro side-by-side scroll-from-left">
 			<div class="container">
-				<hr class="line-up line-left">
 
 				<span class="extra-large-font">Hi, I'm Joshua Zou, <div class="break big-break"></div></span>
 				<span class="medium-font">&nbsp; &nbsp; a <div class="tooltip">13
@@ -87,7 +87,7 @@
 				<div class="waving-hand"></div>
 			</div>
 		</div>
-		<div class="social side-by-side">
+		<div class="social side-by-side scroll-from-right">
 			<div class="container">
 				<span class="medium-font center-text">Social<br></span>
 				<div class="break big-break"></div>
@@ -107,7 +107,17 @@
 	</section>
 	<section id="languages" style="display: block;">
 		<div class="languages-good side-by-side">
-			asdf
+			<div class="background">
+				<span class="extra-large-font" style="padding-bottom: 2px;">What I do in general:</span>
+			</div>
+		</div>
+	</section>
+	<section id="projects" style="display: block;">
+		<div class="top-projects">
+			<!--put top projects here like elon discord bot or whatever (has to be finished)-->
+		</div>
+		<div class="project-status">
+			<!--put project progress bars on random projects that I'm working on-->
 		</div>
 	</section>
 </body>
@@ -155,3 +165,39 @@
 		}
 	}
 </script>
+<style>
+	#languages {
+		position: relative;
+	}
+
+	.languages-good {
+		background-color: #363636;
+	}
+	#languages .background {
+		position: relative;
+		overflow: hidden;
+		background-color: rgba(53, 0, 211, 0.5);
+		padding: 20px;
+	}
+	@media (max-width: 500px) {
+		#languages {
+			margin-left: 10px;
+			max-width: 94vw;
+		}
+		#languages .background {
+			padding: 15px !important;
+		}
+	}
+
+	@media (min-width: 500px) {
+		#languages {
+			margin-left: 15%;
+		}
+		#languages .background {
+			transform: translate(10px, 10px);
+		}
+		#languages .background .extra-large-font {
+			padding-right: 10px;
+		}
+	}
+</style>
