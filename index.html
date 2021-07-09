@@ -204,6 +204,7 @@
 					</div>
 					<div class="invisible general">
 						<div>
+							<h1>&nbsp;&nbsp;&nbsp;<i class="fas fa-italic">:</i></h1>
 							<p class="medium-font"><img alt="🤖" src="https://twemoji.maxcdn.com/2/72x72/1f916.png"
 									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
 								Participate in hackathons, such as angelhacks, hackOR, coHackathon, and many others! You
@@ -216,7 +217,8 @@
 			</div>
 		</div>
 		<div class="activity-canvas side-by-side">
-
+			<span style="display: block; text-align: center;" class="large-font">My github contributions</span>
+			<img src="https://ghchart.rshah.org/joshua-zou">
 		</div>
 	</section>
 	<section id="projects" style="display: block;">
@@ -303,7 +305,16 @@
 		color: white !important;
 		opacity: 0;
 	}
-
+	.activity-canvas {
+		margin-top: 20px;
+		padding-right: 30px;
+		padding-bottom: 10px;
+		background-color: #22272E;
+		margin-bottom: 20px;
+	}
+	.activity-canvas .large-font {
+		margin-bottom: 10px;
+	}
 	#languages .single-language:hover span {
 		animation: 0.5s showLangSpan;
 		opacity: 100% !important;
@@ -462,11 +473,9 @@
 	}
 
 	@media (min-width: 500px) {
-		body {
-			padding-right: 20px;
-		}
 		#languages {
 			margin-left: 15%;
+			padding-right: 20px;
 		}
 
 		#languages .background {
