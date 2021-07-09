@@ -264,7 +264,8 @@
 									<path d="M24 22.525H0l12-21.05 12 21.05z" />
 								</svg><span>Vercel</span></li>
 							<li class="single-language">
-								<svg class="languagelistsvgs firebase" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<svg class="languagelistsvgs firebase" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
 									<path
 										d="M3.89 15.672L6.255.461A.542.542 0 017.27.288l2.543 4.771zm16.794 3.692l-2.25-14a.54.54 0 00-.919-.295L3.316 19.365l7.856 4.427a1.621 1.621 0 001.588 0zM14.3 7.147l-1.82-3.482a.542.542 0 00-.96 0L3.53 17.984z" />
 								</svg><span>Firebase</span>
@@ -276,7 +277,10 @@
 		</div>
 		<div class="activity-canvas side-by-side">
 			<span style="display: block; text-align: center;" class="large-font">My github contributions</span>
-			<img src="https://ghchart.rshah.org/joshua-zou">
+			<div class="pop-out-icon pointer"
+				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"><i
+					class="fas fa-external-link-alt"></i></div>
+			<img src="https://ghchart.rshah.org/joshua-zou" onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')">
 		</div>
 	</section>
 	<section id="projects" style="display: block;">
@@ -285,6 +289,13 @@
 		</div>
 		<div class="project-status">
 			<!--put project progress bars on random projects that I'm working on-->
+		</div>
+	</section>
+	<section id="modals">
+		<div id="myModal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content" id="img01">
+			<div id="caption"></div>
 		</div>
 	</section>
 </body>
@@ -363,8 +374,135 @@
 		allKeys[to].classList.toggle("invisible");
 		current = to;
 	}
+
+	function popImageOut(imageUrl, caption) {
+		// Get the modal
+		var modal = document.getElementById("myModal");
+
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementById("myImg");
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+
+		modal.style.display = "block";
+		modalImg.src = imageUrl;
+		modalImg.style.width = "90vw"
+		captionText.innerHTML = caption;
+
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function () {
+			modal.style.display = "none";
+		}
+	}
 </script>
 <style>
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 1;
+		padding-top: 100px;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgb(0, 0, 0);
+		background-color: rgba(0, 0, 0, 0.9);
+	}
+
+	.modal-content {
+		margin: auto;
+		display: block;
+		width: 80%;
+	}
+
+	#caption {
+		margin: auto;
+		display: block;
+		width: 80%;
+		max-width: 700px;
+		text-align: center;
+		color: #ccc;
+		padding: 10px 0;
+		height: 150px;
+	}
+
+	.modal-content,
+	#caption {
+		-webkit-animation-name: zoom;
+		-webkit-animation-duration: 0.6s;
+		animation-name: zoom;
+		animation-duration: 0.6s;
+	}
+
+	@-webkit-keyframes zoom {
+		from {
+			-webkit-transform: scale(0)
+		}
+
+		to {
+			-webkit-transform: scale(1)
+		}
+	}
+
+	@keyframes zoom {
+		from {
+			transform: scale(0)
+		}
+
+		to {
+			transform: scale(1)
+		}
+	}
+
+	/* The Close Button */
+	.close {
+		position: absolute;
+		top: 15px;
+		right: 35px;
+		color: #f1f1f1;
+		font-size: 40px;
+		font-weight: bold;
+		transition: 0.3s;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #bbb;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	/* 100% Image Width on Smaller Screens */
+	@media only screen and (max-width: 700px) {
+		.modal-content {
+			width: 96vw !important;
+			margin-left: 0;
+		}
+
+		.close {
+			position: relative !important;
+			left: 90vw;
+		}
+
+		#caption {
+			display: block;
+			width: 80%;
+			position: absolute;
+			left: -25vw;
+		}
+	}
+
+	.pop-out-icon {
+		text-align: right;
+		position: relative;
+		top: -30px;
+	}
+
 	.fadeOut {
 		animation: fadeOut 0.5s;
 		opacity: 0;
@@ -533,9 +671,11 @@
 	#languages .npm:hover {
 		fill: #CB3837;
 	}
+
 	#languages .firebase:hover {
 		fill: #FFCA28;
 	}
+
 	#languages .opencv:hover {
 		fill: #5C3EE8;
 	}
@@ -609,8 +749,15 @@
 		#languages .tooltip {
 			padding-top: 20px;
 		}
+		#languages .activity-canvas img {
+			width: 90vw;
+		}
+		
 	}
-
+	#languages .activity-canvas img:hover {
+			opacity: 70%;
+			cursor: pointer;
+		}
 	@media (min-width: 500px) {
 		#languages {
 			margin-left: 15%;
@@ -623,6 +770,9 @@
 
 		#languages .background .extra-large-font {
 			padding-right: 10px;
+		}
+		#languages .activity-canvas img {
+			margin-left: 10px;
 		}
 	}
 </style>
