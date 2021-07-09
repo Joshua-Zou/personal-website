@@ -291,7 +291,15 @@
 		default: document.querySelectorAll("#languages .languages .container .default")[0],
 		general: document.querySelectorAll("#languages .languages .container .general")[0]
 	}
+	if (localStorage) {
+		if (!localStorage.getItem("whatIdoPage")) current = "default";
+		else {
+			changeLangNoAnimation(localStorage.getItem("whatIdoPage"))
+		}
+	}
+
 	async function changeLang(to) {
+		localStorage.setItem("whatIdoPage", to)
 		allKeys[current].classList.toggle("fadeOut");
 		await sleep(600)
 		allKeys[current].classList.toggle("invisible");
@@ -303,12 +311,19 @@
 		allKeys[to].classList.toggle("fadeIn");
 		current = to;
 	}
+	function changeLangNoAnimation(to) {
+		localStorage.setItem("whatIdoPage", to)
+		allKeys[current].classList.toggle("invisible");
+		allKeys[to].classList.toggle("invisible");
+		current = to;
+	}
 </script>
 <style>
 	.fadeOut {
 		animation: fadeOut 0.5s;
 		opacity: 0;
 	}
+
 	@keyframes fadeOut {
 		from {
 			opacity: 1;
@@ -318,9 +333,11 @@
 			opacity: 0;
 		}
 	}
+
 	.fadeIn {
 		animation: fadeIn 0.5s;
 	}
+
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -330,6 +347,7 @@
 			opacity: 1;
 		}
 	}
+
 	.languages a {
 		border-bottom: .05em solid #b4e7f8;
 		box-shadow: inset 0 -0.05em 0 #b4e7f8;
@@ -470,6 +488,7 @@
 		padding-top: 20px;
 		padding-left: 40px;
 		padding-right: 40px;
+		transition: all 0.4s ease-in-out;
 	}
 
 	#languages .languages {
