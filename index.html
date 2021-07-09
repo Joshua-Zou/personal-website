@@ -356,23 +356,24 @@
 	}
 
 	async function changeLang(to) {
+		let original = current;
+		current = to;
 		localStorage.setItem("whatIdoPage", to)
-		allKeys[current].classList.toggle("fadeOut");
+		allKeys[original].classList.toggle("fadeOut");
 		await sleep(600)
-		allKeys[current].classList.toggle("invisible");
+		allKeys[original].classList.toggle("invisible");
 
 		allKeys[to].classList.toggle("invisible");
 		allKeys[to].classList.toggle("fadeIn");
 		await sleep(600);
-		allKeys[current].classList.toggle("fadeOut");
+		allKeys[original].classList.toggle("fadeOut");
 		allKeys[to].classList.toggle("fadeIn");
-		current = to;
 	}
 	function changeLangNoAnimation(to) {
+		current = to;
 		localStorage.setItem("whatIdoPage", to)
 		allKeys[current].classList.toggle("invisible");
 		allKeys[to].classList.toggle("invisible");
-		current = to;
 	}
 
 	function popImageOut(imageUrl, caption) {
