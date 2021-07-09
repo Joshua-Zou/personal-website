@@ -12,6 +12,7 @@ body {
     font: 16px / 20px "poiretOne", sans-serif;
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
+    line-height: normal;
 }
 
 @font-face {
@@ -171,6 +172,9 @@ header .mobile .right-navbar {
 }
 
 @media (max-width: 500px) {
+  .medium-font {
+    font-size: 20px;
+  }
     header .big-screen {
         display: none;
     }
