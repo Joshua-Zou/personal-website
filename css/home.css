@@ -394,7 +394,11 @@ pre .support,
     background: #2D333B;
     color: white;
 }
-
+.fa-robot::before {
+    position: relative;
+    left: -3.25px;
+    top: -1px;
+}
 .fa-devpost {
     background: whitesmoke;
     padding-left: 6px;
@@ -534,8 +538,12 @@ pre .support,
     #introduction {
         padding: 10px;
         margin-top: 100px;
+        max-width: 95vw;
     }
-
+    .intro:before,
+    .intro:after {
+        display: none !important;
+    }
     .extra-large-font {
         font-size: xx-large;
     }
@@ -621,7 +629,10 @@ pre .support,
         animation: 14s float infinite;
         animation-delay: 7s;
     }
-
+    .fa-youtube::before {
+        position: relative;
+        left: -2px;
+    }
     .fa-donate {
         background: #ff5700;
         color: white;

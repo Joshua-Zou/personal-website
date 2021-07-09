@@ -101,7 +101,7 @@
 				<a href="https://github.com/Joshua-Zou" target="_blank" class="fab fa-github"></a>
 				<a href="https://top.gg/user/741793729509064704" target="_blank" class="fas fa-robot"></a>
 				<a href="https://devpost.com/Joshua-Zou" target="_blank" class="fas fa-devpost"><img
-						src="./images/devpost.svg" style="    left: -6.5px; position: relative; top: 1px;"></a>
+						src="./images/devpost.svg" style="    left: -6.5px; position: relative; top: 2px;"></a>
 
 			</div>
 		</div>
@@ -111,16 +111,19 @@
 			<div class="background">
 				<span class="extra-large-font" style="padding-bottom: 2px;">What I do</span>
 				<div class="selection">
-					<span class="medium-font"><br>In general <i class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
+					<br>
+					<span class="medium-font pointer hover-animation">In general <i class="fas fa-chevron-right"
+							style="font-size: large; bottom: 2px; position: relative;"></i>
 					</span>
 				</div>
 			</div>
 		</div>
 
-		<div class="show-on-large">
+		<div>
 			<div class="languages">
 				<div class="container">
-					<span class="large-font" style="display: block; text-align: center;">coding skills I <div
+					<div class="default">
+						<span class="large-font" style="display: block; text-align: center;">languages I <div
 							class="tooltip">know
 							<span class="tooltiptext"
 								style="position: relative; left: -130px; width: 450px; display: block; text-align: center;">("knowingness"
@@ -146,15 +149,23 @@
 						<li class="single-language"><svg class="languagelistsvgs tensorflow" viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg">
 								<title>TensorFlow</title>
-								<linearGradient id="tensorflow-gradient" x2="0.35" y2="1" gradientTransform="rotate(90)">
+								<linearGradient id="tensorflow-gradient" x2="0.35" y2="1"
+									gradientTransform="rotate(90)">
 									<stop offset="0%" stop-color="var(--color-stop)" />
 									<stop offset="30%" stop-color="var(--color-stop)" />
 									<stop offset="100%" stop-color="var(--color-bot)" />
-								  </linearGradient>
+								</linearGradient>
 								<path
 									d="M1.292 5.856L11.54 0v24l-4.095-2.378V7.603l-6.168 3.564.015-5.31zm21.43 5.311l-.014-5.31L12.46 0v24l4.095-2.378V14.87l3.092 1.788-.018-4.618-3.074-1.756V7.603l6.168 3.564z" />
 							</svg><span>TensorFlow</span></li>
+						<li class="single-language"><svg class="languagelistsvgs mongodb" viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg">
+								<title>MongoDB</title>
+								<path
+									d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218zm-5.336 8.195s0-8.291.275-8.29c.213 0 .49 10.695.49 10.695-.381-.045-.765-1.76-.765-2.405z" />
+							</svg><span>No-SQL</span></li>
 					</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -246,7 +257,7 @@
 	}
 
 	.language-list {
-		display: inline;
+		display: inline-table;
 		padding: 0;
 	}
 
@@ -276,6 +287,10 @@
 
 	#languages .node:hover {
 		fill: #68A063;
+	}
+
+	#languages .mongodb:hover {
+		fill: #47A248;
 	}
 
 	#languages .fab {
@@ -341,7 +356,15 @@
 		padding: 20px;
 	}
 
+	.fa-chevron-right {
+		transition: all 0.5s ease-in-out
+	}
+
 	@media (max-width: 500px) {
+		.fa-chevron-right {
+			transform: rotate(90deg);
+		}
+
 		.show-on-large {
 			display: none !important;
 		}
@@ -353,6 +376,12 @@
 
 		#languages .background {
 			padding: 15px !important;
+		}
+		#languages .languages {
+			margin-left: 0;
+		}
+		#languages .tooltip {
+			padding-top: 20px;
 		}
 	}
 
