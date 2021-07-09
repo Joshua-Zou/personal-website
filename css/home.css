@@ -321,7 +321,7 @@ pre .support,
 
 
 
-.fas {
+#introduction .fas {
     padding-top: 12px;
     padding-bottom: 12px;
     padding-right: 27px;
@@ -340,7 +340,7 @@ pre .support,
     opacity: 0.7;
 }
 
-.fab {
+#introduction .fab {
     padding-top: 12px;
     padding-bottom: 12px;
     padding-right: 27px;
