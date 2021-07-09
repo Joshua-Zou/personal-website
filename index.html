@@ -217,12 +217,13 @@
 							</p>
 							<p class="medium-font"><img alt="🎻" src="https://abs-0.twimg.com/emoji/v2/svg/1f3bb.svg"
 									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
-								Play instruments like violin and piano (the instruments every asian kid is forced to play)
+								Play instruments like violin and piano (the instruments every asian kid is forced to
+								play)
 							</p>
 							<p class="medium-font"><img alt="⚡" src="https://abs-0.twimg.com/emoji/v2/svg/26a1.svg"
-								style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
-							Design, solder, and test circuits
-						</p>
+									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+								Design, solder, and test circuits
+							</p>
 						</div>
 					</div>
 				</div>
@@ -290,13 +291,45 @@
 		default: document.querySelectorAll("#languages .languages .container .default")[0],
 		general: document.querySelectorAll("#languages .languages .container .general")[0]
 	}
-	function changeLang(to) {
+	async function changeLang(to) {
+		allKeys[current].classList.toggle("fadeOut");
+		await sleep(600)
 		allKeys[current].classList.toggle("invisible");
-		allKeys[to].classList.toggle("invisible")
+
+		allKeys[to].classList.toggle("invisible");
+		allKeys[to].classList.toggle("fadeIn");
+		await sleep(600);
+		allKeys[current].classList.toggle("fadeOut");
+		allKeys[to].classList.toggle("fadeIn");
 		current = to;
 	}
 </script>
 <style>
+	.fadeOut {
+		animation: fadeOut 0.5s;
+		opacity: 0;
+	}
+	@keyframes fadeOut {
+		from {
+			opacity: 1;
+		}
+
+		to {
+			opacity: 0;
+		}
+	}
+	.fadeIn {
+		animation: fadeIn 0.5s;
+	}
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
 	.languages a {
 		border-bottom: .05em solid #b4e7f8;
 		box-shadow: inset 0 -0.05em 0 #b4e7f8;
