@@ -303,13 +303,9 @@
 
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
 <script async>
 	window.onload = function () {
 		console.log("%c Yo. if mobile mode in dev tools looks kinda weird, try closing dev tools and re-opening it. Its a weird thing with chrome dev tools (its not my fault :) )", "background: #0c0032; color: white; font-size: x-large");
-		$(window).resize(function () {
-			window.vantaCanvas.resize();
-		});
 		let social_elements = document.getElementsByClassName("social")[0].children[0].children;
 		for (let i = 0; i < social_elements.length; i++) {
 			social_elements[i].addEventListener("mouseenter", async function (res) {
@@ -341,6 +337,7 @@
 	function init() {
 
 		camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+		
 		camera.position.z = 1000;
 		camera.rotateSpeed = 0.0001
 		scene = new THREE.Scene();
@@ -397,8 +394,10 @@
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.domElement.classList.add("background-canvas-thingy");
-		document.body.appendChild(renderer.domElement);
-
+		document.getElementById("background-canvas").appendChild(renderer.domElement)
+		$(renderer.domElement).bind('touchstart');
+		$(document.body).bind("touchstart")
+		//document.body.appendChild(renderer.domElement);
 		//
 
 
@@ -410,7 +409,6 @@
 		};
 
 
-		document.body.style.touchAction = 'none';
 		document.body.addEventListener('pointermove', onPointerMove);
 
 		//
@@ -567,7 +565,6 @@
 		width: 100vw !important;
 		top: 0px;
 		left: 0;
-		z-index: -100;
 		background: linear-gradient( #383849, rgb(231, 41, 63, 0.5));
 	}
 	.modal {
@@ -960,4 +957,6 @@
 			margin-left: 10px;
 		}
 	}
+
+
 </style>
