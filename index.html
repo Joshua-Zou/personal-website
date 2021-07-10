@@ -320,7 +320,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
 <script src="./javascript/home.js"></script>
-	
+
 </body>
 
 </html>
@@ -383,9 +383,9 @@
 			modal.style.display = "none";
 		}
 	}
-	document.addEventListener("keydown", function(key){
+	document.addEventListener("keydown", function (key) {
 		console.log(key)
-		if (key.keyCode === 27){
+		if (key.keyCode === 27) {
 			var modal = document.getElementById("myModal");
 			modal.style.display = "none";
 
@@ -399,8 +399,9 @@
 		width: 100vw !important;
 		top: 0px;
 		left: 0;
-		background: linear-gradient( #383849, rgb(231, 41, 63, 0.5));
+		background: linear-gradient(#383849, rgb(231, 41, 63, 0.5));
 	}
+
 	.modal {
 		display: none;
 		position: fixed;
@@ -479,7 +480,7 @@
 		cursor: pointer;
 	}
 
-	@media only screen and (max-width: 700px) {
+	@media only screen and (max-width: 700) {
 		.modal-content {
 			width: 96vw !important;
 			margin-left: 0;
@@ -611,9 +612,11 @@
 	#languages .tensorflow:hover {
 		fill: url(#tensorflow-gradient) #fff;
 	}
+
 	#languages .activity-canvas {
 		padding-top: 10px;
 	}
+
 	#languages .cpp:hover {
 		fill: #659BD3;
 		opacity: 100%;
@@ -793,7 +796,12 @@
 		#languages .activity-canvas img {
 			margin-left: 10px;
 		}
+
+		.close::before {
+			content: "(esc) ";
+			font-size: 20px;
+			position: relative;
+			bottom: 8px;
+		}
 	}
-
-
 </style>
