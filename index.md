@@ -3,8 +3,9 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 	<meta property="og:title" content="Joshua Zou">
 	<meta property="og:locale" content="en_US">
 	<meta name="description"
@@ -20,19 +21,22 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<script src="./main.js"></script>
 	<link rel="stylesheet" href="./index.css">
+	<link rel="stylesheet" href="./css/home.css">
 	<link rel="stylesheet" href="./fonts/syntax.css">
 	<script src="./javascript/rainbow.min.js"></script>
 
 </head>
 
-<body>
+<body style="background-color: #0C0032;">
+	<section id="background-canvas" width="100%" height="100%" style=""></section>
 	<header>
 		<div class="big-screen">
 			<div class="logo" onclick="window.location.href='./index.html'">
 				<button href="./index.html" class="logo-text"><span style="color: var(--medium-color);"
 						class="normal-font large-font code-font">
-						< </span><span class="flash" contenteditable="true">Joshua Zou</span><span
-								style="color: var(--medium-color)"
+						< </span><span class="flash" contenteditable="true"
+								title="Couldn't decide which font to use, so I chose all of them (basically what happens in life too)">Joshua
+								Zou</span><span style="color: var(--medium-color)"
 								class="normal-font large-font code-font">/></span></button>
 			</div>
 			<div class="nav-items">
@@ -54,7 +58,8 @@
 					</g>
 				</svg>
 				<div class="logo">
-					<a href="./index.html" title="If my handwriting actually looked good"><span
+					<a href="./index.html"
+						title="Couldn't decide which font to use, so I chose all of them (basically what happens in life too)"><span
 							style="color: var(--medium-color)" class="normal-font large-font code-font">
 							< </span><span class="flash">Joshua Zou</span><span style="color: var(--medium-color)"
 									class="normal-font large-font code-font">/></span></a>
@@ -65,459 +70,895 @@
 			</div>
 		</div>
 	</header>
+	<hr class="line-left">
+	<hr class="line-up line-left">
 	<section id="introduction" style="display: block;">
-		<div class="intro side-by-side">
+		<div class="intro side-by-side scroll-from-left">
 			<div class="container">
-				<span class="extra-large-font">Hi, I'm Joshua Zou, <div class="break big-break"></div></span>
+
+				<span class="extra-large-font">Hi, I'm Joshua Zou, <div class="break"></div></span>
 				<span class="medium-font">&nbsp; &nbsp; a <div class="tooltip">13
 						<pre class="tooltiptext" data-language="javascript">
-	const birthday = 1203026556000; 
-	let current = Date.now(); 
-	let year = 31556952000; 
-	console.log((current-birthday)/year)
-	</pre>
+ const birthday = 1203026556000; 
+ let current = Date.now(); 
+ let year = 31556952000; 
+ console.log((current-birthday)/year)</pre>
 					</div> yr old full stack dev from Washington <div class="flashing-cursor"></div></span>
 				<div class="break big-break"></div>
-				<img src="./images/waving-hand.png" class="waving-hand">
+				<div class="waving-hand"></div>
 			</div>
 		</div>
-		<div class="social side-by-side">
+		<div class="social side-by-side scroll-from-right">
 			<div class="container">
-asdfabw ef
+				<span class="medium-font center-text">Social<br></span>
+				<div class="break big-break"></div>
+				<a href="mailto:joshyzou@gmail.com" class="fab fa-google"></a>
+				<a href="https://www.linkedin.com/in/joshua-zou/" target="_blank" class="fab fa-linkedin"></a>
+				<a href="https://www.youtube.com/channel/UCx2dyCalB7m_d8M2ZB8Oj7A" target="_blank"
+					class="fab fa-youtube"></a>
+				<a href="https://github.com/Joshua-Zou#want-to-support-me" target="_blank"
+					title="currently only accepting crypto" class="fas fa-donate"></a>
+				<a href="https://github.com/Joshua-Zou" target="_blank" class="fab fa-github"></a>
+				<a href="https://top.gg/user/741793729509064704" target="_blank" class="fas fa-robot"></a>
+				<a href="https://devpost.com/Joshua-Zou" target="_blank" class="fas fa-devpost"><img
+						src="./images/devpost.svg" style="    left: -6.5px; position: relative; top: 2px;"></a>
+
 			</div>
+		</div>
+	</section>
+	<section id="languages" style="display: block;">
+		<div class="languages-good side-by-side">
+			<div class="background">
+				<span class="extra-large-font" style="padding-bottom: 2px;">What I do</span>
+				<div class="selection">
+					<br>
+					<span class="medium-font pointer hover-animation" onclick="changeLang('general')">In general <i
+							class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
+					</span>
+				</div>
+				<div class="selection">
+					<br>
+					<span class="medium-font pointer hover-animation" onclick="changeLang('default')">Languages <i
+							class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
+					</span>
+				</div>
+				<div class="selection">
+					<br>
+					<span class="medium-font pointer hover-animation" onclick="changeLang('tools')">Tools/Skills <i
+							class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="languages">
+				<div class="container">
+					<div class="default">
+						<span class="large-font" style="display: block; text-align: center;">languages I <div
+								class="tooltip">know
+								<span class="tooltiptext"
+									style="position: relative; left: -130px; width: 450px; display: block; text-align: center;">("knowingness"
+									not measured by ability to print 'hello world!')</span>
+							</div> </span>
+						<br>
+						<ul class="language-list">
+							<li class="single-language python"><i class="fab fa-python"></i><br><span>python</span></li>
+							<li class="single-language"><i class="fab fa-js"></i><br><span>javascript</span></li>
+							<li class="single-language"><svg class="languagelistsvgs typescript"
+									xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+									version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="0 0 640 640" width="640"
+									height="640">
+									<defs>
+										<path d="M0 0L640 0L640 640L0 640L0 0Z" id="eyANOyTyR" /><text id="ecGPJkvVE"
+											x="371.06" y="268.58" font-size="375" font-family="Open Sans"
+											font-weight="700" font-style="normal" letter-spacing="0"
+											alignment-baseline="before-edge"
+											transform="matrix(1 0 0 1 -120.51063829787176 -18.981560283688168)"
+											style="line-height:100%" xml:space="preserve"
+											dominant-baseline="text-before-edge">
+											<tspan x="300" dy="-75" alignment-baseline="before-edge"
+												dominant-baseline="text-before-edge" text-anchor="start"
+												style="color: rgba(0, 0, 0, 0);" fill="slategrey">TS</tspan>
+										</text>
+										<style id="opensans700normal">
+											@font-face {
+												font-family: "Open Sans";
+												font-weight: 10000;
+												src: url("https://fonts.gstatic.com/s/opensans/v20/mem8YaGs126MiZpBA-UFVZ0b.woff2")
+											}
+										</style>
+									</defs>
+									<g>
+										<g>
+											<use xlink:href="#eyANOyTyR" class="typescript-fill" opacity="1"
+												fill="white" fill-opacity="1" />
+										</g>
+										<g id="b16BxU8pMB">
+											<use xlink:href="#ecGPJkvVE" opacity="1" fill="#ffffff" fill-opacity="1" />
+										</g>
+									</g>
+								</svg><span>TypeScript</span></li>
+							<li class="single-language"><i class="fab fa-git-alt"></i><br><span>git</span></li>
+							<li class="single-language"><svg class="languagelistsvgs cpp" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.11-7.11a7.133 7.133 0 016.156 3.553l-3.076 1.78a3.567 3.567 0 00-3.08-1.78A3.56 3.56 0 008.444 12 3.56 3.56 0 0012 15.555a3.57 3.57 0 003.08-1.778l3.078 1.78A7.135 7.135 0 0112 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z" />
+								</svg><br><span>C++</span></li>
+							<li class="single-language"><svg class="languagelistsvgs node" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z" />
+								</svg><br><span>node.js</span></li>
+							<li class="single-language"><i class="fab fa-html5"></i><br><span>web dev</span></li>
+							<li class="single-language"><svg class="languagelistsvgs tensorflow" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<linearGradient id="tensorflow-gradient" x2="0.35" y2="1"
+										gradientTransform="rotate(90)">
+										<stop offset="0%" stop-color="var(--color-stop)" />
+										<stop offset="30%" stop-color="var(--color-stop)" />
+										<stop offset="100%" stop-color="var(--color-bot)" />
+									</linearGradient>
+									<path
+										d="M1.292 5.856L11.54 0v24l-4.095-2.378V7.603l-6.168 3.564.015-5.31zm21.43 5.311l-.014-5.31L12.46 0v24l4.095-2.378V14.87l3.092 1.788-.018-4.618-3.074-1.756V7.603l6.168 3.564z" />
+								</svg><span>TensorFlow</span></li>
+							<li class="single-language"><svg class="languagelistsvgs mongodb" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218zm-5.336 8.195s0-8.291.275-8.29c.213 0 .49 10.695.49 10.695-.381-.045-.765-1.76-.765-2.405z" />
+								</svg><span>No-SQL</span></li>
+						</ul>
+					</div>
+					<div class="invisible general">
+						<div>
+							<h1>&nbsp;&nbsp;&nbsp;<i class="fas fa-italic">:</i></h1>
+							<p class="medium-font"><img alt="🤖" src="https://twemoji.maxcdn.com/2/72x72/1f916.png"
+									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+								Participate in hackathons, such as angelhacks, hackOR, coHackathon, and many others! You
+								can check out the full list <a
+									href="https://devpost.com/Joshua-Zou?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav">here</a>
+							</p>
+							<p class="medium-font"><img alt="🚧" src="https://abs-0.twimg.com/emoji/v2/svg/1f6a7.svg"
+									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+								Create projects useful to society as a whole, but also funny projects for the lol's
+							</p>
+							<p class="medium-font"><img alt="🎻" src="https://abs-0.twimg.com/emoji/v2/svg/1f3bb.svg"
+									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+								Play instruments like violin and piano (the instruments every asian kid is forced to
+								play)
+							</p>
+							<p class="medium-font"><img alt="⚡" src="https://abs-0.twimg.com/emoji/v2/svg/26a1.svg"
+									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+								Design, solder, and test circuits
+							</p>
+						</div>
+					</div>
+					<div class="invisible tools">
+						<span class="large-font" style="display: block; text-align: center;">tools I use and skills I
+							have</span>
+						<br>
+						<ul class="language-list">
+							<li class="single-language"><i class="fab fa-linux"></i><br><span>Linux</span></li>
+							<li class="single-language ml"><svg class="languagelistsvgs ml" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
+								</svg><span>ML / AI</span>
+							</li>
+							<li class="single-language"><svg class="languagelistsvgs github" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+								</svg><span>Github</span></li>
+							<li class="single-language"><svg class="languagelistsvgs npm" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z" />
+								</svg><span>NPM</span></li>
+							<li class="single-language"><svg class="languagelistsvgs opencv" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M11.8992.8525C8.735.8525 6.17 3.4175 6.17 6.5817c0 2.102 1.1321 3.9398 2.8198 4.9366l1.6412-2.7849c.0411-.0699.0176-.1593-.0495-.2048-.6233-.4227-1.0328-1.137-1.0328-1.947 0-1.298 1.0524-2.3504 2.3505-2.3504 1.2981 0 2.3505 1.0524 2.3505 2.3505 0 .8098-.4095 1.5242-1.0328 1.947-.0671.0454-.0907.1348-.0495.2047l1.6414 2.785c1.6878-.9969 2.8199-2.8346 2.8199-4.9367 0-3.1642-2.5653-5.7292-5.7295-5.7292zm-6.17 10.8366C2.565 11.6891 0 14.2541 0 17.4183c0 3.1642 2.565 5.7292 5.7292 5.7292 3.1798 0 5.8074-2.6995 5.7275-5.8762H8.2313c-.0847 0-.1513.0717-.1519.1564-.0082 1.266-1.0644 2.3411-2.3502 2.3411-1.2981 0-2.3505-1.0524-2.3505-2.3505 0-1.2982 1.0524-2.3505 2.3505-2.3505.34 0 .663.0724.9547.2022.0713.0318.1566.0077.1962-.0595l1.6464-2.7935c-.8273-.4636-1.7815-.7279-2.7973-.7279zm15.4424.7614l-1.6366 2.7878c-.041.07-.0172.1594.05.2048.624.4217 1.0348 1.1354 1.0363 1.9452.0022 1.298-1.0483 2.352-2.3465 2.3542-1.298.0023-2.3523-1.0482-2.3545-2.3462-.0015-.8098.4068-1.5248 1.0294-1.9486.067-.0457.0905-.1353.0492-.2051l-1.6464-2.7818c-1.6859.9998-2.8146 2.8394-2.811 4.9415.0056 3.1641 2.575 5.7248 5.7393 5.7192 3.1641-.0054 5.7246-2.575 5.7192-5.7392-.0037-2.1022-1.139-3.938-2.8284-4.9318z" />
+								</svg><span>OpenCV</span></li>
+							<li class="single-language"><svg class="languagelistsvgs github" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path d="M24 22.525H0l12-21.05 12 21.05z" />
+								</svg><span>Vercel</span></li>
+							<li class="single-language">
+								<svg class="languagelistsvgs firebase" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M3.89 15.672L6.255.461A.542.542 0 017.27.288l2.543 4.771zm16.794 3.692l-2.25-14a.54.54 0 00-.919-.295L3.316 19.365l7.856 4.427a1.621 1.621 0 001.588 0zM14.3 7.147l-1.82-3.482a.542.542 0 00-.96 0L3.53 17.984z" />
+								</svg><span>Firebase</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity-canvas side-by-side">
+			<span style="display: block; text-align: center;" class="large-font">My github contributions</span>
+			<div class="pop-out-icon pointer"
+				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"><i
+					class="fas fa-external-link-alt"></i></div>
+			<img src="https://ghchart.rshah.org/joshua-zou"
+				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')">
+		</div>
+	</section>
+	<section id="projects" style="display: block;">
+		<div class="top-projects">
+			<!--put top projects here like elon discord bot or whatever (has to be finished)-->
+		</div>
+		<div class="project-status">
+			<!--put project progress bars on random projects that I'm working on-->
+		</div>
+	</section>
+	<section id="modals">
+		<div id="myModal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content" id="img01">
+			<div id="caption"></div>
 		</div>
 	</section>
 </body>
 
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+<script async>
+	window.onload = function () {
+		console.log("%c Yo. if mobile mode in dev tools looks kinda weird, try closing dev tools and re-opening it. Its a weird thing with chrome dev tools (its not my fault :) )", "background: #0c0032; color: white; font-size: x-large");
+		$(window).resize(function () {
+			window.vantaCanvas.resize();
+		});
+		let social_elements = document.getElementsByClassName("social")[0].children[0].children;
+		for (let i = 0; i < social_elements.length; i++) {
+			social_elements[i].addEventListener("mouseenter", async function (res) {
+				res.toElement.classList.add("paused");
+			})
+			social_elements[i].addEventListener("mouseleave", async function (res) {
+				res.fromElement.classList.remove("paused");
+			})
+		}
+	}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
 <script>
 
+
+
+	let camera, scene, renderer, parameters;
+	let mouseX = 0, mouseY = 0;
+
+	let windowHalfX = window.innerWidth / 2;
+	let windowHalfY = window.innerHeight / 2;
+
+	const materials = [];
+
+	init();
+	animate();
+
+	function init() {
+
+		camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+		camera.position.z = 1000;
+		camera.rotateSpeed = 0.0001
+		scene = new THREE.Scene();
+		scene.fog = new THREE.FogExp2(0x000000, 0.0008);
+		//scene.background = new THREE.Color(0x353D53);
+
+
+		const geometry = new THREE.BufferGeometry();
+		const vertices = [];
+
+		const textureLoader = new THREE.TextureLoader();
+
+		//const sprite1 = textureLoader.load('https://siasky.net/AAAAwQsCZUOD3pAd5yi965gdWWv0dBXCoKHCDIFUNhhGJg');
+		const sprite1 = textureLoader.load("https://siasky.net/AACivuMSmvwC6B9QcTzvy9yhGqhtzgUmTW6U1x_KbKyqJA")
+		for (let i = 0; i < 10000; i++) {
+
+			const x = Math.random() * 2000 - 1000;
+			const y = Math.random() * 2000 - 1000;
+			const z = Math.random() * 2000 - 1000;
+
+			vertices.push(x, y, z);
+
+		}
+
+		geometry.addAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+		parameters = [
+			[[0.90, 0.05, 0.5], sprite1, 4],
+		];
+
+
+		for (let i = 0; i < parameters.length; i++) {
+
+			const color = parameters[i][0];
+			const sprite = parameters[i][1];
+			const size = parameters[i][2];
+
+			materials[i] = new THREE.PointsMaterial({ size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent: true });
+			materials[i].color.setHSL(color[0], color[1], color[2]);
+
+			const particles = new THREE.Points(geometry, materials[i]);
+
+			particles.rotation.x = Math.random() * 6;
+			particles.rotation.y = Math.random() * 6;
+			particles.rotation.z = Math.random() * 6;
+			particles.rotation.set(100, 50, 0)
+			scene.add(particles);
+
+		}
+
+		//
+
+		renderer = new THREE.WebGLRenderer({ alpha: true });
+		renderer.setClearColor( 0x000000, 0 ); // the default
+		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		renderer.domElement.classList.add("background-canvas-thingy");
+		document.body.appendChild(renderer.domElement);
+
+		//
+
+
+		//
+
+
+		const params = {
+			texture: true
+		};
+
+
+		document.body.style.touchAction = 'none';
+		document.body.addEventListener('pointermove', onPointerMove);
+
+		//
+
+		window.addEventListener('resize', onWindowResize);
+
+	}
+
+	function onWindowResize() {
+
+		windowHalfX = window.innerWidth / 2;
+		windowHalfY = window.innerHeight / 2;
+
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+
+		renderer.setSize(window.innerWidth, window.innerHeight);
+
+	}
+
+	function onPointerMove(event) {
+
+		if (event.isPrimary === false) return;
+
+		mouseX = event.clientX - windowHalfX;
+		mouseY = event.clientY - windowHalfY;
+
+	}
+
+	//
+
+	function animate() {
+
+		requestAnimationFrame(animate);
+
+		render();
+
+	}
+
+	function render() {
+
+		const time = Date.now() * 0.00005;
+
+		camera.position.x += (mouseX - camera.position.x) * 0.05;
+		camera.position.y += (- mouseY - camera.position.y) * 0.05;
+
+		camera.lookAt(scene.position);
+
+		for (let i = 0; i < scene.children.length; i++) {
+
+			const object = scene.children[i];
+
+			if (object instanceof THREE.Points) {
+
+				object.rotation.y = time * (i < 4 ? i + 1 : - (i + 1));
+				object.rotation.x = time * (i < 4 ? i + 1 : - (i + 1));
+				object.rotation.z = time * (i < 4 ? i + 1 : - (i + 1));
+				object.rotateX(THREE.Math.degToRad(50));
+
+
+				var timex = Date.now() * 0.0005;
+				object.position.x = Math.cos(timex * 10) * 5;
+				object.position.y = Math.cos(timex * 7) * 3;
+				object.position.z = Math.cos(timex * 8) * 4;
+
+				// Animating sphere 2
+				object.rotation.y += 100;
+			}
+
+		}
+
+		for (let i = 0; i < materials.length; i++) {
+
+			const color = parameters[i][0];
+
+			const h = (360 * (color[0] + time) % 360) / 360;
+			materials[i].color.setHSL(h, color[1], color[2]);
+
+		}
+
+		renderer.render(scene, camera);
+
+	}
+
+</script>
+	
+</body>
+
+</html>
+<script>
+	var current = "default";
+	var allKeys = {
+		default: document.querySelectorAll("#languages .languages .container .default")[0],
+		general: document.querySelectorAll("#languages .languages .container .general")[0],
+		tools: document.querySelectorAll("#languages .languages .container .tools")[0]
+	}
+	if (localStorage) {
+		if (!localStorage.getItem("whatIdoPage")) current = "default";
+		else {
+			changeLangNoAnimation(localStorage.getItem("whatIdoPage"))
+		}
+	}
+
+	async function changeLang(to) {
+		let original = current;
+		current = to;
+		localStorage.setItem("whatIdoPage", to)
+		allKeys[original].classList.toggle("fadeOut");
+		await sleep(600)
+		allKeys[original].classList.toggle("invisible");
+
+		allKeys[to].classList.toggle("invisible");
+		allKeys[to].classList.toggle("fadeIn");
+		await sleep(600);
+		allKeys[original].classList.toggle("fadeOut");
+		allKeys[to].classList.toggle("fadeIn");
+	}
+	function changeLangNoAnimation(to) {
+		let original = current;
+		current = to;
+		localStorage.setItem("whatIdoPage", to)
+		allKeys[original].classList.toggle("invisible");
+		allKeys[to].classList.toggle("invisible");
+	}
+
+	function popImageOut(imageUrl, caption) {
+		// Get the modal
+		var modal = document.getElementById("myModal");
+
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementById("myImg");
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+
+		modal.style.display = "block";
+		modalImg.src = imageUrl;
+		modalImg.style.width = "90vw"
+		captionText.innerHTML = caption;
+
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function () {
+			modal.style.display = "none";
+		}
+	}
 </script>
 <style>
-	body {
-		max-width: 100vw;
-	}
-
-.social .container {
-	background-color: var(--block-background-color);
-	position: relative;
-	z-index: -1;
-}
-
-	.intro {
-		background-color: var(--pop-color);
-		position: relative;
-		height: fit-content !important;
-		padding-bottom: 20px;
-	}
-
-
-
-
-	.intro:before,
-	.intro:after {
-		content: "";
-		position: absolute;
-		height: 100%;
-		width: 20px;
+	.background-canvas-thingy {
+		position: fixed;
+		height: 100vh !important;
+		width: 100vw !important;
 		top: 0px;
-
-		background-image: url("./images/plus.png"), url("./images/plus.png");
-		background-size: 50px 40px;
-		opacity: 100%;
-		background-position: top center, bottom center;
-		background-repeat: no-repeat;
+		left: 0;
+		z-index: -100;
+		background: linear-gradient( #383849, rgb(231, 41, 63, 0.5));
 	}
-
-	.intro:before {
-		top: -10%;
-		left: -30px;
-		padding-bottom: 50px;
-	}
-	.intro:after {
-		top: -10%;
-		right: -30px;
-		padding-bottom: 50px;
-		right: -30px;
-	}
-
-
-	/*
-.intro:before, .intro:after, .intro *:first-child:before, .intro *:first-child:after {
-		content: "";
-		position: absolute;
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 1;
+		padding-top: 100px;
+		left: 0;
+		top: 0;
+		width: 100%;
 		height: 100%;
-		width: 20px;
-		
-		background-image: url("./images/plus.png"), url("./images/plus.png");
-		background-size: 20px 20px;
-		background-position: top center, bottom center;
-		background-repeat: no-repeat;
-}
-.intro:after {
-    right: 0;
-    top: 0;
-}
-.intro *:first-child:before {
-    left: 0;
-    bottom: 0;
-}
-.intro *:first-child:after {
-    bottom: 0;
-    right: 0;
-}
-
-*/
-
-
-	.intro .container {
-		position: relative;
-		top: 20px;
-		left: 20px;
-		padding-right: 50px;
+		overflow: auto;
+		background-color: rgb(0, 0, 0);
+		background-color: rgba(0, 0, 0, 0.9);
 	}
 
-	@keyframes fade-in {
-		0% {
-			opacity: 0
-		}
-
-		100% {
-			opacity: 1
-		}
+	.modal-content {
+		margin: auto;
+		display: block;
+		width: 80%;
 	}
 
-	@keyframes fade {
-		10% {
-			transform: scale(1, 1)
-		}
-
-		35% {
-			transform: scale(1, 1.7)
-		}
-
-		40% {
-			transform: scale(1, 1.7)
-		}
-
-		50% {
-			opacity: 1
-		}
-
-		60% {
-			transform: scale(1, 1)
-		}
-
-		100% {
-			transform: scale(1, 1);
-			opacity: 0
-		}
+	#caption {
+		margin: auto;
+		display: block;
+		width: 80%;
+		max-width: 700px;
+		text-align: center;
+		color: #ccc;
+		padding: 10px 0;
+		height: 150px;
 	}
 
-	[data-language] code,
-	[class^="lang"] code,
-	pre [data-language],
-	pre [class^="lang"] {
-		opacity: 0;
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-		animation: fade-in 50ms ease-in-out 2s forwards
+	.modal-content,
+	#caption {
+		-webkit-animation-name: zoom;
+		-webkit-animation-duration: 0.6s;
+		animation-name: zoom;
+		animation-duration: 0.6s;
 	}
 
-	[data-language] code.rainbow,
-	[class^="lang"] code.rainbow,
-	pre [data-language].rainbow,
-	pre [class^="lang"].rainbow {
-		animation: none;
-		transition: opacity 50ms ease-in-out
-	}
-
-	[data-language] code.loading,
-	[class^="lang"] code.loading,
-	pre [data-language].loading,
-	pre [class^="lang"].loading {
-		animation: none
-	}
-
-	[data-language] code.rainbow-show,
-	[class^="lang"] code.rainbow-show,
-	pre [data-language].rainbow-show,
-	pre [class^="lang"].rainbow-show {
-		opacity: 1
-	}
-
-	pre {
-		position: relative
-	}
-
-	pre.loading .preloader div {
-		animation-play-state: running
-	}
-
-	pre.loading .preloader div:nth-of-type(1) {
-		background: #0081f5;
-		animation: fade 1.5s 300ms linear infinite
-	}
-
-	pre.loading .preloader div:nth-of-type(2) {
-		background: #5000f5;
-		animation: fade 1.5s 438ms linear infinite
-	}
-
-	pre.loading .preloader div:nth-of-type(3) {
-		background: #9000f5;
-		animation: fade 1.5s 577ms linear infinite
-	}
-
-	pre.loading .preloader div:nth-of-type(4) {
-		background: #f50419;
-		animation: fade 1.5s 715ms linear infinite
-	}
-
-	pre.loading .preloader div:nth-of-type(5) {
-		background: #f57900;
-		animation: fade 1.5s 853ms linear infinite
-	}
-
-	pre.loading .preloader div:nth-of-type(6) {
-		background: #f5e600;
-		animation: fade 1.5s 992ms linear infinite
-	}
-
-	pre.loading .preloader div:nth-of-type(7) {
-		background: #00f50c;
-		animation: fade 1.5s 1130ms linear infinite
-	}
-
-	pre .preloader {
-		position: absolute;
-		top: 12px;
-		left: 10px
-	}
-
-	pre .preloader div {
-		width: 12px;
-		height: 12px;
-		border-radius: 4px;
-		display: inline-block;
-		margin-right: 4px;
-		opacity: 0;
-		animation-play-state: paused;
-		animation-fill-mode: forwards
-	}
-
-	pre {
-		background-color: #000;
-		word-wrap: break-word;
-		margin: 0px;
-		padding: 10px;
-		color: #fff;
-		font-size: 14px;
-		margin-bottom: 20px
-	}
-
-	pre,
-	code {
-		font-family: 'Monaco', 'Menlo', courier, monospace
-	}
-
-	pre {
-		background: #22282A;
-		color: #F1F2F3
-	}
-
-	pre .comment {
-		color: #66747B
-	}
-
-	pre .constant {
-		color: #EC7600
-	}
-
-	pre .storage {
-		color: #EC7600
-	}
-
-	pre .string,
-	pre .comment.docstring {
-		color: #EC7600
-	}
-
-	pre .string.regexp,
-	pre .support.tag.script,
-	pre .support.tag.style {
-		color: #fff
-	}
-
-	pre .keyword,
-	pre .selector {
-		color: #93C763
-	}
-
-	pre .inherited-class {
-		font-style: italic
-	}
-
-	pre .entity {
-		color: #93C763
-	}
-
-	pre .integer {
-		color: #FFCD22
-	}
-
-	pre .variable.global,
-	pre .variable.class,
-	pre .variable.instance {
-		color: #CCC
-	}
-
-	pre .preprocessor {
-		color: #66747B
-	}
-
-	pre .support,
-	*[data-language="csharp"] .function.call {
-		color: #FACD22
-	}
-
-
-
-
-
-
-	.big-break {
-		margin-top: 20px;
-	}
-
-	#introduction {
-		color: whitesmoke;
-	}
-
-	@media (max-width: 500px) {
-		#introduction {
-			padding: 10px;
-			margin-top: 100px;
-		}
-
-		.extra-large-font {
-			font-size: xx-large;
-		}
-
-		.social {
-			margin-top: 30px;
-			padding-right: 50px;
-		}
-
-		.intro {
-			height: 180px;
-		}
-	}
-
-	@media (min-width: 500px) {
-		#introduction {
-			padding: 50px;
-		}
-
-		.extra-large-font {
-			font-size: 50px;
-		}
-
-		.intro {
-			height: 250px;
-		}
-	}
-
-	.flashing-cursor {
-		border-bottom: solid 3px rgba(177, 224, 243, 1);
-		margin-top: 10px;
-		padding-top: 10px;
-		position: relative;
-		display: inline-block;
-		bottom: 5px;
-		top: 10px;
-		width: 20px;
-		animation: animated-cursor 600ms steps(30, end) infinite;
-	}
-
-	@keyframes animated-cursor {
+	@-webkit-keyframes zoom {
 		from {
-			border-bottom-color: rgba(177, 224, 243, 1);
+			-webkit-transform: scale(0)
 		}
 
 		to {
-			border-bottom-color: transparent;
+			-webkit-transform: scale(1)
 		}
 	}
 
-	.waving-hand {
-		width: calc(5vw + 10px);
-		height: calc(5vw + 10px);
-		min-height: 30px;
-		min-width: 30px;
-		margin-left: 100px;
-		animation: turning 1s infinite;
-		transition: ease-in-out;
-		transform-origin: bottom right;
-	}
-
-	@keyframes turning {
-		0% {
-			transform: rotate(0.0deg)
+	@keyframes zoom {
+		from {
+			transform: scale(0)
 		}
 
-		20% {
-			transform: rotate(8.0deg)
-		}
-
-		40% {
-			transform: rotate(-4.0deg)
-		}
-
-		60% {
-			transform: rotate(10.0deg)
-		}
-
-		100% {
-			transform: rotate(0.0deg)
+		to {
+			transform: scale(1)
 		}
 	}
 
-	.tooltip {
-		position: relative;
-		display: inline-block;
-	}
-
-	.tooltip .tooltiptext {
-		visibility: hidden;
-		width: fit-content;
-		background-color: #555;
-		color: #fff;
-		text-align: left;
-		border-radius: 6px;
-		padding: 5px 5px;
-		position: absolute !important;
-		z-index: 1;
-		bottom: 125%;
-		left: 50%;
-		margin-left: -60px;
-		opacity: 0;
-		transition: opacity 0.3s;
-		font-size: medium;
-	}
-
-	.tooltip .tooltiptext::after {
-		content: "";
+	/* The Close Button */
+	.close {
 		position: absolute;
-		top: 100%;
-		left: 50%;
-		margin-left: -5px;
-		border-width: 5px;
-		border-style: solid;
-		border-color: #555 transparent transparent transparent;
+		top: 15px;
+		right: 35px;
+		color: #f1f1f1;
+		font-size: 40px;
+		font-weight: bold;
+		transition: 0.3s;
 	}
 
-	.tooltip:hover .tooltiptext {
-		visibility: visible;
-		opacity: 1;
+	.close:hover,
+	.close:focus {
+		color: #bbb;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	/* 100% Image Width on Smaller Screens */
+	@media only screen and (max-width: 700px) {
+		.modal-content {
+			width: 96vw !important;
+			margin-left: 0;
+		}
+
+		.close {
+			position: relative !important;
+			left: 90vw;
+		}
+
+		#caption {
+			display: block;
+			width: 80%;
+			position: absolute;
+			left: -25vw;
+		}
+	}
+
+	.pop-out-icon {
+		text-align: right;
+		position: relative;
+		top: -30px;
+	}
+
+	.fadeOut {
+		animation: fadeOut 0.5s;
+		opacity: 0;
+	}
+
+	@keyframes fadeOut {
+		from {
+			opacity: 1;
+		}
+
+		to {
+			opacity: 0;
+		}
+	}
+
+	.fadeIn {
+		animation: fadeIn 0.5s;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	.languages a {
+		border-bottom: .05em solid #b4e7f8;
+		box-shadow: inset 0 -0.05em 0 #b4e7f8;
+		color: inherit;
+		transition: background-color .25s cubic-bezier(.33, .66, .66, 1);
+		text-decoration: none;
+	}
+
+	.languages a:hover,
+	.languages a:focus,
+	.languages a:active {
+		background-color: var(--pop-color);
+	}
+
+	.language-list span {
+		display: block;
+		text-align: center;
+		color: white !important;
+		opacity: 0;
+	}
+
+	.activity-canvas {
+		margin-top: 20px;
+		padding-right: 30px;
+		padding-bottom: 10px;
+		background-color: #22272E;
+		margin-bottom: 20px;
+	}
+
+	.activity-canvas .large-font {
+		margin-bottom: 10px;
+	}
+
+	#languages .single-language:hover span {
+		animation: 0.5s showLangSpan;
+		opacity: 100% !important;
+	}
+
+	@keyframes showLangSpan {
+		0% {
+			transform: translate(0, 35px);
+			opacity: 100%;
+		}
+
+		90% {
+			transform: translate((0, 0));
+			opacity: 100%;
+		}
+	}
+
+	.language-list {
+		display: inline-table;
+		padding: 0;
+	}
+
+	#tensorflow-gradient {
+		--color-stop: #FF7400;
+		--color-bot: #FFA100;
+	}
+
+	#languages .languagelistsvgs {
+		fill: white;
+		opacity: 86%;
+		top: 3px;
+		position: relative;
+		width: 75px;
+		height: 75px;
+		margin-bottom: 5px;
+	}
+
+	#languages .github:hover {
+		fill: black;
+	}
+
+	#languages .tensorflow:hover {
+		fill: url(#tensorflow-gradient) #fff;
+	}
+
+	#languages .cpp:hover {
+		fill: #659BD3;
+		opacity: 100%;
+	}
+
+	#languages .node:hover {
+		fill: #68A063;
+	}
+
+	#languages .mongodb:hover {
+		fill: #47A248;
+	}
+
+	#languages .typescript {
+		width: 70px;
+		height: 70px;
+	}
+
+	#languages .fa-linux:hover {
+		color: black !important;
+	}
+
+	#languages .typescript:hover .typescript-fill {
+		fill: #3178c6 !important;
+	}
+
+	#languages .fab {
+		opacity: 100%;
+	}
+
+	#languages .python:hover {
+		color: #306998;
+	}
+
+	#languages .fa-html5:hover {
+		color: #F16524;
+	}
+
+	#languages .fa-js:hover {
+		color: #F0DB4F;
+	}
+
+	#languages .fa-git-alt:hover {
+		color: #F05030;
+	}
+
+	#languages .language-list .fab {
+		font-size: 80px;
+	}
+
+	#languages .language-list .fas {
+		font-size: 80px;
+	}
+
+	#languages .ml:hover {
+		fill: #412991;
+	}
+
+	#languages .npm:hover {
+		fill: #CB3837;
+	}
+
+	#languages .firebase:hover {
+		fill: #FFCA28;
+	}
+
+	#languages .opencv:hover {
+		fill: #5C3EE8;
+	}
+
+	.single-language {
+		display: inline-block;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+
+	#languages .selection {
+		margin-left: 50px;
+	}
+
+	#languages {
+		position: relative;
+	}
+
+	#languages .languages .container {
+		background-color: slategrey;
+		padding: 10px;
+		padding-top: 20px;
+		padding-left: 40px;
+		padding-right: 40px;
+		transition: all 0.4s ease-in-out;
+	}
+
+	#languages .languages {
+		width: fit-content;
+		padding-top: 40px;
+		margin-left: 300px;
+	}
+
+	.languages-good {
+		background-color: #363636;
+	}
+
+	#languages .background {
+		position: relative;
+		overflow: hidden;
+		background-color: rgba(53, 0, 211, 0.5);
+		padding: 20px;
+	}
+
+	.fa-chevron-right {
+		transition: all 0.5s ease-in-out
+	}
+
+	@media (max-width: 500px) {
+		.fa-chevron-right {
+			transform: rotate(90deg);
+		}
+
+		.show-on-large {
+			display: none !important;
+		}
+
+		#languages {
+			margin-left: 10px;
+			max-width: 94vw;
+		}
+
+		#languages .background {
+			padding: 15px !important;
+		}
+
+		#languages .languages {
+			margin-left: 0;
+		}
+
+		#languages .tooltip {
+			padding-top: 20px;
+		}
+
+		#languages .activity-canvas img {
+			width: 90vw;
+		}
+
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			overflow-x: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+	}
+
+	#languages .activity-canvas img:hover {
+		opacity: 70%;
+		cursor: pointer;
+	}
+
+	@media (min-width: 500px) {
+		#languages {
+			margin-left: 15%;
+			padding-right: 20px;
+		}
+
+		#languages .background {
+			transform: translate(10px, 10px);
+		}
+
+		#languages .background .extra-large-font {
+			padding-right: 10px;
+		}
+
+		#languages .activity-canvas img {
+			margin-left: 10px;
+		}
 	}
 </style>

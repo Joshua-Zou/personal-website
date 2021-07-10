@@ -305,27 +305,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
 <script async>
-	window.vantaCanvas = VANTA.BIRDS({
-		el: "#background-canvas",
-		mouseControls: true,
-		touchControls: true,
-		gyroControls: false,
-		scale: 1.00,
-		scaleMobile: 1.00,
-		color1: 0xffffff,
-		color2: 0xfcfcfc,
-		birdSize: 0.50,
-		wingSpan: 10.00,
-		speedLimit: 1.00,
-		separation: 100.00,
-		alignment: 1.00,
-		cohesion: 1.00,
-		quantity: 4.00,
-		backgroundColor: "#0C0032",
-		//height: window.screen.height,
-		//width: window.screen.width
-	})
-
 	window.onload = function () {
 		console.log("%c Yo. if mobile mode in dev tools looks kinda weird, try closing dev tools and re-opening it. Its a weird thing with chrome dev tools (its not my fault :) )", "background: #0c0032; color: white; font-size: x-large");
 		$(window).resize(function () {
@@ -342,6 +321,185 @@
 		}
 	}
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
+<script>
+
+
+
+	let camera, scene, renderer, parameters;
+	let mouseX = 0, mouseY = 0;
+
+	let windowHalfX = window.innerWidth / 2;
+	let windowHalfY = window.innerHeight / 2;
+
+	const materials = [];
+
+	init();
+	animate();
+
+	function init() {
+
+		camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+		camera.position.z = 1000;
+		camera.rotateSpeed = 0.0001
+		scene = new THREE.Scene();
+		scene.fog = new THREE.FogExp2(0x000000, 0.0008);
+		//scene.background = new THREE.Color(0x353D53);
+
+
+		const geometry = new THREE.BufferGeometry();
+		const vertices = [];
+
+		const textureLoader = new THREE.TextureLoader();
+
+		const sprite1 = textureLoader.load("https://siasky.net/AACivuMSmvwC6B9QcTzvy9yhGqhtzgUmTW6U1x_KbKyqJA")
+		for (let i = 0; i < 10000; i++) {
+
+			const x = Math.random() * 2000 - 1000;
+			const y = Math.random() * 2000 - 1000;
+			const z = Math.random() * 2000 - 1000;
+
+			vertices.push(x, y, z);
+
+		}
+
+		geometry.addAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+		parameters = [
+			[[0.90, 0.05, 0.5], sprite1, 4],
+		];
+
+
+		for (let i = 0; i < parameters.length; i++) {
+
+			const color = parameters[i][0];
+			const sprite = parameters[i][1];
+			const size = parameters[i][2];
+
+			materials[i] = new THREE.PointsMaterial({ size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent: true });
+			materials[i].color.setHSL(color[0], color[1], color[2]);
+
+			const particles = new THREE.Points(geometry, materials[i]);
+
+			particles.rotation.x = Math.random() * 6;
+			particles.rotation.y = Math.random() * 6;
+			particles.rotation.z = Math.random() * 6;
+			particles.rotation.set(100, 50, 0)
+			scene.add(particles);
+
+		}
+
+		//
+
+		renderer = new THREE.WebGLRenderer({ alpha: true });
+		renderer.setClearColor( 0x000000, 0 ); // the default
+		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		renderer.domElement.classList.add("background-canvas-thingy");
+		document.body.appendChild(renderer.domElement);
+
+		//
+
+
+		//
+
+
+		const params = {
+			texture: true
+		};
+
+
+		document.body.style.touchAction = 'none';
+		document.body.addEventListener('pointermove', onPointerMove);
+
+		//
+
+		window.addEventListener('resize', onWindowResize);
+
+	}
+
+	function onWindowResize() {
+
+		windowHalfX = window.innerWidth / 2;
+		windowHalfY = window.innerHeight / 2;
+
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+
+		renderer.setSize(window.innerWidth, window.innerHeight);
+
+	}
+
+	function onPointerMove(event) {
+
+		if (event.isPrimary === false) return;
+
+		mouseX = event.clientX - windowHalfX;
+		mouseY = event.clientY - windowHalfY;
+
+	}
+
+	//
+
+	function animate() {
+
+		requestAnimationFrame(animate);
+
+		render();
+
+	}
+
+	function render() {
+
+		const time = Date.now() * 0.00005;
+
+		camera.position.x += (mouseX - camera.position.x) * 0.05;
+		camera.position.y += (- mouseY - camera.position.y) * 0.05;
+
+		camera.lookAt(scene.position);
+
+		for (let i = 0; i < scene.children.length; i++) {
+
+			const object = scene.children[i];
+
+			if (object instanceof THREE.Points) {
+
+				object.rotation.y = time * (i < 4 ? i + 1 : - (i + 1));
+				object.rotation.x = time * (i < 4 ? i + 1 : - (i + 1));
+				object.rotation.z = time * (i < 4 ? i + 1 : - (i + 1));
+				object.rotateX(THREE.Math.degToRad(50));
+
+
+				var timex = Date.now() * 0.0005;
+				object.position.x = Math.cos(timex * 10) * 5;
+				object.position.y = Math.cos(timex * 7) * 3;
+				object.position.z = Math.cos(timex * 8) * 4;
+
+				// Animating sphere 2
+				object.rotation.y += 100;
+			}
+
+		}
+
+		for (let i = 0; i < materials.length; i++) {
+
+			const color = parameters[i][0];
+
+			const h = (360 * (color[0] + time) % 360) / 360;
+			materials[i].color.setHSL(h, color[1], color[2]);
+
+		}
+
+		renderer.render(scene, camera);
+
+	}
+
+</script>
+	
+</body>
+
+</html>
 <script>
 	var current = "default";
 	var allKeys = {
@@ -371,9 +529,10 @@
 		allKeys[to].classList.toggle("fadeIn");
 	}
 	function changeLangNoAnimation(to) {
+		let original = current;
 		current = to;
 		localStorage.setItem("whatIdoPage", to)
-		allKeys[current].classList.toggle("invisible");
+		allKeys[original].classList.toggle("invisible");
 		allKeys[to].classList.toggle("invisible");
 	}
 
@@ -402,6 +561,15 @@
 	}
 </script>
 <style>
+	.background-canvas-thingy {
+		position: fixed;
+		height: 100vh !important;
+		width: 100vw !important;
+		top: 0px;
+		left: 0;
+		z-index: -100;
+		background: linear-gradient( #383849, rgb(231, 41, 63, 0.5));
+	}
 	.modal {
 		display: none;
 		position: fixed;
