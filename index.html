@@ -2,9 +2,497 @@
 <html lang="en">
 
 <head>
+	<style>
+		#loader .text {
+			font-size: 20px;
+			color: white;
+			display: block;
+			left: -2em;
+			top: 50px;
+			text-align: center;
+			position: relative;
+			z-index: 1006;
+		}
+
+		#loader .loader-content {
+			z-index: 1002;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-3.5vw, 0);
+		}
+
+		#loader-wrapper .loader-section {
+			position: fixed;
+			top: 0;
+			width: 51%;
+			height: 100%;
+			background: #222222;
+			z-index: 1000;
+		}
+
+		#loader-wrapper .loader-section.section-left {
+			left: 0;
+		}
+
+		#loader-wrapper .loader-section.section-right {
+			right: 0;
+		}
+
+		#loader {
+			z-index: 1001;
+			top: 0;
+		}
+
+		.loaded .loader-content {
+			visibility: hidden;
+		}
+
+		.loaded .section-right {
+			transition: 1s ease-in-out;
+			transform: translate(200vw, 0);
+		}
+
+		.loaded .section-left {
+			transition: 1s ease-in-out;
+			transform: translate(-210vw, 0);
+		}
+
+		.loader__bar {
+			position: absolute;
+			bottom: 0px;
+			width: 10px;
+			height: 5vh;
+			background: #fff;
+			transform-origin: center bottom;
+			box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+		}
+
+		.loader__bar:nth-child(1) {
+			background-color: #403548;
+			left: 0px;
+			transform: scale(1, 0.2);
+			-webkit-animation: barUp1 4s infinite;
+			animation: barUp1 4s infinite;
+		}
+
+		.loader__bar:nth-child(2) {
+			background-color: #512B43;
+			left: 15px;
+			transform: scale(1, 0.4);
+			-webkit-animation: barUp2 4s infinite;
+			animation: barUp2 4s infinite;
+		}
+
+		.loader__bar:nth-child(3) {
+			background-color: #602340;
+			left: 30px;
+			transform: scale(1, 0.6);
+			-webkit-animation: barUp3 4s infinite;
+			animation: barUp3 4s infinite;
+		}
+
+		.loader__bar:nth-child(4) {
+			background-color: #6D1B3B;
+			left: 45px;
+			transform: scale(1, 0.8);
+			-webkit-animation: barUp4 4s infinite;
+			animation: barUp4 4s infinite;
+		}
+
+		.loader__bar:nth-child(5) {
+			background-color: #7A1539;
+			left: 60px;
+			transform: scale(1, 1);
+			-webkit-animation: barUp5 4s infinite;
+			animation: barUp5 4s infinite;
+		}
+
+		.loader__ball {
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+			width: 10px;
+			height: 10px;
+			background: #fff;
+			border-radius: 50%;
+			-webkit-animation: ball 4s infinite;
+			animation: ball 4s infinite;
+		}
+
+		.loaderbars {
+			position: absolute;
+			top: 300%; 
+			transition: all 1s ease-in-out;
+		}
+		.moveup {
+			transform: translate(0, -50px);
+		}
+		.startup-mask {
+			background-color: #222222;
+			margin-top: 22px;
+			width: 1000px;
+			position: absolute;
+			height: 60px;
+			transform: translate(-100px, 0);
+		}
+
+		@-webkit-keyframes ball {
+			0% {
+				transform: translate(0, 0);
+			}
+
+			5% {
+				transform: translate(8px, -14px);
+			}
+
+			10% {
+				transform: translate(15px, -10px);
+			}
+
+			17% {
+				transform: translate(23px, -24px);
+			}
+
+			20% {
+				transform: translate(30px, -20px);
+			}
+
+			27% {
+				transform: translate(38px, -34px);
+			}
+
+			30% {
+				transform: translate(45px, -30px);
+			}
+
+			37% {
+				transform: translate(53px, -44px);
+			}
+
+			40% {
+				transform: translate(60px, -40px);
+			}
+
+			50% {
+				transform: translate(60px, 0);
+			}
+
+			57% {
+				transform: translate(53px, -14px);
+			}
+
+			60% {
+				transform: translate(45px, -10px);
+			}
+
+			67% {
+				transform: translate(37px, -24px);
+			}
+
+			70% {
+				transform: translate(30px, -20px);
+			}
+
+			77% {
+				transform: translate(22px, -34px);
+			}
+
+			80% {
+				transform: translate(15px, -30px);
+			}
+
+			87% {
+				transform: translate(7px, -44px);
+			}
+
+			90% {
+				transform: translate(0, -40px);
+			}
+
+			100% {
+				transform: translate(0, 0);
+			}
+		}
+
+		@keyframes ball {
+			0% {
+				transform: translate(0, 0);
+			}
+
+			5% {
+				transform: translate(8px, -14px);
+			}
+
+			10% {
+				transform: translate(15px, -10px);
+			}
+
+			17% {
+				transform: translate(23px, -24px);
+			}
+
+			20% {
+				transform: translate(30px, -20px);
+			}
+
+			27% {
+				transform: translate(38px, -34px);
+			}
+
+			30% {
+				transform: translate(45px, -30px);
+			}
+
+			37% {
+				transform: translate(53px, -44px);
+			}
+
+			40% {
+				transform: translate(60px, -40px);
+			}
+
+			50% {
+				transform: translate(60px, 0);
+			}
+
+			57% {
+				transform: translate(53px, -14px);
+			}
+
+			60% {
+				transform: translate(45px, -10px);
+			}
+
+			67% {
+				transform: translate(37px, -24px);
+			}
+
+			70% {
+				transform: translate(30px, -20px);
+			}
+
+			77% {
+				transform: translate(22px, -34px);
+			}
+
+			80% {
+				transform: translate(15px, -30px);
+			}
+
+			87% {
+				transform: translate(7px, -44px);
+			}
+
+			90% {
+				transform: translate(0, -40px);
+			}
+
+			100% {
+				transform: translate(0, 0);
+			}
+		}
+
+		@-webkit-keyframes barUp1 {
+			0% {
+				transform: scale(1, 0.2);
+			}
+
+			40% {
+				transform: scale(1, 0.2);
+			}
+
+			50% {
+				transform: scale(1, 1);
+			}
+
+			90% {
+				transform: scale(1, 1);
+			}
+
+			100% {
+				transform: scale(1, 0.2);
+			}
+		}
+
+		@keyframes barUp1 {
+			0% {
+				transform: scale(1, 0.2);
+			}
+
+			40% {
+				transform: scale(1, 0.2);
+			}
+
+			50% {
+				transform: scale(1, 1);
+			}
+
+			90% {
+				transform: scale(1, 1);
+			}
+
+			100% {
+				transform: scale(1, 0.2);
+			}
+		}
+
+		@-webkit-keyframes barUp2 {
+			0% {
+				transform: scale(1, 0.4);
+			}
+
+			40% {
+				transform: scale(1, 0.4);
+			}
+
+			50% {
+				transform: scale(1, 0.8);
+			}
+
+			90% {
+				transform: scale(1, 0.8);
+			}
+
+			100% {
+				transform: scale(1, 0.4);
+			}
+		}
+
+		@keyframes barUp2 {
+			0% {
+				transform: scale(1, 0.4);
+			}
+
+			40% {
+				transform: scale(1, 0.4);
+			}
+
+			50% {
+				transform: scale(1, 0.8);
+			}
+
+			90% {
+				transform: scale(1, 0.8);
+			}
+
+			100% {
+				transform: scale(1, 0.4);
+			}
+		}
+
+		@-webkit-keyframes barUp3 {
+			0% {
+				transform: scale(1, 0.6);
+			}
+
+			100% {
+				transform: scale(1, 0.6);
+			}
+		}
+
+		@keyframes barUp3 {
+			0% {
+				transform: scale(1, 0.6);
+			}
+
+			100% {
+				transform: scale(1, 0.6);
+			}
+		}
+
+		@-webkit-keyframes barUp4 {
+			0% {
+				transform: scale(1, 0.8);
+			}
+
+			40% {
+				transform: scale(1, 0.8);
+			}
+
+			50% {
+				transform: scale(1, 0.4);
+			}
+
+			90% {
+				transform: scale(1, 0.4);
+			}
+
+			100% {
+				transform: scale(1, 0.8);
+			}
+		}
+
+		@keyframes barUp4 {
+			0% {
+				transform: scale(1, 0.8);
+			}
+
+			40% {
+				transform: scale(1, 0.8);
+			}
+
+			50% {
+				transform: scale(1, 0.4);
+			}
+
+			90% {
+				transform: scale(1, 0.4);
+			}
+
+			100% {
+				transform: scale(1, 0.8);
+			}
+		}
+
+		@-webkit-keyframes barUp5 {
+			0% {
+				transform: scale(1, 1);
+			}
+
+			40% {
+				transform: scale(1, 1);
+			}
+
+			50% {
+				transform: scale(1, 0.2);
+			}
+
+			90% {
+				transform: scale(1, 0.2);
+			}
+
+			100% {
+				transform: scale(1, 1);
+			}
+		}
+
+		@keyframes barUp5 {
+			0% {
+				transform: scale(1, 1);
+			}
+
+			40% {
+				transform: scale(1, 1);
+			}
+
+			50% {
+				transform: scale(1, 0.2);
+			}
+
+			90% {
+				transform: scale(1, 0.2);
+			}
+
+			100% {
+				transform: scale(1, 1);
+			}
+		}
+	</style>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
 		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 	<meta property="og:title" content="Joshua Zou">
 	<meta property="og:locale" content="en_US">
@@ -24,10 +512,49 @@
 	<link rel="stylesheet" href="./css/home.css">
 	<link rel="stylesheet" href="./fonts/syntax.css">
 	<script src="./javascript/rainbow.min.js"></script>
-
 </head>
 
 <body style="background-color: #0C0032;">
+	<div id="loader-wrapper">
+		<div id="loader">
+			<div class="loader-content">
+				<div class="loaderbars" style="display: none;">
+					<div class="loader__bar"></div>
+					<div class="loader__bar"></div>
+					<div class="loader__bar"></div>
+					<div class="loader__bar"></div>
+					<div class="loader__bar"></div>
+					<div class="loader__ball"></div>
+				</div>
+				<div class="text">
+					Joshua is thinking...
+				</div>
+				<div class="startup-mask"></div>
+			</div>
+		</div>
+
+		<div class="loader-section section-left"></div>
+		<div class="loader-section section-right"></div>
+
+	</div>
+	<script>
+		setTimeout(next, 100)
+		function next(){
+			document.getElementsByClassName("loaderbars")[0].style.display = "block"
+			document.getElementsByClassName("loaderbars")[0].classList.add('moveup')
+		}
+		let intialized = performance.now();
+		$(document).ready(function () {
+			$('body').addClass('loaded');
+			let now = performance.now();
+			console.log(now - intialized)
+			if (now - intialized < 1000) { 
+				document.querySelectorAll(".loader-section")[0].style.display = "none"; 
+				document.querySelectorAll(".loader-section")[1].style.display = "none"; 
+				document.getElementsByClassName("loaderbars")[0].style.display = "none" 
+			}
+		});
+	</script>
 	<section id="background-canvas" width="100%" height="100%" style=""></section>
 	<header>
 		<div class="big-screen">
@@ -395,75 +922,3 @@
 </body>
 
 </html>
-<script>
-	var current = "default";
-	var allKeys = {
-		default: document.querySelectorAll("#languages .languages .container .default")[0],
-		general: document.querySelectorAll("#languages .languages .container .general")[0],
-		tools: document.querySelectorAll("#languages .languages .container .tools")[0]
-	}
-	if (localStorage) {
-		if (!localStorage.getItem("whatIdoPage")) current = "default";
-		else {
-			changeLangNoAnimation(localStorage.getItem("whatIdoPage"))
-		}
-	}
-
-	async function changeLang(to) {
-		let original = current;
-		current = to;
-		localStorage.setItem("whatIdoPage", to)
-		allKeys[original].classList.toggle("fadeOut");
-		await sleep(600)
-		allKeys[original].classList.toggle("invisible");
-
-		allKeys[to].classList.toggle("invisible");
-		allKeys[to].classList.toggle("fadeIn");
-		await sleep(600);
-		allKeys[original].classList.toggle("fadeOut");
-		allKeys[to].classList.toggle("fadeIn");
-	}
-	function changeLangNoAnimation(to) {
-		let original = current;
-		current = to;
-		localStorage.setItem("whatIdoPage", to)
-		allKeys[original].classList.toggle("invisible");
-		allKeys[to].classList.toggle("invisible");
-	}
-
-	function popImageOut(imageUrl, caption) {
-		// Get the modal
-		var modal = document.getElementById("myModal");
-
-		// Get the image and insert it inside the modal - use its "alt" text as a caption
-		var img = document.getElementById("myImg");
-		var modalImg = document.getElementById("img01");
-		var captionText = document.getElementById("caption");
-
-		modal.style.display = "block";
-		modalImg.src = imageUrl;
-		modalImg.style.width = "90vw"
-		captionText.innerText = caption;
-
-
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
-
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function () {
-			modal.style.display = "none";
-		}
-	}
-	document.addEventListener("keydown", function (key) {
-		console.log(key)
-		if (key.keyCode === 27) {
-			var modal = document.getElementById("myModal");
-			modal.style.display = "none";
-
-		}
-	})
-</script>
-<style>
-
-
-</style>

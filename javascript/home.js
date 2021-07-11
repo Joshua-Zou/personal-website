@@ -170,3 +170,69 @@
 		renderer.render(scene, camera);
 
 	}
+	var current = "default";
+	var allKeys = {
+		default: document.querySelectorAll("#languages .languages .container .default")[0],
+		general: document.querySelectorAll("#languages .languages .container .general")[0],
+		tools: document.querySelectorAll("#languages .languages .container .tools")[0]
+	}
+	if (localStorage) {
+		if (!localStorage.getItem("whatIdoPage")) current = "default";
+		else {
+			changeLangNoAnimation(localStorage.getItem("whatIdoPage"))
+		}
+	}
+
+	async function changeLang(to) {
+		let original = current;
+		current = to;
+		localStorage.setItem("whatIdoPage", to)
+		allKeys[original].classList.toggle("fadeOut");
+		await sleep(600)
+		allKeys[original].classList.toggle("invisible");
+
+		allKeys[to].classList.toggle("invisible");
+		allKeys[to].classList.toggle("fadeIn");
+		await sleep(600);
+		allKeys[original].classList.toggle("fadeOut");
+		allKeys[to].classList.toggle("fadeIn");
+	}
+	function changeLangNoAnimation(to) {
+		let original = current;
+		current = to;
+		localStorage.setItem("whatIdoPage", to)
+		allKeys[original].classList.toggle("invisible");
+		allKeys[to].classList.toggle("invisible");
+	}
+
+	function popImageOut(imageUrl, caption) {
+		// Get the modal
+		var modal = document.getElementById("myModal");
+
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementById("myImg");
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+
+		modal.style.display = "block";
+		modalImg.src = imageUrl;
+		modalImg.style.width = "90vw"
+		captionText.innerText = caption;
+
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function () {
+			modal.style.display = "none";
+		}
+	}
+	document.addEventListener("keydown", function (key) {
+		console.log(key)
+		if (key.keyCode === 27) {
+			var modal = document.getElementById("myModal");
+			modal.style.display = "none";
+
+		}
+	})
