@@ -911,12 +911,110 @@
 							<a href="https://docs.coin-tunnel.ml" target="_blank">Documentation</a>
 						</div>
 					</div>
+					<div class="project">
+						<img src="https://gblobscdn.gitbook.com/spaces%2F-MXjhgAAyxeiuxSX73pG%2Favatar-1617902456687.png?alt=media"
+							style="border-radius: 20px; width: 130px;">
+						<br>
+
+						<span class="medium-font project-name">Open Skin</span>
+						<span class="project-desc">Open Skin is a machine learning application that can identify many
+							types of skin diseases</span>
+						<br>
+						<span class="project-desc">Open Skin is built on tensorflow JS and can be used either with an
+							API, (image sizes are limited) or downloaded locally</span>
+						<br>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou/Skin-Server" target="_blank">Repo</a>
+							|
+							<a href="https://www.openskin.ml/" target="_blank">Live website</a>
+							|
+							<a href="https://docs.openskin.ml/" target="_blank">Documentation</a>
+							|
+							<a href="https://ai-skin-server.herokuapp.com" target="_blank">API endpoint</a>
+							|
+							<a href="https://www.npmjs.com/package/@joshyzou/localskinconditiondetector">NPM package</a>
+						</div>
+					</div>
+					<div class="project">
+						<img src="./images/elonbot.png" style="width: 130px; border-radius: 20px;">
+						<br>
+						<span class="medium-font project-name">Elon Bot</span>
+						<span class="project-desc" style="font-family: 'fira code'; font-size: 13px;">Yeah... this one's
+							a bit strange</span>
+						<span class="project-desc">Elon Bot is a discord bot that has a currency system built on doge,
+							with a stock/crypto exchange with real, live market data.</span>
+						<br>
+						<span class="project-desc">Users can build their profile by getting a job, working, aquiring
+							different crypto, stocks (all of Elon's), and suing/laundering money.</span>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou/elonbot" target="_blank">Repo</a>
+							|
+							<a href="https://www.elon-bot.ml" target="_blank">Live website</a>
+							|
+							<a href="https://discord.com/oauth2/authorize?client_id=824730559779045417&permissions=8&scope=bot"
+								onclick="javascript:void window.open('https://discord.com/api/oauth2/authorize?client_id=824730559779045417&permissions=8&scope=bot','1615614166153','width=500,height=800,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;"
+								target="_blank">Invite bot</a>
+							|
+							<a href="https://devpost.com/software/elon-discord-bot" target="_blank">Devpost</a>
+							|
+							<a href="https://top.gg/bot/824730559779045417" target="_blank">Top.gg</a>
+						</div>
+					</div>
+					<div class="project">
+						<img src="./images/unitybot.png" style="width: 130px; border-radius: 20px;">
+						<span class="medium-font project-name">Unity Bot</span>
+						<span class="project-desc">Whats up with all these discord bots?</span>
+						<br>
+						<span class="project-desc">Unity Discord bot allows Discord server owners to not worry about
+							NSFW content being posted!</span>
+						<span class="project-desc">It uses machine learning to recognize NSFW content and automatically
+							delete it with user customizable thresholds</span>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou/DiscordNsfwImageDetector" target="_blank">Repo</a>
+							|
+							<a href="https://discord.com/api/oauth2/authorize?client_id=811668584559935488&permissions=2147483639&redirect_uri=https%3A%2F%2Fgmail.com&scope=bot"
+								target="_blank">Invite</a>
+							|
+							<a href="https://devpost.com/software/unity-aeqlpv" target="_blank">Devpost</a>
+							|
+							<a href="https://top.gg/bot/811668584559935488" target="_blank">Top.gg</a>
+						</div>
+					</div>
+					<div class="project">
+						<img src="./images/meme.png">
+						<span class="medium-font project-name">.meme</span>
+						<span class="project-desc">Then next image file format</span>
+						<br>
+						<span class="project-desc">Buyers can either signup, connect their wallet directly, and start
+							buying things effortlessly</span>
+						<span class="project-desc">Or, they can deposit money into a temporary wallet which which is
+							then transfered to the merchant</span>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou" target="_blank">Repo</a>
+							|
+							<a href="https://joshua-zou.github.io/.meme/" target="_blank">Demo</a>
+							|
+							<a href="https://github.com/Joshua-Zou/.meme#meme---the-best-file-format-for-viewing-memes" target="_blank">Documentation</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-status">
+					<!--put project progress bars on random projects that I'm working on-->
 				</div>
 			</div>
-			<div class="project-status">
-				<!--put project progress bars on random projects that I'm working on-->
-			</div>
-		</div>
 	</section>
 	<section id="modals">
 		<div id="myModal" class="modal">
@@ -961,7 +1059,7 @@
 
 	#projects .container .top-projects .projects {
 		display: grid;
-		grid-gap: 10px 10px;
+		grid-gap: 10px 40px;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		margin-top: 30px;
 	}
@@ -1032,6 +1130,7 @@
 		transition: background-color .25s cubic-bezier(.33, .66, .66, 1);
 		text-decoration: none;
 	}
+
 	#projects .container .top-projects .projects .project a:hover {
 		background-color: #C6E48B;
 		color: black;
