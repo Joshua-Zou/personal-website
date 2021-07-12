@@ -24,12 +24,13 @@
 	<script src="./javascript/rainbow.min.js"></script>
 	<!--preload stuff-->
 </head>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Voltaire" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="preload" as="image" href="https://ghchart.rshah.org/joshua-zou">
+
 
 <body style="background-color: #0C0032;">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Voltaire" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="preload" as="image" href="https://ghchart.rshah.org/joshua-zou">
 	<div id="loader-wrapper">
 		<div id="loader">
 			<div class="loader-content">
@@ -53,9 +54,9 @@
 
 	</div>
 	<script>
-		setTimeout(next, 100)
+		document.getElementsByClassName("loaderbars")[0].style.display = "block"
+		setTimeout(next, 10)
 		function next() {
-			document.getElementsByClassName("loaderbars")[0].style.display = "block"
 			document.getElementsByClassName("loaderbars")[0].classList.add('moveup')
 		}
 		let intialized = performance.now();
@@ -134,15 +135,19 @@
 				<span class="medium-font center-text">Social<br></span>
 				<div class="break big-break"></div>
 				<a href="mailto:joshyzou@gmail.com" class="fab fa-google" title="email me!"></a>
-				<a href="https://www.linkedin.com/in/joshua-zou/" target="_blank" class="fab fa-linkedin" title="my linkedin profile"></a>
+				<a href="https://www.linkedin.com/in/joshua-zou/" target="_blank" class="fab fa-linkedin"
+					title="my linkedin profile"></a>
 				<a href="https://www.youtube.com/channel/UCx2dyCalB7m_d8M2ZB8Oj7A" target="_blank"
 					class="fab fa-youtube" title="my youtube channel"></a>
 				<a href="https://github.com/Joshua-Zou#want-to-support-me" target="_blank"
 					title="currently only accepting crypto" class="fas fa-donate"></a>
-				<a href="https://github.com/Joshua-Zou" target="_blank" class="fab fa-github" title="where I post all of my code"></a>
-				<a href="https://top.gg/user/741793729509064704" target="_blank" class="fas fa-robot" title="where I post my bots"></a>
-				<a href="https://devpost.com/Joshua-Zou" target="_blank" class="fas fa-devpost" title="my hackathon profile"><img
-						src="./images/devpost.svg" style="    left: -6.5px; position: relative; top: 2px;"></a>
+				<a href="https://github.com/Joshua-Zou" target="_blank" class="fab fa-github"
+					title="where I post all of my code"></a>
+				<a href="https://top.gg/user/741793729509064704" target="_blank" class="fas fa-robot"
+					title="where I post my bots"></a>
+				<a href="https://devpost.com/Joshua-Zou" target="_blank" class="fas fa-devpost"
+					title="my hackathon profile"><img src="./images/devpost.svg"
+						style="    left: -6.5px; position: relative; top: 2px;"></a>
 
 			</div>
 		</div>
@@ -393,7 +398,8 @@
 				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"><i
 					class="fas fa-external-link-alt"></i></div>
 			<img src="https://ghchart.rshah.org/joshua-zou"
-				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')" alt="my github contributions">
+				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"
+				alt="my github contributions">
 		</div>
 	</section>
 	<section id="projects" style="display: block;">
@@ -450,7 +456,8 @@
 						</div>
 					</div>
 					<div class="project">
-						<img src="./images/elonbot.png" style="width: 130px; border-radius: 20px;" alt="Elon Discord Bot">
+						<img src="./images/elonbot.png" style="width: 130px; border-radius: 20px;"
+							alt="Elon Discord Bot">
 						<br>
 						<span class="medium-font project-name">Elon Bot</span>
 						<span class="project-desc" style="font-family: 'fira code'; font-size: 13px;">Yeah... this one's
@@ -468,7 +475,8 @@
 							|
 							<a href="https://www.elon-bot.ml" target="_blank">Live website</a>
 							|
-							<a href="https://discord.com/oauth2/authorize?client_id=824730559779045417&permissions=8&scope=bot" target="_blank">Invite bot</a>
+							<a href="https://discord.com/oauth2/authorize?client_id=824730559779045417&permissions=8&scope=bot"
+								target="_blank">Invite bot</a>
 							|
 							<a href="https://devpost.com/software/elon-discord-bot" target="_blank">Devpost</a>
 							|
@@ -476,7 +484,8 @@
 						</div>
 					</div>
 					<div class="project">
-						<img src="./images/unitybot.png" style="width: 130px; border-radius: 20px;" alt="Unity Discord Bot">
+						<img src="./images/unitybot.png" style="width: 130px; border-radius: 20px;"
+							alt="Unity Discord Bot">
 						<span class="medium-font project-name">Unity Bot</span>
 						<span class="project-desc">Whats up with all these discord bots?</span>
 						<br>
@@ -503,9 +512,12 @@
 						<span class="medium-font project-name">.meme</span>
 						<span class="project-desc">Then next image file format</span>
 						<br>
-						<span class="project-desc">Wether it be .gif, .png, or any file format, they all have one problem. Static areas like text will always have data space allocated towards them (extra frames)</span>
+						<span class="project-desc">Wether it be .gif, .png, or any file format, they all have one
+							problem. Static areas like text will always have data space allocated towards them (extra
+							frames)</span>
 						<br>
-						<span class="project-desc">.meme solves that with a big json file (like all things in life)</span>
+						<span class="project-desc">.meme solves that with a big json file (like all things in
+							life)</span>
 						<div class="project-resources">
 							<hr>
 							<span class="medium-font project-name">Resources</span>
@@ -514,7 +526,8 @@
 							|
 							<a href="https://joshua-zou.github.io/.meme/" target="_blank">Demo</a>
 							|
-							<a href="https://github.com/Joshua-Zou/.meme#meme---the-best-file-format-for-viewing-memes" target="_blank">Documentation</a>
+							<a href="https://github.com/Joshua-Zou/.meme#meme---the-best-file-format-for-viewing-memes"
+								target="_blank">Documentation</a>
 						</div>
 					</div>
 				</div>
