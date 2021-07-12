@@ -111,8 +111,8 @@
 
 		if (event.isPrimary === false) return;
 
-		mouseX = event.clientX - windowHalfX;
-		mouseY = event.clientY - windowHalfY;
+		mouseX = (event.clientX - windowHalfX)/10;
+		mouseY = (event.clientY - windowHalfY)/10;
 
 	}
 
