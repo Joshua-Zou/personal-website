@@ -122,12 +122,14 @@
 
 		.loaderbars {
 			position: absolute;
-			top: 300%; 
+			top: 300%;
 			transition: all 1s ease-in-out;
 		}
+
 		.moveup {
 			transform: translate(0, -50px);
 		}
+
 		.startup-mask {
 			background-color: #222222;
 			margin-top: 22px;
@@ -512,6 +514,8 @@
 	<link rel="stylesheet" href="./css/home.css">
 	<link rel="stylesheet" href="./fonts/syntax.css">
 	<script src="./javascript/rainbow.min.js"></script>
+	<!--preload stuff-->
+	<link rel="preload" as="image" href="https://ghchart.rshah.org/joshua-zou">
 </head>
 
 <body style="background-color: #0C0032;">
@@ -539,7 +543,7 @@
 	</div>
 	<script>
 		setTimeout(next, 100)
-		function next(){
+		function next() {
 			document.getElementsByClassName("loaderbars")[0].style.display = "block"
 			document.getElementsByClassName("loaderbars")[0].classList.add('moveup')
 		}
@@ -547,11 +551,10 @@
 		$(document).ready(function () {
 			$('body').addClass('loaded');
 			let now = performance.now();
-			console.log(now - intialized)
-			if (now - intialized < 1000) { 
-				document.querySelectorAll(".loader-section")[0].style.display = "none"; 
-				document.querySelectorAll(".loader-section")[1].style.display = "none"; 
-				document.getElementsByClassName("loaderbars")[0].style.display = "none" 
+			if (now - intialized < 1000) {
+				document.querySelectorAll(".loader-section")[0].style.display = "none";
+				document.querySelectorAll(".loader-section")[1].style.display = "none";
+				document.getElementsByClassName("loaderbars")[0].style.display = "none"
 			}
 		});
 	</script>
@@ -883,11 +886,36 @@
 		</div>
 	</section>
 	<section id="projects" style="display: block;">
-		<div class="top-projects">
-			<!--put top projects here like elon discord bot or whatever (has to be finished)-->
-		</div>
-		<div class="project-status">
-			<!--put project progress bars on random projects that I'm working on-->
+		<div class="container">
+			<div class="top-projects">
+				<span class="extra-large-font">My top projects<br> </span>
+				<span class="medium-font">Big projects that I'm (maybe) known for online</span>
+				<div class="projects">
+					<div class="project">
+						<img src="https://www.coin-tunnel.ml/images/logo.png">
+						<span class="medium-font project-name">Coin Tunnel</span>
+						<span class="project-desc">An easy to use, open source cryptocurrency payment system</span>
+						<br>
+						<span class="project-desc">Buyers can either signup, connect their wallet directly, and start
+							buying things effortlessly</span>
+						<span class="project-desc">Or, they can deposit money into a temporary wallet which which is
+							then transfered to the merchant</span>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou/coin-tunnel" target="_blank">Repo</a>
+							|
+							<a href="https://www.coin-tunnel.ml" target="_blank">Live website</a>
+							|
+							<a href="https://docs.coin-tunnel.ml" target="_blank">Documentation</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="project-status">
+				<!--put project progress bars on random projects that I'm working on-->
+			</div>
 		</div>
 	</section>
 	<section id="modals">
@@ -916,9 +944,96 @@
 	}
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
 <script src="./javascript/home.js"></script>
 
 </body>
 
 </html>
+
+<style>
+	#projects .container .extra-large-font {
+		margin-left: 50px;
+	}
+
+	#projects .container .medium-font {
+		margin-left: 100px;
+	}
+
+	#projects .container .top-projects .projects {
+		display: grid;
+		grid-gap: 10px 10px;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		margin-top: 30px;
+	}
+
+	#projects .container {
+		padding: 20px;
+		text-align: left;
+		color: whitesmoke;
+		max-width: 90vw;
+		background-color: #363636;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#projects .container .top-projects .projects .project {
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+		background-color: var(--pop-color);
+		max-width: 300px;
+		border-radius: 10px;
+	}
+
+	#projects .container .top-projects .projects .project * {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#projects .container .top-projects .projects .project img {
+		width: 200px;
+		height: auto;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#projects .container .top-projects .projects .project .project-name {
+		color: white;
+		font-family: 'Fira Code';
+		font-weight: 100;
+		margin-bottom: 20px;
+	}
+
+	#projects .container .top-projects .projects .project .project-desc {
+		display: block;
+		text-align: center;
+	}
+
+	#projects .container .top-projects .projects .project .project-resources hr {
+		width: 150px;
+	}
+
+	#projects .container .top-projects .projects .project .project-resources {
+		display: block;
+		text-align: center;
+	}
+
+	@media (max-width: 500px) {
+		#projects .container {
+			max-width: 95vw !important;
+		}
+	}
+
+	#projects .container .top-projects .projects .project a {
+		border-bottom: .05em solid #b4e7f8;
+		box-shadow: inset 0 -0.05em 0 #b4e7f8;
+		color: inherit;
+		transition: background-color .25s cubic-bezier(.33, .66, .66, 1);
+		text-decoration: none;
+	}
+	#projects .container .top-projects .projects .project a:hover {
+		background-color: #C6E48B;
+		color: black;
+	}
+</style>

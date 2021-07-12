@@ -384,6 +384,7 @@ pre .support, *[data-language="csharp"] .function.call {
 }
 
 #languages {
+    overflow: hidden;
     color: whitesmoke;
 }
 

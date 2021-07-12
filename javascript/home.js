@@ -229,7 +229,6 @@
 		}
 	}
 	document.addEventListener("keydown", function (key) {
-		console.log(key)
 		if (key.keyCode === 27) {
 			var modal = document.getElementById("myModal");
 			modal.style.display = "none";
