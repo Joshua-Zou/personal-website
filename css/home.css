@@ -927,7 +927,9 @@ pre .support, *[data-language="csharp"] .function.call {
 #languages {
     position: relative;
 }
-
+#languages .security:hover {
+    fill: #003A70;
+}
 #languages .languages .container {
     background-color: slategrey;
     padding: 10px;

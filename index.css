@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
-
-
 @font-face {
   font-family: "most";
   src: url("./fonts/regular.ttf");
@@ -45,6 +43,25 @@ body {
   --pop-color: #3500D3;
   --red-color: #950740;
   --dark-block-background-color: #190061;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  padding-left: 10px;
+  /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: linear-gradient(#383849, rgb(231, 41, 63, 0.5));
+}
+body::-webkit-scrollbar-track:hover {
+  background: rgb(63, 67, 71)
+}
+body::-webkit-scrollbar-thumb {
+  background-color: grey;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+
 }
 
 .flash {
