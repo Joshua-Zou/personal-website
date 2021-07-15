@@ -242,6 +242,8 @@ function hide(element) {
 		document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.remove("app-hot")
 		if (element === "#terminal-container") {
 			$("#terminal").terminal().destroy()
+		}else if (element === "#bing-container"){
+			document.querySelectorAll("#bing")[0].remove();
 		}
 		return;
 	}
@@ -278,6 +280,12 @@ function hide(element) {
 			width: 450,
 			prompt: ' > '
 		});
+	}else if (element === "#bing-container"){
+		let newElem = document.createElement("iframe");
+		newElem.title="Bing";
+		newElem.id="bing";
+		newElem.src="https://www.bing.com";
+		document.getElementById("bing-container").appendChild(newElem)
 	}
 }
 function maximize(element) {
@@ -290,7 +298,8 @@ function maximize(element) {
 }
 function minimize(element) {
 	if (document.querySelectorAll(element)[0].classList.contains("minimized")) {
-		document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.add("app-hot")
+		document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.add("app-hot");
+		bringToTop(element)
 	} else {
 		document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.remove("app-hot")
 	}
