@@ -824,10 +824,12 @@
 		let social_elements = document.getElementsByClassName("social")[0].children[0].children;
 		for (let i = 0; i < social_elements.length; i++) {
 			social_elements[i].addEventListener("mouseenter", async function (res) {
-				res.toElement.classList.add("paused");
+				let good = res.toElement || res.target;
+				good.classList.add("paused");
 			})
 			social_elements[i].addEventListener("mouseleave", async function (res) {
-				res.fromElement.classList.remove("paused");
+				let good = res.toElement || res.target;
+				good.classList.remove("paused");
 			})
 		}
 	}
@@ -838,7 +840,8 @@
 	let progressClickListeners = document.querySelectorAll("#projects .container .project-status .fa-chevron-down");
 	for (let i = 0; i < progressClickListeners.length; i++) {
 		progressClickListeners[i].addEventListener("click", function (event) {
-			event.toElement.parentElement.parentElement.children[3].classList.toggle("invisible")
+			let good = event.toElement || event.target;
+			good.parentElement.parentElement.children[3].classList.toggle("invisible");
 		})
 	}
 </script>
@@ -928,7 +931,7 @@
 		padding-right: 4px;
 	}
 
-	#terminal-container .close-button {
+	.close-button {
 		display: block;
 		text-align: right;
 		transform: translate(10px, 0);
@@ -936,17 +939,17 @@
 		padding-right: 10px;
 	}
 
-	#terminal-container .maximize:hover {
+	.maximize:hover {
 		background-color: #E5E5E5;
 	}
 
-	#terminal-container .maximize {
+	.maximize {
 		padding-top: 5px;
 		padding-left: 10px;
 		padding-right: 8px;
 	}
 
-	#terminal-container .close-button:hover {
+	.close-button:hover {
 		background-color: #E81123;
 		fill: white;
 	}
@@ -1107,6 +1110,8 @@
 		#bing-container iframe {
 			width: 100%;
 			height: 100%;
+			z-index: 6;
+			position: relative;
 		}
 
 		#projects .container .top-projects .projects .project {

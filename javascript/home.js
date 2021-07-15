@@ -327,11 +327,11 @@ function listenForClicks() {
 			clearInterval(monitor);
 		}
 	}, 100);
-
 }
+
 listenForClicks();
 window.addEventListener('click', function(e){   
-	if (document.querySelectorAll("#bing-container iframe")[0].contains(e.target)){
+	if (document.querySelectorAll("#bing-container iframe")[0] && document.querySelectorAll("#bing-container iframe")[0].contains(e.target)){
 	} else{
 	listenForClicks();
 	}
