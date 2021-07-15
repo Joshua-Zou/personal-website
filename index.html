@@ -30,62 +30,37 @@
 
 
 <body style="background-color: #0C0032;">
-	<div id="terminal-container" class="invisible app">
-		<span id="terminal-containerheader"
-			style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
-			class="context-menu"><img src="./images/cmd.PNG" style="height: 12px; margin-left: 5px;">&nbsp; Command
-			Prompt</span>
-		<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
-			<span class="pointer close-button" onclick="hide('#terminal-container')">
-				<?xml version="1.0" encoding="utf-8"?>
-				<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-					style="height: 10px;" xml:space="preserve">
-					<g>
-						<path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
-					S22.47,513.67,29.13,507z M507,482.87L29.13,5C22.47-1.67,11.66-1.67,5,5c-6.67,6.66-6.67,17.47,0,24.14L482.87,507
-					c6.67,6.67,17.47,6.67,24.14,0C513.67,500.34,513.67,489.53,507,482.87z" />
-					</g>
-				</svg>
-			</span>
-		</span>
-		<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
-			<span class="pointer maximize" onclick="maximize('#terminal-container')">
-				<?xml version="1.0" encoding="utf-8"?>
-				<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
-					x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
-					<defs></defs>
-					<g>
-						<rect width="10" height="10" x="3" y="4"
-							style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
-						</rect>
-					</g>
-				</svg>
-			</span>
-		</span>
-		<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
-			<span class="pointer maximize" onclick="minimize('#terminal-container')">
-				<?xml version="1.0" encoding="utf-8"?>
-				<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
-					x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
-					<defs></defs>
-					<g>
-						<rect width="12" height="1" x="3" y="9"
-							style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
-						</rect>
-					</g>
-				</svg>
-
-			</span>
-		</span>
-		<div id="terminal"></div>
-	</div>
 	<script type="module">
 		import interact from "https://cdn.interactjs.io/v1.10.11/interactjs/index.js"
 
 		dragElement(document.getElementById("terminal-container"));
 		interact('#terminal-container')
+			.resizable({
+				// resize from all edges and corners
+				edges: { left: true, right: true, bottom: true, top: false },
+
+				listeners: {
+					move(event) {
+						var target = event.target
+						var x = (parseFloat(target.getAttribute('data-x')) || 0)
+						var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+						// update the element's style
+						target.style.width = event.rect.width + 'px'
+						target.style.height = event.rect.height + 'px'
+
+						// translate when resizing from top or left edges
+						x += event.deltaRect.left
+						y += event.deltaRect.top
+
+
+						target.setAttribute('data-x', x)
+						target.setAttribute('data-y', y)
+					}
+				}
+			})
+		dragElement(document.getElementById("bing-container"));
+		interact('#bing-container')
 			.resizable({
 				// resize from all edges and corners
 				edges: { left: true, right: true, bottom: true, top: false },
@@ -728,9 +703,116 @@
 			<div id="caption"></div>
 		</div>
 		<div class="taskbar">
-			<div class="minimized-terminal-container" onclick="minimize('#terminal-container')">
+			<div class="minimized-terminal-container app-favicon" onclick="minimize('#terminal-container')">
 				<img src="./images/cmd2.png">
 			</div>
+			<div class="minimized-bing-container app-favicon" onclick="minimize('#bing-container')">
+				<img src="./images/edge.svg" style="transform: scale(2.2)">
+			</div>
+		</div>
+	</section>
+	<section class="apps">
+		<div id="terminal-container" class="invisible" onclick="bringToTop('#terminal-container')">
+			<span id="terminal-containerheader"
+				style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
+				class="context-menu"><img src="./images/cmd.PNG" style="height: 12px; margin-left: 5px;">&nbsp; Command
+				Prompt</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
+				<span class="pointer close-button" onclick="hide('#terminal-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+						style="height: 10px;" xml:space="preserve">
+						<g>
+							<path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
+						S22.47,513.67,29.13,507z M507,482.87L29.13,5C22.47-1.67,11.66-1.67,5,5c-6.67,6.66-6.67,17.47,0,24.14L482.87,507
+						c6.67,6.67,17.47,6.67,24.14,0C513.67,500.34,513.67,489.53,507,482.87z" />
+						</g>
+					</svg>
+				</span>
+			</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
+				<span class="pointer maximize" onclick="maximize('#terminal-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+						<defs></defs>
+						<g>
+							<rect width="10" height="10" x="3" y="4"
+								style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+							</rect>
+						</g>
+					</svg>
+				</span>
+			</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
+				<span class="pointer maximize" onclick="minimize('#terminal-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+						<defs></defs>
+						<g>
+							<rect width="12" height="1" x="3" y="9"
+								style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+							</rect>
+						</g>
+					</svg>
+
+				</span>
+			</span>
+			<div id="terminal"></div>
+		</div>
+		<div id="bing-container" class="invisible" onclick="bringToTop('#bing-container')">
+			<span id="bing-containerheader"
+				style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
+				class="context-menu"><img src="./images/edge.png" style="height: 12px; margin-left: 5px;">&nbsp;
+				Microsoft Edge</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
+				<span class="pointer close-button" onclick="hide('#bing-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+						style="height: 10px;" xml:space="preserve">
+						<g>
+							<path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
+						S22.47,513.67,29.13,507z M507,482.87L29.13,5C22.47-1.67,11.66-1.67,5,5c-6.67,6.66-6.67,17.47,0,24.14L482.87,507
+						c6.67,6.67,17.47,6.67,24.14,0C513.67,500.34,513.67,489.53,507,482.87z" />
+						</g>
+					</svg>
+				</span>
+			</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
+				<span class="pointer maximize" onclick="maximize('#bing-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+						<defs></defs>
+						<g>
+							<rect width="10" height="10" x="3" y="4"
+								style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+							</rect>
+						</g>
+					</svg>
+				</span>
+			</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
+				<span class="pointer maximize" onclick="minimize('#bing-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+						<defs></defs>
+						<g>
+							<rect width="12" height="1" x="3" y="9"
+								style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+							</rect>
+						</g>
+					</svg>
+
+				</span>
+			</span>
+			<iframe src="https://www.bing.com/" title="Bing" id="bing"></iframe>
 		</div>
 	</section>
 </body>
@@ -776,18 +858,18 @@
 		background-color: rgba(0, 0, 0, 0.5);
 	}
 
-	.minimized-terminal-container {
+	.app-favicon {
 		margin-top: 30px;
 		padding: 10px;
 		border-radius: 2px;
 		transition: background-color 0.2s;
 	}
 
-	.minimized-terminal-container:hover {
+	.app-favicon:hover {
 		background-color: rgba(112, 128, 144, 0.3);
 	}
 
-	.minimized-terminal-container>img {
+	.app-favicon>img {
 		width: 25px;
 	}
 
@@ -831,6 +913,20 @@
 		padding-bottom: 0;
 		border-radius: 1px;
 		box-sizing: border-box;
+	}
+
+	#bing-container {
+		position: fixed;
+		z-index: 5;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		background-color: whitesmoke;
+		padding-left: 0;
+		padding-bottom: 0;
+		border-radius: 1px;
+		box-sizing: border-box;
+		padding-right: 4px;
 	}
 
 	#terminal-container .close-button {
@@ -1000,6 +1096,18 @@
 			height: 300px;
 			min-height: 100px !important;
 			min-width: 300px;
+		}
+
+		#bing-container {
+			width: 600px;
+			height: 300px;
+			min-height: 100px !important;
+			min-width: 300px;
+		}
+
+		#bing-container iframe {
+			width: 100%;
+			height: 100%;
 		}
 
 		#projects .container .top-projects .projects .project {
