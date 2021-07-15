@@ -45,14 +45,14 @@
 						var x = (parseFloat(target.getAttribute('data-x')) || 0)
 						var y = (parseFloat(target.getAttribute('data-y')) || 0)
 
+						// translate when resizing from top or left edges
+						x += event.deltaRect.left;
+						y += event.deltaRect.top;
+
+						target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
 						// update the element's style
 						target.style.width = event.rect.width + 'px'
 						target.style.height = event.rect.height + 'px'
-
-						// translate when resizing from top or left edges
-						x += event.deltaRect.left
-						y += event.deltaRect.top
-
 
 						target.setAttribute('data-x', x)
 						target.setAttribute('data-y', y)
@@ -78,6 +78,7 @@
 						// translate when resizing from top or left edges
 						x += event.deltaRect.left
 						y += event.deltaRect.top
+						target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
 
 
 						target.setAttribute('data-x', x)
@@ -712,7 +713,7 @@
 		</div>
 	</section>
 	<section class="apps">
-		<div id="terminal-container" class="invisible" onclick="bringToTop('#terminal-container')">
+		<div id="terminal-container" class="invisible" onmousedown="bringToTop('#terminal-container')">
 			<span id="terminal-containerheader"
 				style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
 				class="context-menu"><img src="./images/cmd.PNG" style="height: 12px; margin-left: 5px;">&nbsp; Command
@@ -763,7 +764,7 @@
 			</span>
 			<div id="terminal"></div>
 		</div>
-		<div id="bing-container" class="invisible" onclick="bringToTop('#bing-container')">
+		<div id="bing-container" class="invisible" onmousedown="bringToTop('#bing-container')">
 			<span id="bing-containerheader"
 				style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
 				class="context-menu"><img src="./images/edge.png" style="height: 12px; margin-left: 5px;">&nbsp;
@@ -907,9 +908,8 @@
 	#terminal-container {
 		position: fixed;
 		z-index: 5;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
+		left: 33%;
+		top: 33%;
 		background-color: whitesmoke;
 		padding-left: 0;
 		padding-bottom: 0;
@@ -920,9 +920,8 @@
 	#bing-container {
 		position: fixed;
 		z-index: 5;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
+		left: 33%;
+		top: 33%;
 		background-color: whitesmoke;
 		padding-left: 0;
 		padding-bottom: 0;

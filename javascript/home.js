@@ -330,7 +330,7 @@ function listenForClicks() {
 }
 
 listenForClicks();
-window.addEventListener('click', function(e){   
+window.addEventListener('mousedown', function(e){   
 	if (document.querySelectorAll("#bing-container iframe")[0] && document.querySelectorAll("#bing-container iframe")[0].contains(e.target)){
 	} else{
 	listenForClicks();
