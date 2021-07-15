@@ -23,10 +23,94 @@
 	<link rel="stylesheet" href="./fonts/syntax.css">
 	<script src="./javascript/rainbow.min.js"></script>
 	<!--preload stuff-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/js/jquery.terminal.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/css/jquery.terminal.min.css"
+		rel="stylesheet" />
 </head>
 
 
 <body style="background-color: #0C0032;">
+	<div id="terminal-container" class="invisible app">
+		<span id="terminal-containerheader"
+			style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
+			class="context-menu"><img src="./images/cmd.PNG" style="height: 12px; margin-left: 5px;">&nbsp; Command
+			Prompt</span>
+		<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
+			<span class="pointer close-button" onclick="hide('#terminal-container')">
+				<?xml version="1.0" encoding="utf-8"?>
+				<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+					style="height: 10px;" xml:space="preserve">
+					<g>
+						<path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
+					S22.47,513.67,29.13,507z M507,482.87L29.13,5C22.47-1.67,11.66-1.67,5,5c-6.67,6.66-6.67,17.47,0,24.14L482.87,507
+					c6.67,6.67,17.47,6.67,24.14,0C513.67,500.34,513.67,489.53,507,482.87z" />
+					</g>
+				</svg>
+			</span>
+		</span>
+		<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
+			<span class="pointer maximize" onclick="maximize('#terminal-container')">
+				<?xml version="1.0" encoding="utf-8"?>
+				<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+					x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+					<defs></defs>
+					<g>
+						<rect width="10" height="10" x="3" y="4"
+							style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+						</rect>
+					</g>
+				</svg>
+			</span>
+		</span>
+		<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
+			<span class="pointer maximize" onclick="minimize('#terminal-container')">
+				<?xml version="1.0" encoding="utf-8"?>
+				<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+					x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+					<defs></defs>
+					<g>
+						<rect width="12" height="1" x="3" y="9"
+							style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+						</rect>
+					</g>
+				</svg>
+
+			</span>
+		</span>
+		<div id="terminal"></div>
+	</div>
+	<script type="module">
+		import interact from "https://cdn.interactjs.io/v1.10.11/interactjs/index.js"
+		
+		dragElement(document.getElementById("terminal-container"));
+		interact('#terminal-container')
+			.resizable({
+				// resize from all edges and corners
+				edges: { left: true, right: true, bottom: true, top: false },
+
+				listeners: {
+					move(event) {
+						var target = event.target
+						var x = (parseFloat(target.getAttribute('data-x')) || 0)
+						var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+						// update the element's style
+						target.style.width = event.rect.width + 'px'
+						target.style.height = event.rect.height + 'px'
+
+						// translate when resizing from top or left edges
+						x += event.deltaRect.left
+						y += event.deltaRect.top
+
+
+						target.setAttribute('data-x', x)
+						target.setAttribute('data-y', y)
+					}
+				}
+			})
+	</script>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Voltaire" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -550,13 +634,16 @@
 				<div class="projectprogress">
 					<br>
 					<div class="singlepp">
-						<span class="title"><img src="images/2handgaming.PNG" style="height: 30px; width: auto;">ndhandgaming <i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
+						<span class="title"><img src="./images/2handgaming.PNG"
+								style="height: 30px; width: auto;">ndhandgaming <i style="font-size: 20px;"
+								class="pointer fas fa-chevron-down"></i></span>
 						<div class="progress-bar">
 							<span class="progress-indicator" style="width: 35%;">&nbsp;</span>
 						</div>
 						<span>35%</span>
 						<div class="description invisible">
-							2nd hand gaming is an online platform where users can sell second hand gaming gear (as the name suggests). You can find out more about it at the links below:
+							2nd hand gaming is an online platform where users can sell second hand gaming gear (as the
+							name suggests). You can find out more about it at the links below:
 							<br>
 							<div class="links">
 								<a href="https://www.2handgaming.ga" target="_blank">Live Website</a>
@@ -573,13 +660,17 @@
 						</div>
 					</div>
 					<div class="singlepp">
-						<span class="title"><img src="https://static.npmjs.com/58a19602036db1daee0d7863c94673a4.png" style="height: 30px; width: auto; position: relative; left: -3px; top: 5px; margin-right: 12.5px;">Send-Crypto <i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
+						<span class="title"><img src="https://static.npmjs.com/58a19602036db1daee0d7863c94673a4.png"
+								style="height: 30px; width: auto; position: relative; left: -3px; top: 5px; margin-right: 12.5px;">Send-Crypto
+							<i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
 						<div class="progress-bar">
 							<span class="progress-indicator" style="width: 95%;">&nbsp;</span>
 						</div>
 						<span>95%</span>
 						<div class="description invisible">
-							Send Crypto is a lightweight library for sending many types of cryptocurrencies! You can choose the node you would like to connect to, wether it be an API, or a local node, import a wallet, and send crypto! You can find out more about it at the links below:
+							Send Crypto is a lightweight library for sending many types of cryptocurrencies! You can
+							choose the node you would like to connect to, wether it be an API, or a local node, import a
+							wallet, and send crypto! You can find out more about it at the links below:
 							<br>
 							<div class="links">
 								<a href="https://www.npmjs.com/package/@joshyzou/sendcrypto" target="_blank">NPM</a>
@@ -598,20 +689,24 @@
 						</div>
 					</div>
 					<div class="singlepp">
-						<span class="title"><img src="./images/webpage.png" style="height: 50px; width: auto; position: relative; left: -10px; top: 5px; margin-right: 10px;">Vanity-BTC <i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
+						<span class="title"><img src="./images/webpage.png"
+								style="height: 50px; width: auto; position: relative; left: -10px; top: 5px; margin-right: 10px;">Vanity-BTC
+							<i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
 						<div class="progress-bar">
 							<span class="progress-indicator" style="width: 80%;">&nbsp;</span>
 						</div>
 						<span>80%</span>
 						<div class="description invisible">
-							Vanity-BTC is a Bitcoin and Litecoin vanity address generator. Download the app for better security and increased performance. You can find out more about it at the links below:
+							Vanity-BTC is a Bitcoin and Litecoin vanity address generator. Download the app for better
+							security and increased performance. You can find out more about it at the links below:
 							<br>
 							<div class="links">
 								<a href="https://www.vanity-btc.tk/" target="_blank">Live Website</a>
 								|
 								<a href="https://github.com/Joshua-Zou/vanity-btc/" target="_blank">Repo</a>
 								|
-								<a href="https://github.com/Joshua-Zou/vanity-btc/releases/tag/v1.3.1" target="_blank">Download App</a>
+								<a href="https://github.com/Joshua-Zou/vanity-btc/releases/tag/v1.3.1"
+									target="_blank">Download App</a>
 							</div>
 							<div class="contributers">
 								<br>
@@ -631,6 +726,11 @@
 			<span class="close">&times;</span>
 			<img class="modal-content" id="img01">
 			<div id="caption"></div>
+		</div>
+		<div class="taskbar">
+			<div class="minimized-terminal-container" onclick="minimize('#terminal-container')">
+				<img src="./images/cmd2.PNG">
+			</div>
 		</div>
 	</section>
 </body>
@@ -655,8 +755,8 @@
 <script src="./javascript/home.js"></script>
 <script>
 	let progressClickListeners = document.querySelectorAll("#projects .container .project-status .fa-chevron-down");
-	for (let i = 0; i<progressClickListeners.length; i++){
-		progressClickListeners[i].addEventListener("click", function(event){
+	for (let i = 0; i < progressClickListeners.length; i++) {
+		progressClickListeners[i].addEventListener("click", function (event) {
 			event.toElement.parentElement.parentElement.children[3].classList.toggle("invisible")
 		})
 	}
@@ -666,12 +766,95 @@
 </html>
 
 <style>
+	.taskbar {
+		width: 40px;
+		border-radius: 50px;
+		left: 10px;
+		bottom: 40px;
+		position: fixed;
+		height: 50vh;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	.minimized-terminal-container {
+		margin-top: 30px;
+		padding: 10px;
+		border-radius: 2px;
+		transition: background-color 0.2s;
+	}
+	.minimized-terminal-container:hover {
+		background-color: rgba(112, 128, 144, 0.3);
+	}
+	.minimized-terminal-container > img{
+		width: 25px;
+	}
+	.minimized {
+		transform: translate(-100vw, 100vh) !important;
+	}
+	.app-open {
+		border-left: 2px solid #76B9ED;
+	}
+	.app-hot {
+		background: rgba(112, 128, 144, 0.5);
+	}
+	.maximized {
+		width: 100vw !important;
+		height: 100vh !important;
+		position: absolute;
+		left: 50% !important;
+		top: 50% !important;
+		transform: translate(-50%, -50%);
+	}
+
+	.smooth-transition {
+		transition: width 0.5s, height 0.5s;
+	}
+	.transform-transition {
+		transition: transform 0.5s;
+	}
+	#terminal-container {
+		position: fixed;
+		z-index: 5;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		background-color: whitesmoke;
+		padding-left: 0;
+		padding-bottom: 0;
+		border-radius: 1px;
+		box-sizing: border-box;
+	}
+
+	#terminal-container .close-button {
+		display: block;
+		text-align: right;
+		transform: translate(10px, 0);
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	#terminal-container .maximize:hover {
+		background-color: #E5E5E5;
+	}
+
+	#terminal-container .maximize {
+		padding-top: 5px;
+		padding-left: 10px;
+		padding-right: 8px;
+	}
+
+	#terminal-container .close-button:hover {
+		background-color: #E81123;
+		fill: white;
+	}
+
 	#projects .container .project-status .projectprogress .singlepp {
 		margin-bottom: 20px;
 	}
+
 	#projects .container .project-status .description {
 		margin-left: 20px;
 	}
+
 	#projects .container .project-status .progress-bar {
 		display: inline-block;
 		margin-left: 30px;
@@ -680,7 +863,8 @@
 		border-radius: 10px;
 		height: 20px;
 	}
-	#projects .container .project-status .progress-indicator{
+
+	#projects .container .project-status .progress-indicator {
 		background: linear-gradient(to right, rgba(53, 0, 211, 1), rgba(53, 0, 211, 0.25));
 		display: block;
 		height: 20px;
@@ -689,15 +873,18 @@
 		border-top-right-radius: 4px;
 		border-bottom-right-radius: 4px;
 	}
-	#projects .container .project-status .description iframe{
+
+	#projects .container .project-status .description iframe {
 		border: none;
 		max-height: 75px;
 	}
-	#projects .container .project-status .description .links{
+
+	#projects .container .project-status .description .links {
 		margin-top: 10px;
 		left: -10px;
 		position: relative;
 	}
+
 	.title {
 		color: white;
 		font-family: 'Fira Code';
@@ -775,12 +962,33 @@
 	}
 
 	@media (max-width: 500px) {
+		#terminal {
+			width: 90vw !important;
+			height: 20vh !important;
+		}
+
+		#terminal-containerheader {
+			width: 77vw !important;
+		}
+
 		#projects .container {
 			max-width: 95vw !important;
 		}
 	}
 
 	@media (min-width: 500px) {
+		#terminal {
+			width: 100% !important;
+			height: 100% !important;
+		}
+
+		#terminal-container {
+			width: 600px;
+			height: 300px;
+			min-height: 100px !important;
+			min-width: 300px;
+		}
+
 		#projects .container .top-projects .projects .project {
 			box-shadow: 10px 10px 15px 0px #22272E;
 			transition: box-shadow 0.3s ease-in-out;

@@ -235,3 +235,66 @@
 
 		}
 	})
+	function hide(element){
+		document.querySelectorAll(element)[0].classList.toggle("invisible");
+		document.querySelectorAll(".minimized-"+element.slice(1))[0].classList.toggle("app-open");
+		if (document.querySelectorAll(element)[0].classList.contains("invisible")){
+			document.querySelectorAll(".minimized-"+element.slice(1))[0].classList.remove("app-hot")
+			$("#terminal").terminal().destroy()
+			return;
+		}
+		document.querySelectorAll(".minimized-"+element.slice(1))[0].classList.add("app-hot")
+		$('#terminal').terminal({
+			add: function (a, b) {
+				this.echo(a + b);
+			},
+			help: function () {
+				this.echo("Nice! Here's some basic commands you can use to get to know me a bit better.\n	- education \n	- skills \n	- about");
+			},
+			education: async function () {
+				this.echo("querying info...");
+				for (let i = 1; i < 8; i++) {
+					await sleep(Math.floor(Math.random() * 2000));
+					this.update(-1, "querying info (" + i + "/7)");
+				}
+				this.update(-1, "querying info (completed)");
+				this.echo(`information: \n	Current Grade: 8th \n	Current School: Northshore Middle School \n	Current Math: 12th grade \n	Current Science: HiCap \n	Current English: HiCap \n	Current History: HiCap`);
+			},
+			skills: async function () {
+				let element = $('<span>Skills: <br> Machine-Learning (tensorflow), JS, TS, Web dev, Violin/Piano, serverless stuff, computer vision. <br> Find out more about my skills <a href="#languages" onclick="changeLang(\'default\')">here</a></span>')
+				this.echo(element);
+			},
+			about: async function () {
+				let element = $('<span>Me in general: <br> I actively participate in <a href="https://devpost.com/Joshua-Zou" target="_blank">hackathons</a> and have a passion for creating big web-apps that benifit society as a whole. <br> I play violin and piano as my main instruments, <br> and also am interested in electrical engineering <br> Find out more about me <a href="#languages" onclick="changeLang(\'general\')">here</a></span>')
+				this.echo(element);
+			},
+		}, {
+			greetings: '(c) Joshua Zou. All rights reserved.\nWelcome to the terminal! To get started, type "help" for help',
+			name: 'terminal',
+			height: 200,
+			width: 450,
+			prompt: ' > '
+		});
+	}
+	function maximize(element){
+		document.querySelectorAll(element)[0].classList.add("smooth-transition");
+		document.querySelectorAll(element)[0].classList.toggle("maximized");
+		setTimeout(next, 500)
+		function next(){
+			document.querySelectorAll(element)[0].classList.remove("smooth-transition");
+		}
+	}
+	function minimize(element){
+		if (document.querySelectorAll(element)[0].classList.contains("minimized")){
+			document.querySelectorAll(".minimized-"+element.slice(1))[0].classList.add("app-hot")
+		}else{
+			document.querySelectorAll(".minimized-"+element.slice(1))[0].classList.remove("app-hot")
+		}
+		document.querySelectorAll(element)[0].classList.add("transform-transition");
+		document.querySelectorAll(element)[0].classList.toggle("minimized");
+		setTimeout(next, 500)
+		function next(){
+			document.querySelectorAll(element)[0].classList.remove("transform-transition");
+			if (document.querySelectorAll(element)[0].classList.contains("invisible")){ hide(element); minimize(element)}
+		}
+	}
