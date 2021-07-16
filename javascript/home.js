@@ -1,6 +1,8 @@
 
 
-
+var allApps = ["#terminal-container", "#bing-container"];
+window.openApps = {};
+window.hotApps = {};
 let camera, scene, renderer, parameters;
 let mouseX = 0, mouseY = 0;
 
@@ -235,11 +237,14 @@ document.addEventListener("keydown", function (key) {
 
 	}
 })
+// start of window apps things
 function hide(element) {
 	document.querySelectorAll(element)[0].classList.toggle("invisible");
-	document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.toggle("app-open");
 	if (document.querySelectorAll(element)[0].classList.contains("invisible")) {
-		document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.remove("app-hot")
+		//closing apps	
+		delete openApps[element];
+		delete hotApps[element];
+		manageTaskBar();
 		if (element === "#terminal-container") {
 			$("#terminal").terminal().destroy()
 		}else if (element === "#bing-container"){
@@ -247,7 +252,10 @@ function hide(element) {
 		}
 		return;
 	}
-	document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.add("app-hot")
+	// opening apps
+	openApps[element] = true;
+	hotApps[element] = true;
+	manageTaskBar();
 	if (element === "#terminal-container") {
 		$('#terminal').terminal({
 			add: function (a, b) {
@@ -298,11 +306,14 @@ function maximize(element) {
 }
 function minimize(element) {
 	if (document.querySelectorAll(element)[0].classList.contains("minimized")) {
-		document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.add("app-hot");
-		bringToTop(element)
+		// un-minimize apps
+		bringToTop(element);
+		hotApps[element] = true;
 	} else {
-		document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.remove("app-hot")
+		// minimize apps
+		delete hotApps[element]
 	}
+	manageTaskBar();
 	document.querySelectorAll(element)[0].classList.add("transform-transition");
 	document.querySelectorAll(element)[0].classList.toggle("minimized");
 	setTimeout(next, 500)
@@ -312,11 +323,12 @@ function minimize(element) {
 	}
 }
 function bringToTop(element) {
-	var allApps = ["#terminal-container", "#bing-container"];
 	for (let i = 0; i < allApps.length; i++) {
 		document.querySelectorAll(allApps[i])[0].style.zIndex = 5;
+		document.querySelectorAll(".minimized-" + allApps[i].slice(1))[0].classList.remove("app-hot")
 	}
 	document.querySelectorAll(element)[0].style.zIndex = 6;
+	document.querySelectorAll(".minimized-" + element.slice(1))[0].classList.add("app-hot")
 }
 
 function listenForClicks() {
@@ -336,3 +348,19 @@ window.addEventListener('mousedown', function(e){
 	listenForClicks();
 	}
   });
+function manageTaskBar(){
+	for (let p = 0; p<allApps.length; p++){
+		// looping through all elements
+		if (openApps[allApps[p]]){
+			document.querySelectorAll(".minimized-" + allApps[p].slice(1))[0].classList.add("app-open");
+		}else{
+			document.querySelectorAll(".minimized-" + allApps[p].slice(1))[0].classList.remove("app-open");
+		}
+
+		if (hotApps[allApps[p]]){
+			document.querySelectorAll(".minimized-" + allApps[p].slice(1))[0].classList.add("app-hot");
+		}else{
+			document.querySelectorAll(".minimized-" + allApps[p].slice(1))[0].classList.remove("app-hot");
+		}
+	}
+}
