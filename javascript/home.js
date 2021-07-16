@@ -342,7 +342,24 @@ function listenForClicks() {
 }
 
 listenForClicks();
-window.addEventListener('mousedown', function(e){   
+var lastClick = 0;
+var clickedInToc = false;
+window.addEventListener('mousedown', async function(e){   
+	if (window.screen.width < 501 && !e.target.classList.contains("pointer") && e.target.tagName !== "a" && e.target.onclick === null && e.target.tagName !== "g" && e.target.tagName !== "path" && e.target.tagName !== "rect" && !e.target.classList.contains("right-navbar")){
+		if (performance.now() - 1000 > lastClick){
+			document.querySelectorAll(".toc")[0].style.transform = "none";
+			lastClick = performance.now();
+			if (clickedInToc === false){
+				await sleep(2000);
+				if (clickedInToc === false){
+					document.querySelectorAll(".toc")[0].style = "";
+				}
+			}
+		}
+		lastClick = performance.now();
+	}
+	if (document.querySelectorAll(".toc")[0].contains(e.target)) clickedInToc = true;
+	else clickedInToc = false;
 	if (document.querySelectorAll("#bing-container iframe")[0] && document.querySelectorAll("#bing-container iframe")[0].contains(e.target)){
 	} else{
 	listenForClicks();
@@ -364,3 +381,17 @@ function manageTaskBar(){
 		}
 	}
 }
+
+document.addEventListener("scroll", function(event){
+	if (window.screen.width < 501) return;
+	if (checkVisible(document.querySelectorAll("#projects .project .medium-font")[0]) === true){
+		document.querySelectorAll(".toc")[0].style = "position: absolute; top: auto; transform: translate(0px, -250px);"
+	}else{
+		document.querySelectorAll(".toc")[0].style = "position: fixed";
+	}
+})
+function checkVisible(elm) {
+	var rect = elm.getBoundingClientRect();
+	var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+	return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+  }

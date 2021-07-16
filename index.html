@@ -470,6 +470,21 @@
 		</div>
 	</section>
 	<section id="projects" style="display: block;">
+		<div class="toc">
+			<span class="medium-font">Jump to:</span>
+			<ul style="list-style-type: none;">
+				<hr class="tree-vertical">
+				<li style="margin-top: 0;">── <a href="#introduction">Introduction</a></li>
+				<li>──| <a href="#languages">What I do</a>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a href="#languages"
+						onclick="changeLang('general')">In General</a></li>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a href="#languages"
+						onclick="changeLang('default')">Languages</a></li>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a href="#languages"
+						onclick="changeLang('tools')">Tools/Skills</a></li>
+				<li>── <a href="#projects">Projects</a></li>
+			</ul>
+		</div>
 		<div class="container">
 			<div class="top-projects">
 				<span class="extra-large-font">My top projects<br> </span>
@@ -851,18 +866,56 @@
 </html>
 
 <style>
+	.toc {
+		color: whitesmoke;
+		position: fixed;
+		left: 10px;
+		top: 40vh;
+		background-color: rgba(0, 0, 0, 0.5);
+		border-radius: 8px;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 5px;
+	}
+
+	.toc .tree-vertical {
+		bottom: 70px;
+		left: -5px;
+		width: 108px;
+		transform: rotate(90deg);
+		position: absolute;
+	}
+
+	.toc li {
+		margin-top: 7px;
+	}
+
+	.toc a {
+		border-bottom: .05em solid #b4e7f8;
+		box-shadow: inset 0 -0.05em 0 #b4e7f8;
+		color: inherit;
+		transition: background-color .25s cubic-bezier(.33, .66, .66, 1);
+		text-decoration: none;
+	}
+
+	.toc a:hover {
+		background-color: #C6E48B;
+		color: black;
+	}
+
 	.taskbar {
 		width: 40px;
 		border-radius: 50px;
 		left: 10px;
-		bottom: 40px;
+		bottom: 20vh;
 		position: fixed;
-		height: 50vh;
+		height: 110px;
+		padding-top: 25px;
 		background-color: rgba(0, 0, 0, 0.5);
 	}
 
 	.app-favicon {
-		margin-top: 30px;
+		margin-top: 1px;
 		padding: 10px;
 		border-radius: 2px;
 		transition: background-color 0.2s;
@@ -1068,6 +1121,15 @@
 	}
 
 	@media (max-width: 500px) {
+		.toc {
+			transform: translate(-100vw, 0);
+			transition: all 0.5s ease-in-out;
+			position: fixed;
+			left: 10px;
+			top: 40vh;
+			background-color: rgba(0, 0, 0, 0.8);
+		}
+
 		.taskbar {
 			display: none;
 		}
