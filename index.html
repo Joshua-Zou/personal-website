@@ -844,7 +844,8 @@
 				good.classList.add("paused");
 			})
 			social_elements[i].addEventListener("mouseleave", async function (res) {
-				let good = res.toElement || res.target;
+				console.log(res)
+				let good = res.fromElement || res.target;
 				good.classList.remove("paused");
 			})
 		}
