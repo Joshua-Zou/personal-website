@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
+	<link rel="stylesheet" href="./css/loader.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
 		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 	<meta property="og:title" content="Joshua Zou">
 	<meta property="og:locale" content="en_US">
 	<meta name="description"
@@ -17,17 +17,119 @@
 	<title>Joshua Zou</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Voltaire" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<script src="./main.js"></script>
 	<link rel="stylesheet" href="./index.css">
 	<link rel="stylesheet" href="./css/home.css">
 	<link rel="stylesheet" href="./fonts/syntax.css">
 	<script src="./javascript/rainbow.min.js"></script>
-
+	<!--preload stuff-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/js/jquery.terminal.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/css/jquery.terminal.min.css"
+		rel="stylesheet" />
 </head>
 
+
 <body style="background-color: #0C0032;">
+	<script type="module">
+		import interact from "https://cdn.interactjs.io/v1.10.11/interactjs/index.js"
+
+		dragElement(document.getElementById("terminal-container"));
+		interact('#terminal-container')
+			.resizable({
+				// resize from all edges and corners
+				edges: { left: true, right: true, bottom: true, top: false },
+
+				listeners: {
+					move(event) {
+						var target = event.target
+						var x = (parseFloat(target.getAttribute('data-x')) || 0)
+						var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+						// translate when resizing from top or left edges
+						x += event.deltaRect.left;
+						y += event.deltaRect.top;
+
+						target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+						// update the element's style
+						target.style.width = event.rect.width + 'px'
+						target.style.height = event.rect.height + 'px'
+
+						target.setAttribute('data-x', x)
+						target.setAttribute('data-y', y)
+					}
+				}
+			})
+		dragElement(document.getElementById("bing-container"));
+		interact('#bing-container')
+			.resizable({
+				// resize from all edges and corners
+				edges: { left: true, right: true, bottom: true, top: false },
+
+				listeners: {
+					move(event) {
+						var target = event.target
+						var x = (parseFloat(target.getAttribute('data-x')) || 0)
+						var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+						// update the element's style
+						target.style.width = event.rect.width + 'px'
+						target.style.height = event.rect.height + 'px'
+
+						// translate when resizing from top or left edges
+						x += event.deltaRect.left
+						y += event.deltaRect.top
+						target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+
+
+						target.setAttribute('data-x', x)
+						target.setAttribute('data-y', y)
+					}
+				}
+			})
+	</script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Voltaire" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="preload" as="image" href="https://ghchart.rshah.org/joshua-zou">
+	<div id="loader-wrapper">
+		<div id="loader">
+			<div class="loader-content">
+				<div class="loaderbars" style="display: none;">
+					<div class="loader__bar"></div>
+					<div class="loader__bar"></div>
+					<div class="loader__bar"></div>
+					<div class="loader__bar"></div>
+					<div class="loader__bar"></div>
+					<div class="loader__ball"></div>
+				</div>
+				<div class="text">
+					Joshua is thinking...
+				</div>
+				<div class="startup-mask"></div>
+			</div>
+		</div>
+
+		<div class="loader-section section-left"></div>
+		<div class="loader-section section-right"></div>
+
+	</div>
+	<script>
+		document.getElementsByClassName("loaderbars")[0].style.display = "block"
+		setTimeout(next, 10)
+		function next() {
+			document.getElementsByClassName("loaderbars")[0].classList.add('moveup')
+		}
+		let intialized = performance.now();
+		$(document).ready(function () {
+			$('body').addClass('loaded');
+			let now = performance.now();
+			if (now - intialized < 1000) {
+				document.querySelectorAll(".loader-section")[0].style.display = "none";
+				document.querySelectorAll(".loader-section")[1].style.display = "none";
+				document.getElementsByClassName("loaderbars")[0].style.display = "none"
+			}
+		});
+	</script>
 	<section id="background-canvas" width="100%" height="100%" style=""></section>
 	<header>
 		<div class="big-screen">
@@ -92,16 +194,20 @@
 			<div class="container">
 				<span class="medium-font center-text">Social<br></span>
 				<div class="break big-break"></div>
-				<a href="mailto:joshyzou@gmail.com" class="fab fa-google"></a>
-				<a href="https://www.linkedin.com/in/joshua-zou/" target="_blank" class="fab fa-linkedin"></a>
+				<a href="mailto:joshyzou@gmail.com" class="fab fa-google" title="email me!"></a>
+				<a href="https://www.linkedin.com/in/joshua-zou/" target="_blank" class="fab fa-linkedin"
+					title="my linkedin profile"></a>
 				<a href="https://www.youtube.com/channel/UCx2dyCalB7m_d8M2ZB8Oj7A" target="_blank"
-					class="fab fa-youtube"></a>
+					class="fab fa-youtube" title="my youtube channel"></a>
 				<a href="https://github.com/Joshua-Zou#want-to-support-me" target="_blank"
 					title="currently only accepting crypto" class="fas fa-donate"></a>
-				<a href="https://github.com/Joshua-Zou" target="_blank" class="fab fa-github"></a>
-				<a href="https://top.gg/user/741793729509064704" target="_blank" class="fas fa-robot"></a>
-				<a href="https://devpost.com/Joshua-Zou" target="_blank" class="fas fa-devpost"><img
-						src="./images/devpost.svg" style="    left: -6.5px; position: relative; top: 2px;"></a>
+				<a href="https://github.com/Joshua-Zou" target="_blank" class="fab fa-github"
+					title="where I post all of my code"></a>
+				<a href="https://top.gg/user/741793729509064704" target="_blank" class="fas fa-robot"
+					title="where I post my bots"></a>
+				<a href="https://devpost.com/Joshua-Zou" target="_blank" class="fas fa-devpost"
+					title="my hackathon profile"><img src="./images/devpost.svg"
+						style="    left: -6.5px; position: relative; top: 2px;"></a>
 
 			</div>
 		</div>
@@ -184,6 +290,18 @@
 									<path
 										d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.11-7.11a7.133 7.133 0 016.156 3.553l-3.076 1.78a3.567 3.567 0 00-3.08-1.78A3.56 3.56 0 008.444 12 3.56 3.56 0 0012 15.555a3.57 3.57 0 003.08-1.778l3.078 1.78A7.135 7.135 0 0112 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z" />
 								</svg><br><span>C++</span></li>
+							<li class="single-language"><svg style="border: 2px solid whitesmoke; border-radius: 5px;"
+									class="languagelistsvgs ejs" width="492.7" height="78" viewBox="0 0 492.7 78"
+									xmlns="http://www.w3.org/2000/svg">
+									<g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt"
+										stroke="#000" stroke-width="0.25mm" fill="none"
+										style="stroke:rgb(255, 255, 255);stroke-width:0.25mm;fill:white">
+										<path
+											d="M 207.7 74 L 207.7 4 L 249.7 4 L 249.7 12.2 L 217.2 12.2 L 217.2 33.5 L 245.2 33.5 L 245.2 41.5 L 217.2 41.5 L 217.2 65.8 L 249.7 65.8 L 249.7 74 L 207.7 74 Z M 300.2 68.1 L 305 60.1 Q 308.6 63.1 313.1 65 A 23.348 23.348 0 0 0 318.47 66.51 A 32.118 32.118 0 0 0 323.6 66.9 A 27.981 27.981 0 0 0 328.147 66.554 Q 330.57 66.154 332.531 65.293 A 13.701 13.701 0 0 0 335 63.9 Q 339.048 61.008 339.195 56.166 A 12.116 12.116 0 0 0 339.2 55.8 Q 339.2 53.7 338.6 51.9 A 7.214 7.214 0 0 0 337.638 50.03 Q 337.07 49.223 336.25 48.45 Q 334.979 47.251 332.968 46.052 A 33.644 33.644 0 0 0 331.35 45.15 A 51.221 51.221 0 0 0 328.847 43.932 Q 326.403 42.817 323.2 41.6 Q 319.066 39.992 315.898 38.414 A 55.037 55.037 0 0 1 314.05 37.45 A 29.576 29.576 0 0 1 311.046 35.58 Q 309.294 34.328 308 32.95 A 15.293 15.293 0 0 1 305.387 29.214 A 13.936 13.936 0 0 1 304.7 27.55 A 18.339 18.339 0 0 1 303.905 24.069 A 24.866 24.866 0 0 1 303.7 20.8 Q 303.7 17.1 305.25 13.8 A 15.944 15.944 0 0 1 309.291 8.517 A 18.684 18.684 0 0 1 309.85 8.05 A 20.424 20.424 0 0 1 313.965 5.511 A 26.899 26.899 0 0 1 317.35 4.2 A 29.368 29.368 0 0 1 322.431 3.108 A 39.853 39.853 0 0 1 327.5 2.8 A 52.816 52.816 0 0 1 333.201 3.093 A 38.808 38.808 0 0 1 338.6 4.05 Q 343.5 5.3 348.3 7.6 L 344.8 15.7 A 31.496 31.496 0 0 0 340.674 13.681 A 41.686 41.686 0 0 0 336.85 12.35 Q 332.3 11 327.3 11 A 27.711 27.711 0 0 0 323.27 11.275 Q 319.453 11.837 316.9 13.55 A 9.496 9.496 0 0 0 314.679 15.571 A 7.461 7.461 0 0 0 313.1 20.3 A 12.395 12.395 0 0 0 313.229 22.132 A 9.192 9.192 0 0 0 313.65 23.85 A 5.878 5.878 0 0 0 314.407 25.281 Q 314.827 25.874 315.419 26.451 A 11.219 11.219 0 0 0 315.85 26.85 Q 317.046 27.901 318.925 28.978 A 34.591 34.591 0 0 0 320.45 29.8 A 46.93 46.93 0 0 0 322.709 30.867 Q 325.084 31.919 328.3 33.1 A 89.068 89.068 0 0 1 332.715 34.904 Q 335.725 36.234 338.1 37.6 A 33.937 33.937 0 0 1 341.19 39.594 Q 342.692 40.69 343.867 41.847 A 19.029 19.029 0 0 1 344.5 42.5 A 17.193 17.193 0 0 1 346.924 45.817 A 14.737 14.737 0 0 1 347.95 48.1 A 18.723 18.723 0 0 1 348.897 52.509 A 22.892 22.892 0 0 1 349 54.7 Q 349 59.6 347.1 63.4 Q 345.2 67.2 341.85 69.85 A 21.611 21.611 0 0 1 336.672 72.852 A 26.983 26.983 0 0 1 333.8 73.85 A 34.832 34.832 0 0 1 326.959 75.068 A 41.937 41.937 0 0 1 323.6 75.2 Q 316.3 75.2 310.3 73.25 A 38.206 38.206 0 0 1 304.933 71.068 A 28.433 28.433 0 0 1 300.2 68.1 Z M 279.7 51.9 L 279.7 4 L 289.2 4 L 289.2 50.9 Q 289.2 57.3 287.8 61.9 A 24.005 24.005 0 0 1 286.285 65.73 A 17.54 17.54 0 0 1 283.8 69.45 Q 281.2 72.4 277.6 73.8 A 20.59 20.59 0 0 1 272.272 75.063 A 25.479 25.479 0 0 1 269.6 75.2 A 23.443 23.443 0 0 1 261.522 73.817 A 22.405 22.405 0 0 1 260.95 73.6 A 22.827 22.827 0 0 1 257.028 71.618 A 18.183 18.183 0 0 1 254.2 69.4 L 258.8 62.1 A 16.858 16.858 0 0 0 262.87 65.216 A 19.43 19.43 0 0 0 263.6 65.6 A 13.114 13.114 0 0 0 267.475 66.86 A 11.941 11.941 0 0 0 269.3 67 A 10.924 10.924 0 0 0 272.745 66.481 A 8.933 8.933 0 0 0 276.9 63.6 A 9.628 9.628 0 0 0 278.436 60.841 Q 279.7 57.477 279.7 51.9 Z M 74.6 78 L 68.6 74.2 L 112.3 0 L 118.3 3.8 L 74.6 78 Z M 379.9 78 L 373.9 74.2 L 417.6 0 L 423.6 3.8 L 379.9 78 Z M 10.5 39.7 L 36.4 55.5 L 31.9 62.6 L 0 42.6 L 0 36.9 L 32 16.8 L 36.4 23.8 L 10.5 39.7 Z M 456.3 23.8 L 460.7 16.8 L 492.7 36.9 L 492.7 42.6 L 460.8 62.6 L 456.3 55.5 L 482.2 39.7 L 456.3 23.8 Z M 86.27 31.051 A 39.969 39.969 0 0 0 86.7 25 A 42.495 42.495 0 0 0 86.502 20.797 Q 85.766 13.4 82.3 8.95 A 13.967 13.967 0 0 0 74.845 3.968 A 19.47 19.47 0 0 0 69.6 3.3 A 21.245 21.245 0 0 0 66.389 3.533 A 14.282 14.282 0 0 0 56.9 8.95 Q 53.875 12.834 52.93 18.964 A 39.678 39.678 0 0 0 52.5 25 Q 52.5 30.906 53.861 35.31 A 19.373 19.373 0 0 0 56.8 41.25 A 13.641 13.641 0 0 0 64.264 46.336 A 19.451 19.451 0 0 0 69.5 47 A 21.352 21.352 0 0 0 72.539 46.792 A 14.289 14.289 0 0 0 82.3 41.2 A 18.59 18.59 0 0 0 84.679 36.984 Q 85.768 34.324 86.27 31.051 Z M 391.57 31.051 A 39.969 39.969 0 0 0 392 25 A 42.495 42.495 0 0 0 391.802 20.797 Q 391.066 13.4 387.6 8.95 A 13.967 13.967 0 0 0 380.145 3.968 A 19.47 19.47 0 0 0 374.9 3.3 A 21.245 21.245 0 0 0 371.689 3.533 A 14.282 14.282 0 0 0 362.2 8.95 Q 359.175 12.834 358.23 18.964 A 39.678 39.678 0 0 0 357.8 25 Q 357.8 30.906 359.161 35.31 A 19.373 19.373 0 0 0 362.1 41.25 A 13.641 13.641 0 0 0 369.564 46.336 A 19.451 19.451 0 0 0 374.8 47 A 21.352 21.352 0 0 0 377.839 46.792 A 14.289 14.289 0 0 0 387.6 41.2 A 18.59 18.59 0 0 0 389.979 36.984 Q 391.068 34.324 391.57 31.051 Z M 134.47 58.651 A 39.969 39.969 0 0 0 134.9 52.6 A 42.495 42.495 0 0 0 134.702 48.397 Q 133.966 41 130.5 36.55 A 13.967 13.967 0 0 0 123.045 31.568 A 19.47 19.47 0 0 0 117.8 30.9 A 21.245 21.245 0 0 0 114.589 31.133 A 14.282 14.282 0 0 0 105.1 36.55 Q 102.075 40.434 101.13 46.564 A 39.678 39.678 0 0 0 100.7 52.6 Q 100.7 58.506 102.061 62.91 A 19.373 19.373 0 0 0 105 68.85 A 13.641 13.641 0 0 0 112.464 73.936 A 19.451 19.451 0 0 0 117.7 74.6 A 21.352 21.352 0 0 0 120.739 74.392 A 14.289 14.289 0 0 0 130.5 68.8 A 18.59 18.59 0 0 0 132.879 64.584 Q 133.968 61.924 134.47 58.651 Z M 439.77 58.651 A 39.969 39.969 0 0 0 440.2 52.6 A 42.495 42.495 0 0 0 440.002 48.397 Q 439.266 41 435.8 36.55 A 13.967 13.967 0 0 0 428.345 31.568 A 19.47 19.47 0 0 0 423.1 30.9 A 21.245 21.245 0 0 0 419.889 31.133 A 14.282 14.282 0 0 0 410.4 36.55 Q 407.375 40.434 406.43 46.564 A 39.678 39.678 0 0 0 406 52.6 Q 406 58.506 407.361 62.91 A 19.373 19.373 0 0 0 410.3 68.85 A 13.641 13.641 0 0 0 417.764 73.936 A 19.451 19.451 0 0 0 423 74.6 A 21.352 21.352 0 0 0 426.039 74.392 A 14.289 14.289 0 0 0 435.8 68.8 A 18.59 18.59 0 0 0 438.179 64.584 Q 439.268 61.924 439.77 58.651 Z M 188.4 34.5 L 149 34.5 L 149 26.6 L 188.4 26.6 L 188.4 34.5 Z M 188.4 52.7 L 149 52.7 L 149 44.8 L 188.4 44.8 L 188.4 52.7 Z M 76.444 14.315 A 10.718 10.718 0 0 0 76.1 13.7 A 8.439 8.439 0 0 0 74.141 11.422 Q 72.356 10.007 69.879 9.908 A 9.439 9.439 0 0 0 69.5 9.9 A 7.993 7.993 0 0 0 66.387 10.485 Q 64.439 11.3 63.1 13.25 Q 60.8 16.6 60.8 25 A 39.3 39.3 0 0 0 61.003 29.136 Q 61.449 33.34 62.878 36.006 A 11.114 11.114 0 0 0 63.1 36.4 A 8.876 8.876 0 0 0 64.883 38.6 A 6.92 6.92 0 0 0 69.6 40.3 A 9.432 9.432 0 0 0 71.704 40.074 A 7.675 7.675 0 0 0 73.35 39.5 A 6.212 6.212 0 0 0 75.438 37.833 A 8.068 8.068 0 0 0 76.1 36.9 A 10.895 10.895 0 0 0 76.911 35.256 Q 77.444 33.922 77.8 32.2 Q 78.4 29.3 78.4 25 Q 78.4 18.084 76.444 14.315 Z M 381.744 14.315 A 10.718 10.718 0 0 0 381.4 13.7 A 8.439 8.439 0 0 0 379.441 11.422 Q 377.656 10.007 375.179 9.908 A 9.439 9.439 0 0 0 374.8 9.9 A 7.993 7.993 0 0 0 371.687 10.485 Q 369.739 11.3 368.4 13.25 Q 366.1 16.6 366.1 25 A 39.3 39.3 0 0 0 366.303 29.136 Q 366.749 33.34 368.178 36.006 A 11.114 11.114 0 0 0 368.4 36.4 A 8.876 8.876 0 0 0 370.183 38.6 A 6.92 6.92 0 0 0 374.9 40.3 A 9.432 9.432 0 0 0 377.004 40.074 A 7.675 7.675 0 0 0 378.65 39.5 A 6.212 6.212 0 0 0 380.738 37.833 A 8.068 8.068 0 0 0 381.4 36.9 A 10.895 10.895 0 0 0 382.211 35.256 Q 382.744 33.922 383.1 32.2 Q 383.7 29.3 383.7 25 Q 383.7 18.084 381.744 14.315 Z M 124.644 41.915 A 10.718 10.718 0 0 0 124.3 41.3 A 8.439 8.439 0 0 0 122.341 39.022 Q 120.556 37.607 118.079 37.508 A 9.439 9.439 0 0 0 117.7 37.5 A 7.993 7.993 0 0 0 114.587 38.085 Q 112.639 38.9 111.3 40.85 Q 109 44.2 109 52.6 A 39.3 39.3 0 0 0 109.203 56.736 Q 109.649 60.94 111.078 63.606 A 11.114 11.114 0 0 0 111.3 64 A 8.876 8.876 0 0 0 113.083 66.2 A 6.92 6.92 0 0 0 117.8 67.9 A 9.432 9.432 0 0 0 119.904 67.674 A 7.675 7.675 0 0 0 121.55 67.1 A 6.212 6.212 0 0 0 123.638 65.433 A 8.068 8.068 0 0 0 124.3 64.5 A 10.895 10.895 0 0 0 125.111 62.856 Q 125.644 61.522 126 59.8 Q 126.6 56.9 126.6 52.6 Q 126.6 45.684 124.644 41.915 Z M 429.944 41.915 A 10.718 10.718 0 0 0 429.6 41.3 A 8.439 8.439 0 0 0 427.641 39.022 Q 425.856 37.607 423.379 37.508 A 9.439 9.439 0 0 0 423 37.5 A 7.993 7.993 0 0 0 419.887 38.085 Q 417.939 38.9 416.6 40.85 Q 414.3 44.2 414.3 52.6 A 39.3 39.3 0 0 0 414.503 56.736 Q 414.949 60.94 416.378 63.606 A 11.114 11.114 0 0 0 416.6 64 A 8.876 8.876 0 0 0 418.383 66.2 A 6.92 6.92 0 0 0 423.1 67.9 A 9.432 9.432 0 0 0 425.204 67.674 A 7.675 7.675 0 0 0 426.85 67.1 A 6.212 6.212 0 0 0 428.938 65.433 A 8.068 8.068 0 0 0 429.6 64.5 A 10.895 10.895 0 0 0 430.411 62.856 Q 430.944 61.522 431.3 59.8 Q 431.9 56.9 431.9 52.6 Q 431.9 45.684 429.944 41.915 Z"
+											vector-effect="non-scaling-stroke" />
+									</g>
+								</svg><br><span>EJS</span></li>
+
 							<li class="single-language"><svg class="languagelistsvgs node" viewBox="0 0 24 24"
 									xmlns="http://www.w3.org/2000/svg">
 									<path
@@ -270,6 +388,72 @@
 										d="M3.89 15.672L6.255.461A.542.542 0 017.27.288l2.543 4.771zm16.794 3.692l-2.25-14a.54.54 0 00-.919-.295L3.316 19.365l7.856 4.427a1.621 1.621 0 001.588 0zM14.3 7.147l-1.82-3.482a.542.542 0 00-.96 0L3.53 17.984z" />
 								</svg><span>Firebase</span>
 							</li>
+							<li class="single-language">
+								<svg class="languagelistsvgs security" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M11.9914 0a.8829.8829 0 00-.8718.817v3.0209A.8829.8829 0 0012 4.7207a.8829.8829 0 00.8803-.8803V.817a.8829.8829 0 00-.889-.817zm7.7048 3.1089a.8804.8804 0 00-.5214.1742l-2.374 1.9482a.8804.8804 0 00.5592 1.5622.8794.8794 0 00.5592-.2001l2.3714-1.9506a.8804.8804 0 00-.5944-1.534zm-15.3763.0133a.8829.8829 0 00-.611 1.5206l2.37 1.9506a.876.876 0 00.5606.2001v-.002a.8804.8804 0 00.5597-1.5602L4.8277 3.2831a.8829.8829 0 00-.5078-.161zm7.6598 3.2275a5.0456 5.0456 0 00-5.0262 5.0455v1.4876H5.787a.9672.9672 0 00-.9647.9643v9.1887a.9672.9672 0 00.9647.9643H18.213a.9672.9672 0 00.9643-.9643v-9.1907a.9672.9672 0 00-.9643-.9623h-1.1684v-1.4876a5.0456 5.0456 0 00-5.0649-5.0455zm.0127 2.8933a2.1522 2.1522 0 012.1593 2.1522v1.4876H9.8473v-1.4876a2.1522 2.1522 0 012.145-2.1522zm7.3812.5033a.8829.8829 0 10.0705 1.7632h3.0267a.8829.8829 0 000-1.7609H19.444a.8829.8829 0 00-.0705-.0023zm-17.8444.0023a.8829.8829 0 000 1.7609h2.9983a.8829.8829 0 000-1.7609zm10.4596 6.7746a1.2792 1.2792 0 01.641 2.3926v1.2453a.6298.6298 0 01-1.2595 0v-1.2453a1.2792 1.2792 0 01.6185-2.3926z" />
+								</svg><span style="font-size: 10px;">Information security</span>
+							</li>
+							<li class="single-language">
+								<svg class="languagelistsvgs github" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M24 18.588a1.529 1.529 0 01-1.895-.72l-3.45-4.771-.5-.667-4.003 5.444a1.466 1.466 0 01-1.802.708l5.158-6.92-4.798-6.251a1.595 1.595 0 011.9.666l3.576 4.83 3.596-4.81a1.435 1.435 0 011.788-.668L21.708 7.9l-2.522 3.283a.666.666 0 000 .994l4.804 6.412zM.002 11.576l.42-2.075c1.154-4.103 5.858-5.81 9.094-3.27 1.895 1.489 2.368 3.597 2.275 5.973H1.116C.943 16.447 4.005 19.009 7.92 17.7a4.078 4.078 0 002.582-2.876c.207-.666.548-.78 1.174-.588a5.417 5.417 0 01-2.589 3.957 6.272 6.272 0 01-7.306-.933 6.575 6.575 0 01-1.64-3.858c0-.235-.08-.455-.134-.666A88.33 88.33 0 010 11.577zm1.127-.286h9.654c-.06-3.076-2.001-5.258-4.59-5.278-2.882-.04-4.944 2.094-5.071 5.264z" />
+								</svg><span>Express js</span>
+							</li>
+							<li class="single-language">
+								<svg version="1.1" class="languagelistsvgs violin" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									viewBox="0 0 470.544 470.544" style="enable-background:new 0 0 470.544 470.544;"
+									xml:space="preserve">
+									<g>
+										<path d="M145.409,274.928c2.93,2.928,7.678,2.928,10.607,0c2.929-2.93,2.929-7.678,0-10.607
+		c-3.759-3.757-11.847-9.205-23.813-3.463c-6.341,3.044-12.431,8.507-18.32,13.791c-5.104,4.579-10.384,9.315-14.793,11.432
+		c-3.87,1.857-5.223,0.945-6.714-0.546c-2.929-2.929-7.678-2.93-10.606-0.001c-2.93,2.929-2.93,7.678-0.001,10.606
+		c2.582,2.582,7.209,5.962,13.732,5.962c2.971,0,6.335-0.701,10.079-2.498c6.341-3.043,12.431-8.507,18.319-13.79
+		c5.105-4.58,10.385-9.316,14.794-11.433C142.565,272.523,143.918,273.436,145.409,274.928z" />
+										<path d="M195.613,314.525c-2.929,2.93-2.929,7.678,0,10.607c1.491,1.491,2.403,2.846,0.547,6.715
+		c-2.116,4.409-6.853,9.688-11.433,14.794c-5.283,5.889-10.747,11.979-13.79,18.319c-5.741,11.964-0.295,20.054,3.464,23.812
+		c1.464,1.464,3.384,2.196,5.303,2.196s3.839-0.732,5.304-2.197c2.929-2.929,2.929-7.678-0.001-10.606
+		c-1.49-1.491-2.402-2.845-0.546-6.714c2.116-4.409,6.853-9.688,11.432-14.793c5.284-5.89,10.747-11.979,13.791-18.32
+		c5.741-11.964,0.295-20.055-3.463-23.813C203.291,311.597,198.543,311.597,195.613,314.525z" />
+										<path
+											d="M176.46,335.801c2.929-2.93,2.929-7.678,0-10.607l-31.112-31.112c-2.93-2.928-7.678-2.928-10.607,0
+		c-2.929,2.93-2.929,7.678,0,10.607l31.112,31.112c1.465,1.464,3.385,2.196,5.304,2.196S174.995,337.265,176.46,335.801z" />
+										<path
+											d="M468.346,30.48L440.062,2.196c-2.93-2.928-7.678-2.928-10.607,0l-8.838,8.838l-1.768-1.768
+		c-2.93-2.928-7.678-2.928-10.607,0c-2.929,2.93-2.929,7.678,0,10.607l1.768,1.768l-8.839,8.839c-2.266,2.267-2.771,5.621-1.53,8.38
+		l-11.92,11.404l-16.026-16.026c-2.929-2.93-7.678-2.929-10.606-0.001c-2.93,2.929-2.93,7.678-0.001,10.606l15.792,15.792
+		l-74.353,71.132c-18.062-11.117-38.737-16.7-60.203-16.172c-23.614,0.588-45.929,8.519-64.53,22.935
+		c-2.183,1.691-3.259,4.445-2.802,7.169c4.246,25.298-4.019,51.201-22.109,69.292c-23.046,23.048-58.549,29.629-88.341,16.379
+		c-2.367-1.054-5.112-0.81-7.257,0.645c-6.828,4.63-13.263,9.95-19.125,15.813c-48.091,48.092-50.719,124.681-7.904,175.9
+		c0.027,0.033,0.054,0.065,0.081,0.097c2.461,2.938,5.063,5.798,7.823,8.559c25.441,25.44,58.859,38.161,92.278,38.161
+		c33.418,0,66.836-12.721,92.277-38.161c5.865-5.865,11.185-12.3,15.813-19.125c1.454-2.146,1.698-4.889,0.645-7.257
+		c-13.25-29.792-6.668-65.294,16.38-88.341c18.089-18.09,43.993-26.355,69.29-22.108c2.726,0.455,5.479-0.62,7.17-2.802
+		c14.416-18.602,22.347-40.916,22.935-64.53c0.533-21.462-5.054-42.142-16.172-60.204l78.738-82.304l15.793,15.792
+		c1.464,1.464,3.384,2.196,5.303,2.196s3.839-0.732,5.304-2.197c2.929-2.929,2.929-7.678-0.001-10.606l-16.027-16.026l3.798-3.97
+		c0.977,0.439,2.025,0.667,3.076,0.667c1.919,0,3.839-0.732,5.304-2.196l8.839-8.839l1.768,1.768
+		c1.465,1.464,3.385,2.196,5.304,2.196s3.839-0.732,5.304-2.196c2.929-2.93,2.929-7.678,0-10.607l-1.768-1.768l8.838-8.838
+		C471.275,38.158,471.275,33.41,468.346,30.48z M395.84,86.668l-11.966-11.966l26.019-24.892l10.839,10.839L395.84,86.668z
+		 M48.766,421.776c-0.994-0.995-1.959-2.007-2.91-3.029l53.381-66.707l19.264,19.264l-66.707,53.381
+		C50.773,423.735,49.76,422.771,48.766,421.776z M322.71,280.101c-28.589-3.353-57.353,6.538-77.767,26.952
+		c-13.751,13.751-22.8,31.109-26.168,50.196c-3.039,17.219-1.298,34.714,5.027,50.869c-3.527,4.83-7.45,9.411-11.696,13.657
+		c-40.344,40.347-103.349,44.54-148.412,12.598l70.72-56.593c1.666-1.332,2.686-3.312,2.803-5.441
+		c0.118-2.13-0.677-4.209-2.185-5.718l-31.112-31.112c-1.509-1.508-3.582-2.299-5.718-2.185c-2.13,0.117-4.109,1.137-5.441,2.803
+		l-56.593,70.72C4.227,361.783,8.422,298.778,48.766,258.434c4.244-4.244,8.825-8.167,13.657-11.695
+		c16.156,6.326,33.654,8.065,50.869,5.028c19.088-3.369,36.445-12.418,50.196-26.169c20.414-20.414,30.308-49.186,26.953-77.767
+		c29.621-20.823,69.353-22.731,100.808-5.276L176.287,252.538c-1.458,1.395-2.293,3.318-2.315,5.336
+		c-0.021,2.018,0.77,3.959,2.196,5.387l31.113,31.113c1.408,1.407,3.315,2.196,5.304,2.196h0.083
+		c2.018-0.022,3.941-0.857,5.336-2.315l47.966-50.138c2.864-2.993,2.759-7.74-0.234-10.604c-2.993-2.864-7.741-2.76-10.604,0.234
+		l-42.666,44.597l-20.269-20.269l116.384-111.343c0.022-0.021,64.451-61.659,64.451-61.659l12.436,12.436l-61.632,64.423
+		c-0.033,0.035-47.966,50.138-47.966,50.138c-2.864,2.993-2.759,7.74,0.234,10.604c1.453,1.391,3.319,2.081,5.184,2.081
+		c1.975,0,3.947-0.775,5.42-2.315l41.278-43.147C345.442,210.748,343.534,250.48,322.71,280.101z M434.758,53.461L417.08,35.784
+		l8.83-8.83c0.019-0.02,8.848-8.848,8.848-8.848l17.678,17.678l-8.829,8.829C443.588,44.632,434.758,53.461,434.758,53.461z" />
+									</g>
+								</svg>
+								<span>Violin</span>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -281,15 +465,251 @@
 				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"><i
 					class="fas fa-external-link-alt"></i></div>
 			<img src="https://ghchart.rshah.org/joshua-zou"
-				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')">
+				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"
+				alt="my github contributions">
 		</div>
 	</section>
 	<section id="projects" style="display: block;">
-		<div class="top-projects">
-			<!--put top projects here like elon discord bot or whatever (has to be finished)-->
+		<div class="toc">
+			<span class="medium-font">Jump to:</span>
+			<ul style="list-style-type: none;">
+				<hr class="tree-vertical">
+				<li style="margin-top: 0;">── <a href="#introduction">Introduction</a></li>
+				<li>──| <a href="#languages">What I do</a>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a href="#languages"
+						onclick="changeLang('general')">In General</a></li>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a href="#languages"
+						onclick="changeLang('default')">Languages</a></li>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a href="#languages"
+						onclick="changeLang('tools')">Tools/Skills</a></li>
+				<li>── <a href="#projects">Projects</a></li>
+			</ul>
 		</div>
-		<div class="project-status">
-			<!--put project progress bars on random projects that I'm working on-->
+		<div class="container">
+			<div class="top-projects">
+				<span class="extra-large-font">My top projects<br> </span>
+				<span class="medium-font">Big projects that I'm (maybe) known for online&nbsp; &nbsp; </span>
+				<a href="./projects.html">View all <i class="fas fa-arrow-right"></i></a>
+				<div class="projects">
+					<div class="project">
+						<img src="./images/cointunnel.png" alt="Coin Tunnel">
+						<span class="medium-font project-name">Coin Tunnel</span>
+						<span class="project-desc">An easy to use, open source cryptocurrency payment system</span>
+						<br>
+						<span class="project-desc">Buyers can either signup, connect their wallet directly, and start
+							buying things effortlessly</span>
+						<span class="project-desc">Or, they can deposit money into a temporary wallet which which is
+							then transfered to the merchant</span>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou/coin-tunnel" target="_blank">Repo</a>
+							|
+							<a href="https://www.coin-tunnel.ml" target="_blank">Live website</a>
+							|
+							<a href="https://docs.coin-tunnel.ml" target="_blank">Documentation</a>
+						</div>
+					</div>
+					<div class="project">
+						<img src="https://gblobscdn.gitbook.com/spaces%2F-MXjhgAAyxeiuxSX73pG%2Favatar-1617902456687.png?alt=media"
+							style="border-radius: 20px; width: 130px;" alt="Open Skin">
+						<br>
+
+						<span class="medium-font project-name">Open Skin</span>
+						<span class="project-desc">Open Skin is a machine learning application that can identify many
+							types of skin diseases</span>
+						<br>
+						<span class="project-desc">Open Skin is built on tensorflow JS and can be used either with an
+							API, (image sizes are limited) or downloaded locally</span>
+						<br>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou/Skin-Server" target="_blank">Repo</a>
+							|
+							<a href="https://www.openskin.ml/" target="_blank">Live website</a>
+							|
+							<a href="https://docs.openskin.ml/" target="_blank">Documentation</a>
+							|
+							<a href="https://ai-skin-server.herokuapp.com" target="_blank">API endpoint</a>
+							|
+							<a href="https://www.npmjs.com/package/@joshyzou/localskinconditiondetector">NPM package</a>
+						</div>
+					</div>
+					<div class="project">
+						<img src="./images/elonbot.png" style="width: 130px; border-radius: 20px;"
+							alt="Elon Discord Bot">
+						<br>
+						<span class="medium-font project-name">Elon Bot</span>
+						<span class="project-desc" style="font-family: 'fira code'; font-size: 13px;">Yeah... this one's
+							a bit strange</span>
+						<span class="project-desc">Elon Bot is a discord bot that has a currency system built on doge,
+							with a stock/crypto exchange with real, live market data.</span>
+						<br>
+						<span class="project-desc">Users can build their profile by getting a job, working, aquiring
+							different crypto, stocks (all of Elon's), and suing/laundering money.</span>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou/elonbot" target="_blank">Repo</a>
+							|
+							<a href="https://www.elon-bot.ml" target="_blank">Live website</a>
+							|
+							<a href="https://discord.com/oauth2/authorize?client_id=824730559779045417&permissions=8&scope=bot"
+								target="_blank">Invite bot</a>
+							|
+							<a href="https://devpost.com/software/elon-discord-bot" target="_blank">Devpost</a>
+							|
+							<a href="https://top.gg/bot/824730559779045417" target="_blank">Top.gg</a>
+						</div>
+					</div>
+					<div class="project">
+						<img src="./images/unitybot.png" style="width: 130px; border-radius: 20px;"
+							alt="Unity Discord Bot">
+						<span class="medium-font project-name">Unity Bot</span>
+						<span class="project-desc">What's up with all these discord bots?</span>
+						<br>
+						<span class="project-desc">Unity Discord bot allows Discord server owners to not worry about
+							NSFW content being posted!</span>
+						<span class="project-desc">It uses machine learning to recognize NSFW content and automatically
+							delete it with user customizable thresholds</span>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou/DiscordNsfwImageDetector" target="_blank">Repo</a>
+							|
+							<a href="https://discord.com/api/oauth2/authorize?client_id=811668584559935488&permissions=2147483639&redirect_uri=https%3A%2F%2Fgmail.com&scope=bot"
+								target="_blank">Invite</a>
+							|
+							<a href="https://devpost.com/software/unity-aeqlpv" target="_blank">Devpost</a>
+							|
+							<a href="https://top.gg/bot/811668584559935488" target="_blank">Top.gg</a>
+						</div>
+					</div>
+					<div class="project">
+						<img src="./images/meme.png" title=".meme file format">
+						<span class="medium-font project-name">.meme</span>
+						<span class="project-desc">Then next image file format</span>
+						<br>
+						<span class="project-desc">Wether it be .gif, .png, or any file format, they all have one
+							problem. Static areas like text will always have data space allocated towards them (extra
+							frames)</span>
+						<br>
+						<span class="project-desc">.meme solves that with a big json file (like all things in
+							life)</span>
+						<div class="project-resources">
+							<hr>
+							<span class="medium-font project-name">Resources</span>
+							<br>
+							<a href="https://github.com/Joshua-Zou" target="_blank">Repo</a>
+							|
+							<a href="https://joshua-zou.github.io/.meme/" target="_blank">Demo</a>
+							|
+							<a href="https://github.com/Joshua-Zou/.meme#meme---the-best-file-format-for-viewing-memes"
+								target="_blank">Documentation</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<hr>
+			<div class="project-status">
+				<br>
+				<span class="extra-large-font">Works in progress</span>
+				<br>
+				<span class="medium-font">Projects/stuff that I'm currently working on</span>
+				<div class="projectprogress">
+					<br>
+					<div class="singlepp">
+						<span class="title"><img src="./images/2handgaming.png"
+								style="height: 30px; width: auto;">ndhandgaming <i style="font-size: 20px;"
+								class="pointer fas fa-chevron-down"></i></span>
+						<div class="progress-bar">
+							<span class="progress-indicator" style="width: 35%;">&nbsp;</span>
+						</div>
+						<span>35%</span>
+						<div class="description invisible">
+							2nd hand gaming is an online platform where users can sell second hand gaming gear (as the
+							name suggests). You can find out more about it at the links below:
+							<br>
+							<div class="links">
+								<a href="https://www.2handgaming.ga" target="_blank">Live Website</a>
+								|
+								<a href="https://github.com/joshua-zou/2handgaming" target="_blank">Repo</a>
+							</div>
+							<div class="contributers">
+								<br>
+								<span class="normal-font">Contributers:</span>
+								<br>
+								<br>
+								<iframe src="https://contrib.rocks/image?repo=Joshua-Zou/2handgaming"></iframe>
+							</div>
+						</div>
+					</div>
+					<div class="singlepp">
+						<span class="title"><img src="https://static.npmjs.com/58a19602036db1daee0d7863c94673a4.png"
+								style="height: 30px; width: auto; position: relative; left: -3px; top: 5px; margin-right: 12.5px;">Send-Crypto
+							<i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
+						<div class="progress-bar">
+							<span class="progress-indicator" style="width: 95%;">&nbsp;</span>
+						</div>
+						<span>95%</span>
+						<div class="description invisible">
+							Send Crypto is a lightweight library for sending many types of cryptocurrencies! You can
+							choose the node you would like to connect to, wether it be an API, or a local node, import a
+							wallet, and send crypto! You can find out more about it at the links below:
+							<br>
+							<div class="links">
+								<a href="https://www.npmjs.com/package/@joshyzou/sendcrypto" target="_blank">NPM</a>
+								|
+								<a href="https://github.com/Joshua-Zou/send-crypto" target="_blank">Repo</a>
+								|
+								<a href="https://github.com/Joshua-Zou/send-crypto#usage" target="_blank">Docs</a>
+							</div>
+							<div class="contributers">
+								<br>
+								<span class="normal-font">Contributers:</span>
+								<br>
+								<br>
+								<iframe src="https://contrib.rocks/image?repo=Joshua-Zou/send-crypto"></iframe>
+							</div>
+						</div>
+					</div>
+					<div class="singlepp">
+						<span class="title"><img src="./images/webpage.png"
+								style="height: 50px; width: auto; position: relative; left: -10px; top: 5px; margin-right: 10px;">Vanity-BTC
+							<i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
+						<div class="progress-bar">
+							<span class="progress-indicator" style="width: 80%;">&nbsp;</span>
+						</div>
+						<span>80%</span>
+						<div class="description invisible">
+							Vanity-BTC is a Bitcoin and Litecoin vanity address generator. Download the app for better
+							security and increased performance. You can find out more about it at the links below:
+							<br>
+							<div class="links">
+								<a href="https://www.vanity-btc.tk/" target="_blank">Live Website</a>
+								|
+								<a href="https://github.com/Joshua-Zou/vanity-btc/" target="_blank">Repo</a>
+								|
+								<a href="https://github.com/Joshua-Zou/vanity-btc/releases/tag/v1.3.1"
+									target="_blank">Download App</a>
+							</div>
+							<div class="contributers">
+								<br>
+								<span class="normal-font">Contributers:</span>
+								<br>
+								<br>
+								<iframe src="https://contrib.rocks/image?repo=Joshua-Zou/vanity-btc"></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 	<section id="modals">
@@ -298,412 +718,180 @@
 			<img class="modal-content" id="img01">
 			<div id="caption"></div>
 		</div>
+		<div class="taskbar">
+			<div class="minimized-terminal-container app-favicon" onclick="minimize('#terminal-container')">
+				<img src="./images/cmd2.png">
+			</div>
+			<div class="minimized-bing-container app-favicon" onclick="minimize('#bing-container')">
+				<img src="./images/edge.svg" style="transform: scale(2.2)">
+			</div>
+		</div>
+	</section>
+	<section class="apps">
+		<div id="terminal-container" class="invisible" onmousedown="bringToTop('#terminal-container')">
+			<span id="terminal-containerheader"
+				style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
+				class="context-menu"><img src="./images/cmd.PNG" style="height: 12px; margin-left: 5px;">&nbsp; Command
+				Prompt</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
+				<span class="pointer close-button" onclick="hide('#terminal-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+						style="height: 10px;" xml:space="preserve">
+						<g>
+							<path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
+						S22.47,513.67,29.13,507z M507,482.87L29.13,5C22.47-1.67,11.66-1.67,5,5c-6.67,6.66-6.67,17.47,0,24.14L482.87,507
+						c6.67,6.67,17.47,6.67,24.14,0C513.67,500.34,513.67,489.53,507,482.87z" />
+						</g>
+					</svg>
+				</span>
+			</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
+				<span class="pointer maximize" onclick="maximize('#terminal-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+						<defs></defs>
+						<g>
+							<rect width="10" height="10" x="3" y="4"
+								style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+							</rect>
+						</g>
+					</svg>
+				</span>
+			</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
+				<span class="pointer maximize" onclick="minimize('#terminal-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+						<defs></defs>
+						<g>
+							<rect width="12" height="1" x="3" y="9"
+								style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+							</rect>
+						</g>
+					</svg>
+
+				</span>
+			</span>
+			<div id="terminal"></div>
+		</div>
+		<div id="bing-container" class="invisible" onmousedown="bringToTop('#bing-container')">
+			<span id="bing-containerheader"
+				style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
+				class="context-menu"><img src="./images/edge.png" style="height: 12px; margin-left: 5px;">&nbsp;
+				Microsoft Edge</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
+				<span class="pointer close-button" onclick="hide('#bing-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+						style="height: 10px;" xml:space="preserve">
+						<g>
+							<path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
+						S22.47,513.67,29.13,507z M507,482.87L29.13,5C22.47-1.67,11.66-1.67,5,5c-6.67,6.66-6.67,17.47,0,24.14L482.87,507
+						c6.67,6.67,17.47,6.67,24.14,0C513.67,500.34,513.67,489.53,507,482.87z" />
+						</g>
+					</svg>
+				</span>
+			</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
+				<span class="pointer maximize" onclick="maximize('#bing-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+						<defs></defs>
+						<g>
+							<rect width="10" height="10" x="3" y="4"
+								style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+							</rect>
+						</g>
+					</svg>
+				</span>
+			</span>
+			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
+				<span class="pointer maximize" onclick="minimize('#bing-container')">
+					<?xml version="1.0" encoding="utf-8"?>
+					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
+						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+						<defs></defs>
+						<g>
+							<rect width="12" height="1" x="3" y="9"
+								style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+							</rect>
+						</g>
+					</svg>
+
+				</span>
+			</span>
+		</div>
 	</section>
 </body>
 
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
 <script async>
 	window.onload = function () {
 		console.log("%c Yo. if mobile mode in dev tools looks kinda weird, try closing dev tools and re-opening it. Its a weird thing with chrome dev tools (its not my fault :) )", "background: #0c0032; color: white; font-size: x-large");
-		$(window).resize(function () {
-			window.vantaCanvas.resize();
-		});
 		let social_elements = document.getElementsByClassName("social")[0].children[0].children;
 		for (let i = 0; i < social_elements.length; i++) {
 			social_elements[i].addEventListener("mouseenter", async function (res) {
-				res.toElement.classList.add("paused");
+				let good = res.toElement || res.target;
+				good.classList.add("paused");
 			})
 			social_elements[i].addEventListener("mouseleave", async function (res) {
-				res.fromElement.classList.remove("paused");
+				console.log(res)
+				let good = res.fromElement || res.target;
+				good.classList.remove("paused");
 			})
 		}
 	}
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
+<script src="./javascript/home.js"></script>
 <script>
-
-
-
-	let camera, scene, renderer, parameters;
-	let mouseX = 0, mouseY = 0;
-
-	let windowHalfX = window.innerWidth / 2;
-	let windowHalfY = window.innerHeight / 2;
-
-	const materials = [];
-
-	init();
-	animate();
-
-	function init() {
-
-		camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
-		camera.position.z = 1000;
-		camera.rotateSpeed = 0.0001
-		scene = new THREE.Scene();
-		scene.fog = new THREE.FogExp2(0x000000, 0.0008);
-		//scene.background = new THREE.Color(0x353D53);
-
-
-		const geometry = new THREE.BufferGeometry();
-		const vertices = [];
-
-		const textureLoader = new THREE.TextureLoader();
-
-		//const sprite1 = textureLoader.load('https://siasky.net/AAAAwQsCZUOD3pAd5yi965gdWWv0dBXCoKHCDIFUNhhGJg');
-		const sprite1 = textureLoader.load("https://siasky.net/AACivuMSmvwC6B9QcTzvy9yhGqhtzgUmTW6U1x_KbKyqJA")
-		for (let i = 0; i < 10000; i++) {
-
-			const x = Math.random() * 2000 - 1000;
-			const y = Math.random() * 2000 - 1000;
-			const z = Math.random() * 2000 - 1000;
-
-			vertices.push(x, y, z);
-
-		}
-
-		geometry.addAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-
-		parameters = [
-			[[0.90, 0.05, 0.5], sprite1, 4],
-		];
-
-
-		for (let i = 0; i < parameters.length; i++) {
-
-			const color = parameters[i][0];
-			const sprite = parameters[i][1];
-			const size = parameters[i][2];
-
-			materials[i] = new THREE.PointsMaterial({ size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent: true });
-			materials[i].color.setHSL(color[0], color[1], color[2]);
-
-			const particles = new THREE.Points(geometry, materials[i]);
-
-			particles.rotation.x = Math.random() * 6;
-			particles.rotation.y = Math.random() * 6;
-			particles.rotation.z = Math.random() * 6;
-			particles.rotation.set(100, 50, 0)
-			scene.add(particles);
-
-		}
-
-		//
-
-		renderer = new THREE.WebGLRenderer({ alpha: true });
-		renderer.setClearColor( 0x000000, 0 ); // the default
-		renderer.setPixelRatio(window.devicePixelRatio);
-		renderer.setSize(window.innerWidth, window.innerHeight);
-		renderer.domElement.classList.add("background-canvas-thingy");
-		document.body.appendChild(renderer.domElement);
-
-		//
-
-
-		//
-
-
-		const params = {
-			texture: true
-		};
-
-
-		document.body.style.touchAction = 'none';
-		document.body.addEventListener('pointermove', onPointerMove);
-
-		//
-
-		window.addEventListener('resize', onWindowResize);
-
+	let progressClickListeners = document.querySelectorAll("#projects .container .project-status .fa-chevron-down");
+	for (let i = 0; i < progressClickListeners.length; i++) {
+		progressClickListeners[i].addEventListener("click", function (event) {
+			let good = event.toElement || event.target;
+			good.parentElement.parentElement.children[3].classList.toggle("invisible");
+		})
 	}
-
-	function onWindowResize() {
-
-		windowHalfX = window.innerWidth / 2;
-		windowHalfY = window.innerHeight / 2;
-
-		camera.aspect = window.innerWidth / window.innerHeight;
-		camera.updateProjectionMatrix();
-
-		renderer.setSize(window.innerWidth, window.innerHeight);
-
-	}
-
-	function onPointerMove(event) {
-
-		if (event.isPrimary === false) return;
-
-		mouseX = event.clientX - windowHalfX;
-		mouseY = event.clientY - windowHalfY;
-
-	}
-
-	//
-
-	function animate() {
-
-		requestAnimationFrame(animate);
-
-		render();
-
-	}
-
-	function render() {
-
-		const time = Date.now() * 0.00005;
-
-		camera.position.x += (mouseX - camera.position.x) * 0.05;
-		camera.position.y += (- mouseY - camera.position.y) * 0.05;
-
-		camera.lookAt(scene.position);
-
-		for (let i = 0; i < scene.children.length; i++) {
-
-			const object = scene.children[i];
-
-			if (object instanceof THREE.Points) {
-
-				object.rotation.y = time * (i < 4 ? i + 1 : - (i + 1));
-				object.rotation.x = time * (i < 4 ? i + 1 : - (i + 1));
-				object.rotation.z = time * (i < 4 ? i + 1 : - (i + 1));
-				object.rotateX(THREE.Math.degToRad(50));
-
-
-				var timex = Date.now() * 0.0005;
-				object.position.x = Math.cos(timex * 10) * 5;
-				object.position.y = Math.cos(timex * 7) * 3;
-				object.position.z = Math.cos(timex * 8) * 4;
-
-				// Animating sphere 2
-				object.rotation.y += 100;
-			}
-
-		}
-
-		for (let i = 0; i < materials.length; i++) {
-
-			const color = parameters[i][0];
-
-			const h = (360 * (color[0] + time) % 360) / 360;
-			materials[i].color.setHSL(h, color[1], color[2]);
-
-		}
-
-		renderer.render(scene, camera);
-
-	}
-
 </script>
-	
 </body>
 
 </html>
-<script>
-	var current = "default";
-	var allKeys = {
-		default: document.querySelectorAll("#languages .languages .container .default")[0],
-		general: document.querySelectorAll("#languages .languages .container .general")[0],
-		tools: document.querySelectorAll("#languages .languages .container .tools")[0]
-	}
-	if (localStorage) {
-		if (!localStorage.getItem("whatIdoPage")) current = "default";
-		else {
-			changeLangNoAnimation(localStorage.getItem("whatIdoPage"))
-		}
-	}
 
-	async function changeLang(to) {
-		let original = current;
-		current = to;
-		localStorage.setItem("whatIdoPage", to)
-		allKeys[original].classList.toggle("fadeOut");
-		await sleep(600)
-		allKeys[original].classList.toggle("invisible");
-
-		allKeys[to].classList.toggle("invisible");
-		allKeys[to].classList.toggle("fadeIn");
-		await sleep(600);
-		allKeys[original].classList.toggle("fadeOut");
-		allKeys[to].classList.toggle("fadeIn");
-	}
-	function changeLangNoAnimation(to) {
-		let original = current;
-		current = to;
-		localStorage.setItem("whatIdoPage", to)
-		allKeys[original].classList.toggle("invisible");
-		allKeys[to].classList.toggle("invisible");
-	}
-
-	function popImageOut(imageUrl, caption) {
-		// Get the modal
-		var modal = document.getElementById("myModal");
-
-		// Get the image and insert it inside the modal - use its "alt" text as a caption
-		var img = document.getElementById("myImg");
-		var modalImg = document.getElementById("img01");
-		var captionText = document.getElementById("caption");
-
-		modal.style.display = "block";
-		modalImg.src = imageUrl;
-		modalImg.style.width = "90vw"
-		captionText.innerHTML = caption;
-
-
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
-
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function () {
-			modal.style.display = "none";
-		}
-	}
-</script>
 <style>
-	.background-canvas-thingy {
+	.toc {
+		color: whitesmoke;
 		position: fixed;
-		height: 100vh !important;
-		width: 100vw !important;
-		top: 0px;
-		left: 0;
-		z-index: -100;
-		background: linear-gradient( #383849, rgb(231, 41, 63, 0.5));
-	}
-	.modal {
-		display: none;
-		position: fixed;
-		z-index: 1;
-		padding-top: 100px;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		overflow: auto;
-		background-color: rgb(0, 0, 0);
-		background-color: rgba(0, 0, 0, 0.9);
+		left: 10px;
+		top: 40vh;
+		background-color: rgba(0, 0, 0, 0.5);
+		border-radius: 8px;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 5px;
 	}
 
-	.modal-content {
-		margin: auto;
-		display: block;
-		width: 80%;
-	}
-
-	#caption {
-		margin: auto;
-		display: block;
-		width: 80%;
-		max-width: 700px;
-		text-align: center;
-		color: #ccc;
-		padding: 10px 0;
-		height: 150px;
-	}
-
-	.modal-content,
-	#caption {
-		-webkit-animation-name: zoom;
-		-webkit-animation-duration: 0.6s;
-		animation-name: zoom;
-		animation-duration: 0.6s;
-	}
-
-	@-webkit-keyframes zoom {
-		from {
-			-webkit-transform: scale(0)
-		}
-
-		to {
-			-webkit-transform: scale(1)
-		}
-	}
-
-	@keyframes zoom {
-		from {
-			transform: scale(0)
-		}
-
-		to {
-			transform: scale(1)
-		}
-	}
-
-	/* The Close Button */
-	.close {
+	.toc .tree-vertical {
+		bottom: 70px;
+		left: -5px;
+		width: 108px;
+		transform: rotate(90deg);
 		position: absolute;
-		top: 15px;
-		right: 35px;
-		color: #f1f1f1;
-		font-size: 40px;
-		font-weight: bold;
-		transition: 0.3s;
 	}
 
-	.close:hover,
-	.close:focus {
-		color: #bbb;
-		text-decoration: none;
-		cursor: pointer;
+	.toc li {
+		margin-top: 7px;
 	}
 
-	/* 100% Image Width on Smaller Screens */
-	@media only screen and (max-width: 700px) {
-		.modal-content {
-			width: 96vw !important;
-			margin-left: 0;
-		}
-
-		.close {
-			position: relative !important;
-			left: 90vw;
-		}
-
-		#caption {
-			display: block;
-			width: 80%;
-			position: absolute;
-			left: -25vw;
-		}
-	}
-
-	.pop-out-icon {
-		text-align: right;
-		position: relative;
-		top: -30px;
-	}
-
-	.fadeOut {
-		animation: fadeOut 0.5s;
-		opacity: 0;
-	}
-
-	@keyframes fadeOut {
-		from {
-			opacity: 1;
-		}
-
-		to {
-			opacity: 0;
-		}
-	}
-
-	.fadeIn {
-		animation: fadeIn 0.5s;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-
-		to {
-			opacity: 1;
-		}
-	}
-
-	.languages a {
+	.toc a {
 		border-bottom: .05em solid #b4e7f8;
 		box-shadow: inset 0 -0.05em 0 #b4e7f8;
 		color: inherit;
@@ -711,254 +899,307 @@
 		text-decoration: none;
 	}
 
-	.languages a:hover,
-	.languages a:focus,
-	.languages a:active {
-		background-color: var(--pop-color);
+	.toc a:hover {
+		background-color: #C6E48B;
+		color: black;
 	}
 
-	.language-list span {
+	.taskbar {
+		width: 40px;
+		border-radius: 50px;
+		left: 10px;
+		bottom: 20vh;
+		position: fixed;
+		height: 110px;
+		padding-top: 25px;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	.app-favicon {
+		margin-top: 1px;
+		padding: 10px;
+		border-radius: 2px;
+		transition: background-color 0.2s;
+	}
+
+	.app-favicon:hover {
+		background-color: rgba(112, 128, 144, 0.3);
+	}
+
+	.app-favicon>img {
+		width: 25px;
+	}
+
+	.minimized {
+		transform: translate(-100vw, 100vh) !important;
+	}
+
+	.app-open {
+		border-left: 2px solid #76B9ED;
+	}
+
+	.app-hot {
+		background: rgba(112, 128, 144, 0.5);
+	}
+
+	.maximized {
+		width: 100vw !important;
+		height: 100vh !important;
+		position: absolute;
+		left: 50% !important;
+		top: 50% !important;
+		transform: translate(-50%, -50%);
+	}
+
+	.smooth-transition {
+		transition: width 0.5s, height 0.5s;
+	}
+
+	.transform-transition {
+		transition: transform 0.5s;
+	}
+
+	#terminal-container {
+		position: fixed;
+		z-index: 5;
+		left: 33%;
+		top: 33%;
+		background-color: whitesmoke;
+		padding-left: 0;
+		padding-bottom: 0;
+		border-radius: 1px;
+		box-sizing: border-box;
+	}
+
+	#bing-container {
+		position: fixed;
+		z-index: 5;
+		left: 33%;
+		top: 33%;
+		background-color: whitesmoke;
+		padding-left: 0;
+		padding-bottom: 0;
+		border-radius: 1px;
+		box-sizing: border-box;
+		padding-right: 4px;
+	}
+
+	.close-button {
 		display: block;
-		text-align: center;
-		color: white !important;
-		opacity: 0;
+		text-align: right;
+		transform: translate(10px, 0);
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 
-	.activity-canvas {
-		margin-top: 20px;
-		padding-right: 30px;
-		padding-bottom: 10px;
-		background-color: #22272E;
-		margin-bottom: 20px;
+	.maximize:hover {
+		background-color: #E5E5E5;
 	}
 
-	.activity-canvas .large-font {
-		margin-bottom: 10px;
+	.maximize {
+		padding-top: 5px;
+		padding-left: 10px;
+		padding-right: 8px;
 	}
 
-	#languages .single-language:hover span {
-		animation: 0.5s showLangSpan;
-		opacity: 100% !important;
-	}
-
-	@keyframes showLangSpan {
-		0% {
-			transform: translate(0, 35px);
-			opacity: 100%;
-		}
-
-		90% {
-			transform: translate((0, 0));
-			opacity: 100%;
-		}
-	}
-
-	.language-list {
-		display: inline-table;
-		padding: 0;
-	}
-
-	#tensorflow-gradient {
-		--color-stop: #FF7400;
-		--color-bot: #FFA100;
-	}
-
-	#languages .languagelistsvgs {
+	.close-button:hover {
+		background-color: #E81123;
 		fill: white;
-		opacity: 86%;
-		top: 3px;
-		position: relative;
-		width: 75px;
-		height: 75px;
-		margin-bottom: 5px;
 	}
 
-	#languages .github:hover {
-		fill: black;
-	}
-
-	#languages .tensorflow:hover {
-		fill: url(#tensorflow-gradient) #fff;
-	}
-
-	#languages .cpp:hover {
-		fill: #659BD3;
-		opacity: 100%;
-	}
-
-	#languages .node:hover {
-		fill: #68A063;
-	}
-
-	#languages .mongodb:hover {
-		fill: #47A248;
-	}
-
-	#languages .typescript {
-		width: 70px;
-		height: 70px;
-	}
-
-	#languages .fa-linux:hover {
-		color: black !important;
-	}
-
-	#languages .typescript:hover .typescript-fill {
-		fill: #3178c6 !important;
-	}
-
-	#languages .fab {
-		opacity: 100%;
-	}
-
-	#languages .python:hover {
-		color: #306998;
-	}
-
-	#languages .fa-html5:hover {
-		color: #F16524;
-	}
-
-	#languages .fa-js:hover {
-		color: #F0DB4F;
-	}
-
-	#languages .fa-git-alt:hover {
-		color: #F05030;
-	}
-
-	#languages .language-list .fab {
-		font-size: 80px;
-	}
-
-	#languages .language-list .fas {
-		font-size: 80px;
-	}
-
-	#languages .ml:hover {
-		fill: #412991;
-	}
-
-	#languages .npm:hover {
-		fill: #CB3837;
-	}
-
-	#languages .firebase:hover {
-		fill: #FFCA28;
-	}
-
-	#languages .opencv:hover {
-		fill: #5C3EE8;
-	}
-
-	.single-language {
-		display: inline-block;
-		margin-right: 20px;
+	#projects .container .project-status .projectprogress .singlepp {
 		margin-bottom: 20px;
 	}
 
-	#languages .selection {
+	#projects .container .project-status .description {
+		margin-left: 20px;
+	}
+
+	#projects .container .project-status .progress-bar {
+		display: inline-block;
+		margin-left: 30px;
+		width: 60%;
+		background-color: slategray;
+		border-radius: 10px;
+		height: 20px;
+	}
+
+	#projects .container .project-status .progress-indicator {
+		background: linear-gradient(to right, rgba(53, 0, 211, 1), rgba(53, 0, 211, 0.25));
+		display: block;
+		height: 20px;
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
+
+	#projects .container .project-status .description iframe {
+		border: none;
+		max-height: 75px;
+	}
+
+	#projects .container .project-status .description .links {
+		margin-top: 10px;
+		left: -10px;
+		position: relative;
+	}
+
+	.title {
+		color: white;
+		font-family: 'Fira Code';
+		font-weight: 100;
+		margin-bottom: 20px;
+		font-size: 30px;
+	}
+
+	#projects .container .extra-large-font {
 		margin-left: 50px;
 	}
 
-	#languages {
-		position: relative;
+	#projects .container .medium-font {
+		margin-left: 100px;
 	}
 
-	#languages .languages .container {
-		background-color: slategrey;
-		padding: 10px;
-		padding-top: 20px;
-		padding-left: 40px;
-		padding-right: 40px;
-		transition: all 0.4s ease-in-out;
+	#projects .container .top-projects .projects {
+		display: grid;
+		grid-gap: 20px 40px;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		margin-top: 30px;
 	}
 
-	#languages .languages {
-		width: fit-content;
-		padding-top: 40px;
-		margin-left: 300px;
-	}
-
-	.languages-good {
-		background-color: #363636;
-	}
-
-	#languages .background {
-		position: relative;
-		overflow: hidden;
-		background-color: rgba(53, 0, 211, 0.5);
+	#projects .container {
 		padding: 20px;
+		text-align: left;
+		color: whitesmoke;
+		max-width: 90vw;
+		background-color: #363636;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
-	.fa-chevron-right {
-		transition: all 0.5s ease-in-out
+	#projects .container .top-projects .projects .project {
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+		background-color: var(--pop-color);
+		max-width: 300px;
+		border-radius: 10px;
+	}
+
+	#projects .container .top-projects .projects .project * {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#projects .container .top-projects .projects .project img {
+		width: 200px;
+		height: auto;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#projects .container .top-projects .projects .project .project-name {
+		color: white;
+		font-family: 'Fira Code';
+		font-weight: 100;
+		margin-bottom: 20px;
+	}
+
+	#projects .container .top-projects .projects .project .project-desc {
+		display: block;
+		text-align: center;
+	}
+
+	#projects .container .top-projects .projects .project .project-resources hr {
+		width: 150px;
+	}
+
+	#projects .container .top-projects .projects .project .project-resources {
+		display: block;
+		text-align: center;
 	}
 
 	@media (max-width: 500px) {
-		.fa-chevron-right {
-			transform: rotate(90deg);
+		.toc {
+			transform: translate(-100vw, 0);
+			transition: all 0.5s ease-in-out;
+			position: fixed;
+			left: 10px;
+			top: 40vh;
+			background-color: rgba(0, 0, 0, 0.8);
 		}
 
-		.show-on-large {
-			display: none !important;
+		.taskbar {
+			display: none;
 		}
 
-		#languages {
-			margin-left: 10px;
-			max-width: 94vw;
+		#terminal {
+			width: 90vw !important;
+			height: 20vh !important;
 		}
 
-		#languages .background {
-			padding: 15px !important;
+		#terminal-containerheader {
+			width: 77vw !important;
 		}
 
-		#languages .languages {
-			margin-left: 0;
+		#projects .container {
+			max-width: 95vw !important;
 		}
-
-		#languages .tooltip {
-			padding-top: 20px;
-		}
-
-		#languages .activity-canvas img {
-			width: 90vw;
-		}
-
-		html,
-		body {
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			overflow-x: hidden;
-			position: absolute;
-			top: 0;
-			left: 0;
-		}
-
-	}
-
-	#languages .activity-canvas img:hover {
-		opacity: 70%;
-		cursor: pointer;
 	}
 
 	@media (min-width: 500px) {
-		#languages {
-			margin-left: 15%;
-			padding-right: 20px;
+		#terminal {
+			width: 100% !important;
+			height: 100% !important;
 		}
 
-		#languages .background {
-			transform: translate(10px, 10px);
+		#terminal-container {
+			width: 600px;
+			height: 300px;
+			min-height: 100px !important;
+			min-width: 300px;
 		}
 
-		#languages .background .extra-large-font {
-			padding-right: 10px;
+		#bing-container {
+			width: 600px;
+			height: 300px;
+			min-height: 100px !important;
+			min-width: 300px;
 		}
 
-		#languages .activity-canvas img {
-			margin-left: 10px;
+		#bing-container iframe {
+			width: 100%;
+			height: 100%;
+			z-index: 6;
+			position: relative;
 		}
+
+		#projects .container .top-projects .projects .project {
+			box-shadow: 10px 10px 15px 0px #22272E;
+			transition: box-shadow 0.3s ease-in-out;
+		}
+
+		#projects .container .top-projects .projects .project:hover {
+			box-shadow: 10px 20px 15px 0px #22272E;
+		}
+
+		#projects .container .top-projects {
+			padding-bottom: 20px;
+		}
+	}
+
+	#projects a {
+		border-bottom: .05em solid #b4e7f8;
+		box-shadow: inset 0 -0.05em 0 #b4e7f8;
+		color: inherit;
+		transition: background-color .25s cubic-bezier(.33, .66, .66, 1);
+		text-decoration: none;
+	}
+
+	#projects a:hover {
+		background-color: #C6E48B;
+		color: black;
 	}
 </style>
