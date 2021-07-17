@@ -395,3 +395,27 @@ function checkVisible(elm) {
 	var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
 	return !(rect.top - viewHeight >= 0);
   }
+
+  let progressClickListeners = document.querySelectorAll("#projects .container .project-status .fa-chevron-down");
+  for (let i = 0; i < progressClickListeners.length; i++) {
+	  progressClickListeners[i].addEventListener("click", function (event) {
+		  let good = event.toElement || event.target;
+		  good.parentElement.parentElement.children[3].classList.toggle("invisible");
+	  })
+  }
+
+  window.onload = function () {
+	console.log("%c Yo. if mobile mode in dev tools looks kinda weird, try closing dev tools and re-opening it. Its a weird thing with chrome dev tools (its not my fault :) )", "background: #0c0032; color: white; font-size: x-large");
+	let social_elements = document.getElementsByClassName("social")[0].children[0].children;
+	for (let i = 0; i < social_elements.length; i++) {
+		social_elements[i].addEventListener("mouseenter", async function (res) {
+			let good = res.toElement || res.target;
+			good.classList.add("paused");
+		})
+		social_elements[i].addEventListener("mouseleave", async function (res) {
+			console.log(res)
+			let good = res.fromElement || res.target;
+			good.classList.remove("paused");
+		})
+	}
+}
