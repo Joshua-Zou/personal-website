@@ -26,6 +26,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/js/jquery.terminal.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/css/jquery.terminal.min.css"
 		rel="stylesheet" />
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GP1QYQRYY8"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-GP1QYQRYY8');
+	</script>
 </head>
 
 
@@ -142,7 +150,7 @@
 								class="normal-font large-font code-font">/></span></button>
 			</div>
 			<div class="nav-items">
-				<a href="./projects.html">Projects</a>
+				<a href="./posts/main.html">Random Posts</a>
 			</div>
 		</div>
 		<div class="mobile">
@@ -168,7 +176,7 @@
 				</div>
 			</div>
 			<div class="right-navbar">
-				<a href="./projects.html" class="light-font-color medium-font">• Projects</a>
+				<a href="./posts/main.html" class="light-font-color medium-font">• Random Posts</a>
 			</div>
 		</div>
 	</header>
@@ -489,7 +497,8 @@
 			<div class="top-projects">
 				<span class="extra-large-font">My top projects<br> </span>
 				<span class="medium-font">Big projects that I'm (maybe) known for online&nbsp; &nbsp; </span>
-				<a href="./projects.html">View all <i class="fas fa-arrow-right"></i></a>
+				<a href="https://github.com/Joshua-Zou?tab=repositories" target="_blank">View all <i
+						class="fas fa-arrow-right"></i></a>
 				<div class="projects">
 					<div class="project">
 						<img src="./images/cointunnel.png" alt="Coin Tunnel">
@@ -708,6 +717,30 @@
 							</div>
 						</div>
 					</div>
+					<div class="singlepp">
+						<span class="title"><img src="./images/prochia-full-logo.png"
+								style="height: 40px; width: auto; position: relative; left: -3px; top: 5px; margin-right: 15px;">&nbsp;
+							Pro-Chia
+							<i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
+						<div class="progress-bar">
+							<span class="progress-indicator" style="width: 1%;">&nbsp;</span>
+						</div>
+						<span>1%</span>
+						<div class="description invisible">
+							Pro-Chia will be a chia pool based in the US with a PPLNS and PPS payout scheme.
+							<br>
+							<div class="links">
+								________
+							</div>
+							<div class="contributers">
+								<br>
+								<span class="normal-font">Contributers:</span>
+								<br>
+								<br>
+								<iframe src="https://contrib.rocks/image?repo=Joshua-Zou/send-crypto"></iframe>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -834,372 +867,8 @@
 
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-<script async>
-	window.onload = function () {
-		console.log("%c Yo. if mobile mode in dev tools looks kinda weird, try closing dev tools and re-opening it. Its a weird thing with chrome dev tools (its not my fault :) )", "background: #0c0032; color: white; font-size: x-large");
-		let social_elements = document.getElementsByClassName("social")[0].children[0].children;
-		for (let i = 0; i < social_elements.length; i++) {
-			social_elements[i].addEventListener("mouseenter", async function (res) {
-				let good = res.toElement || res.target;
-				good.classList.add("paused");
-			})
-			social_elements[i].addEventListener("mouseleave", async function (res) {
-				console.log(res)
-				let good = res.fromElement || res.target;
-				good.classList.remove("paused");
-			})
-		}
-	}
-</script>
-
 <script src="./javascript/home.js"></script>
-<script>
-	let progressClickListeners = document.querySelectorAll("#projects .container .project-status .fa-chevron-down");
-	for (let i = 0; i < progressClickListeners.length; i++) {
-		progressClickListeners[i].addEventListener("click", function (event) {
-			let good = event.toElement || event.target;
-			good.parentElement.parentElement.children[3].classList.toggle("invisible");
-		})
-	}
-</script>
+
 </body>
 
 </html>
-
-<style>
-	.toc {
-		color: whitesmoke;
-		position: fixed;
-		left: 10px;
-		top: 40vh;
-		background-color: rgba(0, 0, 0, 0.5);
-		border-radius: 8px;
-		padding-left: 10px;
-		padding-right: 10px;
-		padding-top: 5px;
-	}
-
-	.toc .tree-vertical {
-		bottom: 70px;
-		left: -5px;
-		width: 108px;
-		transform: rotate(90deg);
-		position: absolute;
-	}
-
-	.toc li {
-		margin-top: 7px;
-	}
-
-	.toc a {
-		border-bottom: .05em solid #b4e7f8;
-		box-shadow: inset 0 -0.05em 0 #b4e7f8;
-		color: inherit;
-		transition: background-color .25s cubic-bezier(.33, .66, .66, 1);
-		text-decoration: none;
-	}
-
-	.toc a:hover {
-		background-color: #C6E48B;
-		color: black;
-	}
-
-	.taskbar {
-		width: 40px;
-		border-radius: 50px;
-		left: 10px;
-		bottom: 20vh;
-		position: fixed;
-		height: 110px;
-		padding-top: 25px;
-		background-color: rgba(0, 0, 0, 0.5);
-	}
-
-	.app-favicon {
-		margin-top: 1px;
-		padding: 10px;
-		border-radius: 2px;
-		transition: background-color 0.2s;
-	}
-
-	.app-favicon:hover {
-		background-color: rgba(112, 128, 144, 0.3);
-	}
-
-	.app-favicon>img {
-		width: 25px;
-	}
-
-	.minimized {
-		transform: translate(-100vw, 100vh) !important;
-	}
-
-	.app-open {
-		border-left: 2px solid #76B9ED;
-	}
-
-	.app-hot {
-		background: rgba(112, 128, 144, 0.5);
-	}
-
-	.maximized {
-		width: 100vw !important;
-		height: 100vh !important;
-		position: absolute;
-		left: 50% !important;
-		top: 50% !important;
-		transform: translate(-50%, -50%);
-	}
-
-	.smooth-transition {
-		transition: width 0.5s, height 0.5s;
-	}
-
-	.transform-transition {
-		transition: transform 0.5s;
-	}
-
-	#terminal-container {
-		position: fixed;
-		z-index: 5;
-		left: 33%;
-		top: 33%;
-		background-color: whitesmoke;
-		padding-left: 0;
-		padding-bottom: 0;
-		border-radius: 1px;
-		box-sizing: border-box;
-	}
-
-	#bing-container {
-		position: fixed;
-		z-index: 5;
-		left: 33%;
-		top: 33%;
-		background-color: whitesmoke;
-		padding-left: 0;
-		padding-bottom: 0;
-		border-radius: 1px;
-		box-sizing: border-box;
-		padding-right: 4px;
-	}
-
-	.close-button {
-		display: block;
-		text-align: right;
-		transform: translate(10px, 0);
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-
-	.maximize:hover {
-		background-color: #E5E5E5;
-	}
-
-	.maximize {
-		padding-top: 5px;
-		padding-left: 10px;
-		padding-right: 8px;
-	}
-
-	.close-button:hover {
-		background-color: #E81123;
-		fill: white;
-	}
-
-	#projects .container .project-status .projectprogress .singlepp {
-		margin-bottom: 20px;
-	}
-
-	#projects .container .project-status .description {
-		margin-left: 20px;
-	}
-
-	#projects .container .project-status .progress-bar {
-		display: inline-block;
-		margin-left: 30px;
-		width: 60%;
-		background-color: slategray;
-		border-radius: 10px;
-		height: 20px;
-	}
-
-	#projects .container .project-status .progress-indicator {
-		background: linear-gradient(to right, rgba(53, 0, 211, 1), rgba(53, 0, 211, 0.25));
-		display: block;
-		height: 20px;
-		border-top-left-radius: 10px;
-		border-bottom-left-radius: 10px;
-		border-top-right-radius: 4px;
-		border-bottom-right-radius: 4px;
-	}
-
-	#projects .container .project-status .description iframe {
-		border: none;
-		max-height: 75px;
-	}
-
-	#projects .container .project-status .description .links {
-		margin-top: 10px;
-		left: -10px;
-		position: relative;
-	}
-
-	.title {
-		color: white;
-		font-family: 'Fira Code';
-		font-weight: 100;
-		margin-bottom: 20px;
-		font-size: 30px;
-	}
-
-	#projects .container .extra-large-font {
-		margin-left: 50px;
-	}
-
-	#projects .container .medium-font {
-		margin-left: 100px;
-	}
-
-	#projects .container .top-projects .projects {
-		display: grid;
-		grid-gap: 20px 40px;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		margin-top: 30px;
-	}
-
-	#projects .container {
-		padding: 20px;
-		text-align: left;
-		color: whitesmoke;
-		max-width: 90vw;
-		background-color: #363636;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	#projects .container .top-projects .projects .project {
-		display: flex;
-		flex-direction: column;
-		padding: 20px;
-		background-color: var(--pop-color);
-		max-width: 300px;
-		border-radius: 10px;
-	}
-
-	#projects .container .top-projects .projects .project * {
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	#projects .container .top-projects .projects .project img {
-		width: 200px;
-		height: auto;
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	#projects .container .top-projects .projects .project .project-name {
-		color: white;
-		font-family: 'Fira Code';
-		font-weight: 100;
-		margin-bottom: 20px;
-	}
-
-	#projects .container .top-projects .projects .project .project-desc {
-		display: block;
-		text-align: center;
-	}
-
-	#projects .container .top-projects .projects .project .project-resources hr {
-		width: 150px;
-	}
-
-	#projects .container .top-projects .projects .project .project-resources {
-		display: block;
-		text-align: center;
-	}
-
-	@media (max-width: 500px) {
-		.toc {
-			transform: translate(-100vw, 0);
-			transition: all 0.5s ease-in-out;
-			position: fixed;
-			left: 10px;
-			top: 40vh;
-			background-color: rgba(0, 0, 0, 0.8);
-		}
-
-		.taskbar {
-			display: none;
-		}
-
-		#terminal {
-			width: 90vw !important;
-			height: 20vh !important;
-		}
-
-		#terminal-containerheader {
-			width: 77vw !important;
-		}
-
-		#projects .container {
-			max-width: 95vw !important;
-		}
-	}
-
-	@media (min-width: 500px) {
-		#terminal {
-			width: 100% !important;
-			height: 100% !important;
-		}
-
-		#terminal-container {
-			width: 600px;
-			height: 300px;
-			min-height: 100px !important;
-			min-width: 300px;
-		}
-
-		#bing-container {
-			width: 600px;
-			height: 300px;
-			min-height: 100px !important;
-			min-width: 300px;
-		}
-
-		#bing-container iframe {
-			width: 100%;
-			height: 100%;
-			z-index: 6;
-			position: relative;
-		}
-
-		#projects .container .top-projects .projects .project {
-			box-shadow: 10px 10px 15px 0px #22272E;
-			transition: box-shadow 0.3s ease-in-out;
-		}
-
-		#projects .container .top-projects .projects .project:hover {
-			box-shadow: 10px 20px 15px 0px #22272E;
-		}
-
-		#projects .container .top-projects {
-			padding-bottom: 20px;
-		}
-	}
-
-	#projects a {
-		border-bottom: .05em solid #b4e7f8;
-		box-shadow: inset 0 -0.05em 0 #b4e7f8;
-		color: inherit;
-		transition: background-color .25s cubic-bezier(.33, .66, .66, 1);
-		text-decoration: none;
-	}
-
-	#projects a:hover {
-		background-color: #C6E48B;
-		color: black;
-	}
-</style>
