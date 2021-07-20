@@ -45,24 +45,6 @@ body {
   --dark-block-background-color: #190061;
 }
 
-body::-webkit-scrollbar {
-  width: 10px;
-  padding-left: 10px;
-  /* width of the entire scrollbar */
-}
-
-body::-webkit-scrollbar-track {
-  background: linear-gradient(#383849, rgb(231, 41, 63, 0.5));
-}
-body::-webkit-scrollbar-track:hover {
-  background: rgb(63, 67, 71)
-}
-body::-webkit-scrollbar-thumb {
-  background-color: grey;
-  /* color of the scroll thumb */
-  border-radius: 20px;
-
-}
 
 .flash {
   font-family: "poiretOne";
@@ -156,6 +138,7 @@ header .big-screen {
   padding-top: 20px;
   padding-left: 40px;
   padding-right: 50px;
+  background-color: #282828;
   background-color: var(--dark-background-color);
 }
 
@@ -244,6 +227,7 @@ header .mobile .right-navbar {
 }
 
 header .flash {
+  color: whitesmoke;
   color: var(--text-color);
 }
 

@@ -646,7 +646,7 @@ pre .support, *[data-language="csharp"] .function.call {
     width: 100vw !important;
     top: 0px;
     left: 0;
-    background: linear-gradient(#383849, rgb(231, 41, 63, 0.5));
+    background: linear-gradient(#383849, rgba(231, 41, 63, 0.5));
 }
 
 .modal {
@@ -1354,3 +1354,22 @@ pre .support, *[data-language="csharp"] .function.call {
 html {
     scroll-behavior: smooth;
  }
+ 
+body::-webkit-scrollbar {
+    width: 10px;
+    padding-left: 10px;
+    /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: linear-gradient(#383849, rgb(231, 41, 63, 0.5));
+  }
+  body::-webkit-scrollbar-track:hover {
+    background: rgb(63, 67, 71)
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: grey;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+  
+  }
