@@ -385,7 +385,7 @@ function manageTaskBar(){
 document.addEventListener("scroll", function(event){
 	if (window.screen.width < 501) return;
 	if (checkVisible(document.querySelectorAll("#projects .project .medium-font")[0]) === true){
-		document.querySelectorAll(".toc")[0].style = "position: absolute; top: auto; transform: translate(0px, -250px);"
+		document.querySelectorAll(".toc")[0].style = "position: absolute; top: auto; transform: translate(0px, -275px);"
 	}else{
 		document.querySelectorAll(".toc")[0].style = "position: fixed";
 	}

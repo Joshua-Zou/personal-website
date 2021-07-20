@@ -1020,7 +1020,7 @@ pre .support, *[data-language="csharp"] .function.call {
     color: whitesmoke;
     position: fixed;
     left: 10px;
-    top: 40vh;
+    top: 38vh;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     padding-left: 10px;
@@ -1029,9 +1029,9 @@ pre .support, *[data-language="csharp"] .function.call {
 }
 
 .toc .tree-vertical {
-    bottom: 70px;
-    left: -5px;
-    width: 108px;
+    bottom: 99px;
+    left: -25px;
+    width: 148px;
     transform: rotate(90deg);
     position: absolute;
 }
