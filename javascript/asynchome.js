@@ -84,7 +84,7 @@ if (localStorage.getItem("cachedNpmStats") === null || JSON.parse(localStorage.g
 else showCachedNpmStats();
 //getNpmStats();
 async function getNpmStats() {
-	document.getElementById("npmDownloadsDetails").parentNode.removeChild(document.getElementById("npmDownloadsDetails"))
+	if (document.getElementById("npmDownloadsDetails")) document.getElementById("npmDownloadsDetails").parentNode.removeChild(document.getElementById("npmDownloadsDetails"))
 	document.querySelector("#totalNpmDownloads").innerText = "Querying...";
 	var total = 0;
 	let element = document.createElement("div");
