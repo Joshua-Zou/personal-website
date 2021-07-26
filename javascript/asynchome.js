@@ -87,7 +87,7 @@ async function getNpmStats() {
 	element.classList.add("invisible")
 	element.innerHTML = '<div class="loadingGif"><img src="./images/loading.gif"></div>'
 	document.querySelector("#npmDownloads").appendChild(element);
-	let result = await fetch("https://server.joshuaz.dev/download-count");
+	let result = await fetch("https://server2.joshuaz.dev/api/download-count");
 	result = await result.json();
 	document.querySelectorAll("#npmDownloads .loadingGif")[0].style.display = "none"
 	Object.entries(result).forEach(
