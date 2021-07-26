@@ -495,7 +495,9 @@
 					<span>Total: </span>
 					<span style="float: right;" id="totalNpmDownloads">Querying...</span>
 					<br>
-					<span class="link pointer" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.parentElement.children[4].classList.toggle('rotate-90')">View specifics </span>
+					<span class="link pointer" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.parentElement.children[6].classList.toggle('rotate-90')">View specifics </span>
+					<span>&nbsp;|&nbsp;</span>
+					<span class="link pointer" onclick="this.parentElement.children[6].classList.remove('rotate-90'); getNpmStats();">Refresh Data </span>
 					<i style="float: right; transition: all 0.5s;" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.classList.toggle('rotate-90')" class="pointer link fas fa-chevron-down"></i>
 				</div>
 			</div>

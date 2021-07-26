@@ -80,15 +80,63 @@ function hide(element) {
 		document.getElementById("bing-container").appendChild(newElem)
 	}
 }
-getNpmStats();
+if (localStorage.getItem("cachedNpmStats") === null || JSON.parse(localStorage.getItem("cachedNpmStats")).queryTime+86400000 < Date.now()) getNpmStats();
+else showCachedNpmStats();
+//getNpmStats();
 async function getNpmStats() {
+	document.getElementById("npmDownloadsDetails").parentNode.removeChild(document.getElementById("npmDownloadsDetails"))
+	document.querySelector("#totalNpmDownloads").innerText = "Querying...";
 	var total = 0;
 	let element = document.createElement("div");
+	element.id = "npmDownloadsDetails";
 	element.classList.add("invisible")
 	element.innerHTML = '<div class="loadingGif"><img src="./images/loading.gif"></div>'
 	document.querySelector("#npmDownloads").appendChild(element);
 	let result = await fetch("https://server2.joshuaz.dev/api/download-count");
 	result = await result.json();
+	let setItem = {
+		queryTime: Date.now(),
+		data: JSON.stringify(result)
+	};
+	setItem = JSON.stringify(setItem);
+
+	localStorage.setItem("cachedNpmStats", setItem)
+	document.querySelectorAll("#npmDownloads .loadingGif")[0].style.display = "none"
+	Object.entries(result).forEach(
+		([key, value]) => {
+			let div = document.createElement("div");
+			div.classList.add("npmPackage")
+			let a = document.createElement("a");
+			a.href = "https://www.npmjs.com/package/"+key;
+			a.innerText = key;
+			a.style.marginLeft = "10px"
+			a.classList.add("link");
+			a.target = "_blank";
+			div.appendChild(a);
+			let span = document.createElement("span");
+			span.classList.add("downloadCount");
+
+			let downloadCount = 0;
+
+			Object.entries(value).forEach(([key, value]) => {
+				downloadCount += value;
+			})
+			total += downloadCount;
+			span.innerText = downloadCount;
+			div.appendChild(span)
+			element.appendChild(div)
+		}
+	);
+	document.querySelector("#totalNpmDownloads").innerText = total;
+}
+function showCachedNpmStats(){
+	var total = 0;
+	let element = document.createElement("div");
+	element.id = "npmDownloadsDetails";
+	element.classList.add("invisible")
+	element.innerHTML = '<div class="loadingGif"><img src="./images/loading.gif"></div>'
+	document.querySelector("#npmDownloads").appendChild(element);
+	let result = JSON.parse(JSON.parse(localStorage.getItem("cachedNpmStats")).data);
 	document.querySelectorAll("#npmDownloads .loadingGif")[0].style.display = "none"
 	Object.entries(result).forEach(
 		([key, value]) => {
