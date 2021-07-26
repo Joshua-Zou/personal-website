@@ -296,6 +296,9 @@ document.addEventListener("scroll", function(event){
 document.addEventListener("click", function(event){
 	updateTBposition();
 })
+$(window).resize(function(){
+	updateTBposition()
+})
 function updateTBposition(){
 	if (window.screen.width < 501) return;
 	if (checkVisible(document.querySelectorAll("#projects .project .medium-font")[0]) === true){
