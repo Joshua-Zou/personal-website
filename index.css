@@ -1031,3 +1031,18 @@ header .flash, header .flash * {
 .zoom-out {
   cursor: zoom-out;
 }
+.link {
+  border-bottom: .05em solid #b4e7f8;
+  box-shadow: inset 0 -0.05em 0 #b4e7f8;
+  color: inherit;
+  transition: background-color .25s cubic-bezier(.33, .66, .66, 1);
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: #C6E48B;
+  color: black;
+}
+.rotate-90 {
+  transform: rotate(-90deg);
+}

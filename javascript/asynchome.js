@@ -1,14 +1,14 @@
 
 
 
-window.addEventListener('mousedown', async function(e){   
-	if (window.screen.width < 501 && !e.target.classList.contains("pointer") && e.target.tagName !== "a" && e.target.onclick === null && e.target.tagName !== "g" && e.target.tagName !== "path" && e.target.tagName !== "rect" && !e.target.classList.contains("right-navbar")){
-		if (performance.now() - 1000 > lastClick){
+window.addEventListener('mousedown', async function (e) {
+	if (window.screen.width < 501 && !e.target.classList.contains("pointer") && e.target.tagName !== "a" && e.target.onclick === null && e.target.tagName !== "g" && e.target.tagName !== "path" && e.target.tagName !== "rect" && !e.target.classList.contains("right-navbar")) {
+		if (performance.now() - 1000 > lastClick) {
 			document.querySelectorAll(".toc")[0].style.transform = "none";
 			lastClick = performance.now();
-			if (clickedInToc === false){
+			if (clickedInToc === false) {
 				await sleep(2000);
-				if (clickedInToc === false){
+				if (clickedInToc === false) {
 					document.querySelectorAll(".toc")[0].style = "";
 				}
 			}
@@ -17,12 +17,12 @@ window.addEventListener('mousedown', async function(e){
 	}
 	if (document.querySelectorAll(".toc")[0].contains(e.target)) clickedInToc = true;
 	else clickedInToc = false;
-	if (document.querySelectorAll("#bing-container iframe")[0] && document.querySelectorAll("#bing-container iframe")[0].contains(e.target)){
-	} else{
-	listenForClicks();
+	if (document.querySelectorAll("#bing-container iframe")[0] && document.querySelectorAll("#bing-container iframe")[0].contains(e.target)) {
+	} else {
+		listenForClicks();
 	}
-  });
-  function hide(element) {
+});
+function hide(element) {
 	document.querySelectorAll(element)[0].classList.toggle("invisible");
 	if (document.querySelectorAll(element)[0].classList.contains("invisible")) {
 		//closing apps	
@@ -31,7 +31,7 @@ window.addEventListener('mousedown', async function(e){
 		manageTaskBar();
 		if (element === "#terminal-container") {
 			$("#terminal").terminal().destroy()
-		}else if (element === "#bing-container"){
+		} else if (element === "#bing-container") {
 			document.querySelectorAll("#bing")[0].remove();
 		}
 		return;
@@ -72,11 +72,48 @@ window.addEventListener('mousedown', async function(e){
 			width: 450,
 			prompt: ' > '
 		});
-	}else if (element === "#bing-container"){
+	} else if (element === "#bing-container") {
 		let newElem = document.createElement("iframe");
-		newElem.title="Bing";
-		newElem.id="bing";
-		newElem.src="https://www.bing.com";
+		newElem.title = "Bing";
+		newElem.id = "bing";
+		newElem.src = "https://www.bing.com";
 		document.getElementById("bing-container").appendChild(newElem)
 	}
+}
+getNpmStats();
+async function getNpmStats() {
+	var total = 0;
+	let element = document.createElement("div");
+	element.classList.add("invisible")
+	element.innerHTML = '<div class="loadingGif"><img src="./images/loading.gif"></div>'
+	document.querySelector("#npmDownloads").appendChild(element);
+	let result = await fetch("https://server.joshuaz.dev/download-count");
+	result = await result.json();
+	document.querySelectorAll("#npmDownloads .loadingGif")[0].style.display = "none"
+	Object.entries(result).forEach(
+		([key, value]) => {
+			let div = document.createElement("div");
+			div.classList.add("npmPackage")
+			let a = document.createElement("a");
+			a.href = "https://www.npmjs.com/package/"+key;
+			a.innerText = key;
+			a.style.marginLeft = "10px"
+			a.classList.add("link");
+			a.target = "_blank";
+			div.appendChild(a);
+			let span = document.createElement("span");
+			span.classList.add("downloadCount");
+
+			let downloadCount = 0;
+
+			Object.entries(value).forEach(([key, value]) => {
+				downloadCount += value;
+			})
+			total += downloadCount;
+			span.innerText = downloadCount;
+			div.appendChild(span)
+			element.appendChild(div)
+		}
+	);
+	document.querySelector("#totalNpmDownloads").innerText = total;
 }

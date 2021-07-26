@@ -476,6 +476,30 @@
 				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"
 				alt="my github contributions">
 		</div>
+		<div class="stats side-by-side">
+			<span style="display: block; text-align: center; margin-bottom: 10px;" class="large-font">By the
+				numbers</span>
+			<a href="https://github.com/Joshua-Zou" class="side-by-side">
+				<img align="center" style="max-height: 165px;"
+					src="https://github-readme-stats.vercel.app/api?username=Joshua-Zou&theme=react" />
+			</a>
+			<a href="https://github.com/Joshua-Zou/" class="side-by-side" style="margin-left: 10px;">
+				<img align="center" style="max-height: 175px;"
+					src="https://github-readme-stats.vercel.app/api/top-langs/?username=Joshua-Zou&langs_count=10&theme=react&layout=compact" />
+			</a>
+			<div class="side-by-side" id="npmDownloads"
+				style="margin-top: 10px; background-color: #20232A; border: 1px solid white; border-radius: 3px; padding: 15px; width: 400px;">
+				<span style="font-family: Helvetica; font-weight: 700; color: #57BDDA;">Total NPM downloads</span>
+				<br>
+				<div style="margin-top: 10px;">
+					<span>Total: </span>
+					<span style="float: right;" id="totalNpmDownloads">Querying...</span>
+					<br>
+					<span class="link pointer" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.parentElement.children[4].classList.toggle('rotate-90')">View specifics </span>
+					<i style="float: right; transition: all 0.5s;" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.classList.toggle('rotate-90')" class="pointer link fas fa-chevron-down"></i>
+				</div>
+			</div>
+		</div>
 	</section>
 	<section id="projects" style="display: block;">
 		<div class="toc">
@@ -491,8 +515,10 @@
 				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a href="#languages"
 						onclick="changeLang('tools')">Tools/Skills</a></li>
 				<li>──| <a href="#projects">Projects</a></li>
-				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a href="#top-projects">Top Projects</a></li>
-				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a href="#works-in-progress">Statuses</a></li>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a href="#top-projects">Top
+						Projects</a></li>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a
+						href="#works-in-progress">Statuses</a></li>
 				<hr style="width: 10px; position: relative; left: -62px; top: -15px;">
 			</ul>
 		</div>
@@ -867,6 +893,7 @@
 		</div>
 	</section>
 </body>
+
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
 <script src="./javascript/home.js"></script>
@@ -875,3 +902,56 @@
 </body>
 
 </html>
+
+<style>
+	#npmDownloads .fa-chevron-down {
+		border: none;
+		box-shadow: none;
+	}
+	#npmDownloads .loadingGif img {
+		margin-top: 20px;
+		left: 50%;
+		position: relative;
+		transform: translate(-50%, 0);
+	}
+
+	.npmPackage .downloadCount {
+		float: right;
+	}
+
+	.npmPackage {
+		margin: 5px;
+	}
+
+	#languages .stats {
+		position: relative;
+		top: 50px;
+		left: 20px;
+		padding: 10px;
+		background-color: var(--pop-color);
+		margin-bottom: 100px;
+	}
+
+	@media (max-width: 500px) {
+		#languages .stats a {
+			margin-left: 0 !important;
+		}
+
+		#languages .stats img {
+			margin-top: 10px !important;
+			max-width: 88vw;
+		}
+
+		#languages .stats {
+			top: 0;
+			left: 0;
+			margin-bottom: 20px;
+		}
+	}
+
+	@media (min-width: 500px) {
+		#languages .stats {
+			max-width: 850px;
+		}
+	}
+</style>

@@ -291,13 +291,20 @@ function manageTaskBar(){
 }
 
 document.addEventListener("scroll", function(event){
+	updateTBposition();
+})
+document.addEventListener("click", function(event){
+	updateTBposition();
+})
+function updateTBposition(){
 	if (window.screen.width < 501) return;
 	if (checkVisible(document.querySelectorAll("#projects .project .medium-font")[0]) === true){
 		document.querySelectorAll(".toc")[0].style = "position: absolute; top: auto; transform: translate(0px, -275px);"
 	}else{
 		document.querySelectorAll(".toc")[0].style = "position: fixed";
 	}
-})
+}
+
 function checkVisible(elm) {
 	var rect = elm.getBoundingClientRect();
 	var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
@@ -313,7 +320,7 @@ function checkVisible(elm) {
   }
 
   window.onload = function () {
-	console.log("%c Yo. if mobile mode in dev tools looks kinda weird, try closing dev tools and re-opening it. Its a weird thing with chrome dev tools (its not my fault :) )", "background: #0c0032; color: white; font-size: x-large");
+	console.log("%c Hey. if mobile mode in dev tools looks kinda weird, try closing dev tools and re-opening it. It's a weird thing with chrome dev tools (it's not my fault :) )", "background: #0c0032; color: white; font-size: x-large");
 	let social_elements = document.getElementsByClassName("social")[0].children[0].children;
 	for (let i = 0; i < social_elements.length; i++) {
 		social_elements[i].addEventListener("mouseenter", function (res) {
