@@ -1373,3 +1373,56 @@ body::-webkit-scrollbar {
     border-radius: 20px;
   
   }
+  #npmDownloads .fa-chevron-down {
+    border: none;
+    box-shadow: none;
+}
+#npmDownloads .loadingGif img {
+    margin-top: 20px;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+}
+
+.npmPackage .downloadCount {
+    float: right;
+}
+
+.npmPackage {
+    margin: 5px;
+}
+
+#languages .stats {
+    position: relative;
+    top: 50px;
+    left: 20px;
+    padding: 10px;
+    background-color: var(--pop-color);
+    margin-bottom: 100px;
+}
+
+@media (max-width: 500px) {
+    #npmDownloads {
+        width: auto !important;
+    }
+    #languages .stats a {
+        margin-left: 0 !important;
+    }
+
+    #languages .stats img {
+        margin-top: 10px !important;
+        max-width: 88vw;
+    }
+
+    #languages .stats {
+        top: 0;
+        left: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 500px) {
+    #languages .stats {
+        max-width: 850px;
+    }
+}
