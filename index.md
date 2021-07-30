@@ -476,6 +476,32 @@
 				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"
 				alt="my github contributions">
 		</div>
+		<div class="stats side-by-side">
+			<span style="display: block; text-align: center; margin-bottom: 10px;" class="large-font">By the
+				numbers</span>
+			<a href="https://github.com/Joshua-Zou" class="side-by-side">
+				<img align="center" style="max-height: 165px;"
+					src="https://github-readme-stats.vercel.app/api?username=Joshua-Zou&theme=react" />
+			</a>
+			<a href="https://github.com/Joshua-Zou/" class="side-by-side" style="margin-left: 10px;">
+				<img align="center" style="max-height: 175px;"
+					src="https://github-readme-stats.vercel.app/api/top-langs/?username=Joshua-Zou&langs_count=10&theme=react&layout=compact" />
+			</a>
+			<div class="side-by-side" id="npmDownloads"
+				style="margin-top: 10px; background-color: #20232A; border: 1px solid white; border-radius: 3px; padding: 15px; width: 400px;">
+				<span style="font-family: Helvetica; font-weight: 700; color: #57BDDA;">Total NPM downloads</span>
+				<br>
+				<div style="margin-top: 10px;">
+					<span>Total: </span>
+					<span style="float: right;" id="totalNpmDownloads">Querying...</span>
+					<br>
+					<span class="link pointer" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.parentElement.children[6].classList.toggle('rotate-90')">View specifics </span>
+					<span>&nbsp;|&nbsp;</span>
+					<span class="link pointer" onclick="this.parentElement.children[6].classList.remove('rotate-90'); getNpmStats();">Refresh Data </span>
+					<i style="float: right; transition: all 0.5s;" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.classList.toggle('rotate-90')" class="pointer link fas fa-chevron-down"></i>
+				</div>
+			</div>
+		</div>
 	</section>
 	<section id="projects" style="display: block;">
 		<div class="toc">
@@ -490,11 +516,16 @@
 						onclick="changeLang('default')">Languages</a></li>
 				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a href="#languages"
 						onclick="changeLang('tools')">Tools/Skills</a></li>
-				<li>── <a href="#projects">Projects</a></li>
+				<li>──| <a href="#projects">Projects</a></li>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a href="#top-projects">Top
+						Projects</a></li>
+				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a
+						href="#works-in-progress">Statuses</a></li>
+				<hr style="width: 10px; position: relative; left: -62px; top: -15px;">
 			</ul>
 		</div>
 		<div class="container">
-			<div class="top-projects">
+			<div class="top-projects" id="top-projects">
 				<span class="extra-large-font">My top projects<br> </span>
 				<span class="medium-font">Big projects that I'm (maybe) known for online&nbsp; &nbsp; </span>
 				<a href="https://github.com/Joshua-Zou?tab=repositories" target="_blank">View all <i
@@ -626,7 +657,7 @@
 			</div>
 			<br>
 			<hr>
-			<div class="project-status">
+			<div class="project-status" id="works-in-progress">
 				<br>
 				<span class="extra-large-font">Works in progress</span>
 				<br>
@@ -669,7 +700,7 @@
 						<span>95%</span>
 						<div class="description invisible">
 							Send Crypto is a lightweight library for sending many types of cryptocurrencies! You can
-							choose the node you would like to connect to, wether it be an API, or a local node, import a
+							choose the node you would like to connect to, whether it be an API, or a local node, import a
 							wallet, and send crypto! You can find out more about it at the links below:
 							<br>
 							<div class="links">
@@ -868,6 +899,7 @@
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
 <script src="./javascript/home.js"></script>
+<script src="./javascript/asynchome.js"></script>
 
 </body>
 
