@@ -191,17 +191,15 @@ function showCachedNpmStats() {
 
 
 document.addEventListener("keypress", async function (event) {
-	console.log = function (text) {
-		document.querySelector(".terminal-scroll-marker").children[0].innerText = text;
-	}
-
 	if (window.termNodeActive !== true) return;
 	addTermLsnr();
 	if (event.key === "Enter") {
 
 	} else {
-		let text = document.getElementsByClassName("cmd-cursor-line")[0].innerText;
-		if (!text.startsWith("return")) text = "return "+text;
+		let text = document.getElementsByClassName("cmd-wrapper")[0].innerText;
+		text = text.slice(3);
+		if (!text.startsWith("return") && !text.startsWith("for") && !text.startsWith("if") && !text.startsWith("while") && !text.startsWith("do") && !text.startsWith("function") && !text.startsWith("let") && !text.startsWith("var") && !text.startsWith("const")) text = "return " + text//.slice(2);
+		await sleep(1)
 		var x;
 		try {
 			var F = new Function(text);
@@ -215,67 +213,106 @@ document.addEventListener("keypress", async function (event) {
 window.addTermLsnrVar = false;
 var lastKeyPressed = "";
 function addTermLsnr() {
+	let newId = makeid(10);
 	if (window.addTermLsnrVar === true) return;
 	window.addTermLsnrVar = true;
 	$("#terminal").terminal().keydown(async function (event) {
-		if (lastKeyPressed === "Control" && event.originalEvent.key === "c"){
-			console.warn("control c pressed!")
+		if (lastKeyPressed === "Control" && event.originalEvent.key === "c") {
 			window.addTermLsnrVar = false;
 			window.termNodeActive = false;
 			document.querySelector(".terminal-scroll-marker").children[0].innerText = "";
 			$("#terminal").terminal().set_prompt(" C:\\Users\\Joshua> ");
 		}
-		lastKeyPressed = event.originalEvent.key;
-		//console.warn(event.originalEvent.key)
-		if (event.originalEvent.key === "Enter") {
+		lastKeyPressed = event.originalEvent.key;		if (event.originalEvent.key === "Enter") {
 			if (window.termNodeActive !== true) return;
-			let text = document.getElementsByClassName("cmd-cursor-line")[0].innerText;
-			if (!text.startsWith("return")) text = "return "+text;
+			let text = document.getElementsByClassName("cmd-wrapper")[0].innerText;
+			text = text.slice(3);
+			if (!text.startsWith("return") && !text.startsWith("for") && !text.startsWith("if") && !text.startsWith("while") && !text.startsWith("do") && !text.startsWith("function") && !text.startsWith("let") && !text.startsWith("var") && !text.startsWith("const")) text = "return " + text//.slice(2);
+			text = text.replaceAll("console.log", `log${newId}`);
+			text = text.replaceAll("console.warn", `warn${newId}`);
+			text = text.replaceAll("console.error", `error${newId}`)
 			await sleep(1)
+
+			let lastIndex = $("#terminal").terminal().last_index();
+			//console.log(`[data-index='${lastIndex+2}']`)
+			let elm = document.querySelectorAll(`[data-index='${lastIndex}']`)[0];
+			document.querySelectorAll(`[data-index='${lastIndex}']`)[0].dataset.index = -100;
+			elm.children[0].children[0].classList = "";
+			elm.children[0].children[0].dataset.text = x;
+			elm.children[0].children[0].children[0].style.color = "#aaa";
+			elm.children[0].children[0].children[0].innerText = JSON.stringify(x);
+			window.elm = elm;
 			var x;
 			try {
-				var F = new Function(text);
+				var F = new Function(`
+				function log${newId}(text){
+					console.log(text)
+					let newElm = $.parseHTML(library.json.prettyPrint(JSON.parse(JSON.stringify(text))));
+					newElm[0].style.display = "block"
+					window.elm.appendChild(newElm[0])
+				}
+				function warn${newId}(text){
+					console.warn(text)
+					let newElm = $.parseHTML("<i class='fas fa-exclamation-triangle' style='background: rgb(255 255 0 / 30%)'> "+text+"</i>");
+					newElm[0].style.display = "block"
+					window.elm.appendChild(newElm[0])
+				}
+				function error${newId}(text){
+					console.error(text)
+					let newElm = $.parseHTML("<i class='fas fa-times-circle' style='background: #2A0003; color: #E17676 !important'> "+text+"</i>");
+					newElm[0].style.display = "block"
+					window.elm.appendChild(newElm[0])
+				}
+				`+text);
 				x = F();
 			} catch (err) {
 				document.querySelector(".terminal-scroll-marker").children[0].innerText = "";
-				$("#terminal").terminal().update(-1, err)
+				$(elm).html(err)
 			}
 			document.querySelector(".terminal-scroll-marker").children[0].innerText = "";
-			let lastIndex = $("#terminal").terminal().last_index();
-			//console.log(`[data-index='${lastIndex+2}']`)
-			document.querySelectorAll(`[data-index='${lastIndex}']`)[0].children[0].children[0].classList = "";
-			document.querySelectorAll(`[data-index='${lastIndex}']`)[0].children[0].children[0].dataset.text = x;
-			document.querySelectorAll(`[data-index='${lastIndex}']`)[0].children[0].children[0].children[0].style.color = "#aaa";
-			document.querySelectorAll(`[data-index='${lastIndex}']`)[0].children[0].children[0].children[0].innerText = JSON.stringify(x);
-
-			$(`[data-index='${lastIndex}']`).html(library.json.prettyPrint(JSON.parse(JSON.stringify(x))));
-
-			document.querySelectorAll(`[data-index='${lastIndex}']`)[0].dataset.index = -100
+			let newElm = $.parseHTML(library.json.prettyPrint(JSON.parse(JSON.stringify(x))));
+			newElm[0].style.display = "block"
+			elm.appendChild(newElm[0])
 		}
 	})
 }
 
 
 if (!library)
-   var library = {};
+	var library = {};
 
 library.json = {
-   replacer: function(match, pIndent, pKey, pVal, pEnd) {
-      var key = '<span class=json-key>';
-      var val = '<span class=json-value>';
-      var str = '<span class=json-string>';
-      var r = pIndent || '';
-      if (pKey)
-         r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
-      if (pVal)
-         r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
-      return r + (pEnd || '');
-      },
-   prettyPrint: function(obj) {
-      var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
-      return JSON.stringify(obj, null, 3)
-         .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
-         .replace(/</g, '&lt;').replace(/>/g, '&gt;')
-         .replace(jsonLine, library.json.replacer);
-      }
-   };
+	replacer: function (match, pIndent, pKey, pVal, pEnd) {
+		var key = '<span class=json-key>';
+		var val = '<span class=json-value>';
+		var str = '<span class=json-string>';
+		var r = pIndent || '';
+		if (pKey)
+			r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+		if (pVal)
+			r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+		return r + (pEnd || '');
+	},
+	prettyPrint: function (obj) {
+		var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+		return JSON.stringify(obj, null, 3)
+			.replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+			.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+			.replace(jsonLine, library.json.replacer);
+	}
+};
+
+function makeid(length) {
+    var result           = [];
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result.push(characters.charAt(Math.floor(Math.random() * 
+ charactersLength)));
+   }
+   return result.join('');
+}
+String.prototype.replaceAll = function (find, replace) {
+	var regex = new RegExp(find, 'g');
+	return this.replace(regex, replace)
+  }
