@@ -1,5 +1,24 @@
 
-
+window.fs = {
+	['C:']: {
+		Users: {
+			Joshua: {
+				projects: {
+					['CoinTunnel.txt']: "https://github.com/Joshua-Zou/coin-tunnel",
+					['OpenSkin.txt']: "https://github.com/Joshua-Zou/Skin-Server",
+					['ElonBot.txt']: "https://github.com/Joshua-Zou/elonbot",
+					['Unity.txt']: "https://github.com/Joshua-Zou/DiscordNsfwImageDetector",
+					['meme.txt']: "https://github.com/Joshua-Zou",
+					['sendCrypto.txt']: "https://github.com/Joshua-Zou/send-crypto",
+					['vanityBtc.txt']: "https://github.com/Joshua-Zou/vanity-btc/"
+				},
+				srcCode: {
+					['elonBot.js']: "https://github.com/Joshua-Zou/ElonBot/blob/main/index.js"
+				}
+			}
+		}
+	}
+}
 
 window.addEventListener('mousedown', async function (e) {
 	if (window.screen.width < 501 && !e.target.classList.contains("pointer") && e.target.tagName !== "a" && e.target.onclick === null && e.target.tagName !== "g" && e.target.tagName !== "path" && e.target.tagName !== "rect" && !e.target.classList.contains("right-navbar")) {
@@ -42,6 +61,7 @@ function hide(element) {
 	hotApps[element] = true;
 	manageTaskBar();
 	if (element === "#terminal-container") {
+		window.currentDir = "C:/Joshua/"
 		$('#terminal').terminal({
 			help: function () {
 				if (window.termNodeActive === true) {
@@ -87,6 +107,28 @@ function hide(element) {
 				window.termNodeActive = true;
 				this.echo("Welcome to Node.js v14.16.1! \nType \".help\" for more information.\n");
 				this.set_prompt("> ");
+			},
+			cd: function (dir) {
+				if (window.termNodeActive === true) {
+					this.echo("Uncaught ReferenceError: about is not defined");
+					return;
+				}
+				if (dir === "../") {
+					let tempDir = window.currentDir;
+					for (let i = 0; i < 100; i++) {
+						let index = window.currentDir.indexOf("/");
+						tempDir = tempDir.slice(index);
+						if (tempDir.indexOf("/" === -1)) {
+							let index = window.currentDir.indexOf("/");
+							tempDir = tempDir.slice(index - 1);
+							break;
+						}
+					};
+					console.log(tempDir);
+					console.log(window.currentDir)
+					let newDir = window.currentDir.replaceAll(tempDir, "");
+					console.log(newDir)
+				}
 			}
 		}, {
 			greetings: '(c) Joshua Zou. All rights reserved.\nWelcome to the terminal! To get started, type "help" for help',
@@ -204,10 +246,10 @@ document.addEventListener("keypress", async function (event) {
 		try {
 			var F = new Function(text);
 			x = F();
+			document.querySelector(".terminal-scroll-marker").children[0].innerText = x;
 		} catch (err) {
-			console.log(err)
+			document.querySelector(".terminal-scroll-marker").children[0].innerText = err.toString();
 		}
-		document.querySelector(".terminal-scroll-marker").children[0].innerText = x;
 	}
 })
 window.addTermLsnrVar = false;
@@ -222,15 +264,16 @@ function addTermLsnr() {
 			window.termNodeActive = false;
 			document.querySelector(".terminal-scroll-marker").children[0].innerText = "";
 			$("#terminal").terminal().set_prompt(" C:\\Users\\Joshua> ");
+			window.terminalRun = false;
 		}
-		lastKeyPressed = event.originalEvent.key;		if (event.originalEvent.key === "Enter") {
+		lastKeyPressed = event.originalEvent.key; if (event.originalEvent.key === "Enter") {
 			if (window.termNodeActive !== true) return;
 			let text = document.getElementsByClassName("cmd-wrapper")[0].innerText;
 			text = text.slice(3);
 			if (!text.startsWith("return") && !text.startsWith("for") && !text.startsWith("if") && !text.startsWith("while") && !text.startsWith("do") && !text.startsWith("function") && !text.startsWith("let") && !text.startsWith("var") && !text.startsWith("const")) text = "return " + text//.slice(2);
 			text = text.replaceAll("console.log", `log${newId}`);
 			text = text.replaceAll("console.warn", `warn${newId}`);
-			text = text.replaceAll("console.error", `error${newId}`)
+			text = text.replaceAll("console.error", `error${newId}`);
 			await sleep(1)
 
 			let lastIndex = $("#terminal").terminal().last_index();
@@ -244,7 +287,13 @@ function addTermLsnr() {
 			window.elm = elm;
 			var x;
 			try {
-				var F = new Function(`
+				let AsyncFunction = Object.getPrototypeOf(async function () { }).constructor;
+				//text = text.replace(/\s/g, '');
+				text = text.replace(/\)\ \{/g, `){if (window.terminalRun === false) return error${newId}("process killed by user");`);
+				text = text.replace(/\)\{/g, `){if (window.terminalRun === false) return error${newId}("process killed by user");`)
+				console.log(text)
+				var F = new AsyncFunction(`
+				if (window.terminalRun === false) return console.warn("process killed by user");
 				function log${newId}(text){
 					console.log(text)
 					let newElm = $.parseHTML(library.json.prettyPrint(JSON.parse(JSON.stringify(text))));
@@ -263,8 +312,8 @@ function addTermLsnr() {
 					newElm[0].style.display = "block"
 					window.elm.appendChild(newElm[0])
 				}
-				`+text);
-				x = F();
+				`+ text);
+				x = await F();
 			} catch (err) {
 				document.querySelector(".terminal-scroll-marker").children[0].innerText = "";
 				$(elm).html(err)
@@ -303,16 +352,22 @@ library.json = {
 };
 
 function makeid(length) {
-    var result           = [];
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result.push(characters.charAt(Math.floor(Math.random() * 
- charactersLength)));
-   }
-   return result.join('');
+	var result = [];
+	var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	var charactersLength = characters.length;
+	for (var i = 0; i < length; i++) {
+		result.push(characters.charAt(Math.floor(Math.random() *
+			charactersLength)));
+	}
+	return result.join('');
 }
 String.prototype.replaceAll = function (find, replace) {
+	find = escapeRegExp(find);
+	replace = escapeRegExp(replace)
 	var regex = new RegExp(find, 'g');
-	return this.replace(regex, replace)
-  }
+	return this.replace(regex, replace);
+
+	function escapeRegExp(str) {
+		return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+	}
+}
