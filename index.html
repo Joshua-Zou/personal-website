@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="./fonts/syntax.css">
 	<script src="./javascript/rainbow.min.js"></script>
 	<!--preload stuff-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/js/jquery.terminal.min.js"></script>
+	<script src="./javascript/jquery.terminal.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/css/jquery.terminal.min.css"
 		rel="stylesheet" />
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GP1QYQRYY8"></script>
@@ -495,10 +495,16 @@
 					<span>Total: </span>
 					<span style="float: right;" id="totalNpmDownloads">Querying...</span>
 					<br>
-					<span class="link pointer" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.parentElement.children[6].classList.toggle('rotate-90')">View specifics </span>
+					<span class="link pointer"
+						onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.parentElement.children[6].classList.toggle('rotate-90')">View
+						specifics </span>
 					<span>&nbsp;|&nbsp;</span>
-					<span class="link pointer" onclick="this.parentElement.children[6].classList.remove('rotate-90'); getNpmStats();">Refresh Data </span>
-					<i style="float: right; transition: all 0.5s;" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.classList.toggle('rotate-90')" class="pointer link fas fa-chevron-down"></i>
+					<span class="link pointer"
+						onclick="this.parentElement.children[6].classList.remove('rotate-90'); getNpmStats();">Refresh
+						Data </span>
+					<i style="float: right; transition: all 0.5s;"
+						onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.classList.toggle('rotate-90')"
+						class="pointer link fas fa-chevron-down"></i>
 				</div>
 			</div>
 		</div>
@@ -700,7 +706,8 @@
 						<span>95%</span>
 						<div class="description invisible">
 							Send Crypto is a lightweight library for sending many types of cryptocurrencies! You can
-							choose the node you would like to connect to, whether it be an API, or a local node, import a
+							choose the node you would like to connect to, whether it be an API, or a local node, import
+							a
 							wallet, and send crypto! You can find out more about it at the links below:
 							<br>
 							<div class="links">
@@ -904,3 +911,25 @@
 </body>
 
 </html>
+
+<style>
+	.terminal .cmd {
+		margin-bottom: 20px !important;
+	}
+
+	.terminal-scroll-marker * {
+		color: grey;
+	}
+
+	.json-key {
+		color: #aaa;
+	}
+
+	.json-value {
+		color: #C19C04;
+	}
+
+	.json-string {
+		color: #13A10E;
+	}
+</style>
