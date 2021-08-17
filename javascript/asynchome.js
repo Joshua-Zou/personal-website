@@ -61,7 +61,7 @@ function hide(element) {
 	hotApps[element] = true;
 	manageTaskBar();
 	if (element === "#terminal-container") {
-		window.currentDir = "C:/Joshua/"
+		window.currentDir = "C:/Users/Joshua/"
 		$('#terminal').terminal({
 			help: function () {
 				if (window.termNodeActive === true) {
@@ -115,27 +115,112 @@ function hide(element) {
 				}
 				if (dir === "../") {
 					let tempDir = window.currentDir;
-					for (let i = 0; i < 100; i++) {
-						let index = window.currentDir.indexOf("/");
-						tempDir = tempDir.slice(index);
-						if (tempDir.indexOf("/" === -1)) {
-							let index = window.currentDir.indexOf("/");
-							tempDir = tempDir.slice(index - 1);
-							break;
-						}
+					var count = (tempDir.match(/\//g) || []).length;
+					for (let i = 0; i < count - 1; i++) {
+						let index = tempDir.indexOf("/");
+						tempDir = tempDir.slice(index + 1);
 					};
-					console.log(tempDir);
-					console.log(window.currentDir)
 					let newDir = window.currentDir.replaceAll(tempDir, "");
-					console.log(newDir)
+
+					if (newDir === "") {
+						window.currentDir = "C:/";
+						this.set_prompt(" " + window.currentDir + "> ")
+					} else {
+						window.currentDir = newDir;
+						this.set_prompt(" " + newDir.slice(0, newDir.length - 1) + "> ");
+					}
+				} else {
+					let arr = window.currentDir.split("/");
+					arr.pop();
+					var tempDir = window.fs;
+					for (let i = 0; i < arr.length; i++) {
+						let current = arr[i];
+						tempDir = tempDir[current];
+					}
+					if (!tempDir[dir]) {
+						this.echo("The system cannot find the path specified. \n")
+					} else {
+						if (dir.includes(".")) {
+							this.echo("The directory name is invalid. (To open a file, use `nano {filename}`)\n ");
+							return;
+						}
+						window.currentDir = window.currentDir + dir + "/";
+						this.set_prompt(" " + window.currentDir.slice(0, window.currentDir.length - 1) + "> ");
+					}
 				}
+			},
+			dir: function () {
+				if (window.termNodeActive === true) {
+					this.echo("Uncaught ReferenceError: about is not defined");
+					return;
+				}
+				let arr = window.currentDir.split("/");
+				arr.pop();
+				var tempDir = window.fs;
+				for (let i = 0; i < arr.length; i++) {
+					let current = arr[i];
+					tempDir = tempDir[current];
+				}
+				let showArr = [];
+				Object.entries(tempDir).forEach(([key, value]) => {
+					showArr.push(key)
+				})
+				this.echo("Volume in drive C is OS\nVolume Serial Number is BL89-CP51\n\nDirectory of "+window.currentDir+"\n");
+				for (let p = 0; p<showArr.length; p++){
+					this.echo(showArr[p])
+				}
+				this.echo("\n")
+			},
+			ls: function () {
+				if (window.termNodeActive === true) {
+					this.echo("Uncaught ReferenceError: about is not defined");
+					return;
+				}
+				let arr = window.currentDir.split("/");
+				arr.pop();
+				var tempDir = window.fs;
+				for (let i = 0; i < arr.length; i++) {
+					let current = arr[i];
+					tempDir = tempDir[current];
+				}
+				let showArr = [];
+				Object.entries(tempDir).forEach(([key, value]) => {
+					showArr.push(key)
+				})
+				this.echo("Volume in drive C is OS\nVolume Serial Number is BL89-CP51\n\nDirectory of "+window.currentDir+"\n");
+				for (let p = 0; p<showArr.length; p++){
+					this.echo(showArr[p])
+				}
+				this.echo("\n")
+			},
+			nano: function (file){
+				if (window.termNodeActive === true) {
+					this.echo("Uncaught ReferenceError: about is not defined");
+					return;
+				}
+				let arr = window.currentDir.split("/");
+					arr.pop();
+					var tempDir = window.fs;
+					for (let i = 0; i < arr.length; i++) {
+						let current = arr[i];
+						tempDir = tempDir[current];
+					}
+					if (!tempDir[file]) {
+						this.echo("The system cannot find the file specified. \n")
+					} else {
+						if (!file.includes(".")){
+							this.echo("The system cannot find the file specified. \n");
+							return;
+						}
+						this.echo(tempDir[file])
+					}
 			}
 		}, {
 			greetings: '(c) Joshua Zou. All rights reserved.\nWelcome to the terminal! To get started, type "help" for help',
 			name: 'terminal',
 			height: 200,
 			width: 450,
-			prompt: ' C:\\Users\\Joshua> '
+			prompt: ' C:/Users/Joshua> '
 		});
 	} else if (element === "#bing-container") {
 		let newElem = document.createElement("iframe");
