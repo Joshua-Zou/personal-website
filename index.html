@@ -796,6 +796,9 @@
 			<div class="minimized-bing-container app-favicon" onclick="minimize('#bing-container')">
 				<img src="./images/edge.svg" style="transform: scale(2.2)">
 			</div>
+			<div class="minimized-microsoft-container app-favicon" onclick="minimize('#microsoft-container')">
+				<i class="fab fa-windows"></i>
+			</div>
 		</div>
 	</section>
 	<section class="apps">
@@ -900,19 +903,164 @@
 				</span>
 			</span>
 		</div>
+		<div id="microsoft-container" class="invisible" onmousedown="bringToTop('#microsoft-container')">
+			<div class="leftpart">
+				<button class="shiny pancake"
+					onmousedown="this.parentElement.style.transitionDelay = '0s'; this.parentElement.style.transition = 'all 0.2s';  let p = this; setTimeout(function(){p.parentElement.style.transitionDelay = null; p.parentElement.style.transition = null;  }, 1000)">
+					<div
+						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+						<hr style="width: 100%; margin-bottom: 0; margin-top: 0">
+						<hr style="width: 100%; margin-bottom: 0; margin-top: 2.5px;">
+						<hr style="width: 100%; margin-bottom: 0; margin-top: 2.5px;">
+					</div>
+					<span
+						style="display: inline; position: absolute; font-weight: bold; margin-left: 10px; margin-top: 12px;">START</span>
+				</button>
+				<div class="filler"></div>
+				<button class="shiny power">
+					<div
+						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+						<img src="./images/Document.svg"
+							style="width: 18px;-webkit-filter: invert(1); filter: invert(1);">
+					</div>
+					<span
+						style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Documents</span>
+				</button>
+				<button class="shiny power">
+					<div
+						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+						<img src="./images/Picture.svg"
+							style="width: 18px;-webkit-filter: invert(1); filter: invert(1);">
+					</div>
+					<span
+						style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Pictures</span>
+				</button>
+				<button class="shiny power">
+					<div
+						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+						<img src="./images/gear-icon-svg-18.jpg"
+							style="width: 18px;-webkit-filter: invert(1); filter: invert(1);">
+					</div>
+					<span
+						style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Settings</span>
+				</button>
+				<div style="position: absolute; background-color: #252224; padding: 10px 0; transform: translateY(-80px);"
+					id="powermenu" class="invisible">
+					<button class="hoverbtn" style="color: white; width: 100%; height: 30px; font-size: 0.95em;"
+						onclick="shutDown();">
+						<img src="./images/power-button.svg" style="width: 18px;">
+						<span style="position: relative; bottom: 2px;">
+							Shut down
+						</span>
+					</button>
+					<button class="hoverbtn" style="color: white; width: 100%; height: 30px; font-size: 0.95em;"
+						onclick="restart();">
+						<img src="./images/msrestart.svg" style="width: 18px; position: relative; top: 2px;">
+						<span style="position: relative; bottom: 2px;">
+							Restart
+						</span>
+					</button>
+				</div>
+				<button class="shiny power" onclick="togglePowerMenu();" id="powerBtn">
+					<div
+						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+						<img src="./images/power-button.svg" style="width: 18px;">
+					</div>
+					<span style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Power</span>
+				</button>
+			</div>
+		</div>
 	</section>
 </body>
+
+<div class="windowsScreens invisible">
+	<div style="width: 100%; height: 100%;">
+		<div class="busy-loader">
+			<div class="w-ball-wrapper ball-1">
+				<div class="w-ball">
+				</div>
+			</div>
+			<div class="w-ball-wrapper ball-2">
+				<div class="w-ball">
+				</div>
+			</div>
+			<div class="w-ball-wrapper ball-3">
+				<div class="w-ball">
+				</div>
+			</div>
+			<div class="w-ball-wrapper ball-4">
+				<div class="w-ball">
+				</div>
+			</div>
+			<div class="w-ball-wrapper ball-5">
+				<div class=" w-ball">
+				</div>
+			</div>
+		</div>
+		<span
+			style="color: white; display: block; text-align: center; top: 50%; position: relative; transform: translateX(-15px); font-size: 1.2em;"
+			id="windowsScreenMsg">Restarting</span>
+	</div>
+	<div class="invisible" style="height: 100%; width: 100%; font-family: 'dosfont'; margin-left: 20%;">
+		<div style="float: left; margin-top: 30px;">
+			<img src="./images/ami.svg" style="width: 300px;">
+			<span
+				style="color: white; font-size: 1.5em; display: block; margin-left: 50px; transform: translateY(-30px);">www.joshuaz.dev</span>
+		</div>
+		<div style="float: left; margin-top: 30px; margin-left: 40px;">
+			<span style="color: white; font-size: 4em; font-family: 'Font Awesome 5 Brands';">American<br><span
+					style="font-size: 0.84em;">Megatrends</span></span>
+			<div
+				style="color: rgb(190, 190, 190); margin-top: 100px; position: relative; left: -300px; line-height: 1.2em;">
+				<span>AMIBIOS(C)2007 American Megatrends, Inc.</span>
+				<br>
+				<span>ASUS P5KPL ACPI BIOS Revision 0603</span>
+				<br>
+				<span>CPU : Intel (R) Pentium(R) Dual CPU E2180 @ 2.00GHz</span>
+				<br>
+				<span>&nbsp;Speed : 2.51 GHz&nbsp;&nbsp;&nbsp;&nbsp; Count : 2</span>
+				<br>
+				<br>
+				<br>
+				<br>
+				<span>Press DEL to run Setup</span>
+				<br>
+				<span>Press F8 for BBS POPUP</span>
+				<br>
+				<span>DDR2-667 in Dual-Channel Interleaved Mode.</span>
+				<br>
+				<span>Initializing USB Controllers .. Done.</span>
+				<br>
+				<span>3584MB OK</span>
+				<br>
+			</div>
+			<div
+				style="color: rgb(190, 190, 190); margin-top: 100px; position: absolute; bottom: 100px; transform: translateX(-300px); line-height: 1.2em; display: block; width: 1000px;">
+				<span>(C) American Megatrends, Inc.</span>
+				<br>
+				<span>69-1568-000001-0101100111-09846420-Tigerlake-A08651200-ACI5C</span>
+			</div>
+		</div>
+
+	</div>
+</div>
 
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
 <script src="./javascript/home.js"></script>
 <script src="./javascript/asynchome.js"></script>
+<link href="./fonts/segoe-ui-4-cufonfonts-webfont/seqoeUI.css" rel="stylesheet">
 
 </body>
 
 </html>
 
 <style>
+	@font-face {
+		font-family: "dosfont";
+		src: url("./fonts/Perfect\ DOS\ VGA\ 437\ Win.ttf");
+	}
+
 	.terminal .cmd {
 		margin-bottom: 20px !important;
 	}

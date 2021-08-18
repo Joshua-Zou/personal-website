@@ -456,3 +456,4 @@ String.prototype.replaceAll = function (find, replace) {
 		return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 	}
 }
+

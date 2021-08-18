@@ -301,7 +301,7 @@ $(window).resize(function(){
 })
 function updateTBposition(){
 	if (window.screen.width < 501) return;
-	if (checkVisible(document.querySelectorAll("#projects .project .medium-font")[0]) === true){
+	if (checkVisible(document.querySelectorAll("#projects .project .project-desc")[0]) === true){
 		document.querySelectorAll(".toc")[0].style = "position: absolute; top: auto; transform: translate(0px, -275px);"
 	}else{
 		document.querySelectorAll(".toc")[0].style = "position: fixed";
@@ -353,4 +353,74 @@ function changeLang(to) {
 			allKeys[to].classList.toggle("fadeIn");
 		}, 600);
 	}, 600);
+}
+
+const button = document.querySelectorAll(".shiny");
+
+for (let i = 0; i<button.length; i++){
+  
+button[i].addEventListener("mousemove", (e) => {
+  const { x, y } = button[i].getBoundingClientRect();
+  button[i].style.setProperty("--x", e.clientX - x);
+  button[i].style.setProperty("--y", e.clientY - y);
+});
+
+}
+function togglePowerMenu(){
+	document.getElementById("powermenu").classList.toggle("invisible")
+}
+
+window.addEventListener('click', function(e){   
+	if (document.getElementById('powermenu').contains(e.target)){
+	} else{
+		if (document.getElementById("powerBtn").contains(e.target)) return;
+		document.getElementById("powermenu").classList.add('invisible')
+	}
+
+
+	if (!document.getElementById("microsoft-container").contains(e.target)){
+		delete window.openApps["#microsoft-container"]
+		delete window.hotApps["#microsoft-container"];
+		document.getElementById("microsoft-container").classList.add("invisible");
+		document.querySelector(".minimized-microsoft-container").classList.remove("app-hot")
+	}
+  });
+
+  async function restart(){
+	document.body.classList.add("noscrollbar");
+	document.getElementById("windowsScreenMsg").innerHTML = "Restarting";
+	document.querySelector(".windowsScreens").classList.remove('invisible');
+	setTimeout(next, 2500)
+	function next(){
+		document.querySelector(".windowsScreens").style.backgroundColor = "black";
+		document.querySelector(".windowsScreens").children[0].remove();
+		setTimeout(then, 1000)
+	}
+	function then(){
+		document.querySelector(".windowsScreens").style.backgroundColor = "#1f1f1f";
+		setTimeout(later, 1000)
+	}
+	function later(){
+		document.querySelector(".windowsScreens").children[0].classList.remove("invisible")
+		setTimeout(function(){
+			window.location = "./index.html"
+		}, 5000)
+	}
+}
+async function shutDown(){
+	document.body.classList.add("noscrollbar");
+	document.getElementById("windowsScreenMsg").innerHTML = "Shutting down";
+	document.querySelector(".windowsScreens").classList.remove('invisible');
+	setTimeout(next, 3000)
+	function next(){
+		document.querySelector(".windowsScreens").style.backgroundColor = "black";
+		document.querySelector(".windowsScreens").innerHTML = "";
+	}
+}
+
+const urlParams = new URLSearchParams(window.location.search);
+const myParam = urlParams.get('restart');
+
+if (myParam === "true"){
+	restart();
 }
