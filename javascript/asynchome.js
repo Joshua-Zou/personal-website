@@ -1,3 +1,4 @@
+const AsyncFunction = Object.getPrototypeOf(async function () { }).constructor;
 
 window.fs = {
 	['C:']: {
@@ -329,7 +330,7 @@ document.addEventListener("keypress", async function (event) {
 		await sleep(1)
 		var x;
 		try {
-			var F = new Function(text);
+			var F = new AsyncFunction(text);
 			x = F();
 			document.querySelector(".terminal-scroll-marker").children[0].innerText = x;
 		} catch (err) {
@@ -372,7 +373,6 @@ function addTermLsnr() {
 			window.elm = elm;
 			var x;
 			try {
-				let AsyncFunction = Object.getPrototypeOf(async function () { }).constructor;
 				//text = text.replace(/\s/g, '');
 				text = text.replace(/\)\ \{/g, `){if (window.terminalRun === false) return error${newId}("process killed by user");`);
 				text = text.replace(/\)\{/g, `){if (window.terminalRun === false) return error${newId}("process killed by user");`)
