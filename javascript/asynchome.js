@@ -395,19 +395,26 @@ function addTermLsnr() {
 					console.log(text)
 					let newElm = $.parseHTML(library.json.prettyPrint(JSON.parse(JSON.stringify(text))));
 					newElm[0].style.display = "block"
-					window.elm.appendChild(newElm[0])
+					window.elm.appendChild(newElm[0]);
+					scrollToBottom${newId}();
 				}
 				function warn${newId}(text){
 					console.warn(text)
 					let newElm = $.parseHTML("<i class='fas fa-exclamation-triangle' style='background: rgb(255 255 0 / 30%)'> "+text+"</i>");
 					newElm[0].style.display = "block"
-					window.elm.appendChild(newElm[0])
+					window.elm.appendChild(newElm[0]);
+					scrollToBottom${newId}();
 				}
 				function error${newId}(text){
 					console.error(text)
 					let newElm = $.parseHTML("<i class='fas fa-times-circle' style='background: #2A0003; color: #E17676 !important'> "+text+"</i>");
 					newElm[0].style.display = "block"
-					window.elm.appendChild(newElm[0])
+					window.elm.appendChild(newElm[0]);
+					scrollToBottom${newId}();
+				}
+				function scrollToBottom${newId}(){
+					var element = document.getElementById("terminal");
+					element.scrollTop = element.scrollHeight;
 				}
 				`+ text);
 				x = await F();
