@@ -166,8 +166,8 @@ function hide(element) {
 				Object.entries(tempDir).forEach(([key, value]) => {
 					showArr.push(key)
 				})
-				this.echo("Volume in drive C is OS\nVolume Serial Number is BL89-CP51\n\nDirectory of "+window.currentDir+"\n");
-				for (let p = 0; p<showArr.length; p++){
+				this.echo("Volume in drive C is OS\nVolume Serial Number is BL89-CP51\n\nDirectory of " + window.currentDir + "\n");
+				for (let p = 0; p < showArr.length; p++) {
 					this.echo(showArr[p])
 				}
 				this.echo("\n")
@@ -188,33 +188,33 @@ function hide(element) {
 				Object.entries(tempDir).forEach(([key, value]) => {
 					showArr.push(key)
 				})
-				this.echo("Volume in drive C is OS\nVolume Serial Number is BL89-CP51\n\nDirectory of "+window.currentDir+"\n");
-				for (let p = 0; p<showArr.length; p++){
+				this.echo("Volume in drive C is OS\nVolume Serial Number is BL89-CP51\n\nDirectory of " + window.currentDir + "\n");
+				for (let p = 0; p < showArr.length; p++) {
 					this.echo(showArr[p])
 				}
 				this.echo("\n")
 			},
-			nano: function (file){
+			nano: function (file) {
 				if (window.termNodeActive === true) {
 					this.echo("Uncaught ReferenceError: about is not defined");
 					return;
 				}
 				let arr = window.currentDir.split("/");
-					arr.pop();
-					var tempDir = window.fs;
-					for (let i = 0; i < arr.length; i++) {
-						let current = arr[i];
-						tempDir = tempDir[current];
+				arr.pop();
+				var tempDir = window.fs;
+				for (let i = 0; i < arr.length; i++) {
+					let current = arr[i];
+					tempDir = tempDir[current];
+				}
+				if (!tempDir[file]) {
+					this.echo("The system cannot find the file specified. \n")
+				} else {
+					if (!file.includes(".")) {
+						this.echo("The system cannot find the file specified. \n");
+						return;
 					}
-					if (!tempDir[file]) {
-						this.echo("The system cannot find the file specified. \n")
-					} else {
-						if (!file.includes(".")){
-							this.echo("The system cannot find the file specified. \n");
-							return;
-						}
-						this.echo(tempDir[file])
-					}
+					this.echo(tempDir[file])
+				}
 			}
 		}, {
 			greetings: '(c) Joshua Zou. All rights reserved.\nWelcome to the terminal! To get started, type "help" for help',
@@ -319,6 +319,7 @@ function showCachedNpmStats() {
 
 
 document.addEventListener("keypress", async function (event) {
+	window.terminalEmulate = false;
 	if (window.termNodeActive !== true) return;
 	addTermLsnr();
 	if (event.key === "Enter") {
@@ -330,10 +331,14 @@ document.addEventListener("keypress", async function (event) {
 		await sleep(1)
 		var x;
 		try {
+			window.terminalEmulate = true;
+			text = text.replace(/\)\ \{/g, `){if (window.terminalEmulate === false) return`);
+			text = text.replace(/\)\{/g, `){if (window.terminalEmulate === false) return`);
 			var F = new AsyncFunction(text);
 			x = F();
 			document.querySelector(".terminal-scroll-marker").children[0].innerText = x;
 		} catch (err) {
+			window.terminalEmulate = false;
 			document.querySelector(".terminal-scroll-marker").children[0].innerText = err.toString();
 		}
 	}
@@ -341,22 +346,26 @@ document.addEventListener("keypress", async function (event) {
 window.addTermLsnrVar = false;
 var lastKeyPressed = "";
 function addTermLsnr() {
-	let newId = makeid(10);
 	if (window.addTermLsnrVar === true) return;
 	window.addTermLsnrVar = true;
 	$("#terminal").terminal().keydown(async function (event) {
 		if (lastKeyPressed === "Control" && event.originalEvent.key === "c") {
+			window.terminalEmulate = false;
 			window.addTermLsnrVar = false;
 			window.termNodeActive = false;
 			document.querySelector(".terminal-scroll-marker").children[0].innerText = "";
 			$("#terminal").terminal().set_prompt(" C:\\Users\\Joshua> ");
 			window.terminalRun = false;
+			lastKeyPressed = "00000"
 		}
 		lastKeyPressed = event.originalEvent.key; if (event.originalEvent.key === "Enter") {
+			let newId = makeid(10);
+			window.terminalEmulate = false;
 			if (window.termNodeActive !== true) return;
+			window.terminalRun = true;
 			let text = document.getElementsByClassName("cmd-wrapper")[0].innerText;
 			text = text.slice(3);
-			if (!text.startsWith("return") && !text.startsWith("for") && !text.startsWith("if") && !text.startsWith("while") && !text.startsWith("do") && !text.startsWith("function") && !text.startsWith("let") && !text.startsWith("var") && !text.startsWith("const")) text = "return " + text//.slice(2);
+			if (!text.startsWith("return") && !text.startsWith("for") && !text.startsWith("if") && !text.startsWith("while") && !text.startsWith("do") && !text.startsWith("function") && !text.startsWith("let") && !text.startsWith("var") && !text.startsWith("const") && !text.startsWith("async")) text = "return " + text//.slice(2);
 			text = text.replaceAll("console.log", `log${newId}`);
 			text = text.replaceAll("console.warn", `warn${newId}`);
 			text = text.replaceAll("console.error", `error${newId}`);
@@ -365,7 +374,10 @@ function addTermLsnr() {
 			let lastIndex = $("#terminal").terminal().last_index();
 			//console.log(`[data-index='${lastIndex+2}']`)
 			let elm = document.querySelectorAll(`[data-index='${lastIndex}']`)[0];
-			document.querySelectorAll(`[data-index='${lastIndex}']`)[0].dataset.index = -100;
+			if (!elm){
+				elm = document.querySelectorAll(`[data-index='-100']`)[document.querySelectorAll(`[data-index='-100']`).length-1]
+			}
+			elm.dataset.index = -100;
 			elm.children[0].children[0].classList = "";
 			elm.children[0].children[0].dataset.text = x;
 			elm.children[0].children[0].children[0].style.color = "#aaa";
@@ -404,9 +416,11 @@ function addTermLsnr() {
 				$(elm).html(err)
 			}
 			document.querySelector(".terminal-scroll-marker").children[0].innerText = "";
-			let newElm = $.parseHTML(library.json.prettyPrint(JSON.parse(JSON.stringify(x))));
-			newElm[0].style.display = "block"
-			elm.appendChild(newElm[0])
+			if (JSON.stringify(x) !== undefined) {
+				var newElm = $.parseHTML(library.json.prettyPrint(JSON.parse(JSON.stringify(x))));
+				newElm[0].style.display = "block"
+				elm.appendChild(newElm[0])
+			}
 		}
 	})
 }
