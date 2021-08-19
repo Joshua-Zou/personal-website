@@ -359,8 +359,10 @@ const button = document.querySelectorAll(".shiny");
 
 for (let i = 0; i<button.length; i++){
   
-button[i].addEventListener("mousemove", (e) => {
-  const { x, y } = button[i].getBoundingClientRect();
+button[i].addEventListener("mousemove", function(e){
+  const IE = button[i].getBoundingClientRect();
+  const x = IE.x;
+  const y = IE.y;
   button[i].style.setProperty("--x", e.clientX - x);
   button[i].style.setProperty("--y", e.clientY - y);
 });
@@ -387,18 +389,19 @@ window.addEventListener('click', function(e){
   });
 
   function restart(){
+	  let multiplyer = 10;
 	document.body.classList.add("noscrollbar");
 	document.getElementById("windowsScreenMsg").innerHTML = "Restarting";
 	document.querySelector(".windowsScreens").classList.remove('invisible');
-	setTimeout(next, 2500)
+	setTimeout(next, 2500*1)
 	function next(){
 		document.querySelector(".windowsScreens").style.backgroundColor = "black";
 		document.querySelector(".windowsScreens").children[0].remove();
-		setTimeout(then, 1000)
+		setTimeout(then, 1000*1)
 	}
 	function then(){
 		document.querySelector(".windowsScreens").style.backgroundColor = "#1f1f1f";
-		setTimeout(later, 1000)
+		setTimeout(later, 1000*1)
 	}
 	function later(){
 		document.querySelector(".windowsScreens").children[0].classList.remove("invisible")
