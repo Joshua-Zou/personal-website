@@ -386,7 +386,7 @@ window.addEventListener('click', function(e){
 	}
   });
 
-  async function restart(){
+  function restart(){
 	document.body.classList.add("noscrollbar");
 	document.getElementById("windowsScreenMsg").innerHTML = "Restarting";
 	document.querySelector(".windowsScreens").classList.remove('invisible');
@@ -407,7 +407,7 @@ window.addEventListener('click', function(e){
 		}, 5000)
 	}
 }
-async function shutDown(){
+function shutDown(){
 	document.body.classList.add("noscrollbar");
 	document.getElementById("windowsScreenMsg").innerHTML = "Shutting down";
 	document.querySelector(".windowsScreens").classList.remove('invisible');
