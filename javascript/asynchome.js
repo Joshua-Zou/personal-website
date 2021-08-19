@@ -263,7 +263,8 @@ async function getNpmStats() {
 			a.style.marginLeft = "10px"
 			a.classList.add("link");
 			a.target = "_blank";
-			a.rel="noreferrer"
+			a.rel="noreferrer";
+
 			div.appendChild(a);
 			let span = document.createElement("span");
 			span.classList.add("downloadCount");
@@ -300,6 +301,7 @@ function showCachedNpmStats() {
 			a.style.marginLeft = "10px"
 			a.classList.add("link");
 			a.target = "_blank";
+			a.rel="noreferrer";
 			div.appendChild(a);
 			let span = document.createElement("span");
 			span.classList.add("downloadCount");
