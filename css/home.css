@@ -1841,3 +1841,7 @@ body::-webkit-scrollbar-thumb {
 .noscrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  iframe {
+      border: none;
+  }
