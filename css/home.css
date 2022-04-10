@@ -1065,6 +1065,7 @@ pre .support, *[data-language="csharp"] .function.call {
     height: 155px;
     padding-top: 25px;
     background-color: rgba(0, 0, 0, 0.5);
+    top: calc(35vh + 260px);
 }
 
 .app-favicon {
