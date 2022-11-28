@@ -505,6 +505,9 @@ pre .support, *[data-language="csharp"] .function.call {
 }
 
 @media (max-width: 500px) {
+    .slider {
+        height: 600px !important;
+    }
     .intro .line-left {
         display: none;
     }
@@ -1976,10 +1979,10 @@ iframe {
     align-items: center;
     width: 100%;
     justify-content: space-around;
-    position: absolute;
-    bottom: 0;
+    position: relative;
     padding-bottom: 5px;
     padding-top: 5px;
+    bottom: -50px;
 }
 
 #experience {
