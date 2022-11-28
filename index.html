@@ -2,434 +2,382 @@
 <html lang="en">
 
 <head>
-	<!--[if IE]>
+    <!--[if IE]>
 		<script src="https://raw.githubusercontent.com/jerrybendy/url-search-params-polyfill/master/index.js"></script>
 	<![endif]-->
-	<link rel="stylesheet" href="./css/loader.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
-		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-	<meta property="og:title" content="Joshua Zou">
-	<meta property="og:locale" content="en_US">
-	<meta name="description"
-		content="Joshua Zou is a 14yr old dev who's interested in crypto, offensive security, tensorflow, and other random things.">
-	<meta property="og:description"
-		content="Joshua Zou is a 14yr old dev who's interested in crypto, offensive security, tensorflow, and other random things.">
-	<meta property="og:site_name" content="Joshua Zou">
+    <link rel="stylesheet" href="./css/loader.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <meta property="og:title" content="Joshua Zou">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Joshua Zou is a 14yr old dev who's interested in crypto, offensive security, tensorflow, and other random things.">
+    <meta property="og:description" content="Joshua Zou is a 14yr old dev who's interested in crypto, offensive security, tensorflow, and other random things.">
+    <meta property="og:site_name" content="Joshua Zou">
 
-	<title>Joshua Zou</title>
+    <title>Joshua Zou</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="./main.js"></script>
-	<link rel="stylesheet" href="./index.css">
-	<link rel="stylesheet" href="./css/home.css">
-	<link rel="stylesheet" href="./fonts/syntax.css">
-	<!--preload stuff-->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GP1QYQRYY8"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./fonts/syntax.css">
+    <!--preload stuff-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GP1QYQRYY8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-		gtag('config', 'G-GP1QYQRYY8');
-	</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GP1QYQRYY8');
+    </script>
 </head>
 
 
 <body style="background-color: #0C0032;">
-	<script type="module">
-		import interact from "https://cdn.interactjs.io/v1.10.11/interactjs/index.js"
+    <script type="module">
+        import interact from "https://cdn.interactjs.io/v1.10.11/interactjs/index.js"
 
-		dragElement(document.getElementById("terminal-container"));
-		interact('#terminal-container')
-			.resizable({
-				// resize from all edges and corners
-				edges: { left: true, right: true, bottom: true, top: false },
+        dragElement(document.getElementById("terminal-container"));
+        interact('#terminal-container')
+            .resizable({
+                // resize from all edges and corners
+                edges: {
+                    left: true,
+                    right: true,
+                    bottom: true,
+                    top: false
+                },
 
-				listeners: {
-					move(event) {
-						var target = event.target
-						var x = (parseFloat(target.getAttribute('data-x')) || 0)
-						var y = (parseFloat(target.getAttribute('data-y')) || 0)
+                listeners: {
+                    move(event) {
+                        var target = event.target
+                        var x = (parseFloat(target.getAttribute('data-x')) || 0)
+                        var y = (parseFloat(target.getAttribute('data-y')) || 0)
 
-						// translate when resizing from top or left edges
-						x += event.deltaRect.left;
-						y += event.deltaRect.top;
+                        // translate when resizing from top or left edges
+                        x += event.deltaRect.left;
+                        y += event.deltaRect.top;
 
-						target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-						// update the element's style
-						target.style.width = event.rect.width + 'px'
-						target.style.height = event.rect.height + 'px'
+                        target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+                        // update the element's style
+                        target.style.width = event.rect.width + 'px'
+                        target.style.height = event.rect.height + 'px'
 
-						target.setAttribute('data-x', x)
-						target.setAttribute('data-y', y)
-					}
-				}
-			})
-		dragElement(document.getElementById("bing-container"));
-		interact('#bing-container')
-			.resizable({
-				// resize from all edges and corners
-				edges: { left: true, right: true, bottom: true, top: false },
+                        target.setAttribute('data-x', x)
+                        target.setAttribute('data-y', y)
+                    }
+                }
+            })
+        dragElement(document.getElementById("bing-container"));
+        interact('#bing-container')
+            .resizable({
+                // resize from all edges and corners
+                edges: {
+                    left: true,
+                    right: true,
+                    bottom: true,
+                    top: false
+                },
 
-				listeners: {
-					move(event) {
-						var target = event.target
-						var x = (parseFloat(target.getAttribute('data-x')) || 0)
-						var y = (parseFloat(target.getAttribute('data-y')) || 0)
+                listeners: {
+                    move(event) {
+                        var target = event.target
+                        var x = (parseFloat(target.getAttribute('data-x')) || 0)
+                        var y = (parseFloat(target.getAttribute('data-y')) || 0)
 
-						// update the element's style
-						target.style.width = event.rect.width + 'px'
-						target.style.height = event.rect.height + 'px'
+                        // update the element's style
+                        target.style.width = event.rect.width + 'px'
+                        target.style.height = event.rect.height + 'px'
 
-						// translate when resizing from top or left edges
-						x += event.deltaRect.left
-						y += event.deltaRect.top
-						target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+                        // translate when resizing from top or left edges
+                        x += event.deltaRect.left
+                        y += event.deltaRect.top
+                        target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
 
 
-						target.setAttribute('data-x', x)
-						target.setAttribute('data-y', y)
-					}
-				}
-			})
-	</script>
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Voltaire" rel="stylesheet">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<link rel="preload" as="image" href="https://ghchart.rshah.org/joshua-zou">
-	<div id="loader-wrapper">
-		<div id="loader">
-			<div class="loader-content">
-				<div class="loaderbars" style="display: none;">
-					<div class="loader__bar"></div>
-					<div class="loader__bar"></div>
-					<div class="loader__bar"></div>
-					<div class="loader__bar"></div>
-					<div class="loader__bar"></div>
-					<div class="loader__ball"></div>
-				</div>
-				<div class="text">
-					Joshua is thinking...
-				</div>
-				<div class="startup-mask"></div>
-			</div>
-		</div>
+                        target.setAttribute('data-x', x)
+                        target.setAttribute('data-y', y)
+                    }
+                }
+            })
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Voltaire" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="preload" as="image" href="https://ghchart.rshah.org/joshua-zou">
+    <div id="loader-wrapper">
+        <div id="loader">
+            <div class="loader-content">
+                <div class="loaderbars" style="display: none;">
+                    <div class="loader__bar"></div>
+                    <div class="loader__bar"></div>
+                    <div class="loader__bar"></div>
+                    <div class="loader__bar"></div>
+                    <div class="loader__bar"></div>
+                    <div class="loader__ball"></div>
+                </div>
+                <div class="text">
+                    Joshua is thinking...
+                </div>
+                <div class="startup-mask"></div>
+            </div>
+        </div>
 
-		<div class="loader-section section-left"></div>
-		<div class="loader-section section-right"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
 
-	</div>
-	<script>
-		document.getElementsByClassName("loaderbars")[0].style.display = "block"
-		setTimeout(next, 10)
-		function next() {
-			document.getElementsByClassName("loaderbars")[0].classList.add('moveup')
-		}
-		let intialized = performance.now();
-		$(document).ready(function () {
-			$('body').addClass('loaded');
-			let now = performance.now();
-			if (now - intialized < 1000) {
-				document.querySelectorAll(".loader-section")[0].style.display = "none";
-				document.querySelectorAll(".loader-section")[1].style.display = "none";
-				document.getElementsByClassName("loaderbars")[0].style.display = "none"
-			}
-		});
-	</script>
-	<section id="background-canvas" width="100%" height="100%" style=""></section>
-	<header>
-		<div class="big-screen">
-			<div class="logo" onclick="window.location.href='./index.html'">
-				<button href="./index.html" class="logo-text"><span style="color: var(--medium-color);"
-						class="normal-font large-font code-font">
-						< </span><span class="flash" contenteditable="true"
-								title="Couldn't decide which font to use, so I chose all of them (basically what happens in life too)">Joshua
-								Zou</span><span style="color: var(--medium-color)"
-								class="normal-font large-font code-font">/></span></button>
-			</div>
-			<div class="nav-items">
-				<a rel="noreferrer" href="./posts/main.html">Random Posts</a>
-			</div>
-		</div>
-		<div class="mobile">
-			<div class="top-bar">
+    </div>
+    <script>
+        document.getElementsByClassName("loaderbars")[0].style.display = "block"
+        setTimeout(next, 10)
 
-			</div>
-			<div class="pancake-thingy">
-				<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" onclick="toggleMobileNavbar();">
-					<g>
-						<rect fill="rgba(0, 0, 0, 0)" id="canvas_background" height="34" width="34" y="-1" x="-1" />
-					</g>
-					<g>
-						<path fill="var(--medium-color)" id="svg_1"
-							d="m4,10l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2zm24,4l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2zm0,8l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2z" />
-					</g>
-				</svg>
-				<div class="logo">
-					<a rel="noreferrer" href="./index.html"
-						title="Couldn't decide which font to use, so I chose all of them (basically what happens in life too)"><span
-							style="color: var(--medium-color)" class="normal-font large-font code-font">
-							< </span><span class="flash">Joshua Zou</span><span style="color: var(--medium-color)"
-									class="normal-font large-font code-font">/></span></a>
-				</div>
-			</div>
-			<div class="right-navbar">
-				<a rel="noreferrer" href="./posts/main.html" class="light-font-color medium-font">• Random Posts</a>
-			</div>
-		</div>
-	</header>
-	<hr class="line-left">
-	<hr class="line-up line-left">
-	<section id="introduction" style="display: block;">
-		<div class="intro side-by-side scroll-from-left">
-			<div class="container">
+        function next() {
+            document.getElementsByClassName("loaderbars")[0].classList.add('moveup')
+        }
+        let intialized = performance.now();
+        $(document).ready(function() {
+            $('body').addClass('loaded');
+            let now = performance.now();
+            if (now - intialized < 1000) {
+                document.querySelectorAll(".loader-section")[0].style.display = "none";
+                document.querySelectorAll(".loader-section")[1].style.display = "none";
+                document.getElementsByClassName("loaderbars")[0].style.display = "none"
+            }
+        });
+    </script>
+    <section id="background-canvas" width="100%" height="100%" style=""></section>
+    <header>
+        <div class="big-screen">
+            <div class="logo" onclick="window.location.href='./index.html'">
+                <button href="./index.html" class="logo-text"><span style="color: var(--medium-color);" class="normal-font large-font code-font">
 
-				<span class="extra-large-font">Hi, I'm Joshua Zou, <div class="break"></div></span>
-				<span class="medium-font">&nbsp; &nbsp; a <div class="tooltip">14
-						<pre class="tooltiptext" data-language="javascript">
+                        < </span><span class="flash" contenteditable="true" title="Couldn't decide which font to use, so I chose all of them (basically what happens in life too)">Joshua
+                                Zou</span><span style="color: var(--medium-color)" class="normal-font large-font code-font">/></span></button>
+            </div>
+            <div class="nav-items">
+                <a rel="noreferrer" href="./posts/main.html">Random Posts</a>
+            </div>
+        </div>
+        <div class="mobile">
+            <div class="top-bar">
+
+            </div>
+            <div class="pancake-thingy">
+                <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" onclick="toggleMobileNavbar();">
+                    <g>
+                        <rect fill="rgba(0, 0, 0, 0)" id="canvas_background" height="34" width="34" y="-1" x="-1" />
+                    </g>
+                    <g>
+                        <path fill="var(--medium-color)" id="svg_1" d="m4,10l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2zm24,4l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2zm0,8l-24,0c-1.104,0 -2,0.896 -2,2s0.896,2 2,2l24,0c1.104,0 2,-0.896 2,-2s-0.896,-2 -2,-2z" />
+                    </g>
+                </svg>
+                <div class="logo">
+                    <a rel="noreferrer" href="./index.html" title="Couldn't decide which font to use, so I chose all of them (basically what happens in life too)"><span style="color: var(--medium-color)" class="normal-font large-font code-font">
+
+                            < </span><span class="flash">Joshua Zou</span><span style="color: var(--medium-color)" class="normal-font large-font code-font">/></span></a>
+                </div>
+            </div>
+            <div class="right-navbar">
+                <a rel="noreferrer" href="./posts/main.html" class="light-font-color medium-font">• Random Posts</a>
+            </div>
+        </div>
+    </header>
+    <hr class="line-left">
+    <hr class="line-up line-left">
+    <section id="introduction" style="display: block;">
+        <div class="intro side-by-side scroll-from-left">
+            <div class="container">
+
+                <span class="extra-large-font">Hi, I'm Joshua Zou, <div class="break"></div></span>
+                <span class="medium-font">&nbsp; &nbsp; a <div class="tooltip">14
+                        <pre class="tooltiptext" data-language="javascript">
  const birthday = 1203026556000; 
  let current = Date.now(); 
  let year = 31556952000; 
  console.log((current-birthday)/year)</pre>
-					</div> yr old full stack dev from Washington <div class="flashing-cursor"></div></span>
-				<div class="break big-break"></div>
-				<div class="waving-hand"></div>
-			</div>
-		</div>
-		<div class="social side-by-side scroll-from-right">
-			<div class="container">
-				<span class="medium-font center-text">Social<br></span>
-				<div class="break big-break"></div>
-				<a rel="noreferrer" href="mailto:joshyzou@gmail.com" class="fab fa-google" title="email me!"></a>
-				<a rel="noreferrer" href="https://www.linkedin.com/in/joshua-zou/" target="_blank"
-					class="fab fa-linkedin" title="my linkedin profile"></a>
-				<a rel="noreferrer" href="https://www.youtube.com/channel/UCx2dyCalB7m_d8M2ZB8Oj7A" target="_blank"
-					class="fab fa-youtube" title="my youtube channel"></a>
-				<a rel="noreferrer" href="https://github.com/Joshua-Zou#want-to-support-me" target="_blank"
-					title="currently only accepting crypto" class="fas fa-donate"></a>
-				<a rel="noreferrer" href="https://github.com/Joshua-Zou" target="_blank" class="fab fa-github"
-					title="where I post all of my code"></a>
-				<a rel="noreferrer" href="https://top.gg/user/741793729509064704" target="_blank" class="fas fa-robot"
-					title="where I post my bots"></a>
-				<a rel="noreferrer" href="https://devpost.com/Joshua-Zou" target="_blank" class="fas fa-devpost"
-					title="my hackathon profile"><img alt="devpost img" src="./images/devpost.svg"
-						style="    left: -6.5px; position: relative; top: 2px;"></a>
+                    </div> yr old full stack dev from Washington <div class="flashing-cursor"></div></span>
+                <div class="break big-break"></div>
+                <div class="waving-hand"></div>
+            </div>
+        </div>
+        <div class="social side-by-side scroll-from-right">
+            <div class="container">
+                <span class="medium-font center-text">Social<br></span>
+                <div class="break big-break"></div>
+                <a rel="noreferrer" href="mailto:joshyzou@gmail.com" class="fab fa-google" title="email me!"></a>
+                <a rel="noreferrer" href="https://www.linkedin.com/in/joshua-zou/" target="_blank" class="fab fa-linkedin" title="my linkedin profile"></a>
+                <a rel="noreferrer" href="https://www.youtube.com/channel/UCx2dyCalB7m_d8M2ZB8Oj7A" target="_blank" class="fab fa-youtube" title="my youtube channel"></a>
+                <a rel="noreferrer" href="https://github.com/Joshua-Zou#want-to-support-me" target="_blank" title="currently only accepting crypto" class="fas fa-donate"></a>
+                <a rel="noreferrer" href="https://github.com/Joshua-Zou" target="_blank" class="fab fa-github" title="where I post all of my code"></a>
+                <a rel="noreferrer" href="https://top.gg/user/741793729509064704" target="_blank" class="fas fa-robot" title="where I post my bots"></a>
+                <a rel="noreferrer" href="https://devpost.com/Joshua-Zou" target="_blank" class="fas fa-devpost" title="my hackathon profile"><img alt="devpost img" src="./images/devpost.svg" style="    left: -6.5px; position: relative; top: 2px;"></a>
 
-			</div>
-		</div>
-	</section>
-	<section id="languages" style="display: block;">
-		<div class="languages-good side-by-side">
-			<div class="background">
-				<span class="extra-large-font" style="padding-bottom: 2px;">What I do</span>
-				<div class="selection">
-					<br>
-					<span class="medium-font pointer hover-animation" onclick="changeLang('general')">In general <i
-							class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
-					</span>
-				</div>
-				<div class="selection">
-					<br>
-					<span class="medium-font pointer hover-animation" onclick="changeLang('default')">Languages <i
-							class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
-					</span>
-				</div>
-				<div class="selection">
-					<br>
-					<span class="medium-font pointer hover-animation" onclick="changeLang('tools')">Tools/Skills <i
-							class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
-					</span>
-				</div>
-			</div>
-		</div>
-		<div>
-			<div class="languages">
-				<div class="container">
-					<div class="default">
-						<span class="large-font" style="display: block; text-align: center;">languages I <div
-								class="tooltip">know
-								<span class="tooltiptext"
-									style="position: relative; left: -130px; width: 450px; display: block; text-align: center;">("knowingness"
-									not measured by ability to print 'hello world!')</span>
-							</div> </span>
-						<br>
-						<ul class="language-list">
-							<li class="single-language python"><i class="fab fa-python"></i><br><span>python</span></li>
-							<li class="single-language"><i class="fab fa-js"></i><br><span>javascript</span></li>
-							<li class="single-language"><svg class="languagelistsvgs typescript"
-									xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-									version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="0 0 640 640" width="640"
-									height="640">
-									<defs>
-										<path d="M0 0L640 0L640 640L0 640L0 0Z" id="eyANOyTyR" /><text id="ecGPJkvVE"
-											x="371.06" y="268.58" font-size="375" font-family="Open Sans"
-											font-weight="700" font-style="normal" letter-spacing="0"
-											alignment-baseline="before-edge"
-											transform="matrix(1 0 0 1 -120.51063829787176 -18.981560283688168)"
-											style="line-height:100%" xml:space="preserve"
-											dominant-baseline="text-before-edge">
-											<tspan x="300" dy="-75" alignment-baseline="before-edge"
-												dominant-baseline="text-before-edge" text-anchor="start"
-												style="color: rgba(0, 0, 0, 0);" fill="slategrey">TS</tspan>
-										</text>
-										<style id="opensans700normal">
-											@font-face {
-												font-family: "Open Sans";
-												font-weight: 10000;
-												src: url("https://fonts.gstatic.com/s/opensans/v20/mem8YaGs126MiZpBA-UFVZ0b.woff2")
-											}
-										</style>
-									</defs>
-									<g>
-										<g>
-											<use xlink:href="#eyANOyTyR" class="typescript-fill" opacity="1"
-												fill="white" fill-opacity="1" />
-										</g>
-										<g id="b16BxU8pMB">
-											<use xlink:href="#ecGPJkvVE" opacity="1" fill="#ffffff" fill-opacity="1" />
-										</g>
-									</g>
-								</svg><span>TypeScript</span></li>
-							<li class="single-language"><i class="fab fa-git-alt"></i><br><span>git</span></li>
-							<li class="single-language"><svg class="languagelistsvgs cpp" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.11-7.11a7.133 7.133 0 016.156 3.553l-3.076 1.78a3.567 3.567 0 00-3.08-1.78A3.56 3.56 0 008.444 12 3.56 3.56 0 0012 15.555a3.57 3.57 0 003.08-1.778l3.078 1.78A7.135 7.135 0 0112 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z" />
-								</svg><br><span>C++</span></li>
-							<li class="single-language"><svg style="border: 2px solid whitesmoke; border-radius: 5px;"
-									class="languagelistsvgs ejs" width="492.7" height="78" viewBox="0 0 492.7 78"
-									xmlns="http://www.w3.org/2000/svg">
-									<g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt"
-										stroke="#000" stroke-width="0.25mm" fill="none"
-										style="stroke:rgb(255, 255, 255);stroke-width:0.25mm;fill:white">
-										<path
-											d="M 207.7 74 L 207.7 4 L 249.7 4 L 249.7 12.2 L 217.2 12.2 L 217.2 33.5 L 245.2 33.5 L 245.2 41.5 L 217.2 41.5 L 217.2 65.8 L 249.7 65.8 L 249.7 74 L 207.7 74 Z M 300.2 68.1 L 305 60.1 Q 308.6 63.1 313.1 65 A 23.348 23.348 0 0 0 318.47 66.51 A 32.118 32.118 0 0 0 323.6 66.9 A 27.981 27.981 0 0 0 328.147 66.554 Q 330.57 66.154 332.531 65.293 A 13.701 13.701 0 0 0 335 63.9 Q 339.048 61.008 339.195 56.166 A 12.116 12.116 0 0 0 339.2 55.8 Q 339.2 53.7 338.6 51.9 A 7.214 7.214 0 0 0 337.638 50.03 Q 337.07 49.223 336.25 48.45 Q 334.979 47.251 332.968 46.052 A 33.644 33.644 0 0 0 331.35 45.15 A 51.221 51.221 0 0 0 328.847 43.932 Q 326.403 42.817 323.2 41.6 Q 319.066 39.992 315.898 38.414 A 55.037 55.037 0 0 1 314.05 37.45 A 29.576 29.576 0 0 1 311.046 35.58 Q 309.294 34.328 308 32.95 A 15.293 15.293 0 0 1 305.387 29.214 A 13.936 13.936 0 0 1 304.7 27.55 A 18.339 18.339 0 0 1 303.905 24.069 A 24.866 24.866 0 0 1 303.7 20.8 Q 303.7 17.1 305.25 13.8 A 15.944 15.944 0 0 1 309.291 8.517 A 18.684 18.684 0 0 1 309.85 8.05 A 20.424 20.424 0 0 1 313.965 5.511 A 26.899 26.899 0 0 1 317.35 4.2 A 29.368 29.368 0 0 1 322.431 3.108 A 39.853 39.853 0 0 1 327.5 2.8 A 52.816 52.816 0 0 1 333.201 3.093 A 38.808 38.808 0 0 1 338.6 4.05 Q 343.5 5.3 348.3 7.6 L 344.8 15.7 A 31.496 31.496 0 0 0 340.674 13.681 A 41.686 41.686 0 0 0 336.85 12.35 Q 332.3 11 327.3 11 A 27.711 27.711 0 0 0 323.27 11.275 Q 319.453 11.837 316.9 13.55 A 9.496 9.496 0 0 0 314.679 15.571 A 7.461 7.461 0 0 0 313.1 20.3 A 12.395 12.395 0 0 0 313.229 22.132 A 9.192 9.192 0 0 0 313.65 23.85 A 5.878 5.878 0 0 0 314.407 25.281 Q 314.827 25.874 315.419 26.451 A 11.219 11.219 0 0 0 315.85 26.85 Q 317.046 27.901 318.925 28.978 A 34.591 34.591 0 0 0 320.45 29.8 A 46.93 46.93 0 0 0 322.709 30.867 Q 325.084 31.919 328.3 33.1 A 89.068 89.068 0 0 1 332.715 34.904 Q 335.725 36.234 338.1 37.6 A 33.937 33.937 0 0 1 341.19 39.594 Q 342.692 40.69 343.867 41.847 A 19.029 19.029 0 0 1 344.5 42.5 A 17.193 17.193 0 0 1 346.924 45.817 A 14.737 14.737 0 0 1 347.95 48.1 A 18.723 18.723 0 0 1 348.897 52.509 A 22.892 22.892 0 0 1 349 54.7 Q 349 59.6 347.1 63.4 Q 345.2 67.2 341.85 69.85 A 21.611 21.611 0 0 1 336.672 72.852 A 26.983 26.983 0 0 1 333.8 73.85 A 34.832 34.832 0 0 1 326.959 75.068 A 41.937 41.937 0 0 1 323.6 75.2 Q 316.3 75.2 310.3 73.25 A 38.206 38.206 0 0 1 304.933 71.068 A 28.433 28.433 0 0 1 300.2 68.1 Z M 279.7 51.9 L 279.7 4 L 289.2 4 L 289.2 50.9 Q 289.2 57.3 287.8 61.9 A 24.005 24.005 0 0 1 286.285 65.73 A 17.54 17.54 0 0 1 283.8 69.45 Q 281.2 72.4 277.6 73.8 A 20.59 20.59 0 0 1 272.272 75.063 A 25.479 25.479 0 0 1 269.6 75.2 A 23.443 23.443 0 0 1 261.522 73.817 A 22.405 22.405 0 0 1 260.95 73.6 A 22.827 22.827 0 0 1 257.028 71.618 A 18.183 18.183 0 0 1 254.2 69.4 L 258.8 62.1 A 16.858 16.858 0 0 0 262.87 65.216 A 19.43 19.43 0 0 0 263.6 65.6 A 13.114 13.114 0 0 0 267.475 66.86 A 11.941 11.941 0 0 0 269.3 67 A 10.924 10.924 0 0 0 272.745 66.481 A 8.933 8.933 0 0 0 276.9 63.6 A 9.628 9.628 0 0 0 278.436 60.841 Q 279.7 57.477 279.7 51.9 Z M 74.6 78 L 68.6 74.2 L 112.3 0 L 118.3 3.8 L 74.6 78 Z M 379.9 78 L 373.9 74.2 L 417.6 0 L 423.6 3.8 L 379.9 78 Z M 10.5 39.7 L 36.4 55.5 L 31.9 62.6 L 0 42.6 L 0 36.9 L 32 16.8 L 36.4 23.8 L 10.5 39.7 Z M 456.3 23.8 L 460.7 16.8 L 492.7 36.9 L 492.7 42.6 L 460.8 62.6 L 456.3 55.5 L 482.2 39.7 L 456.3 23.8 Z M 86.27 31.051 A 39.969 39.969 0 0 0 86.7 25 A 42.495 42.495 0 0 0 86.502 20.797 Q 85.766 13.4 82.3 8.95 A 13.967 13.967 0 0 0 74.845 3.968 A 19.47 19.47 0 0 0 69.6 3.3 A 21.245 21.245 0 0 0 66.389 3.533 A 14.282 14.282 0 0 0 56.9 8.95 Q 53.875 12.834 52.93 18.964 A 39.678 39.678 0 0 0 52.5 25 Q 52.5 30.906 53.861 35.31 A 19.373 19.373 0 0 0 56.8 41.25 A 13.641 13.641 0 0 0 64.264 46.336 A 19.451 19.451 0 0 0 69.5 47 A 21.352 21.352 0 0 0 72.539 46.792 A 14.289 14.289 0 0 0 82.3 41.2 A 18.59 18.59 0 0 0 84.679 36.984 Q 85.768 34.324 86.27 31.051 Z M 391.57 31.051 A 39.969 39.969 0 0 0 392 25 A 42.495 42.495 0 0 0 391.802 20.797 Q 391.066 13.4 387.6 8.95 A 13.967 13.967 0 0 0 380.145 3.968 A 19.47 19.47 0 0 0 374.9 3.3 A 21.245 21.245 0 0 0 371.689 3.533 A 14.282 14.282 0 0 0 362.2 8.95 Q 359.175 12.834 358.23 18.964 A 39.678 39.678 0 0 0 357.8 25 Q 357.8 30.906 359.161 35.31 A 19.373 19.373 0 0 0 362.1 41.25 A 13.641 13.641 0 0 0 369.564 46.336 A 19.451 19.451 0 0 0 374.8 47 A 21.352 21.352 0 0 0 377.839 46.792 A 14.289 14.289 0 0 0 387.6 41.2 A 18.59 18.59 0 0 0 389.979 36.984 Q 391.068 34.324 391.57 31.051 Z M 134.47 58.651 A 39.969 39.969 0 0 0 134.9 52.6 A 42.495 42.495 0 0 0 134.702 48.397 Q 133.966 41 130.5 36.55 A 13.967 13.967 0 0 0 123.045 31.568 A 19.47 19.47 0 0 0 117.8 30.9 A 21.245 21.245 0 0 0 114.589 31.133 A 14.282 14.282 0 0 0 105.1 36.55 Q 102.075 40.434 101.13 46.564 A 39.678 39.678 0 0 0 100.7 52.6 Q 100.7 58.506 102.061 62.91 A 19.373 19.373 0 0 0 105 68.85 A 13.641 13.641 0 0 0 112.464 73.936 A 19.451 19.451 0 0 0 117.7 74.6 A 21.352 21.352 0 0 0 120.739 74.392 A 14.289 14.289 0 0 0 130.5 68.8 A 18.59 18.59 0 0 0 132.879 64.584 Q 133.968 61.924 134.47 58.651 Z M 439.77 58.651 A 39.969 39.969 0 0 0 440.2 52.6 A 42.495 42.495 0 0 0 440.002 48.397 Q 439.266 41 435.8 36.55 A 13.967 13.967 0 0 0 428.345 31.568 A 19.47 19.47 0 0 0 423.1 30.9 A 21.245 21.245 0 0 0 419.889 31.133 A 14.282 14.282 0 0 0 410.4 36.55 Q 407.375 40.434 406.43 46.564 A 39.678 39.678 0 0 0 406 52.6 Q 406 58.506 407.361 62.91 A 19.373 19.373 0 0 0 410.3 68.85 A 13.641 13.641 0 0 0 417.764 73.936 A 19.451 19.451 0 0 0 423 74.6 A 21.352 21.352 0 0 0 426.039 74.392 A 14.289 14.289 0 0 0 435.8 68.8 A 18.59 18.59 0 0 0 438.179 64.584 Q 439.268 61.924 439.77 58.651 Z M 188.4 34.5 L 149 34.5 L 149 26.6 L 188.4 26.6 L 188.4 34.5 Z M 188.4 52.7 L 149 52.7 L 149 44.8 L 188.4 44.8 L 188.4 52.7 Z M 76.444 14.315 A 10.718 10.718 0 0 0 76.1 13.7 A 8.439 8.439 0 0 0 74.141 11.422 Q 72.356 10.007 69.879 9.908 A 9.439 9.439 0 0 0 69.5 9.9 A 7.993 7.993 0 0 0 66.387 10.485 Q 64.439 11.3 63.1 13.25 Q 60.8 16.6 60.8 25 A 39.3 39.3 0 0 0 61.003 29.136 Q 61.449 33.34 62.878 36.006 A 11.114 11.114 0 0 0 63.1 36.4 A 8.876 8.876 0 0 0 64.883 38.6 A 6.92 6.92 0 0 0 69.6 40.3 A 9.432 9.432 0 0 0 71.704 40.074 A 7.675 7.675 0 0 0 73.35 39.5 A 6.212 6.212 0 0 0 75.438 37.833 A 8.068 8.068 0 0 0 76.1 36.9 A 10.895 10.895 0 0 0 76.911 35.256 Q 77.444 33.922 77.8 32.2 Q 78.4 29.3 78.4 25 Q 78.4 18.084 76.444 14.315 Z M 381.744 14.315 A 10.718 10.718 0 0 0 381.4 13.7 A 8.439 8.439 0 0 0 379.441 11.422 Q 377.656 10.007 375.179 9.908 A 9.439 9.439 0 0 0 374.8 9.9 A 7.993 7.993 0 0 0 371.687 10.485 Q 369.739 11.3 368.4 13.25 Q 366.1 16.6 366.1 25 A 39.3 39.3 0 0 0 366.303 29.136 Q 366.749 33.34 368.178 36.006 A 11.114 11.114 0 0 0 368.4 36.4 A 8.876 8.876 0 0 0 370.183 38.6 A 6.92 6.92 0 0 0 374.9 40.3 A 9.432 9.432 0 0 0 377.004 40.074 A 7.675 7.675 0 0 0 378.65 39.5 A 6.212 6.212 0 0 0 380.738 37.833 A 8.068 8.068 0 0 0 381.4 36.9 A 10.895 10.895 0 0 0 382.211 35.256 Q 382.744 33.922 383.1 32.2 Q 383.7 29.3 383.7 25 Q 383.7 18.084 381.744 14.315 Z M 124.644 41.915 A 10.718 10.718 0 0 0 124.3 41.3 A 8.439 8.439 0 0 0 122.341 39.022 Q 120.556 37.607 118.079 37.508 A 9.439 9.439 0 0 0 117.7 37.5 A 7.993 7.993 0 0 0 114.587 38.085 Q 112.639 38.9 111.3 40.85 Q 109 44.2 109 52.6 A 39.3 39.3 0 0 0 109.203 56.736 Q 109.649 60.94 111.078 63.606 A 11.114 11.114 0 0 0 111.3 64 A 8.876 8.876 0 0 0 113.083 66.2 A 6.92 6.92 0 0 0 117.8 67.9 A 9.432 9.432 0 0 0 119.904 67.674 A 7.675 7.675 0 0 0 121.55 67.1 A 6.212 6.212 0 0 0 123.638 65.433 A 8.068 8.068 0 0 0 124.3 64.5 A 10.895 10.895 0 0 0 125.111 62.856 Q 125.644 61.522 126 59.8 Q 126.6 56.9 126.6 52.6 Q 126.6 45.684 124.644 41.915 Z M 429.944 41.915 A 10.718 10.718 0 0 0 429.6 41.3 A 8.439 8.439 0 0 0 427.641 39.022 Q 425.856 37.607 423.379 37.508 A 9.439 9.439 0 0 0 423 37.5 A 7.993 7.993 0 0 0 419.887 38.085 Q 417.939 38.9 416.6 40.85 Q 414.3 44.2 414.3 52.6 A 39.3 39.3 0 0 0 414.503 56.736 Q 414.949 60.94 416.378 63.606 A 11.114 11.114 0 0 0 416.6 64 A 8.876 8.876 0 0 0 418.383 66.2 A 6.92 6.92 0 0 0 423.1 67.9 A 9.432 9.432 0 0 0 425.204 67.674 A 7.675 7.675 0 0 0 426.85 67.1 A 6.212 6.212 0 0 0 428.938 65.433 A 8.068 8.068 0 0 0 429.6 64.5 A 10.895 10.895 0 0 0 430.411 62.856 Q 430.944 61.522 431.3 59.8 Q 431.9 56.9 431.9 52.6 Q 431.9 45.684 429.944 41.915 Z"
-											vector-effect="non-scaling-stroke" />
-									</g>
-								</svg><br><span>EJS</span></li>
+            </div>
+        </div>
+    </section>
+    <section id="languages" style="display: block;">
+        <div class="languages-good side-by-side">
+            <div class="background">
+                <span class="extra-large-font" style="padding-bottom: 2px;">What I do</span>
+                <div class="selection">
+                    <br>
+                    <span class="medium-font pointer hover-animation" onclick="changeLang('general')">In general <i class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
+                    </span>
+                </div>
+                <div class="selection">
+                    <br>
+                    <span class="medium-font pointer hover-animation" onclick="changeLang('default')">Languages <i class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
+                    </span>
+                </div>
+                <div class="selection">
+                    <br>
+                    <span class="medium-font pointer hover-animation" onclick="changeLang('tools')">Tools/Skills <i class="fas fa-chevron-right" style="font-size: large; bottom: 2px; position: relative;"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="languages">
+                <div class="container">
+                    <div class="default">
+                        <span class="large-font" style="display: block; text-align: center;">languages I <div class="tooltip">know
+                                <span class="tooltiptext" style="position: relative; left: -130px; width: 450px; display: block; text-align: center;">("knowingness"
+                                    not measured by ability to print 'hello world!')</span>
+                            </div> </span>
+                        <br>
+                        <ul class="language-list">
+                            <li class="single-language python"><i class="fab fa-python"></i><br><span>python</span></li>
+                            <li class="single-language"><i class="fab fa-js"></i><br><span>javascript</span></li>
+                            <li class="single-language"><svg class="languagelistsvgs typescript" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="0 0 640 640" width="640" height="640">
+                                    <defs>
+                                        <path d="M0 0L640 0L640 640L0 640L0 0Z" id="eyANOyTyR" /><text id="ecGPJkvVE" x="371.06" y="268.58" font-size="375" font-family="Open Sans" font-weight="700" font-style="normal" letter-spacing="0" alignment-baseline="before-edge" transform="matrix(1 0 0 1 -120.51063829787176 -18.981560283688168)" style="line-height:100%" xml:space="preserve" dominant-baseline="text-before-edge">
+                                            <tspan x="300" dy="-75" alignment-baseline="before-edge" dominant-baseline="text-before-edge" text-anchor="start" style="color: rgba(0, 0, 0, 0);" fill="slategrey">TS</tspan>
+                                        </text>
+                                        <style id="opensans700normal">
+                                            @font-face {
+                                                font-family: "Open Sans";
+                                                font-weight: 10000;
+                                                src: url("https://fonts.gstatic.com/s/opensans/v20/mem8YaGs126MiZpBA-UFVZ0b.woff2")
+                                            }
+                                        </style>
+                                    </defs>
+                                    <g>
+                                        <g>
+                                            <use xlink:href="#eyANOyTyR" class="typescript-fill" opacity="1" fill="white" fill-opacity="1" />
+                                        </g>
+                                        <g id="b16BxU8pMB">
+                                            <use xlink:href="#ecGPJkvVE" opacity="1" fill="#ffffff" fill-opacity="1" />
+                                        </g>
+                                    </g>
+                                </svg><span>TypeScript</span></li>
+                            <li class="single-language"><i class="fab fa-git-alt"></i><br><span>git</span></li>
+                            <li class="single-language"><svg class="languagelistsvgs cpp" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.11-7.11a7.133 7.133 0 016.156 3.553l-3.076 1.78a3.567 3.567 0 00-3.08-1.78A3.56 3.56 0 008.444 12 3.56 3.56 0 0012 15.555a3.57 3.57 0 003.08-1.778l3.078 1.78A7.135 7.135 0 0112 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z" />
+                                </svg><br><span>C++</span></li>
+                            <li class="single-language"><svg style="border: 2px solid whitesmoke; border-radius: 5px;" class="languagelistsvgs ejs" width="492.7" height="78" viewBox="0 0 492.7 78" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#000" stroke-width="0.25mm" fill="none" style="stroke:rgb(255, 255, 255);stroke-width:0.25mm;fill:white">
+                                        <path d="M 207.7 74 L 207.7 4 L 249.7 4 L 249.7 12.2 L 217.2 12.2 L 217.2 33.5 L 245.2 33.5 L 245.2 41.5 L 217.2 41.5 L 217.2 65.8 L 249.7 65.8 L 249.7 74 L 207.7 74 Z M 300.2 68.1 L 305 60.1 Q 308.6 63.1 313.1 65 A 23.348 23.348 0 0 0 318.47 66.51 A 32.118 32.118 0 0 0 323.6 66.9 A 27.981 27.981 0 0 0 328.147 66.554 Q 330.57 66.154 332.531 65.293 A 13.701 13.701 0 0 0 335 63.9 Q 339.048 61.008 339.195 56.166 A 12.116 12.116 0 0 0 339.2 55.8 Q 339.2 53.7 338.6 51.9 A 7.214 7.214 0 0 0 337.638 50.03 Q 337.07 49.223 336.25 48.45 Q 334.979 47.251 332.968 46.052 A 33.644 33.644 0 0 0 331.35 45.15 A 51.221 51.221 0 0 0 328.847 43.932 Q 326.403 42.817 323.2 41.6 Q 319.066 39.992 315.898 38.414 A 55.037 55.037 0 0 1 314.05 37.45 A 29.576 29.576 0 0 1 311.046 35.58 Q 309.294 34.328 308 32.95 A 15.293 15.293 0 0 1 305.387 29.214 A 13.936 13.936 0 0 1 304.7 27.55 A 18.339 18.339 0 0 1 303.905 24.069 A 24.866 24.866 0 0 1 303.7 20.8 Q 303.7 17.1 305.25 13.8 A 15.944 15.944 0 0 1 309.291 8.517 A 18.684 18.684 0 0 1 309.85 8.05 A 20.424 20.424 0 0 1 313.965 5.511 A 26.899 26.899 0 0 1 317.35 4.2 A 29.368 29.368 0 0 1 322.431 3.108 A 39.853 39.853 0 0 1 327.5 2.8 A 52.816 52.816 0 0 1 333.201 3.093 A 38.808 38.808 0 0 1 338.6 4.05 Q 343.5 5.3 348.3 7.6 L 344.8 15.7 A 31.496 31.496 0 0 0 340.674 13.681 A 41.686 41.686 0 0 0 336.85 12.35 Q 332.3 11 327.3 11 A 27.711 27.711 0 0 0 323.27 11.275 Q 319.453 11.837 316.9 13.55 A 9.496 9.496 0 0 0 314.679 15.571 A 7.461 7.461 0 0 0 313.1 20.3 A 12.395 12.395 0 0 0 313.229 22.132 A 9.192 9.192 0 0 0 313.65 23.85 A 5.878 5.878 0 0 0 314.407 25.281 Q 314.827 25.874 315.419 26.451 A 11.219 11.219 0 0 0 315.85 26.85 Q 317.046 27.901 318.925 28.978 A 34.591 34.591 0 0 0 320.45 29.8 A 46.93 46.93 0 0 0 322.709 30.867 Q 325.084 31.919 328.3 33.1 A 89.068 89.068 0 0 1 332.715 34.904 Q 335.725 36.234 338.1 37.6 A 33.937 33.937 0 0 1 341.19 39.594 Q 342.692 40.69 343.867 41.847 A 19.029 19.029 0 0 1 344.5 42.5 A 17.193 17.193 0 0 1 346.924 45.817 A 14.737 14.737 0 0 1 347.95 48.1 A 18.723 18.723 0 0 1 348.897 52.509 A 22.892 22.892 0 0 1 349 54.7 Q 349 59.6 347.1 63.4 Q 345.2 67.2 341.85 69.85 A 21.611 21.611 0 0 1 336.672 72.852 A 26.983 26.983 0 0 1 333.8 73.85 A 34.832 34.832 0 0 1 326.959 75.068 A 41.937 41.937 0 0 1 323.6 75.2 Q 316.3 75.2 310.3 73.25 A 38.206 38.206 0 0 1 304.933 71.068 A 28.433 28.433 0 0 1 300.2 68.1 Z M 279.7 51.9 L 279.7 4 L 289.2 4 L 289.2 50.9 Q 289.2 57.3 287.8 61.9 A 24.005 24.005 0 0 1 286.285 65.73 A 17.54 17.54 0 0 1 283.8 69.45 Q 281.2 72.4 277.6 73.8 A 20.59 20.59 0 0 1 272.272 75.063 A 25.479 25.479 0 0 1 269.6 75.2 A 23.443 23.443 0 0 1 261.522 73.817 A 22.405 22.405 0 0 1 260.95 73.6 A 22.827 22.827 0 0 1 257.028 71.618 A 18.183 18.183 0 0 1 254.2 69.4 L 258.8 62.1 A 16.858 16.858 0 0 0 262.87 65.216 A 19.43 19.43 0 0 0 263.6 65.6 A 13.114 13.114 0 0 0 267.475 66.86 A 11.941 11.941 0 0 0 269.3 67 A 10.924 10.924 0 0 0 272.745 66.481 A 8.933 8.933 0 0 0 276.9 63.6 A 9.628 9.628 0 0 0 278.436 60.841 Q 279.7 57.477 279.7 51.9 Z M 74.6 78 L 68.6 74.2 L 112.3 0 L 118.3 3.8 L 74.6 78 Z M 379.9 78 L 373.9 74.2 L 417.6 0 L 423.6 3.8 L 379.9 78 Z M 10.5 39.7 L 36.4 55.5 L 31.9 62.6 L 0 42.6 L 0 36.9 L 32 16.8 L 36.4 23.8 L 10.5 39.7 Z M 456.3 23.8 L 460.7 16.8 L 492.7 36.9 L 492.7 42.6 L 460.8 62.6 L 456.3 55.5 L 482.2 39.7 L 456.3 23.8 Z M 86.27 31.051 A 39.969 39.969 0 0 0 86.7 25 A 42.495 42.495 0 0 0 86.502 20.797 Q 85.766 13.4 82.3 8.95 A 13.967 13.967 0 0 0 74.845 3.968 A 19.47 19.47 0 0 0 69.6 3.3 A 21.245 21.245 0 0 0 66.389 3.533 A 14.282 14.282 0 0 0 56.9 8.95 Q 53.875 12.834 52.93 18.964 A 39.678 39.678 0 0 0 52.5 25 Q 52.5 30.906 53.861 35.31 A 19.373 19.373 0 0 0 56.8 41.25 A 13.641 13.641 0 0 0 64.264 46.336 A 19.451 19.451 0 0 0 69.5 47 A 21.352 21.352 0 0 0 72.539 46.792 A 14.289 14.289 0 0 0 82.3 41.2 A 18.59 18.59 0 0 0 84.679 36.984 Q 85.768 34.324 86.27 31.051 Z M 391.57 31.051 A 39.969 39.969 0 0 0 392 25 A 42.495 42.495 0 0 0 391.802 20.797 Q 391.066 13.4 387.6 8.95 A 13.967 13.967 0 0 0 380.145 3.968 A 19.47 19.47 0 0 0 374.9 3.3 A 21.245 21.245 0 0 0 371.689 3.533 A 14.282 14.282 0 0 0 362.2 8.95 Q 359.175 12.834 358.23 18.964 A 39.678 39.678 0 0 0 357.8 25 Q 357.8 30.906 359.161 35.31 A 19.373 19.373 0 0 0 362.1 41.25 A 13.641 13.641 0 0 0 369.564 46.336 A 19.451 19.451 0 0 0 374.8 47 A 21.352 21.352 0 0 0 377.839 46.792 A 14.289 14.289 0 0 0 387.6 41.2 A 18.59 18.59 0 0 0 389.979 36.984 Q 391.068 34.324 391.57 31.051 Z M 134.47 58.651 A 39.969 39.969 0 0 0 134.9 52.6 A 42.495 42.495 0 0 0 134.702 48.397 Q 133.966 41 130.5 36.55 A 13.967 13.967 0 0 0 123.045 31.568 A 19.47 19.47 0 0 0 117.8 30.9 A 21.245 21.245 0 0 0 114.589 31.133 A 14.282 14.282 0 0 0 105.1 36.55 Q 102.075 40.434 101.13 46.564 A 39.678 39.678 0 0 0 100.7 52.6 Q 100.7 58.506 102.061 62.91 A 19.373 19.373 0 0 0 105 68.85 A 13.641 13.641 0 0 0 112.464 73.936 A 19.451 19.451 0 0 0 117.7 74.6 A 21.352 21.352 0 0 0 120.739 74.392 A 14.289 14.289 0 0 0 130.5 68.8 A 18.59 18.59 0 0 0 132.879 64.584 Q 133.968 61.924 134.47 58.651 Z M 439.77 58.651 A 39.969 39.969 0 0 0 440.2 52.6 A 42.495 42.495 0 0 0 440.002 48.397 Q 439.266 41 435.8 36.55 A 13.967 13.967 0 0 0 428.345 31.568 A 19.47 19.47 0 0 0 423.1 30.9 A 21.245 21.245 0 0 0 419.889 31.133 A 14.282 14.282 0 0 0 410.4 36.55 Q 407.375 40.434 406.43 46.564 A 39.678 39.678 0 0 0 406 52.6 Q 406 58.506 407.361 62.91 A 19.373 19.373 0 0 0 410.3 68.85 A 13.641 13.641 0 0 0 417.764 73.936 A 19.451 19.451 0 0 0 423 74.6 A 21.352 21.352 0 0 0 426.039 74.392 A 14.289 14.289 0 0 0 435.8 68.8 A 18.59 18.59 0 0 0 438.179 64.584 Q 439.268 61.924 439.77 58.651 Z M 188.4 34.5 L 149 34.5 L 149 26.6 L 188.4 26.6 L 188.4 34.5 Z M 188.4 52.7 L 149 52.7 L 149 44.8 L 188.4 44.8 L 188.4 52.7 Z M 76.444 14.315 A 10.718 10.718 0 0 0 76.1 13.7 A 8.439 8.439 0 0 0 74.141 11.422 Q 72.356 10.007 69.879 9.908 A 9.439 9.439 0 0 0 69.5 9.9 A 7.993 7.993 0 0 0 66.387 10.485 Q 64.439 11.3 63.1 13.25 Q 60.8 16.6 60.8 25 A 39.3 39.3 0 0 0 61.003 29.136 Q 61.449 33.34 62.878 36.006 A 11.114 11.114 0 0 0 63.1 36.4 A 8.876 8.876 0 0 0 64.883 38.6 A 6.92 6.92 0 0 0 69.6 40.3 A 9.432 9.432 0 0 0 71.704 40.074 A 7.675 7.675 0 0 0 73.35 39.5 A 6.212 6.212 0 0 0 75.438 37.833 A 8.068 8.068 0 0 0 76.1 36.9 A 10.895 10.895 0 0 0 76.911 35.256 Q 77.444 33.922 77.8 32.2 Q 78.4 29.3 78.4 25 Q 78.4 18.084 76.444 14.315 Z M 381.744 14.315 A 10.718 10.718 0 0 0 381.4 13.7 A 8.439 8.439 0 0 0 379.441 11.422 Q 377.656 10.007 375.179 9.908 A 9.439 9.439 0 0 0 374.8 9.9 A 7.993 7.993 0 0 0 371.687 10.485 Q 369.739 11.3 368.4 13.25 Q 366.1 16.6 366.1 25 A 39.3 39.3 0 0 0 366.303 29.136 Q 366.749 33.34 368.178 36.006 A 11.114 11.114 0 0 0 368.4 36.4 A 8.876 8.876 0 0 0 370.183 38.6 A 6.92 6.92 0 0 0 374.9 40.3 A 9.432 9.432 0 0 0 377.004 40.074 A 7.675 7.675 0 0 0 378.65 39.5 A 6.212 6.212 0 0 0 380.738 37.833 A 8.068 8.068 0 0 0 381.4 36.9 A 10.895 10.895 0 0 0 382.211 35.256 Q 382.744 33.922 383.1 32.2 Q 383.7 29.3 383.7 25 Q 383.7 18.084 381.744 14.315 Z M 124.644 41.915 A 10.718 10.718 0 0 0 124.3 41.3 A 8.439 8.439 0 0 0 122.341 39.022 Q 120.556 37.607 118.079 37.508 A 9.439 9.439 0 0 0 117.7 37.5 A 7.993 7.993 0 0 0 114.587 38.085 Q 112.639 38.9 111.3 40.85 Q 109 44.2 109 52.6 A 39.3 39.3 0 0 0 109.203 56.736 Q 109.649 60.94 111.078 63.606 A 11.114 11.114 0 0 0 111.3 64 A 8.876 8.876 0 0 0 113.083 66.2 A 6.92 6.92 0 0 0 117.8 67.9 A 9.432 9.432 0 0 0 119.904 67.674 A 7.675 7.675 0 0 0 121.55 67.1 A 6.212 6.212 0 0 0 123.638 65.433 A 8.068 8.068 0 0 0 124.3 64.5 A 10.895 10.895 0 0 0 125.111 62.856 Q 125.644 61.522 126 59.8 Q 126.6 56.9 126.6 52.6 Q 126.6 45.684 124.644 41.915 Z M 429.944 41.915 A 10.718 10.718 0 0 0 429.6 41.3 A 8.439 8.439 0 0 0 427.641 39.022 Q 425.856 37.607 423.379 37.508 A 9.439 9.439 0 0 0 423 37.5 A 7.993 7.993 0 0 0 419.887 38.085 Q 417.939 38.9 416.6 40.85 Q 414.3 44.2 414.3 52.6 A 39.3 39.3 0 0 0 414.503 56.736 Q 414.949 60.94 416.378 63.606 A 11.114 11.114 0 0 0 416.6 64 A 8.876 8.876 0 0 0 418.383 66.2 A 6.92 6.92 0 0 0 423.1 67.9 A 9.432 9.432 0 0 0 425.204 67.674 A 7.675 7.675 0 0 0 426.85 67.1 A 6.212 6.212 0 0 0 428.938 65.433 A 8.068 8.068 0 0 0 429.6 64.5 A 10.895 10.895 0 0 0 430.411 62.856 Q 430.944 61.522 431.3 59.8 Q 431.9 56.9 431.9 52.6 Q 431.9 45.684 429.944 41.915 Z" vector-effect="non-scaling-stroke" />
+                                    </g>
+                                </svg><br><span>EJS</span></li>
 
-							<li class="single-language"><svg class="languagelistsvgs node" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z" />
-								</svg><br><span>node.js</span></li>
-							<li class="single-language"><i class="fab fa-html5"></i><br><span>web dev</span></li>
-							<li class="single-language"><svg class="languagelistsvgs tensorflow" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<linearGradient id="tensorflow-gradient" x2="0.35" y2="1"
-										gradientTransform="rotate(90)">
-										<stop offset="0%" stop-color="var(--color-stop)" />
-										<stop offset="30%" stop-color="var(--color-stop)" />
-										<stop offset="100%" stop-color="var(--color-bot)" />
-									</linearGradient>
-									<path
-										d="M1.292 5.856L11.54 0v24l-4.095-2.378V7.603l-6.168 3.564.015-5.31zm21.43 5.311l-.014-5.31L12.46 0v24l4.095-2.378V14.87l3.092 1.788-.018-4.618-3.074-1.756V7.603l6.168 3.564z" />
-								</svg><span>TensorFlow</span></li>
-							<li class="single-language"><svg class="languagelistsvgs mongodb" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218zm-5.336 8.195s0-8.291.275-8.29c.213 0 .49 10.695.49 10.695-.381-.045-.765-1.76-.765-2.405z" />
-								</svg><span>No-SQL</span></li>
-						</ul>
-					</div>
-					<div class="invisible general">
-						<div>
-							<h1>&nbsp;&nbsp;&nbsp;<i class="fas fa-italic">:</i></h1>
-							<p class="medium-font"><img alt="🤖" src="https://twemoji.maxcdn.com/2/72x72/1f916.png"
-									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
-								Participate in hackathons, such as angelhacks, hackOR, coHackathon, and many others! You
-								can check out the full list <a rel="noreferrer"
-									href="https://devpost.com/Joshua-Zou?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav">here</a>
-							</p>
-							<p class="medium-font"><img alt="🚧" src="https://abs-0.twimg.com/emoji/v2/svg/1f6a7.svg"
-									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
-								Create projects useful to society as a whole, but also funny projects for the lol's
-							</p>
-							<p class="medium-font"><img alt="🎻" src="https://abs-0.twimg.com/emoji/v2/svg/1f3bb.svg"
-									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
-								Play instruments like violin and piano (the instruments every asian kid is forced to
-								play)
-							</p>
-							<p class="medium-font"><img alt="⚡" src="https://abs-0.twimg.com/emoji/v2/svg/26a1.svg"
-									style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
-								Design, solder, and test circuits
-							</p>
-						</div>
-					</div>
-					<div class="invisible tools">
-						<span class="large-font" style="display: block; text-align: center;">tools I use and skills I
-							have</span>
-						<br>
-						<ul class="language-list">
-							<li class="single-language"><i class="fab fa-linux"></i><br><span>Linux</span></li>
-							<li class="single-language ml"><svg class="languagelistsvgs ml" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
-								</svg><span>ML / AI</span>
-							</li>
-							<li class="single-language"><svg class="languagelistsvgs github" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-								</svg><span>Github</span></li>
-							<li class="single-language"><svg class="languagelistsvgs npm" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z" />
-								</svg><span>NPM</span></li>
-							<li class="single-language"><svg class="languagelistsvgs opencv" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M11.8992.8525C8.735.8525 6.17 3.4175 6.17 6.5817c0 2.102 1.1321 3.9398 2.8198 4.9366l1.6412-2.7849c.0411-.0699.0176-.1593-.0495-.2048-.6233-.4227-1.0328-1.137-1.0328-1.947 0-1.298 1.0524-2.3504 2.3505-2.3504 1.2981 0 2.3505 1.0524 2.3505 2.3505 0 .8098-.4095 1.5242-1.0328 1.947-.0671.0454-.0907.1348-.0495.2047l1.6414 2.785c1.6878-.9969 2.8199-2.8346 2.8199-4.9367 0-3.1642-2.5653-5.7292-5.7295-5.7292zm-6.17 10.8366C2.565 11.6891 0 14.2541 0 17.4183c0 3.1642 2.565 5.7292 5.7292 5.7292 3.1798 0 5.8074-2.6995 5.7275-5.8762H8.2313c-.0847 0-.1513.0717-.1519.1564-.0082 1.266-1.0644 2.3411-2.3502 2.3411-1.2981 0-2.3505-1.0524-2.3505-2.3505 0-1.2982 1.0524-2.3505 2.3505-2.3505.34 0 .663.0724.9547.2022.0713.0318.1566.0077.1962-.0595l1.6464-2.7935c-.8273-.4636-1.7815-.7279-2.7973-.7279zm15.4424.7614l-1.6366 2.7878c-.041.07-.0172.1594.05.2048.624.4217 1.0348 1.1354 1.0363 1.9452.0022 1.298-1.0483 2.352-2.3465 2.3542-1.298.0023-2.3523-1.0482-2.3545-2.3462-.0015-.8098.4068-1.5248 1.0294-1.9486.067-.0457.0905-.1353.0492-.2051l-1.6464-2.7818c-1.6859.9998-2.8146 2.8394-2.811 4.9415.0056 3.1641 2.575 5.7248 5.7393 5.7192 3.1641-.0054 5.7246-2.575 5.7192-5.7392-.0037-2.1022-1.139-3.938-2.8284-4.9318z" />
-								</svg><span>OpenCV</span></li>
-							<li class="single-language"><svg class="languagelistsvgs github" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path d="M24 22.525H0l12-21.05 12 21.05z" />
-								</svg><span>Vercel</span></li>
-							<li class="single-language">
-								<svg class="languagelistsvgs firebase" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M3.89 15.672L6.255.461A.542.542 0 017.27.288l2.543 4.771zm16.794 3.692l-2.25-14a.54.54 0 00-.919-.295L3.316 19.365l7.856 4.427a1.621 1.621 0 001.588 0zM14.3 7.147l-1.82-3.482a.542.542 0 00-.96 0L3.53 17.984z" />
-								</svg><span>Firebase</span>
-							</li>
-							<li class="single-language">
-								<svg class="languagelistsvgs security" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M11.9914 0a.8829.8829 0 00-.8718.817v3.0209A.8829.8829 0 0012 4.7207a.8829.8829 0 00.8803-.8803V.817a.8829.8829 0 00-.889-.817zm7.7048 3.1089a.8804.8804 0 00-.5214.1742l-2.374 1.9482a.8804.8804 0 00.5592 1.5622.8794.8794 0 00.5592-.2001l2.3714-1.9506a.8804.8804 0 00-.5944-1.534zm-15.3763.0133a.8829.8829 0 00-.611 1.5206l2.37 1.9506a.876.876 0 00.5606.2001v-.002a.8804.8804 0 00.5597-1.5602L4.8277 3.2831a.8829.8829 0 00-.5078-.161zm7.6598 3.2275a5.0456 5.0456 0 00-5.0262 5.0455v1.4876H5.787a.9672.9672 0 00-.9647.9643v9.1887a.9672.9672 0 00.9647.9643H18.213a.9672.9672 0 00.9643-.9643v-9.1907a.9672.9672 0 00-.9643-.9623h-1.1684v-1.4876a5.0456 5.0456 0 00-5.0649-5.0455zm.0127 2.8933a2.1522 2.1522 0 012.1593 2.1522v1.4876H9.8473v-1.4876a2.1522 2.1522 0 012.145-2.1522zm7.3812.5033a.8829.8829 0 10.0705 1.7632h3.0267a.8829.8829 0 000-1.7609H19.444a.8829.8829 0 00-.0705-.0023zm-17.8444.0023a.8829.8829 0 000 1.7609h2.9983a.8829.8829 0 000-1.7609zm10.4596 6.7746a1.2792 1.2792 0 01.641 2.3926v1.2453a.6298.6298 0 01-1.2595 0v-1.2453a1.2792 1.2792 0 01.6185-2.3926z" />
-								</svg><span style="font-size: 10px;">Information security</span>
-							</li>
-							<li class="single-language">
-								<svg class="languagelistsvgs github" viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M24 18.588a1.529 1.529 0 01-1.895-.72l-3.45-4.771-.5-.667-4.003 5.444a1.466 1.466 0 01-1.802.708l5.158-6.92-4.798-6.251a1.595 1.595 0 011.9.666l3.576 4.83 3.596-4.81a1.435 1.435 0 011.788-.668L21.708 7.9l-2.522 3.283a.666.666 0 000 .994l4.804 6.412zM.002 11.576l.42-2.075c1.154-4.103 5.858-5.81 9.094-3.27 1.895 1.489 2.368 3.597 2.275 5.973H1.116C.943 16.447 4.005 19.009 7.92 17.7a4.078 4.078 0 002.582-2.876c.207-.666.548-.78 1.174-.588a5.417 5.417 0 01-2.589 3.957 6.272 6.272 0 01-7.306-.933 6.575 6.575 0 01-1.64-3.858c0-.235-.08-.455-.134-.666A88.33 88.33 0 010 11.577zm1.127-.286h9.654c-.06-3.076-2.001-5.258-4.59-5.278-2.882-.04-4.944 2.094-5.071 5.264z" />
-								</svg><span>Express js</span>
-							</li>
-							<li class="single-language">
-								<svg version="1.1" class="languagelistsvgs violin" xmlns="http://www.w3.org/2000/svg"
-									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-									viewBox="0 0 470.544 470.544" style="enable-background:new 0 0 470.544 470.544;"
-									xml:space="preserve">
-									<g>
-										<path d="M145.409,274.928c2.93,2.928,7.678,2.928,10.607,0c2.929-2.93,2.929-7.678,0-10.607
+                            <li class="single-language"><svg class="languagelistsvgs node" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z" />
+                                </svg><br><span>node.js</span></li>
+                            <li class="single-language"><i class="fab fa-html5"></i><br><span>web dev</span></li>
+                            <li class="single-language"><svg class="languagelistsvgs tensorflow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <linearGradient id="tensorflow-gradient" x2="0.35" y2="1" gradientTransform="rotate(90)">
+                                        <stop offset="0%" stop-color="var(--color-stop)" />
+                                        <stop offset="30%" stop-color="var(--color-stop)" />
+                                        <stop offset="100%" stop-color="var(--color-bot)" />
+                                    </linearGradient>
+                                    <path d="M1.292 5.856L11.54 0v24l-4.095-2.378V7.603l-6.168 3.564.015-5.31zm21.43 5.311l-.014-5.31L12.46 0v24l4.095-2.378V14.87l3.092 1.788-.018-4.618-3.074-1.756V7.603l6.168 3.564z" />
+                                </svg><span>TensorFlow</span></li>
+                            <li class="single-language"><svg class="languagelistsvgs mongodb" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218zm-5.336 8.195s0-8.291.275-8.29c.213 0 .49 10.695.49 10.695-.381-.045-.765-1.76-.765-2.405z" />
+                                </svg><span>No-SQL</span></li>
+                        </ul>
+                    </div>
+                    <div class="invisible general">
+                        <div>
+                            <h1>&nbsp;&nbsp;&nbsp;<i class="fas fa-italic">:</i></h1>
+                            <p class="medium-font"><img alt="🤖" src="https://twemoji.maxcdn.com/2/72x72/1f916.png" style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+                                Participate in hackathons, such as angelhacks, hackOR, coHackathon, and many others! You
+                                can check out the full list <a rel="noreferrer" href="https://devpost.com/Joshua-Zou?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav">here</a>
+                            </p>
+                            <p class="medium-font"><img alt="🚧" src="https://abs-0.twimg.com/emoji/v2/svg/1f6a7.svg" style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+                                Create projects useful to society as a whole, but also funny projects for the lol's
+                            </p>
+                            <p class="medium-font"><img alt="🎻" src="https://abs-0.twimg.com/emoji/v2/svg/1f3bb.svg" style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+                                Play instruments like violin and piano (the instruments every asian kid is forced to
+                                play)
+                            </p>
+                            <p class="medium-font"><img alt="⚡" src="https://abs-0.twimg.com/emoji/v2/svg/26a1.svg" style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+                                Design, solder, and test circuits
+                            </p>
+                        </div>
+                    </div>
+                    <div class="invisible tools">
+                        <span class="large-font" style="display: block; text-align: center;">tools I use and skills I
+                            have</span>
+                        <br>
+                        <ul class="language-list">
+                            <li class="single-language"><i class="fab fa-linux"></i><br><span>Linux</span></li>
+                            <li class="single-language ml"><svg class="languagelistsvgs ml" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
+                                </svg><span>ML / AI</span>
+                            </li>
+                            <li class="single-language"><svg class="languagelistsvgs github" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                </svg><span>Github</span></li>
+                            <li class="single-language"><svg class="languagelistsvgs npm" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z" />
+                                </svg><span>NPM</span></li>
+                            <li class="single-language">
+                                <svg class="languagelistsvgs aws" xmlns="http://www.w3.org/2000/svg" viewBox="1.578 2.186 1087.411 855.842">
+                                    <path d="M318.839 547.785l-99.62 42.792 92.26 39.455 106.98-39.455-99.62-42.792zm-149.773 53.49l-3.338 192.564 145.75 64.188V658.104l-142.412-56.829zm299.545 0l-131.715 50.152V839.97l131.715-53.49V601.275zM625.743 2.186L525.438 44.979l92.944 39.454 106.98-39.454-99.619-42.793zm-139.074 56.85V251.6l124.354 36.116 4.022-175.191-128.376-53.489zm278.149 10.697L647.14 119.886v189.227l117.679-53.49V69.733zM154.688 273.21l-99.62 42.792 92.26 39.455 106.98-39.455-99.62-42.792zM4.916 326.7L1.578 519.265l145.75 64.188V383.528L4.916 326.7zm299.545 0l-131.714 50.152v188.542l131.714-53.49V326.7zm171.168-60.594l-99.62 42.792 92.26 39.455 106.98-39.455-99.62-42.792zm-149.773 53.491l-3.338 192.564 145.75 64.188V376.446l-142.412-56.849zm299.545 0l-131.714 50.152v188.542l131.714-53.49V319.597zM939.217 2.186l-99.619 42.792 92.26 39.454 106.979-39.454-99.62-42.792zm-149.773 53.49l-3.337 192.564 145.75 64.188V112.525L789.444 55.676zm299.545 0l-131.714 50.152V294.37l131.714-53.49V55.676z" />
+                                </svg>
+                                <span>AWS</span>
+                            </li>
+                            <li class="single-language"><svg class="languagelistsvgs opencv" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.8992.8525C8.735.8525 6.17 3.4175 6.17 6.5817c0 2.102 1.1321 3.9398 2.8198 4.9366l1.6412-2.7849c.0411-.0699.0176-.1593-.0495-.2048-.6233-.4227-1.0328-1.137-1.0328-1.947 0-1.298 1.0524-2.3504 2.3505-2.3504 1.2981 0 2.3505 1.0524 2.3505 2.3505 0 .8098-.4095 1.5242-1.0328 1.947-.0671.0454-.0907.1348-.0495.2047l1.6414 2.785c1.6878-.9969 2.8199-2.8346 2.8199-4.9367 0-3.1642-2.5653-5.7292-5.7295-5.7292zm-6.17 10.8366C2.565 11.6891 0 14.2541 0 17.4183c0 3.1642 2.565 5.7292 5.7292 5.7292 3.1798 0 5.8074-2.6995 5.7275-5.8762H8.2313c-.0847 0-.1513.0717-.1519.1564-.0082 1.266-1.0644 2.3411-2.3502 2.3411-1.2981 0-2.3505-1.0524-2.3505-2.3505 0-1.2982 1.0524-2.3505 2.3505-2.3505.34 0 .663.0724.9547.2022.0713.0318.1566.0077.1962-.0595l1.6464-2.7935c-.8273-.4636-1.7815-.7279-2.7973-.7279zm15.4424.7614l-1.6366 2.7878c-.041.07-.0172.1594.05.2048.624.4217 1.0348 1.1354 1.0363 1.9452.0022 1.298-1.0483 2.352-2.3465 2.3542-1.298.0023-2.3523-1.0482-2.3545-2.3462-.0015-.8098.4068-1.5248 1.0294-1.9486.067-.0457.0905-.1353.0492-.2051l-1.6464-2.7818c-1.6859.9998-2.8146 2.8394-2.811 4.9415.0056 3.1641 2.575 5.7248 5.7393 5.7192 3.1641-.0054 5.7246-2.575 5.7192-5.7392-.0037-2.1022-1.139-3.938-2.8284-4.9318z" />
+                                </svg><span>OpenCV</span></li>
+                            <li class="single-language"><svg class="languagelistsvgs github" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24 22.525H0l12-21.05 12 21.05z" />
+                                </svg><span>Vercel</span></li>
+                            <li class="single-language">
+                                <svg class="languagelistsvgs firebase" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.89 15.672L6.255.461A.542.542 0 017.27.288l2.543 4.771zm16.794 3.692l-2.25-14a.54.54 0 00-.919-.295L3.316 19.365l7.856 4.427a1.621 1.621 0 001.588 0zM14.3 7.147l-1.82-3.482a.542.542 0 00-.96 0L3.53 17.984z" />
+                                </svg><span>Firebase</span>
+                            </li>
+                            <li class="single-language">
+                                <svg class="languagelistsvgs security" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.9914 0a.8829.8829 0 00-.8718.817v3.0209A.8829.8829 0 0012 4.7207a.8829.8829 0 00.8803-.8803V.817a.8829.8829 0 00-.889-.817zm7.7048 3.1089a.8804.8804 0 00-.5214.1742l-2.374 1.9482a.8804.8804 0 00.5592 1.5622.8794.8794 0 00.5592-.2001l2.3714-1.9506a.8804.8804 0 00-.5944-1.534zm-15.3763.0133a.8829.8829 0 00-.611 1.5206l2.37 1.9506a.876.876 0 00.5606.2001v-.002a.8804.8804 0 00.5597-1.5602L4.8277 3.2831a.8829.8829 0 00-.5078-.161zm7.6598 3.2275a5.0456 5.0456 0 00-5.0262 5.0455v1.4876H5.787a.9672.9672 0 00-.9647.9643v9.1887a.9672.9672 0 00.9647.9643H18.213a.9672.9672 0 00.9643-.9643v-9.1907a.9672.9672 0 00-.9643-.9623h-1.1684v-1.4876a5.0456 5.0456 0 00-5.0649-5.0455zm.0127 2.8933a2.1522 2.1522 0 012.1593 2.1522v1.4876H9.8473v-1.4876a2.1522 2.1522 0 012.145-2.1522zm7.3812.5033a.8829.8829 0 10.0705 1.7632h3.0267a.8829.8829 0 000-1.7609H19.444a.8829.8829 0 00-.0705-.0023zm-17.8444.0023a.8829.8829 0 000 1.7609h2.9983a.8829.8829 0 000-1.7609zm10.4596 6.7746a1.2792 1.2792 0 01.641 2.3926v1.2453a.6298.6298 0 01-1.2595 0v-1.2453a1.2792 1.2792 0 01.6185-2.3926z" />
+                                </svg><span style="font-size: 10px;">Information security</span>
+                            </li>
+                            <li class="single-language">
+                                <svg class="languagelistsvgs github" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24 18.588a1.529 1.529 0 01-1.895-.72l-3.45-4.771-.5-.667-4.003 5.444a1.466 1.466 0 01-1.802.708l5.158-6.92-4.798-6.251a1.595 1.595 0 011.9.666l3.576 4.83 3.596-4.81a1.435 1.435 0 011.788-.668L21.708 7.9l-2.522 3.283a.666.666 0 000 .994l4.804 6.412zM.002 11.576l.42-2.075c1.154-4.103 5.858-5.81 9.094-3.27 1.895 1.489 2.368 3.597 2.275 5.973H1.116C.943 16.447 4.005 19.009 7.92 17.7a4.078 4.078 0 002.582-2.876c.207-.666.548-.78 1.174-.588a5.417 5.417 0 01-2.589 3.957 6.272 6.272 0 01-7.306-.933 6.575 6.575 0 01-1.64-3.858c0-.235-.08-.455-.134-.666A88.33 88.33 0 010 11.577zm1.127-.286h9.654c-.06-3.076-2.001-5.258-4.59-5.278-2.882-.04-4.944 2.094-5.071 5.264z" />
+                                </svg><span>Express js</span>
+                            </li>
+                            <li class="single-language">
+                                <svg version="1.1" class="languagelistsvgs violin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 470.544 470.544" style="enable-background:new 0 0 470.544 470.544;" xml:space="preserve">
+                                    <g>
+                                        <path d="M145.409,274.928c2.93,2.928,7.678,2.928,10.607,0c2.929-2.93,2.929-7.678,0-10.607
 		c-3.759-3.757-11.847-9.205-23.813-3.463c-6.341,3.044-12.431,8.507-18.32,13.791c-5.104,4.579-10.384,9.315-14.793,11.432
 		c-3.87,1.857-5.223,0.945-6.714-0.546c-2.929-2.929-7.678-2.93-10.606-0.001c-2.93,2.929-2.93,7.678-0.001,10.606
 		c2.582,2.582,7.209,5.962,13.732,5.962c2.971,0,6.335-0.701,10.079-2.498c6.341-3.043,12.431-8.507,18.319-13.79
 		c5.105-4.58,10.385-9.316,14.794-11.433C142.565,272.523,143.918,273.436,145.409,274.928z" />
-										<path d="M195.613,314.525c-2.929,2.93-2.929,7.678,0,10.607c1.491,1.491,2.403,2.846,0.547,6.715
+                                        <path d="M195.613,314.525c-2.929,2.93-2.929,7.678,0,10.607c1.491,1.491,2.403,2.846,0.547,6.715
 		c-2.116,4.409-6.853,9.688-11.433,14.794c-5.283,5.889-10.747,11.979-13.79,18.319c-5.741,11.964-0.295,20.054,3.464,23.812
 		c1.464,1.464,3.384,2.196,5.303,2.196s3.839-0.732,5.304-2.197c2.929-2.929,2.929-7.678-0.001-10.606
 		c-1.49-1.491-2.402-2.845-0.546-6.714c2.116-4.409,6.853-9.688,11.432-14.793c5.284-5.89,10.747-11.979,13.791-18.32
 		c5.741-11.964,0.295-20.055-3.463-23.813C203.291,311.597,198.543,311.597,195.613,314.525z" />
-										<path
-											d="M176.46,335.801c2.929-2.93,2.929-7.678,0-10.607l-31.112-31.112c-2.93-2.928-7.678-2.928-10.607,0
+                                        <path d="M176.46,335.801c2.929-2.93,2.929-7.678,0-10.607l-31.112-31.112c-2.93-2.928-7.678-2.928-10.607,0
 		c-2.929,2.93-2.929,7.678,0,10.607l31.112,31.112c1.465,1.464,3.385,2.196,5.304,2.196S174.995,337.265,176.46,335.801z" />
-										<path
-											d="M468.346,30.48L440.062,2.196c-2.93-2.928-7.678-2.928-10.607,0l-8.838,8.838l-1.768-1.768
+                                        <path d="M468.346,30.48L440.062,2.196c-2.93-2.928-7.678-2.928-10.607,0l-8.838,8.838l-1.768-1.768
 		c-2.93-2.928-7.678-2.928-10.607,0c-2.929,2.93-2.929,7.678,0,10.607l1.768,1.768l-8.839,8.839c-2.266,2.267-2.771,5.621-1.53,8.38
 		l-11.92,11.404l-16.026-16.026c-2.929-2.93-7.678-2.929-10.606-0.001c-2.93,2.929-2.93,7.678-0.001,10.606l15.792,15.792
 		l-74.353,71.132c-18.062-11.117-38.737-16.7-60.203-16.172c-23.614,0.588-45.929,8.519-64.53,22.935
@@ -457,585 +405,642 @@
 		c-0.033,0.035-47.966,50.138-47.966,50.138c-2.864,2.993-2.759,7.74,0.234,10.604c1.453,1.391,3.319,2.081,5.184,2.081
 		c1.975,0,3.947-0.775,5.42-2.315l41.278-43.147C345.442,210.748,343.534,250.48,322.71,280.101z M434.758,53.461L417.08,35.784
 		l8.83-8.83c0.019-0.02,8.848-8.848,8.848-8.848l17.678,17.678l-8.829,8.829C443.588,44.632,434.758,53.461,434.758,53.461z" />
-									</g>
-								</svg>
-								<span>Violin</span>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="activity-canvas side-by-side">
-			<span style="display: block; text-align: center;" class="large-font">My github contributions</span>
-			<div class="pop-out-icon pointer"
-				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"><i
-					class="fas fa-external-link-alt"></i></div>
-			<img src="https://ghchart.rshah.org/joshua-zou"
-				onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"
-				alt="my github contributions">
-		</div>
-		<div class="stats side-by-side">
-			<span style="display: block; text-align: center; margin-bottom: 10px;" class="large-font">By the
-				numbers</span>
-			<a rel="noreferrer" href="https://github.com/Joshua-Zou" class="side-by-side">
-				<img alt="my github stats" align="center" style="max-height: 165px;"
-					src="https://github-readme-stats.vercel.app/api?username=Joshua-Zou&theme=react" />
-			</a>
-			<a rel="noreferrer" href="https://github.com/Joshua-Zou/" class="side-by-side" style="margin-left: 10px;">
-				<img alt="my github language stats" align="center" style="max-height: 175px;"
-					src="https://github-readme-stats.vercel.app/api/top-langs/?username=Joshua-Zou&langs_count=10&theme=react&layout=compact" />
-			</a>
-			<div class="side-by-side" id="npmDownloads"
-				style="margin-top: 10px; background-color: #20232A; border: 1px solid white; border-radius: 3px; padding: 15px; width: 400px;">
-				<span style="font-family: Helvetica; font-weight: 700; color: #57BDDA;">Total NPM downloads</span>
-				<br>
-				<div style="margin-top: 10px;">
-					<span>Total: </span>
-					<span style="float: right;" id="totalNpmDownloads">Querying...</span>
-					<br>
-					<span class="link pointer"
-						onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.parentElement.children[6].classList.toggle('rotate-90')">View
-						specifics </span>
-					<span>&nbsp;|&nbsp;</span>
-					<span class="link pointer"
-						onclick="this.parentElement.children[6].classList.remove('rotate-90'); getNpmStats();">Refresh
-						Data </span>
-					<i style="float: right; transition: all 0.5s;"
-						onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.classList.toggle('rotate-90')"
-						class="pointer link fas fa-chevron-down"></i>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section id="projects" style="display: block;">
-		<div class="toc">
-			<span class="medium-font">Jump to:</span>
-			<ul style="list-style-type: none;">
-				<hr class="tree-vertical">
-				<li style="margin-top: 0;">── <a rel="noreferrer" href="#introduction">Introduction</a></li>
-				<li>──| <a rel="noreferrer" href="#languages">What I do</a>
-				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a rel="noreferrer" href="#languages"
-						onclick="changeLang('general')">In General</a></li>
-				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a rel="noreferrer" href="#languages"
-						onclick="changeLang('default')">Languages</a></li>
-				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a rel="noreferrer" href="#languages"
-						onclick="changeLang('tools')">Tools/Skills</a></li>
-				<li>──| <a rel="noreferrer" href="#projects">Projects</a></li>
-				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a rel="noreferrer"
-						href="#top-projects">Top
-						Projects</a></li>
-				<li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a rel="noreferrer"
-						href="#works-in-progress">Statuses</a></li>
-				<hr style="width: 10px; position: relative; left: -62px; top: -15px;">
-			</ul>
-		</div>
-		<div class="container">
-			<div class="top-projects" id="top-projects">
-				<span class="extra-large-font">My top projects<br> </span>
-				<span class="medium-font">Big projects that I'm (maybe) known for online&nbsp; &nbsp; </span>
-				<a rel="noreferrer" href="https://github.com/Joshua-Zou?tab=repositories" target="_blank">View all <i
-						class="fas fa-arrow-right"></i></a>
-				<div class="projects">
-					<div class="project">
-						<img src="./images/cointunnel.png" alt="Coin Tunnel">
-						<span class="medium-font project-name">Coin Tunnel</span>
-						<span class="project-desc">An easy to use, open source cryptocurrency payment system</span>
-						<br>
-						<span class="project-desc">Buyers can either signup, connect their wallet directly, and start
-							buying things effortlessly</span>
-						<span class="project-desc">Or, they can deposit money into a temporary wallet which which is
-							then transfered to the merchant</span>
-						<div class="project-resources">
-							<hr>
-							<span class="medium-font project-name">Resources</span>
-							<br>
-							<a rel="noreferrer" href="https://github.com/Coin-Tunnel/Coin-Tunnel"
-								target="_blank">Repo</a>
-							|
-							<a rel="noreferrer" href="https://www.coin-tunnel.ml" target="_blank">Live website</a>
-							|
-							<a rel="noreferrer" href="https://docs.coin-tunnel.ml" target="_blank">Documentation</a>
-						</div>
-					</div>
-					<div class="project">
-						<img src="./images/notation.png"
-							style="border-radius: 20px; width: 110px;" alt="Notation">
-						<br>
+                                    </g>
+                                </svg>
+                                <span>Violin</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="activity-canvas side-by-side">
+            <span style="display: block; text-align: center;" class="large-font">My github contributions</span>
+            <div class="pop-out-icon pointer" onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')"><i class="fas fa-external-link-alt"></i></div>
+            <img src="https://ghchart.rshah.org/joshua-zou" onclick="popImageOut('https://ghchart.rshah.org/joshua-zou', 'my github contributions')" alt="my github contributions">
+        </div>
+        <div class="stats side-by-side">
+            <span style="display: block; text-align: center; margin-bottom: 10px;" class="large-font">By the
+                numbers</span>
+            <a rel="noreferrer" href="https://github.com/Joshua-Zou" class="side-by-side">
+                <img alt="my github stats" align="center" style="max-height: 165px;" src="https://github-readme-stats.vercel.app/api?username=Joshua-Zou&theme=react" />
+            </a>
+            <a rel="noreferrer" href="https://github.com/Joshua-Zou/" class="side-by-side" style="margin-left: 10px;">
+                <img alt="my github language stats" align="center" style="max-height: 175px;" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Joshua-Zou&langs_count=10&theme=react&layout=compact" />
+            </a>
+            <div class="side-by-side" id="npmDownloads" style="margin-top: 10px; background-color: #20232A; border: 1px solid white; border-radius: 3px; padding: 15px; width: 400px;">
+                <span style="font-family: Helvetica; font-weight: 700; color: #57BDDA;">Total NPM downloads</span>
+                <br>
+                <div style="margin-top: 10px;">
+                    <span>Total: </span>
+                    <span style="float: right;" id="totalNpmDownloads">Querying...</span>
+                    <br>
+                    <span class="link pointer" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.parentElement.children[6].classList.toggle('rotate-90')">View
+                        specifics </span>
+                    <span>&nbsp;|&nbsp;</span>
+                    <span class="link pointer" onclick="this.parentElement.children[6].classList.remove('rotate-90'); getNpmStats();">Refresh
+                        Data </span>
+                    <i style="float: right; transition: all 0.5s;" onclick="this.parentElement.parentElement.children[3].classList.toggle('invisible'); this.classList.toggle('rotate-90')" class="pointer link fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects" style="display: block;">
+        <div class="toc">
+            <span class="medium-font">Jump to:</span>
+            <ul style="list-style-type: none;">
+                <hr class="tree-vertical">
+                <li style="margin-top: 0;">── <a rel="noreferrer" href="#introduction">Introduction</a></li>
+                <li>──| <a rel="noreferrer" href="#languages">What I do</a>
+                <li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a rel="noreferrer" href="#languages" onclick="changeLang('general')">In General</a></li>
+                <li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a rel="noreferrer" href="#languages" onclick="changeLang('default')">Languages</a></li>
+                <li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a rel="noreferrer" href="#languages" onclick="changeLang('tools')">Tools/Skills</a></li>
+                <li>──| <a rel="noreferrer" href="#projects">Projects</a></li>
+                <li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;├─ <a rel="noreferrer" href="#top-projects">Top
+                        Projects</a></li>
+                <li style="margin-top: 0; margin-left: 2px;">&nbsp;&nbsp;&nbsp;└─ <a rel="noreferrer" href="#works-in-progress">Statuses</a></li>
+				<li>──| <a rel="noreferrer" href="#experience">Experience</a></li>
+                <hr style="width: 10px; position: relative; left: -62px; top: -2px;">
+            </ul>
+        </div>
+        <div class="container">
+            <div class="top-projects" id="top-projects">
+                <span class="extra-large-font">My top projects<br> </span>
+                <span class="medium-font">Big projects that I'm (maybe) known for online&nbsp; &nbsp; </span>
+                <a rel="noreferrer" href="https://github.com/Joshua-Zou?tab=repositories" target="_blank">View all <i class="fas fa-arrow-right"></i></a>
+                <div class="projects">
+                    <div class="project">
+                        <img src="./images/cointunnel.png" alt="Coin Tunnel">
+                        <span class="medium-font project-name">Coin Tunnel</span>
+                        <span class="project-desc">An easy to use, open source cryptocurrency payment system</span>
+                        <br>
+                        <span class="project-desc">Buyers can either signup, connect their wallet directly, and start
+                            buying things effortlessly</span>
+                        <span class="project-desc">Or, they can deposit money into a temporary wallet which which is
+                            then transfered to the merchant</span>
+                        <div class="project-resources">
+                            <hr>
+                            <span class="medium-font project-name">Resources</span>
+                            <br>
+                            <a rel="noreferrer" href="https://github.com/Coin-Tunnel/Coin-Tunnel" target="_blank">Repo</a>
+                            |
+                            <a rel="noreferrer" href="https://www.coin-tunnel.ml" target="_blank">Live website</a>
+                            |
+                            <a rel="noreferrer" href="https://docs.coin-tunnel.ml" target="_blank">Documentation</a>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="./images/notation.png" style="border-radius: 20px; width: 110px;" alt="Notation">
+                        <br>
 
-						<span class="medium-font project-name">Notation</span>
-						<span class="project-desc">Notation is an online marketplace where users can trade their notes! Simply sell your old notes for points, and use those to purchase notes relevant to you!</span>
-						<br>
-						<span class="project-desc">Notation has won first place in two hackathons! (And another third place)</span>
-						<br>
-						<div class="project-resources">
-							<hr>
-							<span class="medium-font project-name">Resources</span>
-							<br>
-							<a rel="noreferrer" href="https://github.com/Joshua-Zou/notation"
-								target="_blank">Repo</a>
-							|
-							<a rel="noreferrer" href="https://www.notation.tk/" target="_blank">Live website</a>
-							<a rel="noreferrer" href="https://devpost.com/software/notation-gx6v9m" target="_blank">Devpost</a>
-						</div>
-					</div>
-					<div class="project">
-						<img src="./images/elonbot.png" style="width: 130px; border-radius: 20px;"
-							alt="Elon Discord Bot">
-						<br>
-						<span class="medium-font project-name">Elon Bot</span>
-						<span class="project-desc" style="font-family: 'fira code'; font-size: 13px;">Yeah... this one's
-							a bit strange</span>
-						<span class="project-desc">Elon Bot is a discord bot that has a currency system built on doge,
-							with a stock/crypto exchange with real, live market data.</span>
-						<br>
-						<span class="project-desc">Users can build their profile by getting a job, working, aquiring
-							different crypto, stocks (all of Elon's), and suing/laundering money.</span>
-						<div class="project-resources">
-							<hr>
-							<span class="medium-font project-name">Resources</span>
-							<br>
-							<a rel="noreferrer" href="https://github.com/Joshua-Zou/elonbot" target="_blank">Repo</a>
-							|
-							<a rel="noreferrer" href="https://www.elon-bot.ml" target="_blank">Live website</a>
-							|
-							<a rel="noreferrer"
-								href="https://discord.com/oauth2/authorize?client_id=824730559779045417&permissions=8&scope=bot"
-								target="_blank">Invite bot</a>
-							|
-							<a rel="noreferrer" href="https://devpost.com/software/elon-discord-bot"
-								target="_blank">Devpost</a>
-							|
-							<a rel="noreferrer" href="https://top.gg/bot/824730559779045417" target="_blank">Top.gg</a>
-						</div>
-					</div>
-					<div class="project">
-						<img src="./images/nds.svg" style="width: 110px; border-radius: 20px;"
-							alt="Unity Discord Bot">
-						<span class="medium-font project-name">NDS</span>
-						<span class="project-desc">(Node Deployment Server)</span>
-						<br>
-						<span class="project-desc">NDS is a self-hosted mini-cloud! It allows you to deploy any code you want to your server running NDS! </span>
-						<span class="project-desc">Run jobs, create storage spaces, manage users, and much more!</span>
-						<div class="project-resources">
-							<hr>
-							<span class="medium-font project-name">Resources</span>
-							<br>
-							<a rel="noreferrer" href="https://github.com/Joshua-Zou/node-deployment-server
-								target="_blank">Repo</a>
-							|
-							<a rel="noreferrer"
-								href="https://github.com/Joshua-Zou/node-deployment-server/releases"
-								target="_blank">Releases</a>
-						</div>
-					</div>
-					<div class="project">
-						<img src="./images/vanity-btc.png" style="border-radius: 7px; margin-top: 15px; margin-bottom: 15px;" title=".meme file format">
-						<span class="medium-font project-name">Vanity-BTC</span>
-						<span class="project-desc">A Bitcoin vanity address generator</span>
-						<br>
-						<span class="project-desc">A fast, secure, and web/native based Bitcoin & Litecoin vanity address generator</span>
-						<br>
-						<span class="project-desc">Vanity address are cryptocurrency addreses with a sequence of characters special or noticable</span>
-						<div class="project-resources">
-							<hr>
-							<span class="medium-font project-name">Resources</span>
-							<br>
-							<a rel="noreferrer" href="https://github.com/Joshua-Zou/vanity-btc" target="_blank">Repo</a>
-							|
-							<a rel="noreferrer" href="https://www.vanity-btc.tk" target="_blank">Website</a>
-							|
-							<a rel="noreferrer"
-								href="https://github.com/Joshua-Zou/vanity-btc/releases/tag/v1.4.2"
-								target="_blank">Download</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<hr>
-			<div class="project-status" id="works-in-progress">
-				<br>
-				<span class="extra-large-font">Works in progress</span>
-				<br>
-				<span class="medium-font">Projects/stuff that I'm currently working on</span>
-				<div class="projectprogress">
-					<br>
-					<div class="singlepp">
-						<span class="title" style="font-size: 1.3em;"><img src="./images/nds.svg" alt="NDS"
-								style="height: 40px; width: auto; position: relative; left: -5px; top: 12px;">Node Deployment Server <i style="font-size: 20px;"
-								class="pointer fas fa-chevron-down"></i></span>
-						<div class="progress-bar">
-							<span class="progress-indicator" style="width: 80%;">&nbsp;</span>
-						</div>
-						<span>80%</span>
-						<div class="description invisible">
-							Node Deployment Server is a self-hosted webapp that allows users to create their own "cloud," and deploy Node.JS based applications to it.
-							<br>
-							<div class="links">
-								<a rel="noreferrer" href="https://github.com/Joshua-Zou/node-deployment-server/releases/tag/v1.1.1" target="_blank">Releases</a>
-								|
-								<a rel="noreferrer" href="https://github.com/Joshua-Zou/node-deployment-server"
-									target="_blank">Repo</a>
-							</div>
-							<div class="contributers">
-								<br>
-								<span class="normal-font">Contributers:</span>
-								<br>
-								<br>
-								<iframe src="https://contrib.rocks/image?repo=Joshua-Zou/node-deployment-server"></iframe>
-							</div>
-						</div>
-					</div>
-					<div class="singlepp">
-						<span class="title"><img alt="Notation Logo"
-								src="./images/notation.png"
-								style="height: 30px; width: auto; position: relative; left: -3px; top: 5px; margin-right: 12.5px;">Notation
-							<i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
-						<div class="progress-bar">
-							<span class="progress-indicator" style="width: 80%;">&nbsp;</span>
-						</div>
-						<span>80%</span>
-						<div class="description invisible">
-							Notation is an online marketplace that allows users to trade in their old, already used notes for points, and then use those points to purchase new notes relevant to them!
-							<br>
-							<div class="links">
-								<a rel="noreferrer" href="https://www.notation.tk"
-									target="_blank">Live Website</a>
-								|
-								<a rel="noreferrer" href="https://github.com/Joshua-Zou/Notation"
-									target="_blank">Repo</a>
-							</div>
-							<div class="contributers">
-								<br>
-								<span class="normal-font">Contributers:</span>
-								<br>
-								<br>
-								<iframe src="https://contrib.rocks/image?repo=Joshua-Zou/notation"></iframe>
-							</div>
-						</div>
-					</div>
-					<div class="singlepp">
-						<span class="title"><img alt="webpage logo" src="./images/webpage.png"
-								style="height: 50px; width: auto; position: relative; left: -10px; top: 5px; margin-right: 10px;">Vanity-BTC
-							<i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
-						<div class="progress-bar">
-							<span class="progress-indicator" style="width: 98%;">&nbsp;</span>
-						</div>
-						<span>98%</span>
-						<div class="description invisible">
-							Vanity-BTC is a Bitcoin and Litecoin vanity address generator. Download the app for better
-							security and increased performance. You can find out more about it at the links below:
-							<br>
-							<div class="links">
-								<a rel="noreferrer" href="https://www.vanity-btc.tk/" target="_blank">Live Website</a>
-								|
-								<a rel="noreferrer" href="https://github.com/Joshua-Zou/vanity-btc/"
-									target="_blank">Repo</a>
-								|
-								<a rel="noreferrer" href="https://github.com/Joshua-Zou/vanity-btc/releases/tag/v1.3.1"
-									target="_blank">Download App</a>
-							</div>
-							<div class="contributers">
-								<br>
-								<span class="normal-font">Contributers:</span>
-								<br>
-								<br>
-								<iframe src="https://contrib.rocks/image?repo=Joshua-Zou/vanity-btc"></iframe>
-							</div>
-						</div>
-					</div>
-					<div class="singlepp">
-						<span class="title"><img alt="prochia logo" src="./images/cloudiverse.svg"
-								style="height: 30px; width: auto; position: relative; left: -1px; top: 5px; margin-right: 0px;">&nbsp;
-							<span style="position: relative; left: -10px;"> Cloudiverse</span>
-							<i style="font-size: 20px; position: relative; left: -22px;" class="pointer fas fa-chevron-down"></i></span>
-						<div class="progress-bar" style="position: relative; left: -22px;">
-							<span class="progress-indicator" style="width: 90%;">&nbsp;</span>
-						</div>
-						<span style="position: relative; left: -22px">90%</span>
-						<div class="description invisible">
-							Cloudiverse is a platform that allows users to sell servers, or buy server space! 
-							<br>
-							<div class="links">
-								________
-							</div>
-							<div class="contributers">
-								<br>
-								<span class="normal-font">Contributers:</span>
-								<br>
-								<br>
-								<iframe src="https://contrib.rocks/image?repo=Joshua-Zou/send-crypto"></iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section id="modals">
-		<div id="myModal" class="modal">
-			<span class="close">&times;</span>
-			<img class="modal-content" id="img01" alt="img01">
-			<div id="caption"></div>
-		</div>
-		<div class="taskbar">
-			<div class="minimized-terminal-container app-favicon" onclick="minimize('#terminal-container')">
-				<img src="./images/cmd2.png" alt="commandpromt image">
-			</div>
-			<div class="minimized-bing-container app-favicon" onclick="minimize('#bing-container')">
-				<img src="./images/edge.svg" alt="ms edge logo" style="transform: scale(2.2)">
-			</div>
-			<div class="minimized-microsoft-container app-favicon" onclick="minimize('#microsoft-container')">
-				<i class="fab fa-windows"></i>
-			</div>
-		</div>
-	</section>
-	<section class="apps">
-		<div id="terminal-container" class="invisible" onmousedown="bringToTop('#terminal-container')">
-			<span id="terminal-containerheader"
-				style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
-				class="context-menu"><img alt="command promt logo" src="./images/cmd.PNG"
-					style="height: 12px; margin-left: 5px;">&nbsp; Command
-				Prompt</span>
-			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
-				<span class="pointer close-button" onclick="hide('#terminal-container')">
-					<?xml version="1.0" encoding="utf-8"?>
-					<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-						style="height: 10px;" xml:space="preserve">
-						<g>
-							<path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
+                        <span class="medium-font project-name">Notation</span>
+                        <span class="project-desc">Notation is an online marketplace where users can trade their notes! Simply sell your old notes for points, and use those to purchase notes relevant to you!</span>
+                        <br>
+                        <span class="project-desc">Notation has won first place in two hackathons!</span>
+                        <br>
+                        <div class="project-resources">
+                            <hr>
+                            <span class="medium-font project-name">Resources</span>
+                            <br>
+                            <a rel="noreferrer" href="https://github.com/Joshua-Zou/notation" target="_blank">Repo</a>
+                            |
+                            <a rel="noreferrer" href="https://www.notation.tk/" target="_blank">Live website</a>
+                            <a rel="noreferrer" href="https://devpost.com/software/notation-gx6v9m" target="_blank">Devpost</a>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="./images/elonbot.png" style="width: 130px; border-radius: 20px;" alt="Elon Discord Bot">
+                        <br>
+                        <span class="medium-font project-name">Elon Bot</span>
+                        <span class="project-desc" style="font-family: 'fira code'; font-size: 13px;">Yeah... this one's
+                            a bit strange</span>
+                        <span class="project-desc">Elon Bot is a discord bot that has a currency system built on doge,
+                            with a stock/crypto exchange with real, live market data.</span>
+                        <br>
+                        <span class="project-desc">Users can build their profile by getting a job, working, aquiring
+                            different crypto, stocks (all of Elon's), and suing/laundering money.</span>
+                        <div class="project-resources">
+                            <hr>
+                            <span class="medium-font project-name">Resources</span>
+                            <br>
+                            <a rel="noreferrer" href="https://github.com/Joshua-Zou/elonbot" target="_blank">Repo</a>
+                            |
+                            <a rel="noreferrer" href="https://www.elon-bot.ml" target="_blank">Live website</a>
+                            |
+                            <a rel="noreferrer" href="https://discord.com/oauth2/authorize?client_id=824730559779045417&permissions=8&scope=bot" target="_blank">Invite bot</a>
+                            |
+                            <a rel="noreferrer" href="https://devpost.com/software/elon-discord-bot" target="_blank">Devpost</a>
+                            |
+                            <a rel="noreferrer" href="https://top.gg/bot/824730559779045417" target="_blank">Top.gg</a>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="./images/nds.svg" style="width: 110px; border-radius: 20px;" alt="Unity Discord Bot">
+                        <span class="medium-font project-name">NDS</span>
+                        <span class="project-desc">(Node Deployment Server)</span>
+                        <br>
+                        <span class="project-desc">NDS is a self-hosted mini-cloud! It allows you to deploy any code you want to your server running NDS! </span>
+                        <span class="project-desc">Run jobs, create storage spaces, manage users, and much more!</span>
+                        <div class="project-resources">
+                            <hr>
+                            <span class="medium-font project-name">Resources</span>
+                            <br>
+                            <a rel="noreferrer" href="https://github.com/Joshua-Zou/node-deployment-server
+								target=" _blank">Repo</a>
+                            |
+                            <a rel="noreferrer" href="https://github.com/Joshua-Zou/node-deployment-server/releases" target="_blank">Releases</a>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="./images/vanity-btc.png" style="border-radius: 7px; margin-top: 15px; margin-bottom: 15px;" title=".meme file format">
+                        <span class="medium-font project-name">Vanity-BTC</span>
+                        <span class="project-desc">A Bitcoin vanity address generator</span>
+                        <br>
+                        <span class="project-desc">A fast, secure, and web/native based Bitcoin & Litecoin vanity address generator</span>
+                        <br>
+                        <span class="project-desc">Vanity address are cryptocurrency addreses with a sequence of characters special or noticable</span>
+                        <div class="project-resources">
+                            <hr>
+                            <span class="medium-font project-name">Resources</span>
+                            <br>
+                            <a rel="noreferrer" href="https://github.com/Joshua-Zou/vanity-btc" target="_blank">Repo</a>
+                            |
+                            <a rel="noreferrer" href="https://www.vanity-btc.tk" target="_blank">Website</a>
+                            |
+                            <a rel="noreferrer" href="https://github.com/Joshua-Zou/vanity-btc/releases/tag/v1.4.2" target="_blank">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <div class="project-status" id="works-in-progress">
+                <br>
+                <span class="extra-large-font">Works in progress</span>
+                <br>
+                <span class="medium-font">Projects/stuff that I'm currently working on</span>
+                <div class="projectprogress">
+                    <br>
+                    <div class="singlepp">
+                        <span class="title" style="font-size: 1.3em;"><img src="./images/nds.svg" alt="NDS" style="height: 40px; width: auto; position: relative; left: -5px; top: 12px;">Node Deployment Server <i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
+                        <div class="progress-bar">
+                            <span class="progress-indicator" style="width: 80%;">&nbsp;</span>
+                        </div>
+                        <span>80%</span>
+                        <div class="description invisible">
+                            Node Deployment Server is a self-hosted webapp that allows users to create their own "cloud," and deploy Node.JS based applications to it.
+                            <br>
+                            <div class="links">
+                                <a rel="noreferrer" href="https://github.com/Joshua-Zou/node-deployment-server/releases/tag/v1.1.1" target="_blank">Releases</a>
+                                |
+                                <a rel="noreferrer" href="https://github.com/Joshua-Zou/node-deployment-server" target="_blank">Repo</a>
+                            </div>
+                            <div class="contributers">
+                                <br>
+                                <span class="normal-font">Contributers:</span>
+                                <br>
+                                <br>
+                                <iframe src="https://contrib.rocks/image?repo=Joshua-Zou/node-deployment-server"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="singlepp">
+                        <span class="title"><img alt="Notation Logo" src="./images/notation.png" style="height: 30px; width: auto; position: relative; left: -3px; top: 5px; margin-right: 12.5px;">Notation
+                            <i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
+                        <div class="progress-bar">
+                            <span class="progress-indicator" style="width: 80%;">&nbsp;</span>
+                        </div>
+                        <span>80%</span>
+                        <div class="description invisible">
+                            Notation is an online marketplace that allows users to trade in their old, already used notes for points, and then use those points to purchase new notes relevant to them!
+                            <br>
+                            <div class="links">
+                                <a rel="noreferrer" href="https://www.notation.tk" target="_blank">Live Website</a>
+                                |
+                                <a rel="noreferrer" href="https://github.com/Joshua-Zou/Notation" target="_blank">Repo</a>
+                            </div>
+                            <div class="contributers">
+                                <br>
+                                <span class="normal-font">Contributers:</span>
+                                <br>
+                                <br>
+                                <iframe src="https://contrib.rocks/image?repo=Joshua-Zou/notation"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="singlepp">
+                        <span class="title"><img alt="webpage logo" src="./images/webpage.png" style="height: 50px; width: auto; position: relative; left: -10px; top: 5px; margin-right: 10px;">Vanity-BTC
+                            <i style="font-size: 20px;" class="pointer fas fa-chevron-down"></i></span>
+                        <div class="progress-bar">
+                            <span class="progress-indicator" style="width: 98%;">&nbsp;</span>
+                        </div>
+                        <span>98%</span>
+                        <div class="description invisible">
+                            Vanity-BTC is a Bitcoin and Litecoin vanity address generator. Download the app for better
+                            security and increased performance. You can find out more about it at the links below:
+                            <br>
+                            <div class="links">
+                                <a rel="noreferrer" href="https://www.vanity-btc.tk/" target="_blank">Live Website</a>
+                                |
+                                <a rel="noreferrer" href="https://github.com/Joshua-Zou/vanity-btc/" target="_blank">Repo</a>
+                                |
+                                <a rel="noreferrer" href="https://github.com/Joshua-Zou/vanity-btc/releases/tag/v1.3.1" target="_blank">Download App</a>
+                            </div>
+                            <div class="contributers">
+                                <br>
+                                <span class="normal-font">Contributers:</span>
+                                <br>
+                                <br>
+                                <iframe src="https://contrib.rocks/image?repo=Joshua-Zou/vanity-btc"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="singlepp">
+                        <span class="title"><img alt="prochia logo" src="./images/cloudiverse.svg" style="height: 30px; width: auto; position: relative; left: -1px; top: 5px; margin-right: 0px;">&nbsp;
+                            <span style="position: relative; left: -10px;"> Cloudiverse</span>
+                            <i style="font-size: 20px; position: relative; left: -22px;" class="pointer fas fa-chevron-down"></i></span>
+                        <div class="progress-bar" style="position: relative; left: -22px;">
+                            <span class="progress-indicator" style="width: 90%;">&nbsp;</span>
+                        </div>
+                        <span style="position: relative; left: -22px">90%</span>
+                        <div class="description invisible">
+                            Cloudiverse is a platform that allows users to sell servers, or buy server space!
+                            <br>
+                            <div class="links">
+                                ________
+                            </div>
+                            <div class="contributers">
+                                <br>
+                                <span class="normal-font">Contributers:</span>
+                                <br>
+                                <br>
+                                <iframe src="https://contrib.rocks/image?repo=Joshua-Zou/send-crypto"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="experience" style="display: block;">
+        <span class="extra-large-font">Experience<br> </span>
+        <span class="medium-font">Where I've been and what I've done</span>
+
+
+        <div class="slider">
+            <!-- slide 1 -->
+            <div class="slide">
+                <div class="slide-inner">
+                    <div class="header">
+                        <img src="./images/aviato.jpg">
+                        <div>
+                            <span class="jobtitle">Lead Developer</span>
+                            <span class="jobplace">Aviato</span>
+                            <span class="jobtime">Aug 2022 - Present</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <ul>
+                            <li>Leading the frontend and backend development team behind Aviato's revolutionary pitch software for funds and founders. </li>
+                            <li>Developer behind the entire Aviato Analytics platform</li>
+                            <li>Creating Aviato's frontend in Typescript and React, writing over 200,000 lines of code</li>
+                            <li>Optimized and deployed complex AWS systems involving IAM, Lambda, DynamoDB, CloudSearch, ElasticBeanstalk, EC2, Cognito, API Gateway, S3, MediaConvert</li>
+                            <li>Created complex webscrapers, capturing over 11 million data points and 15 gigabytes of raw text data</li>
+                        </ul>
+						<a class="fancyurl" target="_blank" href="https://joinaviato.com">Aviato Website</a>
+						<a class="fancyurl" target="_blank" href="https://www.linkedin.com/company/joinaviato/">Aviato LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- slide 2 -->
+            <div class="slide">
+                <div class="slide-inner">
+                    <div class="header">
+                        <img src="./images/appdevleague.png">
+                        <div>
+                            <span class="jobtitle">Director of Development</span>
+                            <span class="jobplace">App Dev League 501(c)(3) Non Profit</span>
+                            <span class="jobtime">Aug 2021 - Present</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <ul>
+                            <li>Primary developer behind the Devnetic learning platform, incorporating a full IDE environment and 500 hours of comprehensive learning content, including chapters like AI, WebDev, WebDev Projects, Basic Computer Science, and USACO</li>
+                            <li>Designed and generated over 100 hours of learning content for aspiring development</li>
+                            <li>Developed websites for other non-profit organizations</li>
+                        </ul>
+						<a class="fancyurl" target="_blank" href="https://appdevleague.org">App Dev League Website</a>
+						<a class="fancyurl" target="_blank" href="https://devnetic.appdevleague.org">Devnetic Web App</a>
+						<a class="fancyurl" target="_blank" href="https://www.linkedin.com/company/appdevleague/">ADL LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- slide 3 -->
+            <div class="slide">
+                <div class="slide-inner">
+                    <div class="header">
+                        <img src="./images/cointunnel.png">
+                        <div>
+                            <span class="jobtitle">Founder</span>
+                            <span class="jobplace">Coin Tunnel</span>
+                            <span class="jobtime">Dec 2020 - July 2022</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <ul>
+                            <li>Sole Developer behind the entire Coin Tunnel Platform</li>
+                            <li>Designing key Coin Tunnel architecture such as: payment systems, wallet watchers, authentication schemes, docker containers, scaling, cloud wallets, security</li>
+                            <li>Incorporated the MERN stack, in addition to EJS and Express.JS</li>
+                        </ul>
+						<a class="fancyurl" target="_blank" href="https://www.coin-tunnel.ml">Coin Tunnel Website</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- slide 4 -->
+			<div class="slide">
+                <div class="slide-inner">
+                    <div class="header">
+                        <img src="./images/unitybot.png">
+                        <div>
+                            <span class="jobtitle">Co-Founder</span>
+                            <span class="jobplace">JJZR Bots</span>
+                            <span class="jobtime">Dec 2020 - May 2022</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <ul>
+                            <li>Co Founder, along with Joshua Ren, a close friend, for this collection of Discord Bots designed to not only be fun, but also educational and safe</li>
+                            <li>Designed architecture for both Elon Bot and Unity Bot, incorporating machine learning, no-sql technologies, sharding systems, and more.</li>
+                            <li>Grew our user base to over 10,000 people on discord.</li>
+                        </ul>
+						<a class="fancyurl" target="_blank" href="https://www.elon-bot.ml">Elon Bot Website</a>
+						<a class="fancyurl" target="_blank" href="https://top.gg/bot/824730559779045417">Invite Elon</a>
+						<a class="fancyurl" target="_blank" href="https://top.gg/bot/811668584559935488">Invite Unity</a>
+                    </div>
+                </div>
+            </div>
+			<div class="slide">
+                <div class="slide-inner">
+                    <div class="header">
+                        <img src="./images/">
+                        <div>
+                            <span class="jobtitle">Any title</span>
+                            <span class="jobplace">Your company/project here</span>
+                            <span class="jobtime">∞ - ∞</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <ul>
+                            <li>Wanna hire me for anything?</li>
+                            <li>If anything above looks interesting to you, feel free to shoot me an email at joshyzou@gmail.com!</li>
+                            <li>I've got experience in JS, TS, JSX, TSX, React, Express.JS, Rust, C++, C#, .NET, NoSQL, AWS Stack, Docker, Ruby, Swift, HTML, CSS, TailwindCSS, Python, Machine Learning, Tensorflow, and much more</li>
+                        </ul>
+						<a class="fancyurl" target="_blank" href="/">Your Company Website</a>
+						<a class="fancyurl" target="_blank" href="https://www.linkedin.com/in/joshua-zou/">LinkedIn</a>
+						<a class="fancyurl" target="_blank" href="mailto:joshyzou@gmail.com">Email</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control buttons -->
+            <button class="btn btn-next"> > </button>
+            <button class="btn btn-prev">
+
+                < </button>
+        </div>
+
+    </section>
+    <section id="footer">
+        <span>This site was dishonerably made with no <u>JS frameworks</u> or <u>libraries</u> besides jQuery in pure HTML JS CSS (help)</span>
+        <span>Still not as messy as my room though - the messiness is a feature</span>
+        <span>© Joshua Zou 2022</span>
+    </section>
+    <section id="modals">
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01" alt="img01">
+            <div id="caption"></div>
+        </div>
+        <div class="taskbar">
+            <div class="minimized-terminal-container app-favicon" onclick="minimize('#terminal-container')">
+                <img src="./images/cmd2.png" alt="commandpromt image">
+            </div>
+            <div class="minimized-bing-container app-favicon" onclick="minimize('#bing-container')">
+                <img src="./images/edge.svg" alt="ms edge logo" style="transform: scale(2.2)">
+            </div>
+            <div class="minimized-microsoft-container app-favicon" onclick="minimize('#microsoft-container')">
+                <i class="fab fa-windows"></i>
+            </div>
+        </div>
+    </section>
+    <section class="apps">
+        <div id="terminal-container" class="invisible" onmousedown="bringToTop('#terminal-container')">
+            <span id="terminal-containerheader" style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;" class="context-menu"><img alt="command promt logo" src="./images/cmd.PNG" style="height: 12px; margin-left: 5px;">&nbsp; Command
+                Prompt</span>
+            <span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
+                <span class="pointer close-button" onclick="hide('#terminal-container')">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="height: 10px;" xml:space="preserve">
+                        <g>
+                            <path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
 						S22.47,513.67,29.13,507z M507,482.87L29.13,5C22.47-1.67,11.66-1.67,5,5c-6.67,6.66-6.67,17.47,0,24.14L482.87,507
 						c6.67,6.67,17.47,6.67,24.14,0C513.67,500.34,513.67,489.53,507,482.87z" />
-						</g>
-					</svg>
-				</span>
-			</span>
-			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
-				<span class="pointer maximize" onclick="maximize('#terminal-container')">
-					<?xml version="1.0" encoding="utf-8"?>
-					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
-						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
-						<defs></defs>
-						<g>
-							<rect width="10" height="10" x="3" y="4"
-								style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
-							</rect>
-						</g>
-					</svg>
-				</span>
-			</span>
-			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
-				<span class="pointer maximize" onclick="minimize('#terminal-container')">
-					<?xml version="1.0" encoding="utf-8"?>
-					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
-						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
-						<defs></defs>
-						<g>
-							<rect width="12" height="1" x="3" y="9"
-								style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
-							</rect>
-						</g>
-					</svg>
+                        </g>
+                    </svg>
+                </span>
+            </span>
+            <span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
+                <span class="pointer maximize" onclick="maximize('#terminal-container')">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+                        <defs></defs>
+                        <g>
+                            <rect width="10" height="10" x="3" y="4" style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+                            </rect>
+                        </g>
+                    </svg>
+                </span>
+            </span>
+            <span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
+                <span class="pointer maximize" onclick="minimize('#terminal-container')">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+                        <defs></defs>
+                        <g>
+                            <rect width="12" height="1" x="3" y="9" style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+                            </rect>
+                        </g>
+                    </svg>
 
-				</span>
-			</span>
-			<div id="terminal"></div>
-		</div>
-		<div id="bing-container" class="invisible" onmousedown="bringToTop('#bing-container')">
-			<span id="bing-containerheader"
-				style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;"
-				class="context-menu"><img alt="ms edge logo" src="./images/edge.png"
-					style="height: 12px; margin-left: 5px;">&nbsp;
-				Microsoft Edge</span>
-			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
-				<span class="pointer close-button" onclick="hide('#bing-container')">
-					<?xml version="1.0" encoding="utf-8"?>
-					<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-						style="height: 10px;" xml:space="preserve">
-						<g>
-							<path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
+                </span>
+            </span>
+            <div id="terminal"></div>
+        </div>
+        <div id="bing-container" class="invisible" onmousedown="bringToTop('#bing-container')">
+            <span id="bing-containerheader" style="display: inline-block;  font-family: calibri; font-weight: 200; width: 92.4%; font-size: 15px;" class="context-menu"><img alt="ms edge logo" src="./images/edge.png" style="height: 12px; margin-left: 5px;">&nbsp;
+                Microsoft Edge</span>
+            <span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 10.5px;">
+                <span class="pointer close-button" onclick="hide('#bing-container')">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="height: 10px;" xml:space="preserve">
+                        <g>
+                            <path d="M29.13,507L507,29.13c6.67-6.66,6.67-17.47,0-24.14c-6.67-6.67-17.47-6.67-24.14,0L5,482.87c-6.67,6.67-6.67,17.47,0,24.14
 						S22.47,513.67,29.13,507z M507,482.87L29.13,5C22.47-1.67,11.66-1.67,5,5c-6.67,6.66-6.67,17.47,0,24.14L482.87,507
 						c6.67,6.67,17.47,6.67,24.14,0C513.67,500.34,513.67,489.53,507,482.87z" />
-						</g>
-					</svg>
-				</span>
-			</span>
-			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
-				<span class="pointer maximize" onclick="maximize('#bing-container')">
-					<?xml version="1.0" encoding="utf-8"?>
-					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
-						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
-						<defs></defs>
-						<g>
-							<rect width="10" height="10" x="3" y="4"
-								style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
-							</rect>
-						</g>
-					</svg>
-				</span>
-			</span>
-			<span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
-				<span class="pointer maximize" onclick="minimize('#bing-container')">
-					<?xml version="1.0" encoding="utf-8"?>
-					<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"
-						x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
-						<defs></defs>
-						<g>
-							<rect width="12" height="1" x="3" y="9"
-								style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
-							</rect>
-						</g>
-					</svg>
+                        </g>
+                    </svg>
+                </span>
+            </span>
+            <span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 31px;">
+                <span class="pointer maximize" onclick="maximize('#bing-container')">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+                        <defs></defs>
+                        <g>
+                            <rect width="10" height="10" x="3" y="4" style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+                            </rect>
+                        </g>
+                    </svg>
+                </span>
+            </span>
+            <span class="normal-font" style="color: black; display: inline-block; position: absolute; right: 70px;">
+                <span class="pointer maximize" onclick="minimize('#bing-container')">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" x="0.00000000" y="0.00000000" style="height: 20px; width: 20px">
+                        <defs></defs>
+                        <g>
+                            <rect width="12" height="1" x="3" y="9" style="opacity:1.0000000;fill:black;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.5000000;stroke-miterlimit:2.0000000;stroke-dasharray:none;stroke-dashoffset:0.00000000;stroke-opacity:1.0000000">
+                            </rect>
+                        </g>
+                    </svg>
 
-				</span>
-			</span>
-		</div>
-		<div id="microsoft-container" class="invisible" onmousedown="bringToTop('#microsoft-container')">
-			<div class="leftpart">
-				<button class="shiny pancake"
-					onmousedown="this.parentElement.style.transitionDelay = '0s'; this.parentElement.style.transition = 'all 0.2s';  let p = this; setTimeout(function(){p.parentElement.style.transitionDelay = null; p.parentElement.style.transition = null;  }, 1000)">
-					<div
-						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
-						<hr style="width: 100%; margin-bottom: 0; margin-top: 0">
-						<hr style="width: 100%; margin-bottom: 0; margin-top: 2.5px;">
-						<hr style="width: 100%; margin-bottom: 0; margin-top: 2.5px;">
-					</div>
-					<span
-						style="display: inline; position: absolute; font-weight: bold; margin-left: 10px; margin-top: 12px;">START</span>
-				</button>
-				<div class="filler"></div>
-				<button class="shiny power">
-					<div
-						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
-						<img src="./images/Document.svg"
-							style="width: 18px;-webkit-filter: invert(1); filter: invert(1);" alt="document btn">
-					</div>
-					<span
-						style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Documents</span>
-				</button>
-				<button class="shiny power">
-					<div
-						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
-						<img src="./images/Picture.svg"
-							style="width: 18px;-webkit-filter: invert(1); filter: invert(1);" alt="picture btn">
-					</div>
-					<span
-						style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Pictures</span>
-				</button>
-				<button class="shiny power">
-					<div
-						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
-						<img src="./images/gear-icon-svg-18.jpg"
-							style="width: 18px;-webkit-filter: invert(1); filter: invert(1);" alt="setting btn">
-					</div>
-					<span
-						style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Settings</span>
-				</button>
-				<div style="position: absolute; background-color: #252224; padding: 10px 0; transform: translateY(-80px);"
-					id="powermenu" class="invisible">
-					<button class="hoverbtn" style="color: white; width: 100%; height: 30px; font-size: 0.95em;"
-						onclick="shutDown();">
-						<img src="./images/power-button.svg" style="width: 18px;" alt="shutdown">
-						<span style="position: relative; bottom: 2px;">
-							Shut down
-						</span>
-					</button>
-					<button class="hoverbtn" style="color: white; width: 100%; height: 30px; font-size: 0.95em;"
-						onclick="restart();">
-						<img src="./images/msrestart.svg" style="width: 18px; position: relative; top: 2px;"
-							alt="restart">
-						<span style="position: relative; bottom: 2px;">
-							Restart
-						</span>
-					</button>
-				</div>
-				<button class="shiny power" onclick="togglePowerMenu();" id="powerBtn">
-					<div
-						style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
-						<img src="./images/power-button.svg" style="width: 18px;" alt="power">
-					</div>
-					<span style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Power</span>
-				</button>
-			</div>
-		</div>
-	</section>
+                </span>
+            </span>
+        </div>
+        <div id="microsoft-container" class="invisible" onmousedown="bringToTop('#microsoft-container')">
+            <div class="leftpart">
+                <button class="shiny pancake" onmousedown="this.parentElement.style.transitionDelay = '0s'; this.parentElement.style.transition = 'all 0.2s';  let p = this; setTimeout(function(){p.parentElement.style.transitionDelay = null; p.parentElement.style.transition = null;  }, 1000)">
+                    <div style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+                        <hr style="width: 100%; margin-bottom: 0; margin-top: 0">
+                        <hr style="width: 100%; margin-bottom: 0; margin-top: 2.5px;">
+                        <hr style="width: 100%; margin-bottom: 0; margin-top: 2.5px;">
+                    </div>
+                    <span style="display: inline; position: absolute; font-weight: bold; margin-left: 10px; margin-top: 12px;">START</span>
+                </button>
+                <div class="filler"></div>
+                <button class="shiny power">
+                    <div style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+                        <img src="./images/Document.svg" style="width: 18px;-webkit-filter: invert(1); filter: invert(1);" alt="document btn">
+                    </div>
+                    <span style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Documents</span>
+                </button>
+                <button class="shiny power">
+                    <div style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+                        <img src="./images/Picture.svg" style="width: 18px;-webkit-filter: invert(1); filter: invert(1);" alt="picture btn">
+                    </div>
+                    <span style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Pictures</span>
+                </button>
+                <button class="shiny power">
+                    <div style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+                        <img src="./images/gear-icon-svg-18.jpg" style="width: 18px;-webkit-filter: invert(1); filter: invert(1);" alt="setting btn">
+                    </div>
+                    <span style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Settings</span>
+                </button>
+                <div style="position: absolute; background-color: #252224; padding: 10px 0; transform: translateY(-80px);" id="powermenu" class="invisible">
+                    <button class="hoverbtn" style="color: white; width: 100%; height: 30px; font-size: 0.95em;" onclick="shutDown();">
+                        <img src="./images/power-button.svg" style="width: 18px;" alt="shutdown">
+                        <span style="position: relative; bottom: 2px;">
+                            Shut down
+                        </span>
+                    </button>
+                    <button class="hoverbtn" style="color: white; width: 100%; height: 30px; font-size: 0.95em;" onclick="restart();">
+                        <img src="./images/msrestart.svg" style="width: 18px; position: relative; top: 2px;" alt="restart">
+                        <span style="position: relative; bottom: 2px;">
+                            Restart
+                        </span>
+                    </button>
+                </div>
+                <button class="shiny power" onclick="togglePowerMenu();" id="powerBtn">
+                    <div style="width: 15px; padding-left: 18px; padding-right: 18px; padding-top: 15px; padding-bottom: 15px; display: inline-block;">
+                        <img src="./images/power-button.svg" style="width: 18px;" alt="power">
+                    </div>
+                    <span style="display: inline; position: absolute; margin-left: 10px; margin-top: 18px;">Power</span>
+                </button>
+            </div>
+        </div>
+    </section>
 </body>
 
 <div class="windowsScreens invisible">
-	<div style="width: 100%; height: 100%;">
-		<div class="busy-loader">
-			<div class="w-ball-wrapper ball-1">
-				<div class="w-ball">
-				</div>
-			</div>
-			<div class="w-ball-wrapper ball-2">
-				<div class="w-ball">
-				</div>
-			</div>
-			<div class="w-ball-wrapper ball-3">
-				<div class="w-ball">
-				</div>
-			</div>
-			<div class="w-ball-wrapper ball-4">
-				<div class="w-ball">
-				</div>
-			</div>
-			<div class="w-ball-wrapper ball-5">
-				<div class=" w-ball">
-				</div>
-			</div>
-		</div>
-		<span
-			style="color: white; display: block; text-align: center; top: 50%; position: relative; transform: translateX(-15px); font-size: 1.2em;"
-			id="windowsScreenMsg">Restarting</span>
-	</div>
-	<div class="invisible" style="height: 100%; width: 100%; font-family: 'dosfont'; margin-left: 20%;">
-		<div style="float: left; margin-top: 30px;">
-			<img src="./images/ami.svg" style="width: 300px;" alt="American Megatrends logo is loading...">
-			<span
-				style="color: white; font-size: 1.5em; display: block; margin-left: 50px; transform: translateY(-30px);">www.joshuaz.dev</span>
-		</div>
-		<div style="float: left; margin-top: 30px; margin-left: 40px;">
-			<span style="color: white; font-size: 4em; font-family: 'Font Awesome 5 Brands';">American<br><span
-					style="font-size: 0.84em;">Megatrends</span></span>
-			<div
-				style="color: rgb(190, 190, 190); margin-top: 100px; position: relative; left: -300px; line-height: 1.2em;">
-				<span>AMIBIOS(C)2007 American Megatrends, Inc.</span>
-				<br>
-				<span>ASUS P5KPL ACPI BIOS Revision 0603</span>
-				<br>
-				<span>CPU : Intel (R) Pentium(R) Dual CPU E2180 @ 2.00GHz</span>
-				<br>
-				<span>&nbsp;Speed : 2.51 GHz&nbsp;&nbsp;&nbsp;&nbsp; Count : 2</span>
-				<br>
-				<br>
-				<br>
-				<br>
-				<span>Press DEL to run Setup</span>
-				<br>
-				<span>Press F8 for BBS POPUP</span>
-				<br>
-				<span>DDR2-667 in Dual-Channel Interleaved Mode.</span>
-				<br>
-				<span>Initializing USB Controllers .. Done.</span>
-				<br>
-				<span>3584MB OK</span>
-				<br>
-			</div>
-			<div
-				style="color: rgb(190, 190, 190); margin-top: 100px; position: absolute; bottom: 100px; transform: translateX(-300px); line-height: 1.2em; display: block; width: 1000px;">
-				<span>(C) American Megatrends, Inc.</span>
-				<br>
-				<span>69-1568-000001-0101100111-09846420-Tigerlake-A08651200-ACI5C</span>
-			</div>
-		</div>
+    <div style="width: 100%; height: 100%;">
+        <div class="busy-loader">
+            <div class="w-ball-wrapper ball-1">
+                <div class="w-ball">
+                </div>
+            </div>
+            <div class="w-ball-wrapper ball-2">
+                <div class="w-ball">
+                </div>
+            </div>
+            <div class="w-ball-wrapper ball-3">
+                <div class="w-ball">
+                </div>
+            </div>
+            <div class="w-ball-wrapper ball-4">
+                <div class="w-ball">
+                </div>
+            </div>
+            <div class="w-ball-wrapper ball-5">
+                <div class=" w-ball">
+                </div>
+            </div>
+        </div>
+        <span style="color: white; display: block; text-align: center; top: 50%; position: relative; transform: translateX(-15px); font-size: 1.2em;" id="windowsScreenMsg">Restarting</span>
+    </div>
+    <div class="invisible" style="height: 100%; width: 100%; font-family: 'dosfont'; margin-left: 20%;">
+        <div style="float: left; margin-top: 30px;">
+            <img src="./images/ami.svg" style="width: 300px;" alt="American Megatrends logo is loading...">
+            <span style="color: white; font-size: 1.5em; display: block; margin-left: 50px; transform: translateY(-30px);">www.joshuaz.dev</span>
+        </div>
+        <div style="float: left; margin-top: 30px; margin-left: 40px;">
+            <span style="color: white; font-size: 4em; font-family: 'Font Awesome 5 Brands';">American<br><span style="font-size: 0.84em;">Megatrends</span></span>
+            <div style="color: rgb(190, 190, 190); margin-top: 100px; position: relative; left: -300px; line-height: 1.2em;">
+                <span>AMIBIOS(C)2007 American Megatrends, Inc.</span>
+                <br>
+                <span>ASUS P5KPL ACPI BIOS Revision 0603</span>
+                <br>
+                <span>CPU : Intel (R) Pentium(R) Dual CPU E2180 @ 2.00GHz</span>
+                <br>
+                <span>&nbsp;Speed : 2.51 GHz&nbsp;&nbsp;&nbsp;&nbsp; Count : 2</span>
+                <br>
+                <br>
+                <br>
+                <br>
+                <span>Press DEL to run Setup</span>
+                <br>
+                <span>Press F8 for BBS POPUP</span>
+                <br>
+                <span>DDR2-667 in Dual-Channel Interleaved Mode.</span>
+                <br>
+                <span>Initializing USB Controllers .. Done.</span>
+                <br>
+                <span>3584MB OK</span>
+                <br>
+            </div>
+            <div style="color: rgb(190, 190, 190); margin-top: 100px; position: absolute; bottom: 100px; transform: translateX(-300px); line-height: 1.2em; display: block; width: 1000px;">
+                <span>(C) American Megatrends, Inc.</span>
+                <br>
+                <span>69-1568-000001-0101100111-09846420-Tigerlake-A08651200-ACI5C</span>
+            </div>
+        </div>
 
-	</div>
+    </div>
 </div>
 
 </html>
@@ -1045,8 +1050,7 @@
 <script src="./javascript/asynchome.js"></script>
 <script src="./javascript/rainbow.min.js"></script>
 <link href="./fonts/segoe-ui-4-cufonfonts-webfont/seqoeUI.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/css/jquery.terminal.min.css"
-	rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.27.1/css/jquery.terminal.min.css" rel="stylesheet" />
 <script>
     var cors_api_host = 'localhost:3000/api/proxy';
     var cors_api_url = 'http://' + cors_api_host + '/';
@@ -1061,46 +1065,46 @@
             args[1] = cors_api_url + args[1];
         }
 
-		let temp = args[1].slice(cors_api_url.length);
-		temp = encodeURIComponent(temp);
-		args[1] = args[1].replace(args[1].slice(cors_api_url.length), temp)
+        let temp = args[1].slice(cors_api_url.length);
+        temp = encodeURIComponent(temp);
+        args[1] = args[1].replace(args[1].slice(cors_api_url.length), temp)
         return open.apply(this, args);
     };
 
 
-	let goodFetch = window.fetch;
-	window.fetch = async function(param1, param2){
-		let url = encodeURIComponent(param1);
-		url = cors_api_url + url;
-		let result = goodFetch(url, param2);
-		return result;
-	}
+    let goodFetch = window.fetch;
+    window.fetch = async function(param1, param2) {
+        let url = encodeURIComponent(param1);
+        url = cors_api_url + url;
+        let result = goodFetch(url, param2);
+        return result;
+    }
 </script>
 </body>
 
 </html>
 
 <style>
-	@font-face {
-		font-family: "dosfont";
-		src: url("./fonts/Perfect\ DOS\ VGA\ 437\ Win.ttf");
-	}
+    @font-face {
+        font-family: "dosfont";
+        src: url("./fonts/Perfect\ DOS\ VGA\ 437\ Win.ttf");
+    }
 
-	.terminal .cmd {
-		margin-bottom: 20px !important;
-	}
+    .terminal .cmd {
+        margin-bottom: 20px !important;
+    }
 
-	.terminal-scroll-marker * {
-		color: grey;
-	}
+    .terminal-scroll-marker * {
+        color: grey;
+    }
 
-	.json-key {
-		color: #aaa;
-	}
+    .json-key {
+        color: #aaa;
+    }
 
-	.json-value {
-		color: #C19C04;
-	}
+    .json-value {
+        color: #C19C04;
+    }
 
 	.json-string {
 		color: #13A10E;
